@@ -1,0 +1,40 @@
+{
+  "schema": "ReBear.WorkedExample",
+  "version": 1,
+  "example": "14-ancoraggio-sovrapposizione",
+  "engine": "GPCChecker.Concrete, Version=0.12.0.4, Culture=neutral, PublicKeyToken=null",
+  "verification": "Calcolo adapter GPC eseguito; archivio GH riletto; soluzione dentro Rhino non eseguita.",
+  "values": {
+    "fbd [MPa]": 3.0412915615077334,
+    "lb,rqd [mm]": 493.21150888156495
+  },
+  "checks": [
+    {
+      "Section": "S",
+      "Case": "Detailing",
+      "Check": "Anchorage",
+      "Status": "Satisfied",
+      "Ratio": null,
+      "Demand": 493.21150888156495,
+      "Capacity": 1000,
+      "Unit": "mm",
+      "Message": "lbd = max[lb,rqd; max(0.3 lb,rqd; 10\u00D8; 100 mm)]; straight bars, \u03B11\u2026\u03B15 = 1",
+      "Reference": "EN 1992-1-1 \u00A7\u00A78, 9.2, 9.5 (recommended values)",
+      "Details": "fbd=3.0412915615077334 MPa; lb,rqd=493.21150888156495 mm; lmin=200 mm; lap clearance passed=True"
+    },
+    {
+      "Section": "S",
+      "Case": "Detailing",
+      "Check": "Lap",
+      "Status": "Satisfied",
+      "Ratio": null,
+      "Demand": 739.8172633223475,
+      "Capacity": 1000,
+      "Unit": "mm",
+      "Message": "l0 = max[\u03B16 lb,rqd; max(0.3 \u03B16 lb,rqd; 15\u00D8; 200 mm)] \u002B clear distance beyond min(4\u00D8; 50 mm); straight bars, \u03B11\u2026\u03B15 = 1",
+      "Reference": "EN 1992-1-1 \u00A7\u00A78, 9.2, 9.5 (recommended values)",
+      "Details": "fbd=3.0412915615077334 MPa; lb,rqd=493.21150888156495 mm; lmin=300 mm; lap clearance passed=True"
+    }
+  ],
+  "series": null
+}

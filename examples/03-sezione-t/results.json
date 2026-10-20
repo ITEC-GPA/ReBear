@@ -1,0 +1,30 @@
+{
+  "schema": "ReBear.WorkedExample",
+  "version": 1,
+  "example": "03-sezione-t",
+  "engine": "GPCChecker.Concrete, Version=0.12.0.4, Culture=neutral, PublicKeyToken=null",
+  "verification": "Calcolo adapter GPC eseguito; archivio GH riletto; soluzione dentro Rhino non eseguita.",
+  "values": {
+    "Ac [mm\u00B2]": 300000,
+    "As [mm\u00B2]": 4084.0704496667304,
+    "Numero barre": 13,
+    "cbar,min [mm]": 38,
+    "Interferro minimo [mm]": 82
+  },
+  "checks": [
+    {
+      "Section": "S",
+      "Case": "Geometry",
+      "Check": "Geometry",
+      "Status": "Satisfied",
+      "Ratio": null,
+      "Demand": null,
+      "Capacity": null,
+      "Unit": "",
+      "Message": "Copriferro minimo 38 mm \u2265 38; interferro 82 mm \u2265 25.",
+      "Reference": "",
+      "Details": ""
+    }
+  ],
+  "series": null
+}

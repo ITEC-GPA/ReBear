@@ -1,0 +1,194 @@
+{
+  "schema": "ReBear.WorkedExample",
+  "version": 1,
+  "example": "06-inviluppo-azioni",
+  "engine": "GPCChecker.Concrete, Version=0.12.0.4, Culture=neutral, PublicKeyToken=null",
+  "verification": "Calcolo adapter GPC eseguito; archivio GH riletto; soluzione dentro Rhino non eseguita.",
+  "values": {
+    "N minimo [kN]": -500,
+    "Mx massimo [kNm]": 120
+  },
+  "checks": [],
+  "series": [
+    {
+      "Component": "N",
+      "Maximum": false,
+      "Index": 1,
+      "caseName": "B",
+      "value": -500,
+      "actions": [
+        -500000,
+        -80000,
+        40000,
+        -4000000,
+        100000000,
+        -25000000
+      ]
+    },
+    {
+      "Component": "N",
+      "Maximum": true,
+      "Index": 2,
+      "caseName": "C",
+      "value": -100,
+      "actions": [
+        -100000,
+        20000,
+        120000,
+        7000000,
+        120000000,
+        35000000
+      ]
+    },
+    {
+      "Component": "Vx",
+      "Maximum": false,
+      "Index": 1,
+      "caseName": "B",
+      "value": -80,
+      "actions": [
+        -500000,
+        -80000,
+        40000,
+        -4000000,
+        100000000,
+        -25000000
+      ]
+    },
+    {
+      "Component": "Vx",
+      "Maximum": true,
+      "Index": 0,
+      "caseName": "A",
+      "value": 60,
+      "actions": [
+        -300000,
+        60000,
+        90000,
+        2000000,
+        45000000,
+        15000000
+      ]
+    },
+    {
+      "Component": "Vy",
+      "Maximum": false,
+      "Index": 1,
+      "caseName": "B",
+      "value": 40,
+      "actions": [
+        -500000,
+        -80000,
+        40000,
+        -4000000,
+        100000000,
+        -25000000
+      ]
+    },
+    {
+      "Component": "Vy",
+      "Maximum": true,
+      "Index": 2,
+      "caseName": "C",
+      "value": 120,
+      "actions": [
+        -100000,
+        20000,
+        120000,
+        7000000,
+        120000000,
+        35000000
+      ]
+    },
+    {
+      "Component": "T",
+      "Maximum": false,
+      "Index": 1,
+      "caseName": "B",
+      "value": -4,
+      "actions": [
+        -500000,
+        -80000,
+        40000,
+        -4000000,
+        100000000,
+        -25000000
+      ]
+    },
+    {
+      "Component": "T",
+      "Maximum": true,
+      "Index": 2,
+      "caseName": "C",
+      "value": 7,
+      "actions": [
+        -100000,
+        20000,
+        120000,
+        7000000,
+        120000000,
+        35000000
+      ]
+    },
+    {
+      "Component": "Mx",
+      "Maximum": false,
+      "Index": 0,
+      "caseName": "A",
+      "value": 45,
+      "actions": [
+        -300000,
+        60000,
+        90000,
+        2000000,
+        45000000,
+        15000000
+      ]
+    },
+    {
+      "Component": "Mx",
+      "Maximum": true,
+      "Index": 2,
+      "caseName": "C",
+      "value": 120,
+      "actions": [
+        -100000,
+        20000,
+        120000,
+        7000000,
+        120000000,
+        35000000
+      ]
+    },
+    {
+      "Component": "My",
+      "Maximum": false,
+      "Index": 1,
+      "caseName": "B",
+      "value": -25,
+      "actions": [
+        -500000,
+        -80000,
+        40000,
+        -4000000,
+        100000000,
+        -25000000
+      ]
+    },
+    {
+      "Component": "My",
+      "Maximum": true,
+      "Index": 2,
+      "caseName": "C",
+      "value": 35,
+      "actions": [
+        -100000,
+        20000,
+        120000,
+        7000000,
+        120000000,
+        35000000
+      ]
+    }
+  ]
+}

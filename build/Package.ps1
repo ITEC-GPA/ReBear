@@ -21,6 +21,9 @@ Copy-Item -LiteralPath (Join-Path $projectRoot 'lib/GPC/release-set.json') -Dest
 Copy-Item -LiteralPath (Join-Path $projectRoot 'README.md') -Destination $destination
 Copy-Item -LiteralPath (Join-Path $projectRoot 'docs') -Destination $destination -Recurse
 Copy-Item -LiteralPath (Join-Path $projectRoot 'assets') -Destination $destination -Recurse
+if (Test-Path -LiteralPath (Join-Path $projectRoot 'examples')) {
+    Copy-Item -LiteralPath (Join-Path $projectRoot 'examples') -Destination $destination -Recurse
+}
 $hashes = Get-ChildItem -LiteralPath $destination -File | ForEach-Object {
     [ordered]@{ file = $_.Name; sha256 = (Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash.ToLowerInvariant() }
 }

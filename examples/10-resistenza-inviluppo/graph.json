@@ -1,0 +1,246 @@
+{
+  "components": [
+    {
+      "index": 0,
+      "type": "ConcreteMaterialComponent",
+      "guid": "e2aa1e8b-3fa9-49a5-8d5e-991d4eac5bc6",
+      "inputs": {
+        "Type": "3"
+      }
+    },
+    {
+      "index": 1,
+      "type": "RebarMaterialComponent",
+      "guid": "606ebfd0-d9e7-407e-aaa3-eb8579fe2f6b",
+      "inputs": {
+        "Type": "1",
+        "Behaviour": "0"
+      }
+    },
+    {
+      "index": 2,
+      "type": "RectangularRcSectionComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0024",
+      "inputs": {
+        "Width": "300",
+        "Height": "500",
+        "Link cover": "30",
+        "Link diameter": "8",
+        "Bar diameter": "20",
+        "Top bars": "4",
+        "Bottom bars": "4",
+        "Side bars per face": "0"
+      }
+    },
+    {
+      "index": 3,
+      "type": "StandardComponent",
+      "guid": "3def8fa3-e056-4075-8661-bd51575c00ee",
+      "inputs": {
+        "Type": "0"
+      }
+    },
+    {
+      "index": 4,
+      "type": "CheckerOptionsComponent",
+      "guid": "acd21b40-347d-487b-ad3d-c355e19b5315",
+      "inputs": {
+        "Failure Domain Types": "1",
+        "Failure Analysis Types": "0",
+        "Domain Point Strategy Types": "1",
+        "Stress Analysis Types": "1",
+        "\u03C8 rebar": "1.5",
+        "\u03C8 tendon": "0",
+        "Consider tensile concrete": "False"
+      }
+    },
+    {
+      "index": 5,
+      "type": "CoordinateSystemComponent",
+      "guid": "8f839216-244a-4891-a1d5-bb0fb42f7909",
+      "inputs": {
+        "Name": "Global XY",
+        "Origin": "0,0,0",
+        "P1": "1,0,0",
+        "P2": "0,1,0"
+      }
+    },
+    {
+      "index": 6,
+      "type": "CheckerComponent",
+      "guid": "c485957b-3d8e-4f19-8176-f30ffcda952e",
+      "inputs": {}
+    },
+    {
+      "index": 7,
+      "type": "SectionForceComponent",
+      "guid": "ddd3c603-f931-4db5-ab11-6d1da9ffd01e",
+      "inputs": {
+        "Name": "SLU-moderato",
+        "Axial Force": "-300",
+        "Shear X": "0",
+        "Shear Y": "0",
+        "Torsion": "0",
+        "Bending X": "80",
+        "Bending Y": "10",
+        "Units": "1"
+      }
+    },
+    {
+      "index": 8,
+      "type": "SectionForceComponent",
+      "guid": "ddd3c603-f931-4db5-ab11-6d1da9ffd01e",
+      "inputs": {
+        "Name": "SLU-elevato",
+        "Axial Force": "-300",
+        "Shear X": "0",
+        "Shear Y": "0",
+        "Torsion": "0",
+        "Bending X": "400",
+        "Bending Y": "0",
+        "Units": "1"
+      }
+    },
+    {
+      "index": 9,
+      "type": "SectionForceComponent",
+      "guid": "ddd3c603-f931-4db5-ab11-6d1da9ffd01e",
+      "inputs": {
+        "Name": "Fuori-dominio",
+        "Axial Force": "-10000000",
+        "Shear X": "0",
+        "Shear Y": "0",
+        "Torsion": "0",
+        "Bending X": "80",
+        "Bending Y": "0",
+        "Units": "1"
+      }
+    },
+    {
+      "index": 10,
+      "type": "BatchSectionChecksComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0012",
+      "inputs": {
+        "Section ID": "S",
+        "N-Mx-My": "True",
+        "Run": "True"
+      }
+    },
+    {
+      "index": 11,
+      "type": "CheckEnvelopeComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0002",
+      "inputs": {}
+    },
+    {
+      "index": 12,
+      "type": "CheckReportComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0004",
+      "inputs": {}
+    },
+    {
+      "index": 13,
+      "type": "CheckResultComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0003",
+      "inputs": {}
+    }
+  ],
+  "connections": [
+    {
+      "from": 0,
+      "output": 0,
+      "to": 2,
+      "input": 0
+    },
+    {
+      "from": 1,
+      "output": 0,
+      "to": 2,
+      "input": 1
+    },
+    {
+      "from": 5,
+      "output": 0,
+      "to": 4,
+      "input": 0
+    },
+    {
+      "from": 2,
+      "output": 0,
+      "to": 6,
+      "input": 0
+    },
+    {
+      "from": 3,
+      "output": 0,
+      "to": 6,
+      "input": 1
+    },
+    {
+      "from": 4,
+      "output": 0,
+      "to": 6,
+      "input": 2
+    },
+    {
+      "from": 5,
+      "output": 0,
+      "to": 7,
+      "input": 7
+    },
+    {
+      "from": 5,
+      "output": 0,
+      "to": 8,
+      "input": 7
+    },
+    {
+      "from": 5,
+      "output": 0,
+      "to": 9,
+      "input": 7
+    },
+    {
+      "from": 6,
+      "output": 0,
+      "to": 10,
+      "input": 0
+    },
+    {
+      "from": 7,
+      "output": 0,
+      "to": 10,
+      "input": 1
+    },
+    {
+      "from": 8,
+      "output": 0,
+      "to": 10,
+      "input": 1
+    },
+    {
+      "from": 9,
+      "output": 0,
+      "to": 10,
+      "input": 1
+    },
+    {
+      "from": 10,
+      "output": 0,
+      "to": 11,
+      "input": 0
+    },
+    {
+      "from": 10,
+      "output": 0,
+      "to": 12,
+      "input": 0
+    },
+    {
+      "from": 10,
+      "output": 0,
+      "to": 13,
+      "input": 0
+    }
+  ]
+}

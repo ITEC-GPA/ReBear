@@ -1,0 +1,67 @@
+{
+  "schema": "ReBear.WorkedExample",
+  "version": 1,
+  "example": "11-tensioni-sle",
+  "engine": "GPCChecker.Concrete, Version=0.12.0.4, Culture=neutral, PublicKeyToken=null",
+  "verification": "Calcolo adapter GPC eseguito; archivio GH riletto; soluzione dentro Rhino non eseguita.",
+  "values": {
+    "Area omogeneizzata [mm\u00B2]": 162794.50177181856,
+    "\u03C3c [MPa]": -1.8428141352393823,
+    "|\u03C3s| [MPa]": 11.224157976021965
+  },
+  "checks": [
+    {
+      "Section": "S",
+      "Case": "SLE-CHAR",
+      "Check": "SLE stress",
+      "Status": "Satisfied",
+      "Ratio": 0.10237856306885457,
+      "Demand": null,
+      "Capacity": null,
+      "Unit": "",
+      "Message": "Characteristic",
+      "Reference": "NTC2018",
+      "Details": "\u03C3c,min=-1.8428141352393823 MPa; \u03C3s,max=11.224157976021965 MPa; \u03B7c=0.10237856306885457; \u03B7s=0.031178216600061016; \u03C8s=0"
+    },
+    {
+      "Section": "S",
+      "Case": "SLE-CHAR",
+      "Check": "SLE cracking",
+      "Status": "NotRequired",
+      "Ratio": null,
+      "Demand": null,
+      "Capacity": null,
+      "Unit": "MPa",
+      "Message": "Not required for this combination",
+      "Reference": "NTC 2018 \u00A74.1.2.2.4 and Circolare 2019 C4.1.2.2.4",
+      "Details": ""
+    },
+    {
+      "Section": "S-frequente",
+      "Case": "SLE-CHAR",
+      "Check": "SLE stress",
+      "Status": "NotRequired",
+      "Ratio": null,
+      "Demand": null,
+      "Capacity": null,
+      "Unit": "",
+      "Message": "Nessun limite tensionale per questa combinazione.",
+      "Reference": "NTC2018",
+      "Details": "\u03C3c,min=-1.8428141352393823 MPa; \u03C3s,max=11.224157976021965 MPa; \u03B7c=; \u03B7s=; \u03C8s=0"
+    },
+    {
+      "Section": "S-frequente",
+      "Case": "SLE-CHAR",
+      "Check": "SLE cracking",
+      "Status": "Satisfied",
+      "Ratio": 0,
+      "Demand": 0,
+      "Capacity": 0.3,
+      "Unit": "mm",
+      "Message": "Section entirely compressed",
+      "Reference": "NTC 2018 \u00A74.1.2.2.4 and Circolare 2019 C4.1.2.2.4",
+      "Details": "\u03B5c,min=-5.6120789891351422E-05 \u2212: minimum strain at the vertices\n\u03B5c,max=-5.6120789796232481E-05 \u2212: maximum strain at the vertices"
+    }
+  ],
+  "series": null
+}

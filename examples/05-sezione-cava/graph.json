@@ -1,0 +1,93 @@
+{
+  "components": [
+    {
+      "index": 0,
+      "type": "ConcreteMaterialComponent",
+      "guid": "e2aa1e8b-3fa9-49a5-8d5e-991d4eac5bc6",
+      "inputs": {
+        "Type": "3"
+      }
+    },
+    {
+      "index": 1,
+      "type": "RebarMaterialComponent",
+      "guid": "606ebfd0-d9e7-407e-aaa3-eb8579fe2f6b",
+      "inputs": {
+        "Type": "1",
+        "Behaviour": "0"
+      }
+    },
+    {
+      "index": 2,
+      "type": "BoxRcSectionComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0028",
+      "inputs": {
+        "Width": "1000",
+        "Height": "1200",
+        "Hole width": "500",
+        "Hole height": "700",
+        "Link cover": "35",
+        "Link diameter": "10",
+        "Bar diameter": "20",
+        "Outer bars per horizontal side": "6",
+        "Outer bars per vertical side": "8",
+        "Inner bars per horizontal side": "4",
+        "Inner bars per vertical side": "6"
+      }
+    },
+    {
+      "index": 3,
+      "type": "SectionGeometryCheckComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0030",
+      "inputs": {
+        "Required bar cover": "45",
+        "Required clear spacing": "25",
+        "Section ID": "S"
+      }
+    },
+    {
+      "index": 4,
+      "type": "CheckReportComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0004",
+      "inputs": {}
+    },
+    {
+      "index": 5,
+      "type": "CheckResultComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0003",
+      "inputs": {}
+    }
+  ],
+  "connections": [
+    {
+      "from": 0,
+      "output": 0,
+      "to": 2,
+      "input": 0
+    },
+    {
+      "from": 1,
+      "output": 0,
+      "to": 2,
+      "input": 1
+    },
+    {
+      "from": 2,
+      "output": 0,
+      "to": 3,
+      "input": 0
+    },
+    {
+      "from": 3,
+      "output": 0,
+      "to": 4,
+      "input": 0
+    },
+    {
+      "from": 3,
+      "output": 0,
+      "to": 5,
+      "input": 0
+    }
+  ]
+}

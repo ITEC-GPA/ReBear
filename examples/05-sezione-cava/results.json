@@ -1,0 +1,30 @@
+{
+  "schema": "ReBear.WorkedExample",
+  "version": 1,
+  "example": "05-sezione-cava",
+  "engine": "GPCChecker.Concrete, Version=0.12.0.4, Culture=neutral, PublicKeyToken=null",
+  "verification": "Calcolo adapter GPC eseguito; archivio GH riletto; soluzione dentro Rhino non eseguita.",
+  "values": {
+    "Ac [mm\u00B2]": 850000,
+    "As [mm\u00B2]": 12566.370614359179,
+    "Numero barre": 40,
+    "cbar,min [mm]": 45,
+    "Interferro minimo [mm]": 120.03527252453364
+  },
+  "checks": [
+    {
+      "Section": "S",
+      "Case": "Geometry",
+      "Check": "Geometry",
+      "Status": "Satisfied",
+      "Ratio": null,
+      "Demand": null,
+      "Capacity": null,
+      "Unit": "",
+      "Message": "Copriferro minimo 45 mm \u2265 45; interferro 120.035273 mm \u2265 25.",
+      "Reference": "",
+      "Details": ""
+    }
+  ],
+  "series": null
+}

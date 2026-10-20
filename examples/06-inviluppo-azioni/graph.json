@@ -1,0 +1,148 @@
+{
+  "components": [
+    {
+      "index": 0,
+      "type": "ConcreteMaterialComponent",
+      "guid": "e2aa1e8b-3fa9-49a5-8d5e-991d4eac5bc6",
+      "inputs": {
+        "Type": "3"
+      }
+    },
+    {
+      "index": 1,
+      "type": "RebarMaterialComponent",
+      "guid": "606ebfd0-d9e7-407e-aaa3-eb8579fe2f6b",
+      "inputs": {
+        "Type": "1",
+        "Behaviour": "0"
+      }
+    },
+    {
+      "index": 2,
+      "type": "RectangularRcSectionComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0024",
+      "inputs": {
+        "Width": "300",
+        "Height": "500",
+        "Link cover": "30",
+        "Link diameter": "8",
+        "Bar diameter": "20",
+        "Top bars": "4",
+        "Bottom bars": "4",
+        "Side bars per face": "0"
+      }
+    },
+    {
+      "index": 3,
+      "type": "SectionForceComponent",
+      "guid": "ddd3c603-f931-4db5-ab11-6d1da9ffd01e",
+      "inputs": {
+        "Name": "A",
+        "Axial Force": "-300",
+        "Shear X": "60",
+        "Shear Y": "90",
+        "Torsion": "2",
+        "Bending X": "45",
+        "Bending Y": "15",
+        "Units": "1"
+      }
+    },
+    {
+      "index": 4,
+      "type": "CoordinateSystemComponent",
+      "guid": "8f839216-244a-4891-a1d5-bb0fb42f7909",
+      "inputs": {
+        "Name": "Global XY",
+        "Origin": "0,0,0",
+        "P1": "1,0,0",
+        "P2": "0,1,0"
+      }
+    },
+    {
+      "index": 5,
+      "type": "SectionForceComponent",
+      "guid": "ddd3c603-f931-4db5-ab11-6d1da9ffd01e",
+      "inputs": {
+        "Name": "B",
+        "Axial Force": "-500",
+        "Shear X": "-80",
+        "Shear Y": "40",
+        "Torsion": "-4",
+        "Bending X": "100",
+        "Bending Y": "-25",
+        "Units": "1"
+      }
+    },
+    {
+      "index": 6,
+      "type": "SectionForceComponent",
+      "guid": "ddd3c603-f931-4db5-ab11-6d1da9ffd01e",
+      "inputs": {
+        "Name": "C",
+        "Axial Force": "-100",
+        "Shear X": "20",
+        "Shear Y": "120",
+        "Torsion": "7",
+        "Bending X": "120",
+        "Bending Y": "35",
+        "Units": "1"
+      }
+    },
+    {
+      "index": 7,
+      "type": "LoadEnvelopeComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0001",
+      "inputs": {}
+    }
+  ],
+  "connections": [
+    {
+      "from": 0,
+      "output": 0,
+      "to": 2,
+      "input": 0
+    },
+    {
+      "from": 1,
+      "output": 0,
+      "to": 2,
+      "input": 1
+    },
+    {
+      "from": 4,
+      "output": 0,
+      "to": 3,
+      "input": 7
+    },
+    {
+      "from": 4,
+      "output": 0,
+      "to": 5,
+      "input": 7
+    },
+    {
+      "from": 4,
+      "output": 0,
+      "to": 6,
+      "input": 7
+    },
+    {
+      "from": 3,
+      "output": 0,
+      "to": 7,
+      "input": 0
+    },
+    {
+      "from": 5,
+      "output": 0,
+      "to": 7,
+      "input": 0
+    },
+    {
+      "from": 6,
+      "output": 0,
+      "to": 7,
+      "input": 0
+    }
+  ]
+}

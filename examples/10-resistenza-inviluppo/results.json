@@ -1,0 +1,50 @@
+{
+  "schema": "ReBear.WorkedExample",
+  "version": 1,
+  "example": "10-resistenza-inviluppo",
+  "engine": "GPCChecker.Concrete, Version=0.12.0.4, Culture=neutral, PublicKeyToken=null",
+  "verification": "Calcolo adapter GPC eseguito; archivio GH riletto; soluzione dentro Rhino non eseguita.",
+  "values": {},
+  "checks": [
+    {
+      "Section": "S",
+      "Case": "SLU-moderato",
+      "Check": "N-Mx-My",
+      "Status": "Satisfied",
+      "Ratio": 0.31777461475858354,
+      "Demand": null,
+      "Capacity": null,
+      "Unit": "",
+      "Message": "Returned point satisfies the search constraints.",
+      "Reference": "NTC2018",
+      "Details": "Criterion=ConstantN; Mode=F3A; NRd=-300 kN; MxRd=251.75075756374304 kNm; MyRd=31.46884469546788 kNm"
+    },
+    {
+      "Section": "S",
+      "Case": "SLU-elevato",
+      "Check": "N-Mx-My",
+      "Status": "NotSatisfied",
+      "Ratio": 1.5223871341483561,
+      "Demand": null,
+      "Capacity": null,
+      "Unit": "",
+      "Message": "Returned point satisfies the search constraints.",
+      "Reference": "NTC2018",
+      "Details": "Criterion=ConstantN; Mode=F3A; NRd=-300 kN; MxRd=262.7452577781836 kNm; MyRd=0 kNm"
+    },
+    {
+      "Section": "S",
+      "Case": "Fuori-dominio",
+      "Check": "N-Mx-My",
+      "Status": "NotSatisfied",
+      "Ratio": 2864.8491193823857,
+      "Demand": null,
+      "Capacity": null,
+      "Unit": "",
+      "Message": "Axial force outside the range [NRd,c; NRd,t] of the domain: declared point and utilization at constant eccentricity.",
+      "Reference": "NTC2018",
+      "Details": "Criterion=ConstantN; Mode=AxialForceOutsideDomain; NRd=-3490.5852222178582 kN; MxRd=0.02792468177774287 kNm; MyRd=0 kNm"
+    }
+  ],
+  "series": null
+}

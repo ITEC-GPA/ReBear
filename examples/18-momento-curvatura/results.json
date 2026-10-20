@@ -1,0 +1,154 @@
+{
+  "schema": "ReBear.WorkedExample",
+  "version": 1,
+  "example": "18-momento-curvatura",
+  "engine": "GPCChecker.Concrete, Version=0.12.0.4, Culture=neutral, PublicKeyToken=null",
+  "verification": "Calcolo adapter GPC eseguito; archivio GH riletto; soluzione dentro Rhino non eseguita.",
+  "values": {
+    "Momento limite [kNm]": 262.7452577781881,
+    "Residuo N al limite [kN]": 0,
+    "Numero punti": 22,
+    "\u03C7y [1/m]": 0.007530753374968849,
+    "\u03C7u [1/m]": 0.0374229279363506
+  },
+  "checks": [],
+  "series": {
+    "Status": "Increasing-moment branch at constant N; material laws and factors of the section and standard. First yield refined with 12 bisections, My = 2.479913E\u002B08 Nmm. N at the limit point = -300000 N; residual = 0 N. No post-peak branch.",
+    "InterruptedAtStep": null,
+    "InterruptionMessage": null,
+    "points": [
+      {
+        "curvature_per_m": 1.3507975307521872E-12,
+        "moment_kNm": 0,
+        "Yielded": false,
+        "Limit": false
+      },
+      {
+        "curvature_per_m": 9.56402729833805E-06,
+        "moment_kNm": 0.6568631444454703,
+        "Yielded": false,
+        "Limit": false
+      },
+      {
+        "curvature_per_m": 3.825610938951651E-05,
+        "moment_kNm": 2.6274525777818813,
+        "Yielded": false,
+        "Limit": false
+      },
+      {
+        "curvature_per_m": 8.607625315652888E-05,
+        "moment_kNm": 5.911768300009232,
+        "Yielded": false,
+        "Limit": false
+      },
+      {
+        "curvature_per_m": 0.00015302444522867964,
+        "moment_kNm": 10.509810311127525,
+        "Yielded": false,
+        "Limit": false
+      },
+      {
+        "curvature_per_m": 0.00023910076965710333,
+        "moment_kNm": 16.421578611136756,
+        "Yielded": false,
+        "Limit": false
+      },
+      {
+        "curvature_per_m": 0.0003443050213264505,
+        "moment_kNm": 23.647073200036928,
+        "Yielded": false,
+        "Limit": false
+      },
+      {
+        "curvature_per_m": 0.00047160305803065436,
+        "moment_kNm": 32.18629407782804,
+        "Yielded": false,
+        "Limit": false
+      },
+      {
+        "curvature_per_m": 0.0006581456364524224,
+        "moment_kNm": 42.0392412445101,
+        "Yielded": false,
+        "Limit": false
+      },
+      {
+        "curvature_per_m": 0.0009297830876716886,
+        "moment_kNm": 53.20591470008309,
+        "Yielded": false,
+        "Limit": false
+      },
+      {
+        "curvature_per_m": 0.0012839549678483502,
+        "moment_kNm": 65.68631444454702,
+        "Yielded": false,
+        "Limit": false
+      },
+      {
+        "curvature_per_m": 0.0017070112181353464,
+        "moment_kNm": 79.48044047790191,
+        "Yielded": false,
+        "Limit": false
+      },
+      {
+        "curvature_per_m": 0.002189746108867526,
+        "moment_kNm": 94.58829280014771,
+        "Yielded": false,
+        "Limit": false
+      },
+      {
+        "curvature_per_m": 0.0027320331278772878,
+        "moment_kNm": 111.00987141128448,
+        "Yielded": false,
+        "Limit": false
+      },
+      {
+        "curvature_per_m": 0.0033271208167818477,
+        "moment_kNm": 128.74517631131215,
+        "Yielded": false,
+        "Limit": false
+      },
+      {
+        "curvature_per_m": 0.0039754651484860265,
+        "moment_kNm": 147.79420750023078,
+        "Yielded": false,
+        "Limit": false
+      },
+      {
+        "curvature_per_m": 0.004679706149253362,
+        "moment_kNm": 168.1569649780404,
+        "Yielded": false,
+        "Limit": false
+      },
+      {
+        "curvature_per_m": 0.005437679149056405,
+        "moment_kNm": 189.83344874474088,
+        "Yielded": false,
+        "Limit": false
+      },
+      {
+        "curvature_per_m": 0.0062551820519873074,
+        "moment_kNm": 212.82365880033237,
+        "Yielded": false,
+        "Limit": false
+      },
+      {
+        "curvature_per_m": 0.007133047910358059,
+        "moment_kNm": 237.12759514481473,
+        "Yielded": false,
+        "Limit": false
+      },
+      {
+        "curvature_per_m": 0.007530753374968849,
+        "moment_kNm": 247.99133537776632,
+        "Yielded": true,
+        "Limit": false
+      },
+      {
+        "curvature_per_m": 0.0374229279363506,
+        "moment_kNm": 262.7452577781881,
+        "Yielded": true,
+        "Limit": true
+      }
+    ]
+  }
+}

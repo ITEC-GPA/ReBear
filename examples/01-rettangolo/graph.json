@@ -1,0 +1,90 @@
+{
+  "components": [
+    {
+      "index": 0,
+      "type": "ConcreteMaterialComponent",
+      "guid": "e2aa1e8b-3fa9-49a5-8d5e-991d4eac5bc6",
+      "inputs": {
+        "Type": "3"
+      }
+    },
+    {
+      "index": 1,
+      "type": "RebarMaterialComponent",
+      "guid": "606ebfd0-d9e7-407e-aaa3-eb8579fe2f6b",
+      "inputs": {
+        "Type": "1",
+        "Behaviour": "0"
+      }
+    },
+    {
+      "index": 2,
+      "type": "RectangularRcSectionComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0024",
+      "inputs": {
+        "Width": "300",
+        "Height": "500",
+        "Link cover": "30",
+        "Link diameter": "8",
+        "Bar diameter": "20",
+        "Top bars": "4",
+        "Bottom bars": "4",
+        "Side bars per face": "0"
+      }
+    },
+    {
+      "index": 3,
+      "type": "SectionGeometryCheckComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0030",
+      "inputs": {
+        "Required bar cover": "38",
+        "Required clear spacing": "25",
+        "Section ID": "S"
+      }
+    },
+    {
+      "index": 4,
+      "type": "CheckReportComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0004",
+      "inputs": {}
+    },
+    {
+      "index": 5,
+      "type": "CheckResultComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0003",
+      "inputs": {}
+    }
+  ],
+  "connections": [
+    {
+      "from": 0,
+      "output": 0,
+      "to": 2,
+      "input": 0
+    },
+    {
+      "from": 1,
+      "output": 0,
+      "to": 2,
+      "input": 1
+    },
+    {
+      "from": 2,
+      "output": 0,
+      "to": 3,
+      "input": 0
+    },
+    {
+      "from": 3,
+      "output": 0,
+      "to": 4,
+      "input": 0
+    },
+    {
+      "from": 3,
+      "output": 0,
+      "to": 5,
+      "input": 0
+    }
+  ]
+}

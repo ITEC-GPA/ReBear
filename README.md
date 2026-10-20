@@ -81,6 +81,7 @@ Per il taglio rettangolare, l'input storico del copriferro è la distanza dal bo
 | `lib/GPC` | Set binario GPC fissato, con manifest e hash |
 | `tests/ConcreteSectionChecker.Checks` | Prove numeriche e compatibilità con il sorgente storico |
 | `tools/IconGenerator` | Generatore riproducibile delle icone SVG/PNG e del simbolo |
+| `tools/ExampleGenerator` | Generatore e controlli numerici dei 20 esempi `.gh`/`.ghx`, tramite `build/Examples.ps1` |
 
 Set GPC pubblicato il 19 ottobre 2026, recuperato da `ANTHEA/lib/Checker`, con `candidate=false` e hash verificati:
 
@@ -104,6 +105,7 @@ Gli ID normativi storici restano `0=NTC2018`, `1=EN 1992-1-1`, `2=UNI EN 1992-1-
 - [Catalogo dei 32 componenti e GUID originali](docs/COMPONENTS.md).
 - [I 29 nuovi componenti, porte e convenzioni](docs/NEW_COMPONENTS.md).
 - [Flussi di lavoro, convenzioni e limiti dei nuovi controlli](docs/WORKFLOWS.md).
+- [20 esempi Grasshopper svolti, con risultati e spiegazioni](examples/README.md).
 - [Sviluppi successivi e funzionalità differite](docs/ROADMAP.md).
 - [Grafica e rigenerazione delle icone](assets/branding/README.md).
 

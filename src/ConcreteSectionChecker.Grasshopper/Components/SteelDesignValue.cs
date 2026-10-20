@@ -16,7 +16,7 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
     public class SteelDesignValue : GpcComponent
     {
         public SteelDesignValue()
-            : base("Steel Material Design Value", "SD", "Steel Material Design Value", Constants.CATEGORY_CHECKS, Constants.SUBCATEGORY_CHECKS_CONCRETECHECKER)
+            : base("Steel Material Design Value", "SD", "Steel Material Design Value")
         {
         }
 
@@ -70,6 +70,5 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
 
         public override Guid ComponentGuid => new Guid("939e852a-e1b4-4b5b-9454-4eb54be70394");
 
-        public override GH_Exposure Exposure => GH_Exposure.primary;    
     }
 }

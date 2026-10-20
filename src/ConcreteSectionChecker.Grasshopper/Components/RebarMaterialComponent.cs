@@ -25,7 +25,7 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
         };
 
         public RebarMaterialComponent()
-            : base("Database Rebar Steel", "RS", "Database Rebar Steel", Constants.CATEGORY_CHECKS, Constants.SUBCATEGORY_CHECKS_CONCRETECHECKER   )
+            : base("Database Rebar Steel", "RS", "Database Rebar Steel")
         {
         }
 
@@ -86,6 +86,5 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
         
         public override Guid ComponentGuid => new Guid("606ebfd0-d9e7-407e-aaa3-eb8579fe2f6b");
 
-        public override GH_Exposure Exposure => GH_Exposure.primary;
     }
 }

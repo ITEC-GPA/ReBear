@@ -7,8 +7,13 @@ namespace ConcreteSectionChecker.Grasshopper
     /// <summary>Translate expected GPC input/solver failures into visible Grasshopper errors.</summary>
     public abstract class GpcComponent : GH_Component
     {
-        protected GpcComponent(string name, string nickname, string description, string category, string subcategory)
-            : base(name, nickname, description, category, subcategory) { }
+        protected GpcComponent(string name, string nickname, string description)
+            : base(name, nickname, description, ComponentPalette.Category, string.Empty)
+        {
+            SubCategory = ComponentPalette.For(GetType()).SubCategory;
+        }
+
+        public sealed override GH_Exposure Exposure => ComponentPalette.For(GetType()).Exposure;
 
         protected override Bitmap Icon => PluginIcons.Get(GetType().Name);
 

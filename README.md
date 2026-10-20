@@ -2,7 +2,7 @@
 
 **Reinforced Concrete Sections for Grasshopper**
 
-Plugin autonomo per la modellazione e la verifica di sezioni in calcestruzzo armato. Recupera i **32 componenti e 12 tipi di dato** di `Rhino2FEM` al commit `66555b6c43d10c8929c9871c172f5d78069655a8` del **1 aprile 2026**. Tutti i `ComponentGuid` e le registrazioni delle porte storiche sono conservati. I componenti storici sono nella scheda **ReBear → Concrete Checker**. La versione **0.2.0** aggiunge **29 componenti**, per un totale di **61**, con nuovi GUID e sottocategorie dedicate.
+Plugin autonomo per la modellazione e la verifica di sezioni in calcestruzzo armato. Recupera i **32 componenti e 12 tipi di dato** di `Rhino2FEM` al commit `66555b6c43d10c8929c9871c172f5d78069655a8` del **1 aprile 2026**. Tutti i `ComponentGuid` e le registrazioni delle porte storiche sono conservati. La versione **0.2.0** aggiunge **29 componenti**, per un totale di **61**. Componenti storici e nuovi sono organizzati insieme nella scheda **ReBear**, secondo il flusso **Materials → Sections → Input → Setup → Analysis → Checks → Detailing → Results → Display**. La [mappa della palette](docs/PALETTE.md) riporta tutti i componenti e il loro ordine d'uso.
 
 ![Simbolo ReBear](assets/branding/symbol.png)
 
@@ -103,6 +103,7 @@ Gli ID normativi storici restano `0=NTC2018`, `1=EN 1992-1-1`, `2=UNI EN 1992-1-
 
 - [Migrazione, differenze nei risultati e accettazione](docs/MIGRATION.md).
 - [Catalogo dei 32 componenti e GUID originali](docs/COMPONENTS.md).
+- [Palette completa, sottogruppi e ordine di utilizzo](docs/PALETTE.md).
 - [I 29 nuovi componenti, porte e convenzioni](docs/NEW_COMPONENTS.md).
 - [Flussi di lavoro, convenzioni e limiti dei nuovi controlli](docs/WORKFLOWS.md).
 - [20 esempi Grasshopper svolti, con risultati e spiegazioni](examples/README.md).

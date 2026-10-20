@@ -57,7 +57,7 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
         };
 
         public ServiceabilityCrackWidthControlCheckComponent()
-            : base("Serviceability Crack Width Check", "SCWC", "Serviceability Crack Width Check", Constants.CATEGORY_CHECKS, Constants.SUBCATEGORY_CHECKS_CONCRETECHECKER)
+            : base("Serviceability Crack Width Check", "SCWC", "Serviceability Crack Width Check")
         {
         }
 
@@ -123,6 +123,5 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
 
         public override Guid ComponentGuid => new Guid("22bb7ea8-8721-42bf-b016-67c4379f9ca3");
 
-        public override GH_Exposure Exposure => GH_Exposure.primary;
     }
 }

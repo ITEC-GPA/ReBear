@@ -11,7 +11,7 @@ namespace ConcreteSectionChecker.Grasshopper.Features
 {
     public sealed class ResistanceCheckComponent : ReBearComponent
     {
-        public ResistanceCheckComponent() : base("Section Resistance Check", "NM", "Verifica N-Mx-My GPC con esito strutturato e convergenza esplicita.", "2 Checks") { }
+        public ResistanceCheckComponent() : base("Section Resistance Check", "NM", "Verifica N-Mx-My GPC con esito strutturato e convergenza esplicita.") { }
         public override Guid ComponentGuid => new("98dc4c10-e882-41ed-ae13-208c325c0009");
         protected override Port[] Inputs => new[] { G("Checker", "C", "Checker SLU/SLV."), G("Force", "F", "Azioni N/Nmm."),
             T("Section ID", "ID", "Identificativo per gli inviluppi.", "Section") };
@@ -25,7 +25,7 @@ namespace ConcreteSectionChecker.Grasshopper.Features
     }
     public sealed class SleOptionsComponent : ReBearComponent
     {
-        public SleOptionsComponent() : base("SLE Options", "SLEOpt", "Contesto SLE esplicito per limiti tensionali e fessurazione.", "2 Checks") { }
+        public SleOptionsComponent() : base("SLE Options", "SLEOpt", "Contesto SLE esplicito per limiti tensionali e fessurazione.") { }
         public override Guid ComponentGuid => new("98dc4c10-e882-41ed-ae13-208c325c0010");
         protected override Port[] Inputs => new[] { I("Combination", "C", "0 quasi permanente; 1 frequente; 2 caratteristica.", 0),
             T("Exposure", "E", "Codice della classe ambientale, per esempio XC3."),
@@ -50,7 +50,7 @@ namespace ConcreteSectionChecker.Grasshopper.Features
     }
     public sealed class ServiceabilityCheckComponent : ReBearComponent
     {
-        public ServiceabilityCheckComponent() : base("Serviceability Check v2", "SLE", "Limiti tensionali e fessurazione su analisi GPC, con risultati per gli inviluppi.", "2 Checks") { }
+        public ServiceabilityCheckComponent() : base("Serviceability Check v2", "SLE", "Limiti tensionali e fessurazione su analisi GPC, con risultati per gli inviluppi.") { }
         public override Guid ComponentGuid => new("98dc4c10-e882-41ed-ae13-208c325c0011");
         protected override Port[] Inputs => new[] { G("Stress result", "S", "Risultato di Stress Analysis."),
             G("Options", "O", "Da SLE Options."), T("Section ID", "ID", "Identificativo per gli inviluppi.", "Section") };
@@ -69,7 +69,7 @@ namespace ConcreteSectionChecker.Grasshopper.Features
     }
     public sealed class BatchSectionChecksComponent : ReBearComponent
     {
-        public BatchSectionChecksComponent() : base("Batch Section Checks", "Batch", "Tutte le combinazioni del ramo, esecuzione seriale e inviluppi. Le opzioni scollegate escludono la relativa verifica.", "2 Checks") { }
+        public BatchSectionChecksComponent() : base("Batch Section Checks", "Batch", "Tutte le combinazioni del ramo, esecuzione seriale e inviluppi. Le opzioni scollegate escludono la relativa verifica.") { }
         public override Guid ComponentGuid => new("98dc4c10-e882-41ed-ae13-208c325c0012");
         protected override Port[] Inputs => new[] { G("Checker", "C", "Checker con opzioni coerenti con le verifiche richieste."),
             List(G("Forces", "F", "Combinazioni del ramo.")), T("Section ID", "ID", "Identificativo sezione.", "Section"),

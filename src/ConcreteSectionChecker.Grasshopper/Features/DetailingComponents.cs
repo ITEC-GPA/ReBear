@@ -12,7 +12,7 @@ namespace ConcreteSectionChecker.Grasshopper.Features
 {
     public sealed class ConcreteCoverComponent : ReBearComponent
     {
-        public ConcreteCoverComponent() : base("Concrete Cover", "Cover", "Copriferro nominale GPC per le esposizioni e il diametro effettivo specificati.", "3 Detailing") { }
+        public ConcreteCoverComponent() : base("Concrete Cover", "Cover", "Copriferro nominale GPC per le esposizioni e il diametro effettivo specificati.") { }
         public override Guid ComponentGuid => new("98dc4c10-e882-41ed-ae13-208c325c0013");
         protected override Port[] Inputs => new[] { G("Standard", "S", "Norma GPC."), G("Concrete", "C", "Calcestruzzo."),
             List(T("Exposures", "E", "Classi ambientali concorrenti, es. XC3, XD1.")),
@@ -45,7 +45,7 @@ namespace ConcreteSectionChecker.Grasshopper.Features
     }
     public sealed class AnchorageLapComponent : ReBearComponent
     {
-        public AnchorageLapComponent() : base("Anchorage and Lap", "Anchor", "Ancoraggio rettilineo o sovrapposizione di barre tese ad aderenza migliorata; coefficienti α1…α5 = 1.", "3 Detailing") { }
+        public AnchorageLapComponent() : base("Anchorage and Lap", "Anchor", "Ancoraggio rettilineo o sovrapposizione di barre tese ad aderenza migliorata; coefficienti α1…α5 = 1.") { }
         public override Guid ComponentGuid => new("98dc4c10-e882-41ed-ae13-208c325c0014");
         protected override Port[] Inputs => new[] { G("Standard", "S", "Norma GPC."), G("Concrete", "C", "Calcestruzzo."),
             G("Steel", "S", "Acciaio della barra."), N("Diameter", "Ø", "Diametro mm."), N("Design stress", "σ", "Tensione di trazione σsd MPa, ≤ fyd."),
@@ -64,7 +64,7 @@ namespace ConcreteSectionChecker.Grasshopper.Features
     }
     public sealed class PlateDetailingOptionsComponent : ReBearComponent
     {
-        public PlateDetailingOptionsComponent() : base("Plate Detailing Options", "PlateOpt", "Dati delle armature secondarie/orizzontali non ricavabili dalla sezione 2D.", "3 Detailing") { }
+        public PlateDetailingOptionsComponent() : base("Plate Detailing Options", "PlateOpt", "Dati delle armature secondarie/orizzontali non ricavabili dalla sezione 2D.") { }
         public override Guid ComponentGuid => new("98dc4c10-e882-41ed-ae13-208c325c0015");
         protected override Port[] Inputs => new[] { N("Secondary steel", "As2", "Somma delle due facce, mm²/m."),
             N("Secondary spacing", "s2", "Passo mm; 0 dato mancante, esito da completare."), B("Critical region", "Crit", "Zona critica della soletta.") };
@@ -73,7 +73,7 @@ namespace ConcreteSectionChecker.Grasshopper.Features
     }
     public sealed class DetailingOptionsComponent : ReBearComponent
     {
-        public DetailingOptionsComponent() : base("Detailing Options", "DetOpt", "Ipotesi per le regole di dettaglio GPC. Acciaio unico delle armature; geometria riferita a XY.", "3 Detailing") { }
+        public DetailingOptionsComponent() : base("Detailing Options", "DetOpt", "Ipotesi per le regole di dettaglio GPC. Acciaio unico delle armature; geometria riferita a XY.") { }
         public override Guid ComponentGuid => new("98dc4c10-e882-41ed-ae13-208c325c0016");
         protected override Port[] Inputs => new[] { I("Member kind", "K", "0 trave, 1 pilastro, 2 soletta, 3 parete.", 0),
             N("Top tension width", "bt+", "Larghezza zona tesa superiore, mm."), N("Bottom tension width", "bt−", "Larghezza zona tesa inferiore, mm."),
@@ -97,7 +97,7 @@ namespace ConcreteSectionChecker.Grasshopper.Features
     }
     public sealed class ReinforcementDetailingComponent : ReBearComponent
     {
-        public ReinforcementDetailingComponent() : base("Reinforcement Detailing", "Detail", "Minimi/massimi, interferro, staffe e copriferro secondo il profilo GPC; rende visibili le regole in sospeso.", "3 Detailing") { }
+        public ReinforcementDetailingComponent() : base("Reinforcement Detailing", "Detail", "Minimi/massimi, interferro, staffe e copriferro secondo il profilo GPC; rende visibili le regole in sospeso.") { }
         public override Guid ComponentGuid => new("98dc4c10-e882-41ed-ae13-208c325c0017");
         protected override Port[] Inputs => new[] { G("Checker", "C", "Sezione e norma."), G("Options", "O", "Da Detailing Options."),
             N("Minimum axial force", "Nmin", "Massima compressione fra le combinazioni, kN negativa.", 0), T("Section ID", "ID", "Identificativo.", "Section") };

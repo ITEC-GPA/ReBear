@@ -16,7 +16,7 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
     public class TendonComponent : GpcComponent
     {
         public TendonComponent()
-            : base("Tendon Element", "Tendon Element", "Tendon Element", Constants.CATEGORY_CHECKS, Constants.SUBCATEGORY_CHECKS_CONCRETECHECKER   )
+            : base("Tendon Element", "Tendon Element", "Tendon Element")
         {
         }
 
@@ -55,6 +55,5 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
         
         public override Guid ComponentGuid => new Guid("e0846aae-ae28-41dc-8773-b5e4232ba6df");
 
-        public override GH_Exposure Exposure => GH_Exposure.primary;
     }
 }

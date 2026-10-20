@@ -37,7 +37,7 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
         };
 
         public CheckerOptionsComponent()
-            : base("Concrete Checker Options", "CCO", "Concrete Checker Options", Constants.CATEGORY_CHECKS, Constants.SUBCATEGORY_CHECKS_CONCRETECHECKER)
+            : base("Concrete Checker Options", "CCO", "Concrete Checker Options")
         {
         }
 
@@ -109,6 +109,5 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
 
         public override Guid ComponentGuid => new Guid("acd21b40-347d-487b-ad3d-c355e19b5315");
 
-        public override GH_Exposure Exposure => GH_Exposure.primary;
     }
 }

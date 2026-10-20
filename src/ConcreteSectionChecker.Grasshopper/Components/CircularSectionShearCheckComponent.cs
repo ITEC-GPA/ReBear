@@ -10,7 +10,7 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
     public class CircularSectionShearCheckComponent : GpcComponent
     {
         public CircularSectionShearCheckComponent()
-            : base("Circular Section Shear Check", "SC", "Shear Check", Constants.CATEGORY_CHECKS, Constants.SUBCATEGORY_CHECKS_CONCRETECHECKER)
+            : base("Circular Section Shear Check", "SC", "Shear Check")
         {
         }
 
@@ -60,6 +60,5 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
 
         public override Guid ComponentGuid => new Guid("fdb8a104-8595-4b8f-9d1a-1ac36a664488");
 
-        public override GH_Exposure Exposure => GH_Exposure.primary;
     }
 }

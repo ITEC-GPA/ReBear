@@ -14,7 +14,7 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
     public class ColorGradientMeshComponent : GpcComponent
     {
         public ColorGradientMeshComponent()
-            : base("Result Color Mesh", "CM", "Color Mesh", Constants.CATEGORY_CHECKS, Constants.SUBCATEGORY_CHECKS_CONCRETECHECKER)
+            : base("Result Color Mesh", "CM", "Color Mesh")
         {
         }
 
@@ -255,6 +255,5 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
 
         public override Guid ComponentGuid => new Guid("b62a91c6-b7bb-4e99-800f-1fafb45707ad");
 
-        public override GH_Exposure Exposure => GH_Exposure.primary;
     }
 }

@@ -26,7 +26,7 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
         };
 
         public BarMaterialComponent()
-            : base("Database Bar Steel", "DBS", "Database Bar Steel", Constants.CATEGORY_CHECKS, Constants.SUBCATEGORY_CHECKS_CONCRETECHECKER)
+            : base("Database Bar Steel", "DBS", "Database Bar Steel")
         {
         }
 
@@ -89,6 +89,5 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
 
         public override Guid ComponentGuid => new Guid("23875d38-d43a-4051-b19c-a6ae39139f7b");
 
-        public override GH_Exposure Exposure => GH_Exposure.primary;
     }
 }

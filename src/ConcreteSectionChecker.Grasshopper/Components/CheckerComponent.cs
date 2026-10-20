@@ -19,7 +19,7 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
     public class CheckerComponent : GpcComponent
     {
         public CheckerComponent()
-            : base("Concrete Checker", "CC", "Concrete Checker", Constants.CATEGORY_CHECKS, Constants.SUBCATEGORY_CHECKS_CONCRETECHECKER   )
+            : base("Concrete Checker", "CC", "Concrete Checker")
         {
         }
 
@@ -54,6 +54,5 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
         
         public override Guid ComponentGuid => new Guid("c485957b-3d8e-4f19-8176-f30ffcda952e");
 
-        public override GH_Exposure Exposure => GH_Exposure.primary;
     }
 }

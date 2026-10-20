@@ -33,7 +33,7 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
         };
 
         public RebarComponent()
-            : base("Rebar Element", "RE", "Rebar Element", Constants.CATEGORY_CHECKS, Constants.SUBCATEGORY_CHECKS_CONCRETECHECKER   )
+            : base("Rebar Element", "RE", "Rebar Element")
         {
         }
 
@@ -80,6 +80,5 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
         
         public override Guid ComponentGuid => new Guid("411284c2-923a-4475-94a5-8405ece71ce0");
 
-        public override GH_Exposure Exposure => GH_Exposure.primary;
     }
 }

@@ -30,7 +30,7 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
         };
 
         public TendonMaterialComponent()
-            : base("Database Tendon Steel", "Database Tendon Steel", "Database Tendon Steel", Constants.CATEGORY_CHECKS, Constants.SUBCATEGORY_CHECKS_CONCRETECHECKER   )
+            : base("Database Tendon Steel", "Database Tendon Steel", "Database Tendon Steel")
         {
         }
 
@@ -102,6 +102,5 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
         
         public override Guid ComponentGuid => new Guid("c709c2fa-5e63-4cf6-b3a2-bd505a149a4d");
 
-        public override GH_Exposure Exposure => GH_Exposure.primary;
     }
 }

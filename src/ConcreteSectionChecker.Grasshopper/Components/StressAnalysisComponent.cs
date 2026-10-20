@@ -13,7 +13,7 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
     public class StressAnalysisComponent : GpcComponent
     {
         public StressAnalysisComponent()
-            : base("Stress Analysis", "SA", "Stress Analysis", Constants.CATEGORY_CHECKS, Constants.SUBCATEGORY_CHECKS_CONCRETECHECKER)
+            : base("Stress Analysis", "SA", "Stress Analysis")
         {
         }
 
@@ -68,6 +68,5 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
 
         public override Guid ComponentGuid => new Guid("2c7939e3-5f53-4d53-989b-a56b65b773e4");
 
-        public override GH_Exposure Exposure => GH_Exposure.primary;
     }
 }

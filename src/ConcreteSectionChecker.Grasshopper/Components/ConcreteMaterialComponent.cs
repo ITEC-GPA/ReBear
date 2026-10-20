@@ -30,7 +30,7 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
         };
 
         public ConcreteMaterialComponent()
-            : base("Database Concrete", "DCM", "Database Concrete", Constants.CATEGORY_CHECKS, Constants.SUBCATEGORY_CHECKS_CONCRETECHECKER   )
+            : base("Database Concrete", "DCM", "Database Concrete")
         {
         }
 
@@ -98,6 +98,5 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
         
         public override Guid ComponentGuid => new Guid("e2aa1e8b-3fa9-49a5-8d5e-991d4eac5bc6");
 
-        public override GH_Exposure Exposure => GH_Exposure.primary;
     }
 }

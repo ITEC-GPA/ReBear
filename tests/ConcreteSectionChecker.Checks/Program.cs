@@ -31,6 +31,7 @@ internal static class Program
     private static int Main(string[] args)
     {
         if (args.Contains("--write-catalog")) { GrasshopperSmoke.WriteCatalog(); return 0; }
+        if (args.Contains("--write-palette")) { GrasshopperSmoke.WritePalette(); return 0; }
         if (args.Contains("--only-grasshopper"))
         {
             Run("Caricamento assembly e 61 componenti Grasshopper", GrasshopperSmoke.Run);

@@ -2,6 +2,8 @@
 
 32 componenti recuperati da Rhino2FEM, commit 66555b6c43d10c8929c9871c172f5d78069655a8 del 1 aprile 2026. La colonna porte indica il numero di input/output, con ordine e contratto conservati. Le funzioni restano identificabili anche dai nomi storici nella ricerca Grasshopper.
 
+I componenti storici sono distribuiti nei sottogruppi funzionali insieme ai componenti nuovi. Consultare la [palette completa in ordine di utilizzo](PALETTE.md) per individuare il pannello e la fase di ciascun componente. Il precedente pannello unico `Concrete Checker` è sostituito da questa organizzazione; nomi, GUID e porte rimangono invariati.
+
 | Componente | Porte I/O | ComponentGuid |
 |---|---:|---|
 | Database Bar Steel | 2/1 | `23875d38-d43a-4051-b19c-a6ae39139f7b` |

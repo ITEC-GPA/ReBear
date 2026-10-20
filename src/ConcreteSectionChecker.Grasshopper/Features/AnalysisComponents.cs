@@ -14,7 +14,7 @@ namespace ConcreteSectionChecker.Grasshopper.Features
 {
     public sealed class MomentCurvatureComponent : ReBearComponent
     {
-        public MomentCurvatureComponent() : base("Moment Curvature", "Mχ", "Analisi GPC a N costante. Checker non lineare; curvatura 1/m e momenti kNm.", "4 Analysis") { }
+        public MomentCurvatureComponent() : base("Moment Curvature", "Mχ", "Analisi GPC a N costante. Checker non lineare; curvatura 1/m e momenti kNm.") { }
         public override Guid ComponentGuid => new("98dc4c10-e882-41ed-ae13-208c325c0018");
         protected override Port[] Inputs => new[] { G("Checker", "C", "Checker non lineare."), N("Axial force", "N", "kN, compressione negativa.", 0),
             N("Moment direction", "θ", "Gradi negli assi del checker.", 0), I("Steps", "n", "10–500 passi.", 60),
@@ -39,7 +39,7 @@ namespace ConcreteSectionChecker.Grasshopper.Features
     }
     public sealed class DomainSliceComponent : ReBearComponent
     {
-        public DomainSliceComponent() : base("Domain Slice at N", "MxMy", "Sezione Mx–My del dominio a N assegnato; ogni punto è risolto e controllato da GPC.", "4 Analysis") { }
+        public DomainSliceComponent() : base("Domain Slice at N", "MxMy", "Sezione Mx–My del dominio a N assegnato; ogni punto è risolto e controllato da GPC.") { }
         public override Guid ComponentGuid => new("98dc4c10-e882-41ed-ae13-208c325c0019");
         protected override Port[] Inputs => new[] { G("Checker", "C", "Checker e tipo di dominio."), N("Axial force", "N", "kN, compressione negativa.", 0),
             I("Directions", "n", "8–360 direzioni; controllare la sensibilità alla discretizzazione.", 64), B("Run", "Run", "Avvia il calcolo.") };
@@ -55,7 +55,7 @@ namespace ConcreteSectionChecker.Grasshopper.Features
     }
     public sealed class EffectiveCrackedSectionComponent : ReBearComponent
     {
-        public EffectiveCrackedSectionComponent() : base("Effective Cracked Section", "AcEff", "Regioni efficaci calcolate da GPC per la fessurazione; non ricostruisce formule o zone per approssimazione.", "4 Analysis") { }
+        public EffectiveCrackedSectionComponent() : base("Effective Cracked Section", "AcEff", "Regioni efficaci calcolate da GPC per la fessurazione; non ricostruisce formule o zone per approssimazione.") { }
         public override Guid ComponentGuid => new("98dc4c10-e882-41ed-ae13-208c325c0020");
         protected override Port[] Inputs => new[] { G("Crack data", "Cr", "Uscita Crack data di Serviceability Check v2.") };
         protected override Port[] Outputs => new[] { List(T("Regions", "K", "Chiavi delle regioni.")), List(N("Effective concrete area", "Ac", "mm².")),
@@ -85,7 +85,7 @@ namespace ConcreteSectionChecker.Grasshopper.Features
     }
     public sealed class HomogenizationOptionsComponent : ReBearComponent
     {
-        public HomogenizationOptionsComponent() : base("Creep and Homogenization", "φ-n", "Conversione GPC fra coefficiente viscoso assegnato φ e rapporto modulare n. Non stima φ da età o umidità.", "4 Analysis") { }
+        public HomogenizationOptionsComponent() : base("Creep and Homogenization", "φ-n", "Conversione GPC fra coefficiente viscoso assegnato φ e rapporto modulare n. Non stima φ da età o umidità.") { }
         public override Guid ComponentGuid => new("98dc4c10-e882-41ed-ae13-208c325c0021");
         protected override Port[] Inputs => new[] { G("Concrete", "C", "Calcestruzzo europeo, Ecm."), G("Steel", "S", "Acciaio, Es."),
             B("Input is n", "n?", "True rapporto modulare; false coefficiente viscoso."), N("Value", "V", "φ oppure n.", 0) };
@@ -101,7 +101,7 @@ namespace ConcreteSectionChecker.Grasshopper.Features
     public sealed class ReinforcementSearchComponent : ReBearComponent
     {
         public ReinforcementSearchComponent() : base("Reinforcement Candidate Search", "AsSearch",
-            "Sceglie la minima As fra i checker candidati che soddisfano tutte le combinazioni N-Mx-My. Non verifica taglio, SLE o dettagli.", "4 Analysis") { }
+            "Sceglie la minima As fra i checker candidati che soddisfano tutte le combinazioni N-Mx-My. Non verifica taglio, SLE o dettagli.") { }
         public override Guid ComponentGuid => new("98dc4c10-e882-41ed-ae13-208c325c0022");
         protected override Port[] Inputs => new[] { List(G("Candidate checkers", "C", "1–100 candidati espliciti; vincoli geometrici definiti a monte.")),
             List(G("Forces", "F", "Combinazioni N-Mx-My, massimo 1000.")), N("Target utilization", "η", "0 < η ≤ 1.", 1), B("Run", "Run", "Avvia ricerca seriale.") };

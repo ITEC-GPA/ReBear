@@ -10,7 +10,7 @@ namespace ConcreteSectionChecker.Grasshopper.Features
     public sealed class LoadEnvelopeComponent : ReBearComponent
     {
         public LoadEnvelopeComponent() : base("Load Envelope", "LoadEnv",
-            "Minimi/massimi per ramo, con combinazioni concomitanti. Trasporta tutte le azioni negli assi e origine del primo caso.", "1 Results") { }
+            "Minimi/massimi per ramo, con combinazioni concomitanti. Trasporta tutte le azioni negli assi e origine del primo caso.") { }
         public override Guid ComponentGuid => new("98dc4c10-e882-41ed-ae13-208c325c0001");
         protected override Port[] Inputs => new[] { List(G("Forces", "F", "Combinazioni nello stesso ramo; N/Nmm.")) };
         protected override Port[] Outputs => new[] {
@@ -29,7 +29,7 @@ namespace ConcreteSectionChecker.Grasshopper.Features
     public sealed class CheckEnvelopeComponent : ReBearComponent
     {
         public CheckEnvelopeComponent() : base("Check Envelope", "CheckEnv",
-            "Inviluppo per sezione e verifica nel ramo. I risultati non valutati impediscono un esito positivo completo.", "1 Results") { }
+            "Inviluppo per sezione e verifica nel ramo. I risultati non valutati impediscono un esito positivo completo.") { }
         public override Guid ComponentGuid => new("98dc4c10-e882-41ed-ae13-208c325c0002");
         protected override Port[] Inputs => new[] { List(G("Results", "R", "Risultati strutturati ReBear.")) };
         protected override Port[] Outputs => new[] { List(T("Group", "G", "Sezione / verifica.")), List(T("Status", "S", "Stato complessivo.")),
@@ -45,7 +45,7 @@ namespace ConcreteSectionChecker.Grasshopper.Features
     }
     public sealed class CheckResultComponent : ReBearComponent
     {
-        public CheckResultComponent() : base("Check Result", "Result", "Legge un risultato strutturato senza sostituire i dati mancanti con zero.", "1 Results") { }
+        public CheckResultComponent() : base("Check Result", "Result", "Legge un risultato strutturato senza sostituire i dati mancanti con zero.") { }
         public override Guid ComponentGuid => new("98dc4c10-e882-41ed-ae13-208c325c0003");
         protected override Port[] Inputs => new[] { G("Result", "R", "Risultato ReBear.") };
         protected override Port[] Outputs => new[] { T("Section", "S", "Identificativo sezione."), T("Case", "C", "Combinazione."),
@@ -63,7 +63,7 @@ namespace ConcreteSectionChecker.Grasshopper.Features
     }
     public sealed class CheckReportComponent : ReBearComponent
     {
-        public CheckReportComponent() : base("Check Report", "Report", "Tabella CSV e JSON versionato; nessuna scrittura automatica su disco.", "1 Results") { }
+        public CheckReportComponent() : base("Check Report", "Report", "Tabella CSV e JSON versionato; nessuna scrittura automatica su disco.") { }
         public override Guid ComponentGuid => new("98dc4c10-e882-41ed-ae13-208c325c0004");
         protected override Port[] Inputs => new[] { List(G("Results", "R", "Risultati nello stesso ramo.")) };
         protected override Port[] Outputs => new[] { T("CSV", "CSV", "Separatore ;, numeri invariant, campi con escaping."),

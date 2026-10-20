@@ -10,7 +10,7 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
     public class RectangularSectionShearCheckNoStirrupComponent : GpcComponent
     {
         public RectangularSectionShearCheckNoStirrupComponent()
-            : base("Rectangular Section Shear Check No stirrup", "SC", "Shear Check", Constants.CATEGORY_CHECKS, Constants.SUBCATEGORY_CHECKS_CONCRETECHECKER)
+            : base("Rectangular Section Shear Check No stirrup", "SC", "Shear Check")
         {
         }
 
@@ -57,6 +57,5 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
 
         public override Guid ComponentGuid => new Guid("08625aa4-a62b-4d06-91fb-9c9ffcf076fc");
 
-        public override GH_Exposure Exposure => GH_Exposure.primary;
     }
 }

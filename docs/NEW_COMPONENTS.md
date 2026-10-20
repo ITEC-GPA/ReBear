@@ -1,60 +1,70 @@
 # ReBear 0.2 — nuovi componenti
 
-29 componenti aggiuntivi. I 32 componenti storici mantengono GUID e porte. I contratti nuovi sono fissati in `tests/Compatibility/components-0.2.json`.
+29 componenti aggiuntivi, integrati con quelli storici nella [palette comune](PALETTE.md). GUID e porte sono fissati in `tests/Compatibility/components-0.2.json`; il campo category di quella fotografia documenta il raggruppamento al rilascio iniziale, aggiornato successivamente nella palette.
 
-## 1 Results
+## 2 Sections
 
 | Componente | Funzione | GUID |
 |---|---|---|
-| Check Envelope | Inviluppo per sezione e verifica nel ramo. I risultati non valutati impediscono un esito positivo completo. | `98dc4c10-e882-41ed-ae13-208c325c0002` |
-| Check Report | Tabella CSV e JSON versionato; nessuna scrittura automatica su disco. | `98dc4c10-e882-41ed-ae13-208c325c0004` |
-| Check Result | Legge un risultato strutturato senza sostituire i dati mancanti con zero. | `98dc4c10-e882-41ed-ae13-208c325c0003` |
+| Rebar Path Layout | Distribuisce barre lungo la curva dei loro centri in XY, per numero o passo massimo. Preparare il percorso con il copriferro desiderato. | `98dc4c10-e882-41ed-ae13-208c325c0029` |
+| Circular RC Section | Cerchio discretizzato con poligono inscritto. Barre su un anello; il copriferro minimo è rispettato rispetto ai lati del poligono. | `98dc4c10-e882-41ed-ae13-208c325c0025` |
+| Rectangular RC Section | Rettangolo centrato nell'origine XY. Barre superiori/inferiori e laterali; geometria in mm. | `98dc4c10-e882-41ed-ae13-208c325c0024` |
+| Box RC Section | Rettangolo con foro centrale. Armatura perimetrale esterna ed eventuale armatura intorno al foro. | `98dc4c10-e882-41ed-ae13-208c325c0028` |
+| I RC Section | Sezione a I con ali anche diverse. Barre sulle facce esterne delle ali e sui lati dell'anima. | `98dc4c10-e882-41ed-ae13-208c325c0027` |
+| T RC Section | Sezione a T con ala superiore, centrata nel rettangolo d'ingombro XY. Layout iniziale da verificare. | `98dc4c10-e882-41ed-ae13-208c325c0026` |
+| Section Geometry Check | Controllo geometrico di barre, copriferro e interferro. Non sostituisce Reinforcement Detailing. | `98dc4c10-e882-41ed-ae13-208c325c0030` |
+
+## 3 Input
+
+| Componente | Funzione | GUID |
+|---|---|---|
 | Load Envelope | Minimi/massimi per ramo, con combinazioni concomitanti. Trasporta tutte le azioni negli assi e origine del primo caso. | `98dc4c10-e882-41ed-ae13-208c325c0001` |
+| Creep and Homogenization | Conversione GPC fra coefficiente viscoso assegnato φ e rapporto modulare n. Non stima φ da età o umidità. | `98dc4c10-e882-41ed-ae13-208c325c0021` |
 
-## 2 Checks
+## 4 Setup
 
 | Componente | Funzione | GUID |
 |---|---|---|
-| Batch Section Checks | Tutte le combinazioni del ramo, esecuzione seriale e inviluppi. Le opzioni scollegate escludono la relativa verifica. | `98dc4c10-e882-41ed-ae13-208c325c0012` |
-| Section Resistance Check | Verifica N-Mx-My GPC con esito strutturato e convergenza esplicita. | `98dc4c10-e882-41ed-ae13-208c325c0009` |
-| Serviceability Check v2 | Limiti tensionali e fessurazione su analisi GPC, con risultati per gli inviluppi. | `98dc4c10-e882-41ed-ae13-208c325c0011` |
-| Shear Check v2 | Verifica GPC con risultato strutturato; mantiene il nome della combinazione. | `98dc4c10-e882-41ed-ae13-208c325c0006` |
 | Shear Options | Parametri di una direzione nel riferimento del checker. Acciai indipendenti; d esplicito in mm. | `98dc4c10-e882-41ed-ae13-208c325c0005` |
-| SLE Options | Contesto SLE esplicito per limiti tensionali e fessurazione. | `98dc4c10-e882-41ed-ae13-208c325c0010` |
 | Torsion Options | Profilo sottile esplicito e staffe chiuse a 90°. Area longitudinale aggiuntiva a quella per flessione. | `98dc4c10-e882-41ed-ae13-208c325c0007` |
-| Torsion and Shear | Torsione e interazioni GPC con entrambi i tagli concomitanti. | `98dc4c10-e882-41ed-ae13-208c325c0008` |
-
-## 3 Detailing
-
-| Componente | Funzione | GUID |
-|---|---|---|
-| Anchorage and Lap | Ancoraggio rettilineo o sovrapposizione di barre tese ad aderenza migliorata; coefficienti α1…α5 = 1. | `98dc4c10-e882-41ed-ae13-208c325c0014` |
-| Concrete Cover | Copriferro nominale GPC per le esposizioni e il diametro effettivo specificati. | `98dc4c10-e882-41ed-ae13-208c325c0013` |
-| Detailing Options | Ipotesi per le regole di dettaglio GPC. Acciaio unico delle armature; geometria riferita a XY. | `98dc4c10-e882-41ed-ae13-208c325c0016` |
+| SLE Options | Contesto SLE esplicito per limiti tensionali e fessurazione. | `98dc4c10-e882-41ed-ae13-208c325c0010` |
 | Plate Detailing Options | Dati delle armature secondarie/orizzontali non ricavabili dalla sezione 2D. | `98dc4c10-e882-41ed-ae13-208c325c0015` |
-| Reinforcement Detailing | Minimi/massimi, interferro, staffe e copriferro secondo il profilo GPC; rende visibili le regole in sospeso. | `98dc4c10-e882-41ed-ae13-208c325c0017` |
+| Detailing Options | Ipotesi per le regole di dettaglio GPC. Acciaio unico delle armature; geometria riferita a XY. | `98dc4c10-e882-41ed-ae13-208c325c0016` |
 
-## 4 Analysis
+## 5 Analysis
 
 | Componente | Funzione | GUID |
 |---|---|---|
 | Domain Slice at N | Sezione Mx–My del dominio a N assegnato; ogni punto è risolto e controllato da GPC. | `98dc4c10-e882-41ed-ae13-208c325c0019` |
-| Effective Cracked Section | Regioni efficaci calcolate da GPC per la fessurazione; non ricostruisce formule o zone per approssimazione. | `98dc4c10-e882-41ed-ae13-208c325c0020` |
-| Creep and Homogenization | Conversione GPC fra coefficiente viscoso assegnato φ e rapporto modulare n. Non stima φ da età o umidità. | `98dc4c10-e882-41ed-ae13-208c325c0021` |
 | Moment Curvature | Analisi GPC a N costante. Checker non lineare; curvatura 1/m e momenti kNm. | `98dc4c10-e882-41ed-ae13-208c325c0018` |
-| Reinforcement Candidate Search | Sceglie la minima As fra i checker candidati che soddisfano tutte le combinazioni N-Mx-My. Non verifica taglio, SLE o dettagli. | `98dc4c10-e882-41ed-ae13-208c325c0022` |
 
-## 6 Sections
+## 6 Checks
 
 | Componente | Funzione | GUID |
 |---|---|---|
-| Box RC Section | Rettangolo con foro centrale. Armatura perimetrale esterna ed eventuale armatura intorno al foro. | `98dc4c10-e882-41ed-ae13-208c325c0028` |
-| Circular RC Section | Cerchio discretizzato con poligono inscritto. Barre su un anello; il copriferro minimo è rispettato rispetto ai lati del poligono. | `98dc4c10-e882-41ed-ae13-208c325c0025` |
-| I RC Section | Sezione a I con ali anche diverse. Barre sulle facce esterne delle ali e sui lati dell'anima. | `98dc4c10-e882-41ed-ae13-208c325c0027` |
-| Rebar Path Layout | Distribuisce barre lungo la curva dei loro centri in XY, per numero o passo massimo. Preparare il percorso con il copriferro desiderato. | `98dc4c10-e882-41ed-ae13-208c325c0029` |
-| Rectangular RC Section | Rettangolo centrato nell'origine XY. Barre superiori/inferiori e laterali; geometria in mm. | `98dc4c10-e882-41ed-ae13-208c325c0024` |
-| Section Geometry Check | Controllo geometrico di barre, copriferro e interferro. Non sostituisce Reinforcement Detailing. | `98dc4c10-e882-41ed-ae13-208c325c0030` |
-| T RC Section | Sezione a T con ala superiore, centrata nel rettangolo d'ingombro XY. Layout iniziale da verificare. | `98dc4c10-e882-41ed-ae13-208c325c0026` |
+| Section Resistance Check | Verifica N-Mx-My GPC con esito strutturato e convergenza esplicita. | `98dc4c10-e882-41ed-ae13-208c325c0009` |
+| Shear Check v2 | Verifica GPC con risultato strutturato; mantiene il nome della combinazione. | `98dc4c10-e882-41ed-ae13-208c325c0006` |
+| Torsion and Shear | Torsione e interazioni GPC con entrambi i tagli concomitanti. | `98dc4c10-e882-41ed-ae13-208c325c0008` |
+| Serviceability Check v2 | Limiti tensionali e fessurazione su analisi GPC, con risultati per gli inviluppi. | `98dc4c10-e882-41ed-ae13-208c325c0011` |
+| Batch Section Checks | Tutte le combinazioni del ramo, esecuzione seriale e inviluppi. Le opzioni scollegate escludono la relativa verifica. | `98dc4c10-e882-41ed-ae13-208c325c0012` |
+| Reinforcement Candidate Search | Sceglie la minima As fra i checker candidati che soddisfano tutte le combinazioni N-Mx-My. Non verifica taglio, SLE o dettagli. | `98dc4c10-e882-41ed-ae13-208c325c0022` |
+
+## 7 Detailing
+
+| Componente | Funzione | GUID |
+|---|---|---|
+| Concrete Cover | Copriferro nominale GPC per le esposizioni e il diametro effettivo specificati. | `98dc4c10-e882-41ed-ae13-208c325c0013` |
+| Anchorage and Lap | Ancoraggio rettilineo o sovrapposizione di barre tese ad aderenza migliorata; coefficienti α1…α5 = 1. | `98dc4c10-e882-41ed-ae13-208c325c0014` |
+| Reinforcement Detailing | Minimi/massimi, interferro, staffe e copriferro secondo il profilo GPC; rende visibili le regole in sospeso. | `98dc4c10-e882-41ed-ae13-208c325c0017` |
+
+## 8 Results
+
+| Componente | Funzione | GUID |
+|---|---|---|
+| Check Result | Legge un risultato strutturato senza sostituire i dati mancanti con zero. | `98dc4c10-e882-41ed-ae13-208c325c0003` |
+| Effective Cracked Section | Regioni efficaci calcolate da GPC per la fessurazione; non ricostruisce formule o zone per approssimazione. | `98dc4c10-e882-41ed-ae13-208c325c0020` |
+| Check Envelope | Inviluppo per sezione e verifica nel ramo. I risultati non valutati impediscono un esito positivo completo. | `98dc4c10-e882-41ed-ae13-208c325c0002` |
+| Check Report | Tabella CSV e JSON versionato; nessuna scrittura automatica su disco. | `98dc4c10-e882-41ed-ae13-208c325c0004` |
 
 ## Porte e unità
 
@@ -507,4 +517,3 @@
 | inputs[4] Shear Y options | item, opzionale | Richieste se Vy non nullo. |
 | inputs[5] Section ID | item | Identificativo per gli inviluppi. |
 | outputs[0] Result | item | Utilizzo massimo fra torsione e interazioni; dettagli in Check Result. |
-

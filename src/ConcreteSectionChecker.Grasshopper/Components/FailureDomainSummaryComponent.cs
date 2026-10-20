@@ -24,7 +24,7 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
     public class FailureDomainSummaryComponent : GpcComponent
     {
         public FailureDomainSummaryComponent()
-            : base("Secton Resistance Summary", "SRS", "Secton Resistance Summary", Constants.CATEGORY_CHECKS, Constants.SUBCATEGORY_CHECKS_CONCRETECHECKER   )
+            : base("Secton Resistance Summary", "SRS", "Secton Resistance Summary")
         {
         }
 
@@ -108,6 +108,5 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
 
         public override Guid ComponentGuid => new Guid("0a07f98a-2c47-4bc6-84c3-5833a4f6b65a");
 
-        public override GH_Exposure Exposure => GH_Exposure.primary;
     }
 }

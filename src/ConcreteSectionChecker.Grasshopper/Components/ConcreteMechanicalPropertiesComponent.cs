@@ -15,7 +15,7 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
     public class ConcreteMechanicalPropertiesComponent : GpcComponent
     {
         public ConcreteMechanicalPropertiesComponent()
-            : base("Concrete Mechanical Properties", "CP", "Concrete Mechanical Properties", Constants.CATEGORY_CHECKS, Constants.SUBCATEGORY_CHECKS_CONCRETECHECKER)
+            : base("Concrete Mechanical Properties", "CP", "Concrete Mechanical Properties")
         {
         }
 
@@ -66,6 +66,5 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
 
         public override Guid ComponentGuid => new Guid("aba32c4e-70fa-4e76-bef9-bb02214a1279");
 
-        public override GH_Exposure Exposure => GH_Exposure.primary;    
     }
 }

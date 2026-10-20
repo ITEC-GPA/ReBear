@@ -12,7 +12,7 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
     public class CoordinateSystemSectionComponent : GpcComponent
     {
         public CoordinateSystemSectionComponent()
-            : base("Secton Coordinate System", "CS", "The Section Principal Coordinate System", Constants.CATEGORY_CHECKS, Constants.SUBCATEGORY_CHECKS_CONCRETECHECKER)
+            : base("Secton Coordinate System", "CS", "The Section Principal Coordinate System")
         {
         }
 
@@ -45,6 +45,5 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
 
         public override Guid ComponentGuid => new Guid("c84a4593-64c3-44b1-b663-6482d43b820b");
 
-        public override GH_Exposure Exposure => GH_Exposure.primary;
     }
 }

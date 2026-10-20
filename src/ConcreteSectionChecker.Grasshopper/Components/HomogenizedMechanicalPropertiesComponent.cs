@@ -15,7 +15,7 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
     public class HomogenizedMechanicalPropertiesComponent : GpcComponent
     {
         public HomogenizedMechanicalPropertiesComponent()
-            : base("Homogenized Mechanical Properties", "HP", "Homogenized Mechanical Properties", Constants.CATEGORY_CHECKS, Constants.SUBCATEGORY_CHECKS_CONCRETECHECKER)
+            : base("Homogenized Mechanical Properties", "HP", "Homogenized Mechanical Properties")
         {
         }
 
@@ -68,6 +68,5 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
 
         public override Guid ComponentGuid => new Guid("c9e7fd77-486c-416e-987b-cf6521e649fd");
 
-        public override GH_Exposure Exposure => GH_Exposure.primary;
     }
 }

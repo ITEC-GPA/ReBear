@@ -22,7 +22,7 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
     public class FailureDomain3DComponent : GpcComponent
     {
         public FailureDomain3DComponent()
-            : base("3D Failure Domain Check", "FDA", "3D Failure domain Check", Constants.CATEGORY_CHECKS, Constants.SUBCATEGORY_CHECKS_CONCRETECHECKER   )
+            : base("3D Failure Domain Check", "FDA", "3D Failure domain Check")
         {
         }
 
@@ -113,6 +113,5 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
 
         public override Guid ComponentGuid => new Guid("a4c3e502-6c1e-4954-a9ef-7ac9e8bab5ef");
 
-        public override GH_Exposure Exposure => GH_Exposure.primary;
     }
 }

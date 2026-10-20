@@ -13,7 +13,7 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
     public class PsiFactorComponent : GpcComponent
     {
         public PsiFactorComponent()
-            : base("Psi coefficient", "FC", "Psi coefficient", Constants.CATEGORY_CHECKS, Constants.SUBCATEGORY_CHECKS_CONCRETECHECKER)
+            : base("Psi coefficient", "FC", "Psi coefficient")
         {
         }
 
@@ -45,6 +45,5 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
 
         public override Guid ComponentGuid => new Guid("7480e84d-4e82-4be1-a021-425dff4803e1");
 
-        public override GH_Exposure Exposure => GH_Exposure.primary;
     }
 }

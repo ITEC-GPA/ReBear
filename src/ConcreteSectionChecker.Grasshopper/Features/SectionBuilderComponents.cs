@@ -13,7 +13,7 @@ namespace ConcreteSectionChecker.Grasshopper.Features
 {
     public abstract class SectionBuilderComponent : ReBearComponent
     {
-        protected SectionBuilderComponent(string name, string nick, string description) : base(name, nick, description, "6 Sections") { }
+        protected SectionBuilderComponent(string name, string nick, string description) : base(name, nick, description) { }
         protected static Port ConcretePort => G("Concrete", "C", "Materiale calcestruzzo.");
         protected static Port SteelPort => G("Steel", "S", "Acciaio delle barre longitudinali.");
         protected static Port CoverPort => N("Link cover", "c", "Copriferro alla superficie esterna della staffa, mm.");
@@ -103,7 +103,7 @@ namespace ConcreteSectionChecker.Grasshopper.Features
     }
     public sealed class RebarLayoutComponent : ReBearComponent
     {
-        public RebarLayoutComponent() : base("Rebar Path Layout", "RebarPath", "Distribuisce barre lungo la curva dei loro centri in XY, per numero o passo massimo. Preparare il percorso con il copriferro desiderato.", "6 Sections") { }
+        public RebarLayoutComponent() : base("Rebar Path Layout", "RebarPath", "Distribuisce barre lungo la curva dei loro centri in XY, per numero o passo massimo. Preparare il percorso con il copriferro desiderato.") { }
         public override Guid ComponentGuid => new("98dc4c10-e882-41ed-ae13-208c325c0029");
         protected override Port[] Inputs => new[] { C("Bar centre path", "Path", "Curva dei centri in XY, mm; aperta o chiusa."),
             G("Steel", "S", "Acciaio delle barre."), N("Diameter", "Ø", "mm.", 20),
@@ -143,7 +143,7 @@ namespace ConcreteSectionChecker.Grasshopper.Features
     }
     public sealed class SectionGeometryCheckComponent : ReBearComponent
     {
-        public SectionGeometryCheckComponent() : base("Section Geometry Check", "GeomCheck", "Controllo geometrico di barre, copriferro e interferro. Non sostituisce Reinforcement Detailing.", "6 Sections") { }
+        public SectionGeometryCheckComponent() : base("Section Geometry Check", "GeomCheck", "Controllo geometrico di barre, copriferro e interferro. Non sostituisce Reinforcement Detailing.") { }
         public override Guid ComponentGuid => new("98dc4c10-e882-41ed-ae13-208c325c0030");
         protected override Port[] Inputs => new[] { G("Section", "S", "Sezione GPC."), N("Required bar cover", "c", "Copriferro geometrico minimo alle barre, mm.", 0),
             N("Required clear spacing", "s", "Interferro minimo assegnato, mm.", 0), T("Section ID", "ID", "Identificativo.", "Section") };

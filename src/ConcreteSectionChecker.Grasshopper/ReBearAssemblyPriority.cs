@@ -6,9 +6,9 @@ namespace ConcreteSectionChecker.Grasshopper
     {
         public override GH_LoadingInstruction PriorityLoad()
         {
-            global::Grasshopper.Instances.ComponentServer.AddCategoryIcon(Constants.CATEGORY_CHECKS, PluginIcons.Get("Plugin"));
-            global::Grasshopper.Instances.ComponentServer.AddCategoryShortName(Constants.CATEGORY_CHECKS, "ReBear");
-            global::Grasshopper.Instances.ComponentServer.AddCategorySymbolName(Constants.CATEGORY_CHECKS, 'R');
+            global::Grasshopper.Instances.ComponentServer.AddCategoryIcon(ComponentPalette.Category, PluginIcons.Get("Plugin"));
+            global::Grasshopper.Instances.ComponentServer.AddCategoryShortName(ComponentPalette.Category, "ReBear");
+            global::Grasshopper.Instances.ComponentServer.AddCategorySymbolName(ComponentPalette.Category, 'R');
             return GH_LoadingInstruction.Proceed;
         }
     }

@@ -10,7 +10,7 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
     public class PostProcessStrainResultComponent : GpcComponent
     {
         public PostProcessStrainResultComponent()
-            : base("Print Stress Analysis Results", "ISAR", "Print Stress Analysis Results", Constants.CATEGORY_CHECKS, Constants.SUBCATEGORY_CHECKS_CONCRETECHECKER)
+            : base("Print Stress Analysis Results", "ISAR", "Print Stress Analysis Results")
         {
         }
 
@@ -128,6 +128,5 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
 
         public override Guid ComponentGuid => new Guid("3951b5ca-01a2-4f6c-8acb-1b8a80ed1e65");
 
-        public override GH_Exposure Exposure => GH_Exposure.primary;
     }
 }

@@ -19,7 +19,7 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
         /// Initializes a new instance of the ForceComponent class.
         /// </summary>
         public SectionForceComponent()
-          : base("Force component", "FC", "Create a force object", Constants.CATEGORY_CHECKS, Constants.SUBCATEGORY_CHECKS_CONCRETECHECKER)
+          : base("Force component", "FC", "Create a force object")
         {
         }
 

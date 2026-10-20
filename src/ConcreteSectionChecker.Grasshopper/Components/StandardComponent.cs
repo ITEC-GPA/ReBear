@@ -17,7 +17,7 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
         };
 
         public StandardComponent()
-            : base("Standard", "S", "Standard", Constants.CATEGORY_CHECKS, Constants.SUBCATEGORY_CHECKS_CONCRETECHECKER)
+            : base("Standard", "S", "Standard")
         {
         }
 
@@ -59,6 +59,5 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
 
         public override Guid ComponentGuid => new Guid("3def8fa3-e056-4075-8661-bd51575c00ee");
 
-        public override GH_Exposure Exposure => GH_Exposure.primary;
     }
 }

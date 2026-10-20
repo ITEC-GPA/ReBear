@@ -55,8 +55,8 @@ namespace ConcreteSectionChecker.Grasshopper
         protected static Port List(Port port) => port with { Access = GH_ParamAccess.list };
         protected abstract Port[] Inputs { get; }
         protected abstract Port[] Outputs { get; }
-        protected ReBearComponent(string name, string nick, string description, string subcategory)
-            : base(name, nick, description, "ReBear", subcategory) { }
+        protected ReBearComponent(string name, string nick, string description)
+            : base(name, nick, description) { }
 
         protected sealed override void RegisterInputParams(GH_InputParamManager p)
         {

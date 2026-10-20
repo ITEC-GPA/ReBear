@@ -11,7 +11,7 @@ namespace ConcreteSectionChecker.Grasshopper.Features
     public sealed class ShearOptionsComponent : ReBearComponent
     {
         public ShearOptionsComponent() : base("Shear Options", "VOpt",
-            "Parametri di una direzione nel riferimento del checker. Acciai indipendenti; d esplicito in mm.", "2 Checks") { }
+            "Parametri di una direzione nel riferimento del checker. Acciai indipendenti; d esplicito in mm.") { }
         public override Guid ComponentGuid => new("98dc4c10-e882-41ed-ae13-208c325c0005");
         protected override Port[] Inputs => new[] { G("Link steel", "Sw", "Acciaio delle staffe."),
             G("Longitudinal steel", "Sl", "Acciaio delle barre longitudinali: Es per i modelli GPC."),
@@ -35,7 +35,7 @@ namespace ConcreteSectionChecker.Grasshopper.Features
     }
     public sealed class ShearCheckComponent : ReBearComponent
     {
-        public ShearCheckComponent() : base("Shear Check v2", "Shear", "Verifica GPC con risultato strutturato; mantiene il nome della combinazione.", "2 Checks") { }
+        public ShearCheckComponent() : base("Shear Check v2", "Shear", "Verifica GPC con risultato strutturato; mantiene il nome della combinazione.") { }
         public override Guid ComponentGuid => new("98dc4c10-e882-41ed-ae13-208c325c0006");
         protected override Port[] Inputs => new[] { G("Checker", "C", "Checker della sezione."), G("Force", "F", "Combinazione, N/Nmm."),
             G("Options", "O", "Da Shear Options."), I("Direction", "A", "0 = X (V1/M2), 1 = Y (V2/M1).", 1),
@@ -52,7 +52,7 @@ namespace ConcreteSectionChecker.Grasshopper.Features
     public sealed class TorsionOptionsComponent : ReBearComponent
     {
         public TorsionOptionsComponent() : base("Torsion Options", "TOpt",
-            "Profilo sottile esplicito e staffe chiuse a 90°. Area longitudinale aggiuntiva a quella per flessione.", "2 Checks") { }
+            "Profilo sottile esplicito e staffe chiuse a 90°. Area longitudinale aggiuntiva a quella per flessione.") { }
         public override Guid ComponentGuid => new("98dc4c10-e882-41ed-ae13-208c325c0007");
         protected override Port[] Inputs => new[] { N("Enclosed area", "Ak", "Area racchiusa dalla linea media, mm²."),
             N("Midline perimeter", "uk", "Perimetro linea media, mm."), N("Effective thickness", "tef", "Spessore efficace, mm."),
@@ -73,7 +73,7 @@ namespace ConcreteSectionChecker.Grasshopper.Features
     }
     public sealed class TorsionShearCheckComponent : ReBearComponent
     {
-        public TorsionShearCheckComponent() : base("Torsion and Shear", "TV", "Torsione e interazioni GPC con entrambi i tagli concomitanti.", "2 Checks") { }
+        public TorsionShearCheckComponent() : base("Torsion and Shear", "TV", "Torsione e interazioni GPC con entrambi i tagli concomitanti.") { }
         public override Guid ComponentGuid => new("98dc4c10-e882-41ed-ae13-208c325c0008");
         protected override Port[] Inputs => new[] { G("Checker", "C", "Checker della sezione."), G("Force", "F", "Combinazione completa, N/Nmm."),
             G("Torsion options", "T", "Da Torsion Options."), G("Shear X options", "X", "Richieste se Vx non nullo.", true),

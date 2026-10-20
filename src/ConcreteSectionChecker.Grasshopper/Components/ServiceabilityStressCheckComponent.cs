@@ -22,7 +22,7 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
         };
 
         public ServiceabilityStressCheckComponent()
-            : base("Serviceability Stress Check", "SSC", "Serviceability Stress Check", Constants.CATEGORY_CHECKS, Constants.SUBCATEGORY_CHECKS_CONCRETECHECKER)
+            : base("Serviceability Stress Check", "SSC", "Serviceability Stress Check")
         {
         }
 
@@ -72,6 +72,5 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
 
         public override Guid ComponentGuid => new Guid("4cdbe859-b9a3-42d1-87d4-42c24647fc68");
 
-        public override GH_Exposure Exposure => GH_Exposure.primary;
     }
 }

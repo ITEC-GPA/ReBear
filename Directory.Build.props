@@ -1,0 +1,18 @@
+<Project>
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Deterministic>true</Deterministic>
+    <Version>0.2.0</Version>
+    <Authors>GPC</Authors>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <ReBearRoot>$(MSBuildThisFileDirectory)</ReBearRoot>
+    <!-- Keep compiler/test outputs private; publish only the plugin Release to root bin. -->
+    <BaseOutputPath>$(ReBearRoot)obj\bin\$(MSBuildProjectName)\</BaseOutputPath>
+    <BaseIntermediateOutputPath>$(ReBearRoot)obj\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
+    <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
+    <!-- Exclude generated sources left in the old layout until post-build cleanup. -->
+    <DefaultItemExcludes>$(DefaultItemExcludes);**/bin/**;**/obj/**</DefaultItemExcludes>
+  </PropertyGroup>
+</Project>

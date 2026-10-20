@@ -1,0 +1,2047 @@
+{
+  "version": "0.2.0",
+  "components": [
+    {
+      "type": "AnchorageLapComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0014",
+      "name": "Anchorage and Lap",
+      "category": "3 Detailing",
+      "description": "Ancoraggio rettilineo o sovrapposizione di barre tese ad aderenza migliorata; coefficienti \u03B11\u2026\u03B15 = 1.",
+      "inputs": [
+        {
+          "name": "Standard",
+          "access": "item",
+          "optional": false,
+          "description": "Norma GPC."
+        },
+        {
+          "name": "Concrete",
+          "access": "item",
+          "optional": false,
+          "description": "Calcestruzzo."
+        },
+        {
+          "name": "Steel",
+          "access": "item",
+          "optional": false,
+          "description": "Acciaio della barra."
+        },
+        {
+          "name": "Diameter",
+          "access": "item",
+          "optional": false,
+          "description": "Diametro mm."
+        },
+        {
+          "name": "Design stress",
+          "access": "item",
+          "optional": false,
+          "description": "Tensione di trazione \u03C3sd MPa, \u2264 fyd."
+        },
+        {
+          "name": "Available length",
+          "access": "item",
+          "optional": false,
+          "description": "Lunghezza disponibile mm."
+        },
+        {
+          "name": "Good bond",
+          "access": "item",
+          "optional": false,
+          "description": "Condizioni di buona aderenza."
+        },
+        {
+          "name": "Lap",
+          "access": "item",
+          "optional": false,
+          "description": "True sovrapposizione; false ancoraggio."
+        },
+        {
+          "name": "Lapped percentage",
+          "access": "item",
+          "optional": false,
+          "description": "Percentuale barre sovrapposte."
+        },
+        {
+          "name": "Lap clear distance",
+          "access": "item",
+          "optional": false,
+          "description": "Interferro fra barre sovrapposte mm."
+        },
+        {
+          "name": "Section ID",
+          "access": "item",
+          "optional": false,
+          "description": "Identificativo."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Result",
+          "access": "item",
+          "description": "Esito GPC."
+        },
+        {
+          "name": "Required length",
+          "access": "item",
+          "description": "Lunghezza richiesta mm."
+        },
+        {
+          "name": "Bond strength",
+          "access": "item",
+          "description": "Resistenza di aderenza MPa."
+        }
+      ]
+    },
+    {
+      "type": "BatchSectionChecksComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0012",
+      "name": "Batch Section Checks",
+      "category": "2 Checks",
+      "description": "Tutte le combinazioni del ramo, esecuzione seriale e inviluppi. Le opzioni scollegate escludono la relativa verifica.",
+      "inputs": [
+        {
+          "name": "Checker",
+          "access": "item",
+          "optional": false,
+          "description": "Checker con opzioni coerenti con le verifiche richieste."
+        },
+        {
+          "name": "Forces",
+          "access": "list",
+          "optional": false,
+          "description": "Combinazioni del ramo."
+        },
+        {
+          "name": "Section ID",
+          "access": "item",
+          "optional": false,
+          "description": "Identificativo sezione."
+        },
+        {
+          "name": "N-Mx-My",
+          "access": "item",
+          "optional": false,
+          "description": "Eseguire la verifica di resistenza."
+        },
+        {
+          "name": "Shear X",
+          "access": "item",
+          "optional": true,
+          "description": "Opzioni taglio X."
+        },
+        {
+          "name": "Shear Y",
+          "access": "item",
+          "optional": true,
+          "description": "Opzioni taglio Y."
+        },
+        {
+          "name": "Torsion",
+          "access": "item",
+          "optional": true,
+          "description": "Opzioni torsione."
+        },
+        {
+          "name": "SLE",
+          "access": "item",
+          "optional": true,
+          "description": "Opzioni SLE; usare un ramo con combinazioni omogenee."
+        },
+        {
+          "name": "Run",
+          "access": "item",
+          "optional": false,
+          "description": "Avvia il calcolo. False disabilita il componente."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Results",
+          "access": "list",
+          "description": "Un risultato per caso e verifica, inclusi i non valutati."
+        },
+        {
+          "name": "CSV",
+          "access": "item",
+          "description": "Tabella dei risultati."
+        },
+        {
+          "name": "Envelope",
+          "access": "list",
+          "description": "Sintesi per verifica."
+        }
+      ]
+    },
+    {
+      "type": "BoxRcSectionComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0028",
+      "name": "Box RC Section",
+      "category": "6 Sections",
+      "description": "Rettangolo con foro centrale. Armatura perimetrale esterna ed eventuale armatura intorno al foro.",
+      "inputs": [
+        {
+          "name": "Concrete",
+          "access": "item",
+          "optional": false,
+          "description": "Materiale calcestruzzo."
+        },
+        {
+          "name": "Steel",
+          "access": "item",
+          "optional": false,
+          "description": "Acciaio delle barre longitudinali."
+        },
+        {
+          "name": "Width",
+          "access": "item",
+          "optional": false,
+          "description": "mm."
+        },
+        {
+          "name": "Height",
+          "access": "item",
+          "optional": false,
+          "description": "mm."
+        },
+        {
+          "name": "Hole width",
+          "access": "item",
+          "optional": false,
+          "description": "mm."
+        },
+        {
+          "name": "Hole height",
+          "access": "item",
+          "optional": false,
+          "description": "mm."
+        },
+        {
+          "name": "Link cover",
+          "access": "item",
+          "optional": false,
+          "description": "Copriferro alla superficie esterna della staffa, mm."
+        },
+        {
+          "name": "Link diameter",
+          "access": "item",
+          "optional": false,
+          "description": "Diametro staffa usato per posizionare le barre, mm; non definisce il modello di taglio."
+        },
+        {
+          "name": "Bar diameter",
+          "access": "item",
+          "optional": false,
+          "description": "Diametro delle barre longitudinali, mm."
+        },
+        {
+          "name": "Outer bars per horizontal side",
+          "access": "item",
+          "optional": false,
+          "description": "Include gli angoli."
+        },
+        {
+          "name": "Outer bars per vertical side",
+          "access": "item",
+          "optional": false,
+          "description": "Include gli angoli, senza duplicarli."
+        },
+        {
+          "name": "Inner bars per horizontal side",
+          "access": "item",
+          "optional": false,
+          "description": "0 senza anello interno, altrimenti almeno 2."
+        },
+        {
+          "name": "Inner bars per vertical side",
+          "access": "item",
+          "optional": false,
+          "description": "0 senza anello interno, altrimenti almeno 2."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "RC section",
+          "access": "item",
+          "description": "Sezione GPC compatibile con Concrete Checker."
+        },
+        {
+          "name": "Concrete preview",
+          "access": "item",
+          "description": "Brep XY, mm."
+        },
+        {
+          "name": "Rebars",
+          "access": "list",
+          "description": "Barre GPC con preview."
+        },
+        {
+          "name": "Concrete area",
+          "access": "item",
+          "description": "Area lorda al netto dei fori, mm\u00B2."
+        },
+        {
+          "name": "Steel area",
+          "access": "item",
+          "description": "Area delle barre, mm\u00B2."
+        },
+        {
+          "name": "Minimum bar cover",
+          "access": "item",
+          "description": "Distanza effettiva del calcestruzzo dalla superficie delle barre, mm."
+        }
+      ]
+    },
+    {
+      "type": "CheckEnvelopeComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0002",
+      "name": "Check Envelope",
+      "category": "1 Results",
+      "description": "Inviluppo per sezione e verifica nel ramo. I risultati non valutati impediscono un esito positivo completo.",
+      "inputs": [
+        {
+          "name": "Results",
+          "access": "list",
+          "optional": false,
+          "description": "Risultati strutturati ReBear."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Group",
+          "access": "list",
+          "description": "Sezione / verifica."
+        },
+        {
+          "name": "Status",
+          "access": "list",
+          "description": "Stato complessivo."
+        },
+        {
+          "name": "Governing",
+          "access": "list",
+          "description": "Caso governante, anche quando non valutabile; null se tutti non richiesti."
+        },
+        {
+          "name": "Pending",
+          "access": "list",
+          "description": "Numero di casi non valutati."
+        },
+        {
+          "name": "Count",
+          "access": "list",
+          "description": "Numero totale dei casi."
+        }
+      ]
+    },
+    {
+      "type": "CheckReportComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0004",
+      "name": "Check Report",
+      "category": "1 Results",
+      "description": "Tabella CSV e JSON versionato; nessuna scrittura automatica su disco.",
+      "inputs": [
+        {
+          "name": "Results",
+          "access": "list",
+          "optional": false,
+          "description": "Risultati nello stesso ramo."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CSV",
+          "access": "item",
+          "description": "Separatore ;, numeri invariant, campi con escaping."
+        },
+        {
+          "name": "JSON",
+          "access": "item",
+          "description": "Schema ReBear.CheckReport v1 e versione motore."
+        },
+        {
+          "name": "Summary",
+          "access": "list",
+          "description": "Sintesi degli inviluppi."
+        }
+      ]
+    },
+    {
+      "type": "CheckResultComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0003",
+      "name": "Check Result",
+      "category": "1 Results",
+      "description": "Legge un risultato strutturato senza sostituire i dati mancanti con zero.",
+      "inputs": [
+        {
+          "name": "Result",
+          "access": "item",
+          "optional": false,
+          "description": "Risultato ReBear."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Section",
+          "access": "item",
+          "description": "Identificativo sezione."
+        },
+        {
+          "name": "Case",
+          "access": "item",
+          "description": "Combinazione."
+        },
+        {
+          "name": "Check",
+          "access": "item",
+          "description": "Verifica."
+        },
+        {
+          "name": "Status",
+          "access": "item",
+          "description": "Satisfied, NotSatisfied, NotEvaluated, NotRequired."
+        },
+        {
+          "name": "Utilization",
+          "access": "item",
+          "description": "NaN se non definito."
+        },
+        {
+          "name": "Demand",
+          "access": "item",
+          "description": "Domanda; NaN se non applicabile."
+        },
+        {
+          "name": "Capacity",
+          "access": "item",
+          "description": "Capacit\u00E0/limite; NaN se non applicabile."
+        },
+        {
+          "name": "Unit",
+          "access": "item",
+          "description": "Unit\u00E0 di domanda e capacit\u00E0."
+        },
+        {
+          "name": "Message",
+          "access": "item",
+          "description": "Stato e limitazioni."
+        },
+        {
+          "name": "Reference",
+          "access": "item",
+          "description": "Riferimento restituito da GPC."
+        },
+        {
+          "name": "Details",
+          "access": "item",
+          "description": "Dettagli GPC."
+        }
+      ]
+    },
+    {
+      "type": "CircularRcSectionComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0025",
+      "name": "Circular RC Section",
+      "category": "6 Sections",
+      "description": "Cerchio discretizzato con poligono inscritto. Barre su un anello; il copriferro minimo \u00E8 rispettato rispetto ai lati del poligono.",
+      "inputs": [
+        {
+          "name": "Concrete",
+          "access": "item",
+          "optional": false,
+          "description": "Materiale calcestruzzo."
+        },
+        {
+          "name": "Steel",
+          "access": "item",
+          "optional": false,
+          "description": "Acciaio delle barre longitudinali."
+        },
+        {
+          "name": "Diameter",
+          "access": "item",
+          "optional": false,
+          "description": "Diametro nominale, mm."
+        },
+        {
+          "name": "Link cover",
+          "access": "item",
+          "optional": false,
+          "description": "Copriferro alla superficie esterna della staffa, mm."
+        },
+        {
+          "name": "Link diameter",
+          "access": "item",
+          "optional": false,
+          "description": "Diametro staffa usato per posizionare le barre, mm; non definisce il modello di taglio."
+        },
+        {
+          "name": "Bar diameter",
+          "access": "item",
+          "optional": false,
+          "description": "Diametro delle barre longitudinali, mm."
+        },
+        {
+          "name": "Bar count",
+          "access": "item",
+          "optional": false,
+          "description": "Numero barre, almeno 3."
+        },
+        {
+          "name": "Polygon sides",
+          "access": "item",
+          "optional": false,
+          "description": "Multiplo di 4 fra 16 e 720; controllare sensibilit\u00E0 della discretizzazione."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "RC section",
+          "access": "item",
+          "description": "Sezione GPC compatibile con Concrete Checker."
+        },
+        {
+          "name": "Concrete preview",
+          "access": "item",
+          "description": "Brep XY, mm."
+        },
+        {
+          "name": "Rebars",
+          "access": "list",
+          "description": "Barre GPC con preview."
+        },
+        {
+          "name": "Concrete area",
+          "access": "item",
+          "description": "Area lorda al netto dei fori, mm\u00B2."
+        },
+        {
+          "name": "Steel area",
+          "access": "item",
+          "description": "Area delle barre, mm\u00B2."
+        },
+        {
+          "name": "Minimum bar cover",
+          "access": "item",
+          "description": "Distanza effettiva del calcestruzzo dalla superficie delle barre, mm."
+        }
+      ]
+    },
+    {
+      "type": "ConcreteCoverComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0013",
+      "name": "Concrete Cover",
+      "category": "3 Detailing",
+      "description": "Copriferro nominale GPC per le esposizioni e il diametro effettivo specificati.",
+      "inputs": [
+        {
+          "name": "Standard",
+          "access": "item",
+          "optional": false,
+          "description": "Norma GPC."
+        },
+        {
+          "name": "Concrete",
+          "access": "item",
+          "optional": false,
+          "description": "Calcestruzzo."
+        },
+        {
+          "name": "Exposures",
+          "access": "list",
+          "optional": false,
+          "description": "Classi ambientali concorrenti, es. XC3, XD1."
+        },
+        {
+          "name": "Actual bar diameter",
+          "access": "item",
+          "optional": false,
+          "description": "Diametro effettivo rilevante per il copriferro, mm."
+        },
+        {
+          "name": "Adopted cover",
+          "access": "item",
+          "optional": false,
+          "description": "Copriferro nominale disponibile, mm."
+        },
+        {
+          "name": "Design life",
+          "access": "item",
+          "optional": false,
+          "description": "Anni, secondo il profilo GPC."
+        },
+        {
+          "name": "Deviation",
+          "access": "item",
+          "optional": false,
+          "description": "Tolleranza esecutiva, mm."
+        },
+        {
+          "name": "Aggregate",
+          "access": "item",
+          "optional": false,
+          "description": "Aggregato massimo, mm."
+        },
+        {
+          "name": "Plate element",
+          "access": "item",
+          "optional": false,
+          "description": "Elemento a piastra / geometria di soletta."
+        },
+        {
+          "name": "Special quality control",
+          "access": "item",
+          "optional": false,
+          "description": "Controllo speciale confermato; abilita la riduzione GPC."
+        },
+        {
+          "name": "Strength class reduction",
+          "access": "item",
+          "optional": false,
+          "description": "Abilita il modificatore per resistenza della classe strutturale EN."
+        },
+        {
+          "name": "Rough surface",
+          "access": "item",
+          "optional": false,
+          "description": "Superficie irregolare."
+        },
+        {
+          "name": "Abrasion",
+          "access": "item",
+          "optional": false,
+          "description": "0 nessuna; 1,2,3 classi GPC."
+        },
+        {
+          "name": "Ground",
+          "access": "item",
+          "optional": false,
+          "description": "0 cassero; 1 terreno preparato; 2 terreno diretto."
+        },
+        {
+          "name": "Pertinent minimum strength",
+          "access": "item",
+          "optional": true,
+          "description": "Resistenza minima pertinente per NTC, MPa; opzionale."
+        },
+        {
+          "name": "Section ID",
+          "access": "item",
+          "optional": false,
+          "description": "Identificativo."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Result",
+          "access": "item",
+          "description": "Confronto richiesto/disponibile."
+        },
+        {
+          "name": "Required nominal",
+          "access": "item",
+          "description": "Copriferro nominale richiesto mm."
+        },
+        {
+          "name": "Durability minimum",
+          "access": "item",
+          "description": "Per Detailing Options, mm."
+        },
+        {
+          "name": "Cover data",
+          "access": "item",
+          "description": "Risultato GPC completo."
+        }
+      ]
+    },
+    {
+      "type": "DetailingOptionsComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0016",
+      "name": "Detailing Options",
+      "category": "3 Detailing",
+      "description": "Ipotesi per le regole di dettaglio GPC. Acciaio unico delle armature; geometria riferita a XY.",
+      "inputs": [
+        {
+          "name": "Member kind",
+          "access": "item",
+          "optional": false,
+          "description": "0 trave, 1 pilastro, 2 soletta, 3 parete."
+        },
+        {
+          "name": "Top tension width",
+          "access": "item",
+          "optional": false,
+          "description": "Larghezza zona tesa superiore, mm."
+        },
+        {
+          "name": "Bottom tension width",
+          "access": "item",
+          "optional": false,
+          "description": "Larghezza zona tesa inferiore, mm."
+        },
+        {
+          "name": "Web width",
+          "access": "item",
+          "optional": false,
+          "description": "Larghezza anima mm."
+        },
+        {
+          "name": "Link diameter",
+          "access": "item",
+          "optional": false,
+          "description": "Diametro staffa mm, 0 senza staffe."
+        },
+        {
+          "name": "Link spacing",
+          "access": "item",
+          "optional": false,
+          "description": "Passo staffe mm."
+        },
+        {
+          "name": "Link legs",
+          "access": "item",
+          "optional": false,
+          "description": "Numero bracci."
+        },
+        {
+          "name": "Nominal cover",
+          "access": "item",
+          "optional": false,
+          "description": "Copriferro alle staffe; alle barre se senza staffe, mm."
+        },
+        {
+          "name": "Aggregate",
+          "access": "item",
+          "optional": false,
+          "description": "Aggregato massimo mm."
+        },
+        {
+          "name": "Cover deviation",
+          "access": "item",
+          "optional": false,
+          "description": "Tolleranza copriferro mm."
+        },
+        {
+          "name": "Durability minimum",
+          "access": "item",
+          "optional": true,
+          "description": "Da Concrete Cover; scollegato = controllo da completare."
+        },
+        {
+          "name": "Lap zone",
+          "access": "item",
+          "optional": false,
+          "description": "Zona di sovrapposizione."
+        },
+        {
+          "name": "Compression bars restrained",
+          "access": "item",
+          "optional": false,
+          "description": "Confermare il trattenimento delle barre compresse."
+        },
+        {
+          "name": "End zones confirmed",
+          "access": "item",
+          "optional": false,
+          "description": "Confermare dettagli delle zone di estremit\u00E0 richiesti da GPC."
+        },
+        {
+          "name": "Plate data",
+          "access": "item",
+          "optional": true,
+          "description": "Richiesto per soletta/parete."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Options",
+          "access": "item",
+          "description": "Opzioni dettagli."
+        }
+      ]
+    },
+    {
+      "type": "DomainSliceComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0019",
+      "name": "Domain Slice at N",
+      "category": "4 Analysis",
+      "description": "Sezione Mx\u2013My del dominio a N assegnato; ogni punto \u00E8 risolto e controllato da GPC.",
+      "inputs": [
+        {
+          "name": "Checker",
+          "access": "item",
+          "optional": false,
+          "description": "Checker e tipo di dominio."
+        },
+        {
+          "name": "Axial force",
+          "access": "item",
+          "optional": false,
+          "description": "kN, compressione negativa."
+        },
+        {
+          "name": "Directions",
+          "access": "item",
+          "optional": false,
+          "description": "8\u2013360 direzioni; controllare la sensibilit\u00E0 alla discretizzazione."
+        },
+        {
+          "name": "Run",
+          "access": "item",
+          "optional": false,
+          "description": "Avvia il calcolo."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Mx-My curve",
+          "access": "item",
+          "description": "Polilinea chiusa in kNm."
+        },
+        {
+          "name": "Mx",
+          "access": "list",
+          "description": "kNm."
+        },
+        {
+          "name": "My",
+          "access": "list",
+          "description": "kNm."
+        },
+        {
+          "name": "Solved N",
+          "access": "list",
+          "description": "N effettivamente equilibrato, kN."
+        }
+      ]
+    },
+    {
+      "type": "EffectiveCrackedSectionComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0020",
+      "name": "Effective Cracked Section",
+      "category": "4 Analysis",
+      "description": "Regioni efficaci calcolate da GPC per la fessurazione; non ricostruisce formule o zone per approssimazione.",
+      "inputs": [
+        {
+          "name": "Crack data",
+          "access": "item",
+          "optional": false,
+          "description": "Uscita Crack data di Serviceability Check v2."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Regions",
+          "access": "list",
+          "description": "Chiavi delle regioni."
+        },
+        {
+          "name": "Effective concrete area",
+          "access": "list",
+          "description": "mm\u00B2."
+        },
+        {
+          "name": "Effective steel area",
+          "access": "list",
+          "description": "mm\u00B2."
+        },
+        {
+          "name": "Crack width",
+          "access": "list",
+          "description": "mm; NaN se non valutata."
+        },
+        {
+          "name": "Regions preview",
+          "access": "list",
+          "description": "Brep delle regioni, con fori quando presenti."
+        },
+        {
+          "name": "Bar indices",
+          "access": "list",
+          "description": "Indici base zero delle barre ordinarie contribuenti."
+        }
+      ]
+    },
+    {
+      "type": "HomogenizationOptionsComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0021",
+      "name": "Creep and Homogenization",
+      "category": "4 Analysis",
+      "description": "Conversione GPC fra coefficiente viscoso assegnato \u03C6 e rapporto modulare n. Non stima \u03C6 da et\u00E0 o umidit\u00E0.",
+      "inputs": [
+        {
+          "name": "Concrete",
+          "access": "item",
+          "optional": false,
+          "description": "Calcestruzzo europeo, Ecm."
+        },
+        {
+          "name": "Steel",
+          "access": "item",
+          "optional": false,
+          "description": "Acciaio, Es."
+        },
+        {
+          "name": "Input is n",
+          "access": "item",
+          "optional": false,
+          "description": "True rapporto modulare; false coefficiente viscoso."
+        },
+        {
+          "name": "Value",
+          "access": "item",
+          "optional": false,
+          "description": "\u03C6 oppure n."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Creep coefficient",
+          "access": "item",
+          "description": "\u03C6 assegnato/ricavato."
+        },
+        {
+          "name": "Modular ratio",
+          "access": "item",
+          "description": "Rapporto Es/Ec,eff."
+        },
+        {
+          "name": "Effective concrete modulus",
+          "access": "item",
+          "description": "MPa."
+        }
+      ]
+    },
+    {
+      "type": "IRcSectionComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0027",
+      "name": "I RC Section",
+      "category": "6 Sections",
+      "description": "Sezione a I con ali anche diverse. Barre sulle facce esterne delle ali e sui lati dell\u0027anima.",
+      "inputs": [
+        {
+          "name": "Concrete",
+          "access": "item",
+          "optional": false,
+          "description": "Materiale calcestruzzo."
+        },
+        {
+          "name": "Steel",
+          "access": "item",
+          "optional": false,
+          "description": "Acciaio delle barre longitudinali."
+        },
+        {
+          "name": "Top flange width",
+          "access": "item",
+          "optional": false,
+          "description": "mm."
+        },
+        {
+          "name": "Bottom flange width",
+          "access": "item",
+          "optional": false,
+          "description": "mm."
+        },
+        {
+          "name": "Height",
+          "access": "item",
+          "optional": false,
+          "description": "mm."
+        },
+        {
+          "name": "Web width",
+          "access": "item",
+          "optional": false,
+          "description": "mm."
+        },
+        {
+          "name": "Top flange thickness",
+          "access": "item",
+          "optional": false,
+          "description": "mm."
+        },
+        {
+          "name": "Bottom flange thickness",
+          "access": "item",
+          "optional": false,
+          "description": "mm."
+        },
+        {
+          "name": "Link cover",
+          "access": "item",
+          "optional": false,
+          "description": "Copriferro alla superficie esterna della staffa, mm."
+        },
+        {
+          "name": "Link diameter",
+          "access": "item",
+          "optional": false,
+          "description": "Diametro staffa usato per posizionare le barre, mm; non definisce il modello di taglio."
+        },
+        {
+          "name": "Bar diameter",
+          "access": "item",
+          "optional": false,
+          "description": "Diametro delle barre longitudinali, mm."
+        },
+        {
+          "name": "Top bars",
+          "access": "item",
+          "optional": false,
+          "description": "Barre superiori."
+        },
+        {
+          "name": "Bottom bars",
+          "access": "item",
+          "optional": false,
+          "description": "Barre inferiori."
+        },
+        {
+          "name": "Web bars per face",
+          "access": "item",
+          "optional": false,
+          "description": "Barre laterali nell\u0027anima."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "RC section",
+          "access": "item",
+          "description": "Sezione GPC compatibile con Concrete Checker."
+        },
+        {
+          "name": "Concrete preview",
+          "access": "item",
+          "description": "Brep XY, mm."
+        },
+        {
+          "name": "Rebars",
+          "access": "list",
+          "description": "Barre GPC con preview."
+        },
+        {
+          "name": "Concrete area",
+          "access": "item",
+          "description": "Area lorda al netto dei fori, mm\u00B2."
+        },
+        {
+          "name": "Steel area",
+          "access": "item",
+          "description": "Area delle barre, mm\u00B2."
+        },
+        {
+          "name": "Minimum bar cover",
+          "access": "item",
+          "description": "Distanza effettiva del calcestruzzo dalla superficie delle barre, mm."
+        }
+      ]
+    },
+    {
+      "type": "LoadEnvelopeComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0001",
+      "name": "Load Envelope",
+      "category": "1 Results",
+      "description": "Minimi/massimi per ramo, con combinazioni concomitanti. Trasporta tutte le azioni negli assi e origine del primo caso.",
+      "inputs": [
+        {
+          "name": "Forces",
+          "access": "list",
+          "optional": false,
+          "description": "Combinazioni nello stesso ramo; N/Nmm."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Extremum",
+          "access": "list",
+          "description": "N min/max, Vx min/max, Vy min/max, T min/max, Mx min/max, My min/max."
+        },
+        {
+          "name": "Value",
+          "access": "list",
+          "description": "Forze kN; momenti kNm."
+        },
+        {
+          "name": "Case index",
+          "access": "list",
+          "description": "Indice originale, base zero."
+        },
+        {
+          "name": "Concomitant forces",
+          "access": "list",
+          "description": "Tutta la combinazione governante; non un vettore sintetico di massimi."
+        }
+      ]
+    },
+    {
+      "type": "MomentCurvatureComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0018",
+      "name": "Moment Curvature",
+      "category": "4 Analysis",
+      "description": "Analisi GPC a N costante. Checker non lineare; curvatura 1/m e momenti kNm.",
+      "inputs": [
+        {
+          "name": "Checker",
+          "access": "item",
+          "optional": false,
+          "description": "Checker non lineare."
+        },
+        {
+          "name": "Axial force",
+          "access": "item",
+          "optional": false,
+          "description": "kN, compressione negativa."
+        },
+        {
+          "name": "Moment direction",
+          "access": "item",
+          "optional": false,
+          "description": "Gradi negli assi del checker."
+        },
+        {
+          "name": "Steps",
+          "access": "item",
+          "optional": false,
+          "description": "10\u2013500 passi."
+        },
+        {
+          "name": "End fraction",
+          "access": "item",
+          "optional": false,
+          "description": "Frazione del momento limite (0,1]."
+        },
+        {
+          "name": "Axial tolerance",
+          "access": "item",
+          "optional": false,
+          "description": "Tolleranza sull\u0027equilibrio di N, kN."
+        },
+        {
+          "name": "Run",
+          "access": "item",
+          "optional": false,
+          "description": "Avvia il calcolo."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Diagram",
+          "access": "item",
+          "description": "Polilinea (\u03C7 in 1/m, M in kNm)."
+        },
+        {
+          "name": "Curvature",
+          "access": "list",
+          "description": "1/m."
+        },
+        {
+          "name": "Moment",
+          "access": "list",
+          "description": "kNm."
+        },
+        {
+          "name": "Yield curvature",
+          "access": "item",
+          "description": "1/m, NaN se non raggiunta."
+        },
+        {
+          "name": "Ultimate curvature",
+          "access": "item",
+          "description": "1/m, NaN se non raggiunta."
+        },
+        {
+          "name": "Status",
+          "access": "item",
+          "description": "Convergenza, eventuale interruzione e limiti."
+        },
+        {
+          "name": "Response",
+          "access": "item",
+          "description": "Risultato GPC completo."
+        }
+      ]
+    },
+    {
+      "type": "PlateDetailingOptionsComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0015",
+      "name": "Plate Detailing Options",
+      "category": "3 Detailing",
+      "description": "Dati delle armature secondarie/orizzontali non ricavabili dalla sezione 2D.",
+      "inputs": [
+        {
+          "name": "Secondary steel",
+          "access": "item",
+          "optional": false,
+          "description": "Somma delle due facce, mm\u00B2/m."
+        },
+        {
+          "name": "Secondary spacing",
+          "access": "item",
+          "optional": false,
+          "description": "Passo mm; 0 dato mancante, esito da completare."
+        },
+        {
+          "name": "Critical region",
+          "access": "item",
+          "optional": false,
+          "description": "Zona critica della soletta."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Plate data",
+          "access": "item",
+          "description": "Opzioni piastra/parete."
+        }
+      ]
+    },
+    {
+      "type": "RebarLayoutComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0029",
+      "name": "Rebar Path Layout",
+      "category": "6 Sections",
+      "description": "Distribuisce barre lungo la curva dei loro centri in XY, per numero o passo massimo. Preparare il percorso con il copriferro desiderato.",
+      "inputs": [
+        {
+          "name": "Bar centre path",
+          "access": "item",
+          "optional": false,
+          "description": "Curva dei centri in XY, mm; aperta o chiusa."
+        },
+        {
+          "name": "Steel",
+          "access": "item",
+          "optional": false,
+          "description": "Acciaio delle barre."
+        },
+        {
+          "name": "Diameter",
+          "access": "item",
+          "optional": false,
+          "description": "mm."
+        },
+        {
+          "name": "Count",
+          "access": "item",
+          "optional": false,
+          "description": "0 = usa passo massimo; altrimenti numero assegnato."
+        },
+        {
+          "name": "Maximum path spacing",
+          "access": "item",
+          "optional": false,
+          "description": "Passo lungo la curva, mm."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Rebars",
+          "access": "list",
+          "description": "Barre per Reinforced Concrete Section."
+        },
+        {
+          "name": "Centres",
+          "access": "list",
+          "description": "Centri in XY."
+        },
+        {
+          "name": "Path spacing",
+          "access": "item",
+          "description": "Passo effettivo lungo la curva, mm."
+        }
+      ]
+    },
+    {
+      "type": "RectangularRcSectionComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0024",
+      "name": "Rectangular RC Section",
+      "category": "6 Sections",
+      "description": "Rettangolo centrato nell\u0027origine XY. Barre superiori/inferiori e laterali; geometria in mm.",
+      "inputs": [
+        {
+          "name": "Concrete",
+          "access": "item",
+          "optional": false,
+          "description": "Materiale calcestruzzo."
+        },
+        {
+          "name": "Steel",
+          "access": "item",
+          "optional": false,
+          "description": "Acciaio delle barre longitudinali."
+        },
+        {
+          "name": "Width",
+          "access": "item",
+          "optional": false,
+          "description": "Dimensione X, mm."
+        },
+        {
+          "name": "Height",
+          "access": "item",
+          "optional": false,
+          "description": "Dimensione Y, mm."
+        },
+        {
+          "name": "Link cover",
+          "access": "item",
+          "optional": false,
+          "description": "Copriferro alla superficie esterna della staffa, mm."
+        },
+        {
+          "name": "Link diameter",
+          "access": "item",
+          "optional": false,
+          "description": "Diametro staffa usato per posizionare le barre, mm; non definisce il modello di taglio."
+        },
+        {
+          "name": "Bar diameter",
+          "access": "item",
+          "optional": false,
+          "description": "Diametro delle barre longitudinali, mm."
+        },
+        {
+          "name": "Top bars",
+          "access": "item",
+          "optional": false,
+          "description": "Barre fila superiore."
+        },
+        {
+          "name": "Bottom bars",
+          "access": "item",
+          "optional": false,
+          "description": "Barre fila inferiore."
+        },
+        {
+          "name": "Side bars per face",
+          "access": "item",
+          "optional": false,
+          "description": "Barre su ciascun lato, escluse le barre delle file superiore/inferiore."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "RC section",
+          "access": "item",
+          "description": "Sezione GPC compatibile con Concrete Checker."
+        },
+        {
+          "name": "Concrete preview",
+          "access": "item",
+          "description": "Brep XY, mm."
+        },
+        {
+          "name": "Rebars",
+          "access": "list",
+          "description": "Barre GPC con preview."
+        },
+        {
+          "name": "Concrete area",
+          "access": "item",
+          "description": "Area lorda al netto dei fori, mm\u00B2."
+        },
+        {
+          "name": "Steel area",
+          "access": "item",
+          "description": "Area delle barre, mm\u00B2."
+        },
+        {
+          "name": "Minimum bar cover",
+          "access": "item",
+          "description": "Distanza effettiva del calcestruzzo dalla superficie delle barre, mm."
+        }
+      ]
+    },
+    {
+      "type": "ReinforcementDetailingComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0017",
+      "name": "Reinforcement Detailing",
+      "category": "3 Detailing",
+      "description": "Minimi/massimi, interferro, staffe e copriferro secondo il profilo GPC; rende visibili le regole in sospeso.",
+      "inputs": [
+        {
+          "name": "Checker",
+          "access": "item",
+          "optional": false,
+          "description": "Sezione e norma."
+        },
+        {
+          "name": "Options",
+          "access": "item",
+          "optional": false,
+          "description": "Da Detailing Options."
+        },
+        {
+          "name": "Minimum axial force",
+          "access": "item",
+          "optional": false,
+          "description": "Massima compressione fra le combinazioni, kN negativa."
+        },
+        {
+          "name": "Section ID",
+          "access": "item",
+          "optional": false,
+          "description": "Identificativo."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Results",
+          "access": "list",
+          "description": "Un risultato per regola."
+        },
+        {
+          "name": "CSV",
+          "access": "item",
+          "description": "Dettagli e confronti GPC."
+        }
+      ]
+    },
+    {
+      "type": "ReinforcementSearchComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0022",
+      "name": "Reinforcement Candidate Search",
+      "category": "4 Analysis",
+      "description": "Sceglie la minima As fra i checker candidati che soddisfano tutte le combinazioni N-Mx-My. Non verifica taglio, SLE o dettagli.",
+      "inputs": [
+        {
+          "name": "Candidate checkers",
+          "access": "list",
+          "optional": false,
+          "description": "1\u2013100 candidati espliciti; vincoli geometrici definiti a monte."
+        },
+        {
+          "name": "Forces",
+          "access": "list",
+          "optional": false,
+          "description": "Combinazioni N-Mx-My, massimo 1000."
+        },
+        {
+          "name": "Target utilization",
+          "access": "item",
+          "optional": false,
+          "description": "0 \u003C \u03B7 \u2264 1."
+        },
+        {
+          "name": "Run",
+          "access": "item",
+          "optional": false,
+          "description": "Avvia ricerca seriale."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Selected index",
+          "access": "item",
+          "description": "-1 se nessun candidato idoneo."
+        },
+        {
+          "name": "Selected checker",
+          "access": "item",
+          "description": "Checker selezionato."
+        },
+        {
+          "name": "All results",
+          "access": "list",
+          "description": "Esiti di ogni candidato e combinazione."
+        },
+        {
+          "name": "Selected steel area",
+          "access": "item",
+          "description": "mm\u00B2, NaN se nessun candidato."
+        }
+      ]
+    },
+    {
+      "type": "ResistanceCheckComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0009",
+      "name": "Section Resistance Check",
+      "category": "2 Checks",
+      "description": "Verifica N-Mx-My GPC con esito strutturato e convergenza esplicita.",
+      "inputs": [
+        {
+          "name": "Checker",
+          "access": "item",
+          "optional": false,
+          "description": "Checker SLU/SLV."
+        },
+        {
+          "name": "Force",
+          "access": "item",
+          "optional": false,
+          "description": "Azioni N/Nmm."
+        },
+        {
+          "name": "Section ID",
+          "access": "item",
+          "optional": false,
+          "description": "Identificativo per gli inviluppi."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Result",
+          "access": "item",
+          "description": "Esito N-Mx-My."
+        }
+      ]
+    },
+    {
+      "type": "SectionGeometryCheckComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0030",
+      "name": "Section Geometry Check",
+      "category": "6 Sections",
+      "description": "Controllo geometrico di barre, copriferro e interferro. Non sostituisce Reinforcement Detailing.",
+      "inputs": [
+        {
+          "name": "Section",
+          "access": "item",
+          "optional": false,
+          "description": "Sezione GPC."
+        },
+        {
+          "name": "Required bar cover",
+          "access": "item",
+          "optional": false,
+          "description": "Copriferro geometrico minimo alle barre, mm."
+        },
+        {
+          "name": "Required clear spacing",
+          "access": "item",
+          "optional": false,
+          "description": "Interferro minimo assegnato, mm."
+        },
+        {
+          "name": "Section ID",
+          "access": "item",
+          "optional": false,
+          "description": "Identificativo."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Result",
+          "access": "item",
+          "description": "Esito dei soli vincoli geometrici assegnati."
+        },
+        {
+          "name": "Minimum bar cover",
+          "access": "item",
+          "description": "mm."
+        },
+        {
+          "name": "Minimum clear spacing",
+          "access": "item",
+          "description": "mm."
+        },
+        {
+          "name": "Steel area",
+          "access": "item",
+          "description": "mm\u00B2."
+        }
+      ]
+    },
+    {
+      "type": "ServiceabilityCheckComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0011",
+      "name": "Serviceability Check v2",
+      "category": "2 Checks",
+      "description": "Limiti tensionali e fessurazione su analisi GPC, con risultati per gli inviluppi.",
+      "inputs": [
+        {
+          "name": "Stress result",
+          "access": "item",
+          "optional": false,
+          "description": "Risultato di Stress Analysis."
+        },
+        {
+          "name": "Options",
+          "access": "item",
+          "optional": false,
+          "description": "Da SLE Options."
+        },
+        {
+          "name": "Section ID",
+          "access": "item",
+          "optional": false,
+          "description": "Identificativo per gli inviluppi."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Results",
+          "access": "list",
+          "description": "Tensioni e fessurazione."
+        },
+        {
+          "name": "Crack data",
+          "access": "item",
+          "description": "Risultato GPC per Effective Cracked Section."
+        }
+      ]
+    },
+    {
+      "type": "ShearCheckComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0006",
+      "name": "Shear Check v2",
+      "category": "2 Checks",
+      "description": "Verifica GPC con risultato strutturato; mantiene il nome della combinazione.",
+      "inputs": [
+        {
+          "name": "Checker",
+          "access": "item",
+          "optional": false,
+          "description": "Checker della sezione."
+        },
+        {
+          "name": "Force",
+          "access": "item",
+          "optional": false,
+          "description": "Combinazione, N/Nmm."
+        },
+        {
+          "name": "Options",
+          "access": "item",
+          "optional": false,
+          "description": "Da Shear Options."
+        },
+        {
+          "name": "Direction",
+          "access": "item",
+          "optional": false,
+          "description": "0 = X (V1/M2), 1 = Y (V2/M1)."
+        },
+        {
+          "name": "Section ID",
+          "access": "item",
+          "optional": false,
+          "description": "Identificativo per gli inviluppi."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Result",
+          "access": "item",
+          "description": "Risultato strutturato ReBear."
+        }
+      ]
+    },
+    {
+      "type": "ShearOptionsComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0005",
+      "name": "Shear Options",
+      "category": "2 Checks",
+      "description": "Parametri di una direzione nel riferimento del checker. Acciai indipendenti; d esplicito in mm.",
+      "inputs": [
+        {
+          "name": "Link steel",
+          "access": "item",
+          "optional": false,
+          "description": "Acciaio delle staffe."
+        },
+        {
+          "name": "Longitudinal steel",
+          "access": "item",
+          "optional": false,
+          "description": "Acciaio delle barre longitudinali: Es per i modelli GPC."
+        },
+        {
+          "name": "Web width",
+          "access": "item",
+          "optional": false,
+          "description": "Larghezza resistente ortogonale al taglio, mm."
+        },
+        {
+          "name": "Effective depth",
+          "access": "item",
+          "optional": false,
+          "description": "Altezza utile lungo la direzione del taglio, mm."
+        },
+        {
+          "name": "Longitudinal area",
+          "access": "item",
+          "optional": false,
+          "description": "Armatura longitudinale tesa e ancorata, mm\u00B2."
+        },
+        {
+          "name": "Link area",
+          "access": "item",
+          "optional": false,
+          "description": "Somma delle aree dei bracci nella direzione, mm\u00B2; 0 senza staffe."
+        },
+        {
+          "name": "Spacing",
+          "access": "item",
+          "optional": false,
+          "description": "Passo mm; positivo anche senza staffe."
+        },
+        {
+          "name": "Link angle",
+          "access": "item",
+          "optional": false,
+          "description": "Gradi [45,90]."
+        },
+        {
+          "name": "Cot theta",
+          "access": "item",
+          "optional": false,
+          "description": "0 = scelta GPC; altrimenti valore assegnato."
+        },
+        {
+          "name": "Lever factor",
+          "access": "item",
+          "optional": false,
+          "description": "Rapporto esplicito (0,0.9]."
+        },
+        {
+          "name": "Aggregate",
+          "access": "item",
+          "optional": false,
+          "description": "Diametro massimo aggregato, mm."
+        },
+        {
+          "name": "Axial eccentricity",
+          "access": "item",
+          "optional": false,
+          "description": "Eccentricit\u00E0 MC2010 rispetto a met\u00E0 z, mm; positiva verso il corrente teso."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Options",
+          "access": "item",
+          "description": "Opzioni taglio di una direzione."
+        }
+      ]
+    },
+    {
+      "type": "SleOptionsComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0010",
+      "name": "SLE Options",
+      "category": "2 Checks",
+      "description": "Contesto SLE esplicito per limiti tensionali e fessurazione.",
+      "inputs": [
+        {
+          "name": "Combination",
+          "access": "item",
+          "optional": false,
+          "description": "0 quasi permanente; 1 frequente; 2 caratteristica."
+        },
+        {
+          "name": "Exposure",
+          "access": "item",
+          "optional": false,
+          "description": "Codice della classe ambientale, per esempio XC3."
+        },
+        {
+          "name": "Sensitive reinforcement",
+          "access": "item",
+          "optional": false,
+          "description": "Sensibilit\u00E0 delle armature nel criterio GPC."
+        },
+        {
+          "name": "Short term",
+          "access": "item",
+          "optional": false,
+          "description": "True breve durata; false lunga durata."
+        },
+        {
+          "name": "Ribbed bars",
+          "access": "item",
+          "optional": false,
+          "description": "Barre ad aderenza migliorata."
+        },
+        {
+          "name": "Longitudinal bar cover",
+          "access": "item",
+          "optional": false,
+          "description": "Copriferro alla superficie delle barre longitudinali (include il diametro staffa), mm."
+        },
+        {
+          "name": "Design crack limit",
+          "access": "item",
+          "optional": true,
+          "description": "Limite assegnato, mm; scollegato = norma."
+        },
+        {
+          "name": "Spacing override",
+          "access": "item",
+          "optional": true,
+          "description": "Spaziatura assegnata mm; scollegato = geometria."
+        },
+        {
+          "name": "Formula cover override",
+          "access": "item",
+          "optional": true,
+          "description": "Copriferro della formula GPC mm; scollegato = c."
+        },
+        {
+          "name": "Concentric rings",
+          "access": "item",
+          "optional": false,
+          "description": "Conferma disposizione in anelli concentrici per sezioni circolari."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Options",
+          "access": "item",
+          "description": "Opzioni SLE."
+        },
+        {
+          "name": "Exposure catalogue",
+          "access": "list",
+          "description": "Codici GPC disponibili."
+        }
+      ]
+    },
+    {
+      "type": "TeeRcSectionComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0026",
+      "name": "T RC Section",
+      "category": "6 Sections",
+      "description": "Sezione a T con ala superiore, centrata nel rettangolo d\u0027ingombro XY. Layout iniziale da verificare.",
+      "inputs": [
+        {
+          "name": "Concrete",
+          "access": "item",
+          "optional": false,
+          "description": "Materiale calcestruzzo."
+        },
+        {
+          "name": "Steel",
+          "access": "item",
+          "optional": false,
+          "description": "Acciaio delle barre longitudinali."
+        },
+        {
+          "name": "Flange width",
+          "access": "item",
+          "optional": false,
+          "description": "mm."
+        },
+        {
+          "name": "Height",
+          "access": "item",
+          "optional": false,
+          "description": "mm."
+        },
+        {
+          "name": "Web width",
+          "access": "item",
+          "optional": false,
+          "description": "mm."
+        },
+        {
+          "name": "Flange thickness",
+          "access": "item",
+          "optional": false,
+          "description": "mm."
+        },
+        {
+          "name": "Link cover",
+          "access": "item",
+          "optional": false,
+          "description": "Copriferro alla superficie esterna della staffa, mm."
+        },
+        {
+          "name": "Link diameter",
+          "access": "item",
+          "optional": false,
+          "description": "Diametro staffa usato per posizionare le barre, mm; non definisce il modello di taglio."
+        },
+        {
+          "name": "Bar diameter",
+          "access": "item",
+          "optional": false,
+          "description": "Diametro delle barre longitudinali, mm."
+        },
+        {
+          "name": "Top bars",
+          "access": "item",
+          "optional": false,
+          "description": "Barre superiori nell\u0027ala."
+        },
+        {
+          "name": "Bottom bars",
+          "access": "item",
+          "optional": false,
+          "description": "Barre inferiori nell\u0027anima."
+        },
+        {
+          "name": "Web bars per face",
+          "access": "item",
+          "optional": false,
+          "description": "Barre aggiuntive su ciascun lato dell\u0027anima."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "RC section",
+          "access": "item",
+          "description": "Sezione GPC compatibile con Concrete Checker."
+        },
+        {
+          "name": "Concrete preview",
+          "access": "item",
+          "description": "Brep XY, mm."
+        },
+        {
+          "name": "Rebars",
+          "access": "list",
+          "description": "Barre GPC con preview."
+        },
+        {
+          "name": "Concrete area",
+          "access": "item",
+          "description": "Area lorda al netto dei fori, mm\u00B2."
+        },
+        {
+          "name": "Steel area",
+          "access": "item",
+          "description": "Area delle barre, mm\u00B2."
+        },
+        {
+          "name": "Minimum bar cover",
+          "access": "item",
+          "description": "Distanza effettiva del calcestruzzo dalla superficie delle barre, mm."
+        }
+      ]
+    },
+    {
+      "type": "TorsionOptionsComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0007",
+      "name": "Torsion Options",
+      "category": "2 Checks",
+      "description": "Profilo sottile esplicito e staffe chiuse a 90\u00B0. Area longitudinale aggiuntiva a quella per flessione.",
+      "inputs": [
+        {
+          "name": "Enclosed area",
+          "access": "item",
+          "optional": false,
+          "description": "Area racchiusa dalla linea media, mm\u00B2."
+        },
+        {
+          "name": "Midline perimeter",
+          "access": "item",
+          "optional": false,
+          "description": "Perimetro linea media, mm."
+        },
+        {
+          "name": "Effective thickness",
+          "access": "item",
+          "optional": false,
+          "description": "Spessore efficace, mm."
+        },
+        {
+          "name": "Link steel",
+          "access": "item",
+          "optional": false,
+          "description": "Acciaio delle staffe chiuse."
+        },
+        {
+          "name": "Longitudinal steel",
+          "access": "item",
+          "optional": false,
+          "description": "Acciaio longitudinale per torsione."
+        },
+        {
+          "name": "One leg area",
+          "access": "item",
+          "optional": false,
+          "description": "Area di un solo braccio di staffa chiusa, mm\u00B2."
+        },
+        {
+          "name": "Spacing",
+          "access": "item",
+          "optional": false,
+          "description": "Passo staffe mm."
+        },
+        {
+          "name": "Torsion longitudinal area",
+          "access": "item",
+          "optional": false,
+          "description": "Area aggiuntiva disponibile per torsione, distribuita sul profilo, mm\u00B2."
+        },
+        {
+          "name": "Cot theta",
+          "access": "item",
+          "optional": false,
+          "description": "Inclinazione comune a taglio/torsione."
+        },
+        {
+          "name": "Hollow, both faces reinforced",
+          "access": "item",
+          "optional": false,
+          "description": "Sezione cava con armature su entrambe le facce delle pareti."
+        },
+        {
+          "name": "Closed links and distributed bars confirmed",
+          "access": "item",
+          "optional": false,
+          "description": "Confermare staffe chiuse e barre longitudinali distribuite sul profilo, con barre agli angoli."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Options",
+          "access": "item",
+          "description": "Opzioni torsione."
+        }
+      ]
+    },
+    {
+      "type": "TorsionShearCheckComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0008",
+      "name": "Torsion and Shear",
+      "category": "2 Checks",
+      "description": "Torsione e interazioni GPC con entrambi i tagli concomitanti.",
+      "inputs": [
+        {
+          "name": "Checker",
+          "access": "item",
+          "optional": false,
+          "description": "Checker della sezione."
+        },
+        {
+          "name": "Force",
+          "access": "item",
+          "optional": false,
+          "description": "Combinazione completa, N/Nmm."
+        },
+        {
+          "name": "Torsion options",
+          "access": "item",
+          "optional": false,
+          "description": "Da Torsion Options."
+        },
+        {
+          "name": "Shear X options",
+          "access": "item",
+          "optional": true,
+          "description": "Richieste se Vx non nullo."
+        },
+        {
+          "name": "Shear Y options",
+          "access": "item",
+          "optional": true,
+          "description": "Richieste se Vy non nullo."
+        },
+        {
+          "name": "Section ID",
+          "access": "item",
+          "optional": false,
+          "description": "Identificativo per gli inviluppi."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Result",
+          "access": "item",
+          "description": "Utilizzo massimo fra torsione e interazioni; dettagli in Check Result."
+        }
+      ]
+    }
+  ]
+}

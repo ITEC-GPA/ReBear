@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M4 2L15 2L20 7L20 22L4 22Z" fill="#FFFFFF" stroke="#283E4A" stroke-width="1.3"/>
+<path d="M15 2L15 7L20 7" fill="#DDE5E8" stroke="#283E4A" stroke-width="1"/>
+<text x="6" y="18.3" font-family="Segoe UI, sans-serif" font-size="15" font-weight="600" fill="#008B8B">ε</text>
+<path d="M7 19L17 19" stroke="#283E4A" stroke-width="1.2"/>
+</svg>

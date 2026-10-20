@@ -1,0 +1,29 @@
+<Project>
+  <ItemGroup>
+    <Reference Include="GPCUtilities">
+      <HintPath>$(MSBuildThisFileDirectory)..\lib\GPC\GPCUtilities.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="GPCGeometry">
+      <HintPath>$(MSBuildThisFileDirectory)..\lib\GPC\GPCGeometry.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="DelaunayMesh">
+      <HintPath>$(MSBuildThisFileDirectory)..\lib\GPC\DelaunayMesh.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="GPCModel">
+      <HintPath>$(MSBuildThisFileDirectory)..\lib\GPC\GPCModel.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="GPCModelData">
+      <HintPath>$(MSBuildThisFileDirectory)..\lib\GPC\GPCModelData.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="GPCChecker.Concrete">
+      <HintPath>$(MSBuildThisFileDirectory)..\lib\GPC\GPCChecker.Concrete.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <PackageReference Include="MathNet.Numerics" Version="5.0.0" />
+  </ItemGroup>
+</Project>

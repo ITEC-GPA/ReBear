@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Description>Adattamento dei dati Grasshopper alle API GPC, senza formule normative locali.</Description>
+  </PropertyGroup>
+  <Import Project="..\..\build\GpcReferences.props" />
+</Project>

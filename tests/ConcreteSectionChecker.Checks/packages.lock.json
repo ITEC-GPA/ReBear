@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "dependencies": {
+    "net8.0-windows7.0": {
+      "Grasshopper": {
+        "type": "Direct",
+        "requested": "[8.27.26019.16021, )",
+        "resolved": "8.27.26019.16021",
+        "contentHash": "52kmjm0F2GXP97ABZUQhAXgRjx1y2tvXLgvQ7zxpnpYtlGQrHwj5P9etCs7Klq58kwysG5QEazy5R8qMFQ+pDA==",
+        "dependencies": {
+          "RhinoCommon": "[8.27.26019.16021]"
+        }
+      },
+      "MathNet.Numerics": {
+        "type": "Direct",
+        "requested": "[5.0.0, )",
+        "resolved": "5.0.0",
+        "contentHash": "pg1W2VwaEQMAiTpGK840hZgzavnqjlCMTVSbtVCXVyT+7AX4mc1o89SPv4TBlAjhgCOo9c1Y+jZ5m3ti2YgGgA=="
+      },
+      "RhinoCommon": {
+        "type": "Direct",
+        "requested": "[8.27.26019.16021, )",
+        "resolved": "8.27.26019.16021",
+        "contentHash": "+UzJRlZJCnS5V2Yq52qWQQc+OTg2FmtLZUc96xeFITDpywZ/tLwunQQkO6fLvIsO/kL3bzjvWEZ2RLPmajM/+A==",
+        "dependencies": {
+          "System.Drawing.Common": "7.0.0"
+        }
+      },
+      "Microsoft.Win32.SystemEvents": {
+        "type": "Transitive",
+        "resolved": "7.0.0",
+        "contentHash": "2nXPrhdAyAzir0gLl8Yy8S5Mnm/uBSQQA7jEsILOS1MTyS7DbmV1NgViMtvV1sfCD1ebITpNwb1NIinKeJgUVQ=="
+      },
+      "System.Drawing.Common": {
+        "type": "Transitive",
+        "resolved": "7.0.0",
+        "contentHash": "KIX+oBU38pxkKPxvLcLfIkOV5Ien8ReN78wro7OF5/erwcmortzeFx+iBswlh2Vz6gVne0khocQudGwaO1Ey6A==",
+        "dependencies": {
+          "Microsoft.Win32.SystemEvents": "7.0.0"
+        }
+      },
+      "concretesectionchecker.adapters": {
+        "type": "Project",
+        "dependencies": {
+          "MathNet.Numerics": "[5.0.0, )"
+        }
+      }
+    }
+  }
+}

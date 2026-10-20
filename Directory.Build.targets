@@ -1,0 +1,7 @@
+<Project>
+  <!-- Publish/clean only after a successful build, including incremental IDE builds. -->
+  <Target Name="ReBearPostBuild" AfterTargets="Build"
+          Condition="'$(DesignTimeBuild)' != 'true' and '$(MSBuildProjectName)' == 'ConcreteSectionChecker.Grasshopper' and '$(Configuration)' == 'Release'">
+    <Exec Command="powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File &quot;$(ReBearRoot)build\CleanBuilds.ps1&quot; -ReleaseSource &quot;$(TargetDir).&quot;" />
+  </Target>
+</Project>

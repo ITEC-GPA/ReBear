@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <TargetExt>.gha</TargetExt>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+    <UseWindowsForms>true</UseWindowsForms>
+    <UseWpf>true</UseWpf>
+    <AssemblyName>ReBear</AssemblyName>
+    <RootNamespace>ConcreteSectionChecker.Grasshopper</RootNamespace>
+    <Title>ReBear</Title>
+    <Description>Verifica di sezioni in calcestruzzo armato con le librerie GPC.</Description>
+  </PropertyGroup>
+  <Import Project="..\..\build\GpcReferences.props" />
+  <ItemGroup>
+    <None Include="..\..\lib\GPC\release-set.json" Link="release-set.json" CopyToOutputDirectory="PreserveNewest" />
+    <EmbeddedResource Include="Resources\Icons\*.png" />
+    <PackageReference Include="Grasshopper" Version="8.27.26019.16021" ExcludeAssets="runtime" />
+    <PackageReference Include="RhinoCommon" Version="8.27.26019.16021" ExcludeAssets="runtime" />
+    <ProjectReference Include="..\ConcreteSectionChecker.Adapters\ConcreteSectionChecker.Adapters.csproj" />
+  </ItemGroup>
+</Project>

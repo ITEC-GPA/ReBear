@@ -1,0 +1,230 @@
+{
+  "sourceCommit": "66555b6c43d10c8929c9871c172f5d78069655a8",
+  "sourceDate": "2026-04-01",
+  "components": [
+    {
+      "file": "BarMaterialComponent.cs",
+      "guid": "23875d38-d43a-4051-b19c-a6ae39139f7b",
+      "sourceSha256": "C58CC59888C1A53E226DC8E59AF3414B4CC3FACB61AE511B564E76F4C641E998",
+      "inputRegistration": "int i = pManager.AddIntegerParameter(\"Type\", \"T\", \"The property type\", GH_ParamAccess.item, 0);\r\n            Param_Integer mtParam = pManager[i] as Param_Integer;\r\n            foreach (KeyValuePair<int, string> v in _steelList)\r\n                mtParam.AddNamedValue(v.Value, v.Key);\r\n            int j = pManager.AddIntegerParameter(\"Behaviour\", \"B\", \"The behaviour type\", GH_ParamAccess.item, 0);\r\n            Param_Integer mtParamj = pManager[j] as Param_Integer;\r\n            foreach (KeyValuePair<int, string> v in _hardeningType)\r\n                mtParamj.AddNamedValue(v.Value, v.Key);",
+      "outputRegistration": "pManager.AddGenericParameter(\"Bar Steel Material\", \"BS\", \"Bar Steel Material\", GH_ParamAccess.item);"
+    },
+    {
+      "file": "CheckerComponent.cs",
+      "guid": "c485957b-3d8e-4f19-8176-f30ffcda952e",
+      "sourceSha256": "393BCED420E6C20909150FE6A04A1514CE810A0542CDE5C8A62884A8AE2CFCF0",
+      "inputRegistration": "pManager.AddGenericParameter(\"Reinforced Concrete Section\", \"RCS\", \"The reinforced concrete section\", GH_ParamAccess.item);\r\n            pManager.AddGenericParameter(\"Standard\", \"S\", \"The standard\", GH_ParamAccess.item);\r\n            pManager.AddGenericParameter(\"Options\", \"O\", \"The analysis options\", GH_ParamAccess.item);",
+      "outputRegistration": "pManager.AddGenericParameter(\"Concrete Checker\", \"CC\", \"Concrete Checker\", GH_ParamAccess.item);"
+    },
+    {
+      "file": "CheckerOptionsComponent.cs",
+      "guid": "acd21b40-347d-487b-ad3d-c355e19b5315",
+      "sourceSha256": "08AA662412C1383D00B446CB4C3709BF970DF026BDB21A0C068224749E5A4D42",
+      "inputRegistration": "pManager.AddGenericParameter(\"Coordinate System\", \"CS\", \"The Analysis Coordinate System\", GH_ParamAccess.item);\r\n            int i = pManager.AddIntegerParameter(\"Failure Domain Types\", \"FDT\", \"The Failure Domain Types\", GH_ParamAccess.item, 1);\r\n            Param_Integer mtParam = pManager[i] as Param_Integer;\r\n            foreach (KeyValuePair<int, string> v in _failureDomainTypesList)\r\n                mtParam.AddNamedValue(v.Value.ToString(), v.Key);\r\n            i = pManager.AddIntegerParameter(\"Failure Analysis Types\", \"FAT\", \"The Failure Analysis Types\", GH_ParamAccess.item, 1);\r\n            mtParam = pManager[i] as Param_Integer;\r\n            foreach (KeyValuePair<int, string> v in _failureAnalysisTypeList)\r\n                mtParam.AddNamedValue(v.Value.ToString(), v.Key);\r\n            i = pManager.AddIntegerParameter(\"Domain Point Strategy Types\", \"DPST\", \"The Domain Point Strategy Types\", GH_ParamAccess.item, 0);\r\n            mtParam = pManager[i] as Param_Integer;\r\n            foreach (KeyValuePair<int, string> v in _domainPointStrategyTypesList)\r\n                mtParam.AddNamedValue(v.Value.ToString(), v.Key);\r\n            i = pManager.AddIntegerParameter(\"Stress Analysis Types\", \"SAT\", \"The Stress Analysis Types\", GH_ParamAccess.item, 1);\r\n            mtParam = pManager[i] as Param_Integer;\r\n            foreach (KeyValuePair<int, string> v in _stressAnalysisTypesList)\r\n                mtParam.AddNamedValue(v.Value.ToString(), v.Key);\r\n            pManager.AddNumberParameter(\"ψ rebar\", \"ψ r\", \"The ψ coefficient for rebars\", GH_ParamAccess.item, 1.5);\r\n            pManager.AddNumberParameter(\"ψ tendon\", \"ψ t\", \"The ψ coefficient for tendons\", GH_ParamAccess.item, 0);\r\n            pManager.AddBooleanParameter(\"Consider tensile concrete\", \"TC\", \"Consider tensile concrete\", GH_ParamAccess.item, false);",
+      "outputRegistration": "pManager.AddGenericParameter(\"Checker Options\", \"CO\", \"Checker Options\", GH_ParamAccess.item);"
+    },
+    {
+      "file": "CircularSectionShearCheckComponent.cs",
+      "guid": "fdb8a104-8595-4b8f-9d1a-1ac36a664488",
+      "sourceSha256": "6DA24362F064F63B46FACDBC92A433ACF830A6E67CCF4033E9C4D6130FED9636",
+      "inputRegistration": "pManager.AddGenericParameter(\"Concrete Checker\", \"CC\", \"Concrete Checker\", GH_ParamAccess.item);\r\n            pManager.AddGenericParameter(\"Force\", \"F\", \"Force\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Diameter\", \"D\", \"Diameter\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Stirrup Diameter\", \"SD\", \"Stirrup Diameter\", GH_ParamAccess.item);\r\n            pManager.AddIntegerParameter(\"Number of Legs\", \"NL\", \"Number of Legs of a stirrup\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Spacing\", \"S\", \"Spacing\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Stirrup slope\", \"SS\", \"Stirrup slope\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Longitudinal rebar diameter\", \"LRD\", \"Longitudinal rebar diameter\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Concrete Cover\", \"CC\", \"Concrete Cover\", GH_ParamAccess.item);",
+      "outputRegistration": "pManager.AddTextParameter(\"To Excel Header\", \"TEH\", \"To Excel Header\", GH_ParamAccess.item);\r\n            pManager.AddTextParameter(\"To Excel\", \"TE\", \"To Excel\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Vrsd\", \"Vrsd\", \"Vrsd\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Vrcd\", \"Vrcd\", \"Vrcd\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Vrd\", \"Vrd\", \"Vrd\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Working Ratio\", \"WR\", \"Working Ratio\", GH_ParamAccess.item);"
+    },
+    {
+      "file": "ColorGradientMeshComponent.cs",
+      "guid": "b62a91c6-b7bb-4e99-800f-1fafb45707ad",
+      "sourceSha256": "4BE9FB14FD648F1C9C83522A6F2570C4674BDC4D95B310FB506BAA8FBAA4E1AB",
+      "inputRegistration": "pManager.AddGenericParameter(\"Stress Analysis Results\", \"SA\", \"Stress Analysis Results\", GH_ParamAccess.item);\r\n            pManager.AddBooleanParameter(\"Smooth\", \"s\", \"Boolean for smooth gradient\", GH_ParamAccess.item, true);",
+      "outputRegistration": "pManager.AddMeshParameter(\"Mesh\", \"msh\", \"Output mesh\", GH_ParamAccess.item);"
+    },
+    {
+      "file": "ColorMeshComponent.cs",
+      "guid": "1c72c75b-9ede-461a-8553-973173695f79",
+      "sourceSha256": "E6A8256097A3D1EB4DA661AFAAB1CEDBF49E86115AC5E9B8A8F42EB8CE45DC7C",
+      "inputRegistration": "pManager.AddPointParameter(\"Points\", \"pts\", \"Points as List\", GH_ParamAccess.list);\r\n            pManager.AddColourParameter(\"Colours\", \"col\", \"Values as List\", GH_ParamAccess.list);\r\n            pManager.AddMeshParameter(\"Mesh\", \"msh\", \"Mesh as item\", GH_ParamAccess.item);\r\n            pManager.AddBooleanParameter(\"Smooth\", \"s\", \"Boolean for smooth gradient\", GH_ParamAccess.item, true);",
+      "outputRegistration": "pManager.AddMeshParameter(\"Mesh\", \"msh\", \"Output mesh\", GH_ParamAccess.item);"
+    },
+    {
+      "file": "ConcreteDesignValue.cs",
+      "guid": "a8098614-15d9-4789-bffe-ecb9e694b888",
+      "sourceSha256": "95CFB61DAC10254DD8F5C2649D108816E1CDFFB4D32FFC2C46C71DA9A51A2AFE",
+      "inputRegistration": "pManager.AddGenericParameter(\"Concrete Material\", \"CM\", \"Concrete Material\", GH_ParamAccess.item);\r\n            pManager.AddGenericParameter(\"Standard\", \"S\", \"Standard\", GH_ParamAccess.item);",
+      "outputRegistration": "pManager.AddTextParameter(\"Name\", \"Name\", \"Name\", GH_ParamAccess.item);\r\n            pManager.AddTextParameter(\"fck\", \"fck\", \"fck\", GH_ParamAccess.item);\r\n            pManager.AddTextParameter(\"fcm\", \"fcm\", \"fcm\", GH_ParamAccess.item);\r\n            pManager.AddTextParameter(\"Elastic Modulus\", \"E\", \"Elastic Modulus\", GH_ParamAccess.item);\r\n            pManager.AddTextParameter(\"εy\", \"εy\", \"Yelding strain in compression\", GH_ParamAccess.item);\r\n            pManager.AddTextParameter(\"εu\", \"εu\", \"Ultimate strain in compression\", GH_ParamAccess.item);\r\n            pManager.AddTextParameter(\"fcd\", \"fcd\", \"fcd\", GH_ParamAccess.item);\r\n            pManager.AddTextParameter(\"fctd\", \"fcd\", \"fcd\", GH_ParamAccess.item);"
+    },
+    {
+      "file": "ConcreteMaterialComponent.cs",
+      "guid": "e2aa1e8b-3fa9-49a5-8d5e-991d4eac5bc6",
+      "sourceSha256": "4F38E917800842CD859E499B2B11B9AC577E242B98B32EA1158D091B03F147DE",
+      "inputRegistration": "int i = pManager.AddIntegerParameter(\"Type\", \"T\", \"The property type\", GH_ParamAccess.item, 1);\r\n            Param_Integer mtParam = pManager[i] as Param_Integer;\r\n            foreach (KeyValuePair<int, string> v in _concreteList)\r\n                mtParam.AddNamedValue(v.Value, v.Key);",
+      "outputRegistration": "pManager.AddGenericParameter(\"Concrete Material\", \"CM\", \"Concrete Material\", GH_ParamAccess.item);"
+    },
+    {
+      "file": "ConcreteMechanicalPropertiesComponent.cs",
+      "guid": "aba32c4e-70fa-4e76-bef9-bb02214a1279",
+      "sourceSha256": "0318E9B3000FC651258E6F26368E28356BACF78CE6F8F1E57112DBE63364BEF0",
+      "inputRegistration": "pManager.AddGenericParameter(\"Reinforced Concrete Section\", \"RCS\", \"The Reinforced Concrete Section\", GH_ParamAccess.item);",
+      "outputRegistration": "pManager.AddTextParameter(\"Name\", \"N\", \"Name\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Area\", \"A\", \"Area\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Sx\", \"Sx\", \"Sx\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Sy\", \"Sy\", \"Sy\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Jxx\", \"Jxx\", \"Jxx\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Jyy\", \"Jyy\", \"Jyy\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Jxy\", \"Jxy\", \"Jxy\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Jp\", \"Jp\", \"Jp\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"J11\", \"J11\", \"J11\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"J22\", \"J22\", \"J22\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Angle\", \"A\", \"Area\", GH_ParamAccess.item);\r\n            pManager.AddPointParameter(\"Centroid\", \"C\", \"Centroid\", GH_ParamAccess.item);"
+    },
+    {
+      "file": "CoordinateSystemComponent.cs",
+      "guid": "8f839216-244a-4891-a1d5-bb0fb42f7909",
+      "sourceSha256": "5CAA809DF1BC989ED480EB5882D53B64AFD60F5AF345D73C017D05BEB30E3025",
+      "inputRegistration": "pManager.AddTextParameter(\"Name\", \"N\", \"The Coordiante System Name\", GH_ParamAccess.item, \"\");\r\n            pManager.AddPointParameter(\"Origin\", \"O\", \"The Coordiante System Origin\", GH_ParamAccess.item);\r\n            pManager.AddPointParameter(\"P1\", \"P1\", \"The Coordiante System X axis\", GH_ParamAccess.item);\r\n            pManager.AddPointParameter(\"P2\", \"P2\", \"The Coordiante System Y axis\", GH_ParamAccess.item);",
+      "outputRegistration": "pManager.AddGenericParameter(\"Coordinate System\", \"CS\", \"The Coordinate System\", GH_ParamAccess.item);"
+    },
+    {
+      "file": "CoordinateSystemSectionComponent.cs",
+      "guid": "c84a4593-64c3-44b1-b663-6482d43b820b",
+      "sourceSha256": "B04A2DB611B5AE9F19D7F8A2A3FB99CFA0BB66D20F29CEB772A062BF9F11C1C6",
+      "inputRegistration": "pManager.AddGenericParameter(\"Concrete Section\", \"C\", \"The Reinforced Concrete Section\", GH_ParamAccess.item);",
+      "outputRegistration": "pManager.AddGenericParameter(\"Coordinate System\", \"CS\", \"The Coordinate System\", GH_ParamAccess.item);"
+    },
+    {
+      "file": "FailureDomain3DComponent.cs",
+      "guid": "a4c3e502-6c1e-4954-a9ef-7ac9e8bab5ef",
+      "sourceSha256": "1630060C5D26E21A497FC63B3C7F4CA9787E31EB533EC6B2FC20E68762CB7C7B",
+      "inputRegistration": "pManager.AddGenericParameter(\"Concrete Checker\", \"CC\", \"Concrete Checker\", GH_ParamAccess.item);",
+      "outputRegistration": "pManager.AddGenericParameter(\"3D Failure Domain Analysis\", \"FDA\", \"3D Failure Domain Analysis\", GH_ParamAccess.item);\r\n            pManager.AddPointParameter(\"3D Failure Domain Points\", \"FDP\", \"3D Failure Domain\", GH_ParamAccess.list);\r\n            pManager.AddMeshParameter(\"3D Failure Domain Mesh\", \"FDM\", \"3D Failure Domain\", GH_ParamAccess.item);"
+    },
+    {
+      "file": "FailureDomainSummaryComponent.cs",
+      "guid": "0a07f98a-2c47-4bc6-84c3-5833a4f6b65a",
+      "sourceSha256": "D35CE60430C3225EEEE22A6D12FBF9E6C28133BDC9FA42576DB72E60F4FA1398",
+      "inputRegistration": "pManager.AddGenericParameter(\"Reinforced Concrete Section\", \"RCS\", \"The reinforced concrete section\", GH_ParamAccess.item);\r\n            pManager.AddGenericParameter(\"Standard\", \"S\", \"The standard\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Axial Force [kN]\", \"N [kN]\", \"Axial Force [kN]\", GH_ParamAccess.item, 0.0);",
+      "outputRegistration": "pManager.AddNumberParameter(\"MxRd+ pl [kNm]\", \"MxRd+ pl [kNm]\", \"MxRd+ pl [kNm]\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"MyRd+ pl [kNm]\", \"MyRd+ pl [kNm]\", \"MyRd+ pl [kNm]\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"MxRd- pl [kNm]\", \"MxRd- pl [kNm]\", \"MxRd- pl [kNm]\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"MyRd- pl [kNm]\", \"MyRd- pl [kNm]\", \"MyRd- pl [kNm]\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"MxRd+ el [kNm]\", \"MxRd+ el [kNm]\", \"MxRd+ el [kNm]\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"MyRd+ el [kNm]\", \"MyRd+ el [kNm]\", \"MyRd+ el [kNm]\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"MxRd- el [kNm]\", \"MxRd- el [kNm]\", \"MxRd- el [kNm]\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"MyRd- el [kNm]\", \"MyRd- el [kNm]\", \"MyRd- el [kNm]\", GH_ParamAccess.item);"
+    },
+    {
+      "file": "HomogenizedMechanicalPropertiesComponent.cs",
+      "guid": "c9e7fd77-486c-416e-987b-cf6521e649fd",
+      "sourceSha256": "247D1A98F3855E658FD7926BC98EB140AEBE07C559F29B8249937B29AD7A35E1",
+      "inputRegistration": "pManager.AddGenericParameter(\"Reinforced Concrete Section\", \"RCS\", \"The Reinforced Concrete Section\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"ψ factor\", \"ψ\", \"ψ factor\", GH_ParamAccess.item, 0);",
+      "outputRegistration": "pManager.AddTextParameter(\"Name\", \"N\", \"Name\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Area\", \"A\", \"Area\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Sx\", \"Sx\", \"Sx\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Sy\", \"Sy\", \"Sy\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Jxx\", \"Jxx\", \"Jxx\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Jyy\", \"Jyy\", \"Jyy\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Jxy\", \"Jxy\", \"Jxy\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Jp\", \"Jp\", \"Jp\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"J11\", \"J11\", \"J11\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"J22\", \"J22\", \"J22\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Angle\", \"A\", \"Area\", GH_ParamAccess.item);\r\n            pManager.AddPointParameter(\"Centroid\", \"C\", \"Centroid\", GH_ParamAccess.item);"
+    },
+    {
+      "file": "PostProcessFailureDomain3DComponent.cs",
+      "guid": "96102691-a47f-4cb5-a411-db638040b01e",
+      "sourceSha256": "0E6E58852BE04F1405B7904B25E3CE113ECFF6A06AD5CA1F8436EE152CD80389",
+      "inputRegistration": "pManager.AddGenericParameter(\"3D Failure Domain Analysis\", \"FDA\", \"3D Failure Domain Analysis\", GH_ParamAccess.item);\r\n            pManager.AddGenericParameter(\"Forces\", \"F\", \"Forces\", GH_ParamAccess.list);",
+      "outputRegistration": "pManager.AddTextParameter(\"To Excel Header\", \"TEH\", \"To Excel Header\", GH_ParamAccess.item);\r\n            pManager.AddTextParameter(\"To Excel\", \"TE\", \"To Excel\", GH_ParamAccess.list);\r\n            pManager.AddPointParameter(\"External Force\", \"EF\", \"External Force\", GH_ParamAccess.list);\r\n            pManager.AddPointParameter(\"Resistance Force\", \"RF\", \"Resistance Force\", GH_ParamAccess.list);\r\n            pManager.AddNumberParameter(\"Working Ratio\", \"wR\", \"Working Ratio\", GH_ParamAccess.list);"
+    },
+    {
+      "file": "PostProcessStrainResultComponent.cs",
+      "guid": "3951b5ca-01a2-4f6c-8acb-1b8a80ed1e65",
+      "sourceSha256": "E3F1715EC8A85C460A2708343C124DD01F68EE08BDB65081C0FA2E03568D1A95",
+      "inputRegistration": "pManager.AddGenericParameter(\"Stress Analysis\", \"SA\", \"Stress Analysis\", GH_ParamAccess.item);",
+      "outputRegistration": "pManager.AddTextParameter(\"To Excel Header\", \"TEH\", \"To Excel Header\", GH_ParamAccess.item);\r\n            pManager.AddTextParameter(\"To Excel\", \"TE\", \"To Excel\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Id\", \"Id\", \"Id\", GH_ParamAccess.item);\r\n            pManager.AddTextParameter(\"Name\", \"Name\", \"Name\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"N[kN]\", \"N[kN]\", \"N[kN]\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Mx[kNm]\", \"Mx[kNm]\", \"Mx[kNm]\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"My[kNm]\", \"My[kNm]\", \"My[kNm]\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"σc min[Mpa]\", \"σc min[Mpa]\", \"σc min[Mpa]\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"σc max[Mpa]\", \"σc max[Mpa]\", \"σc max[Mpa]\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"σs min[Mpa]\", \"σs min[Mpa]\", \"σs min[Mpa]\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"σs max[Mpa]\", \"σs max[Mpa]\", \"σs max[Mpa]\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"σsp min[Mpa]\", \"σsp min[Mpa]\", \"σsp min[Mpa]\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"σsp max[Mpa]\", \"σsp max[Mpa]\", \"σsp max[Mpa]\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"σss min[Mpa]\", \"σss min[Mpa]\", \"σss min[Mpa]\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"σss max[Mpa]\", \"σss max[Mpa]\", \"σss max[Mpa]\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"εc min\", \"εc min\", \"εc min\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"εc max\", \"εc max\", \"εc max\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"εs min\", \"εs min\", \"εs min\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"εs max\", \"εs max\", \"εs max\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"εsp min\", \"εsp min\", \"εsp min\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"εsp max\", \"εsp max\", \"εsp max\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"εss min\", \"εss min\", \"εss min\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"εss max\", \"εss max\", \"εss max\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"d[mm]\", \"d[mm]\", \"d[mm]\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"x[mm]\", \"x[mm]\", \"x[mm]\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"θ[°]\", \"θ[°]\", \"θ[°]\", GH_ParamAccess.item);"
+    },
+    {
+      "file": "PsiFactorComponent.cs",
+      "guid": "7480e84d-4e82-4be1-a021-425dff4803e1",
+      "sourceSha256": "E0260C6531732D228D865E5991AA04946AAE2D5825D8B91E4D70C2BEBCB62513",
+      "inputRegistration": "pManager.AddGenericParameter(\"Concrete Material\", \"CM\", \"The Concrete Material\", GH_ParamAccess.item);\r\n            pManager.AddGenericParameter(\"Steel material\", \"SM\", \"The Concrete Material\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Homogenized factor\", \"HF\", \"Concrete Material\", GH_ParamAccess.item, 15);",
+      "outputRegistration": "pManager.AddNumberParameter(\"ψ factor\", \"ψ\", \"The ψ factor\", GH_ParamAccess.item);"
+    },
+    {
+      "file": "RebarComponent.cs",
+      "guid": "411284c2-923a-4475-94a5-8405ece71ce0",
+      "sourceSha256": "AC1F27C7F6A103475BCC8F5F581A5CC8D73B74384B3A2549D31CCB0814691726",
+      "inputRegistration": "pManager.AddPointParameter(\"Position\", \"P\", \"The rebar position\", GH_ParamAccess.item);\r\n            int i = pManager.AddIntegerParameter(\"Diamater\", \"D\", \"The rebar diameter\", GH_ParamAccess.item);\r\n            Param_Integer mtParam = pManager[i] as Param_Integer;\r\n            foreach (KeyValuePair<int, int> v in _diameterList)\r\n                mtParam.AddNamedValue(v.Value.ToString(), v.Key);\r\n            pManager.AddGenericParameter(\"Rebar Material\", \"M\", \"The rebar material\", GH_ParamAccess.item);",
+      "outputRegistration": "pManager.AddGenericParameter(\"Rebar Element\", \"RE\", \"Rebar Element\", GH_ParamAccess.item);"
+    },
+    {
+      "file": "RebarMaterialComponent.cs",
+      "guid": "606ebfd0-d9e7-407e-aaa3-eb8579fe2f6b",
+      "sourceSha256": "E0626B76C0F7575FCB607B579D9C1874E15AAB8A198F680308191EFE10E32307",
+      "inputRegistration": "int i = pManager.AddIntegerParameter(\"Type\", \"T\", \"The property type\", GH_ParamAccess.item, 1);\r\n            Param_Integer mtParam = pManager[i] as Param_Integer;\r\n            foreach (KeyValuePair<int, string> v in _steelList)\r\n                mtParam.AddNamedValue(v.Value, v.Key);\r\n            int j = pManager.AddIntegerParameter(\"Behaviour\", \"B\", \"The behaviour type\", GH_ParamAccess.item, 0);\r\n            Param_Integer mtParamj = pManager[j] as Param_Integer;\r\n            foreach (KeyValuePair<int, string> v in _hardeningType)\r\n                mtParamj.AddNamedValue(v.Value, v.Key);",
+      "outputRegistration": "pManager.AddGenericParameter(\"Rebar Steel Material\", \"RS\", \"Rebar Steel Material\", GH_ParamAccess.item);"
+    },
+    {
+      "file": "RectangularSectionShearCheckComponent.cs",
+      "guid": "73aec799-492f-4978-9e12-48faf9853d10",
+      "sourceSha256": "E514E1BB124B6656E7BAA7A806E04A5A6A28176FB266334FACDF285FA91E5B62",
+      "inputRegistration": "pManager.AddGenericParameter(\"Concrete Checker\", \"CC\", \"Concrete Checker\", GH_ParamAccess.item);\r\n            pManager.AddGenericParameter(\"Force\", \"F\", \"Force\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Height\", \"H\", \"Height\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Base\", \"B\", \"Base\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Stirrup Diameter\", \"SD\", \"Stirrup Diameter\", GH_ParamAccess.item);\r\n            pManager.AddIntegerParameter(\"Number of Legs X\", \"NLX\", \"Number of Legs of a stirrup in X direction\", GH_ParamAccess.item);\r\n            pManager.AddIntegerParameter(\"Number of Legs Y\", \"NLY\", \"Number of Legs of a stirrup in Y direction\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Spacing\", \"S\", \"Spacing\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Stirrup slope X\", \"SS X\", \"Stirrup slope X\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Stirrup slope Y\", \"SS Y\", \"Stirrup slope Y\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Longitudinal rebar diameter X\", \"LRD X\", \"Longitudinal rebar diameter X\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Longitudinal rebar diameter Y\", \"LRD Y\", \"Longitudinal rebar diameter Y\", GH_ParamAccess.item);\r\n            pManager.AddIntegerParameter(\"Number of longit rebarsX\", \"Number of longit rebarsX\", \"Number of longit rebarsX\", GH_ParamAccess.item);\r\n            pManager.AddIntegerParameter(\"Number of longit rebarsY\", \"Number of longit rebarsY\", \"Number of longit rebarsY\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Concrete Cover\", \"CC\", \"Concrete Cover\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Concrete Area\", \"CA\", \"Concrete area\", GH_ParamAccess.item);",
+      "outputRegistration": "pManager.AddTextParameter(\"To Excel Header\", \"TEH\", \"To Excel Header\", GH_ParamAccess.item);\r\n            pManager.AddTextParameter(\"To Excel\", \"TE\", \"To Excel\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Vrsd X no stirrup\", \"Vrsd X no stirrup\", \"Vrsd X no stirrup\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Vrsd Y no stirrup\", \"Vrsd Y no stirrup\", \"Vrsd Y no stirrup\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Vrcd X no stirrup\", \"Vrcd X no stirrup\", \"Vrcd X no stirrup\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Vrcd Y no stirrup\", \"Vrcd Y no stirrup\", \"Vrcd Y no stirrup\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Vrd X no stirrup\", \"Vrd X no stirrup\", \"Vrd X no stirrup\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Vrd Y no stirrup\", \"Vrd Y no stirrup\", \"Vrd Y no stirrup\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Vrsd X\", \"Vrsd X\", \"Vrsd X\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Vrsd Y\", \"Vrsd Y\", \"Vrsd Y\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Vrcd X\", \"Vrcd X\", \"Vrcd X\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Vrcd Y\", \"Vrcd Y\", \"Vrcd Y\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Vrd X\", \"Vrd X\", \"Vrd X\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Vrd Y\", \"Vrd Y\", \"Vrd Y\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Working Ratio X no stirrup\", \"WR X NS\", \"Working Ratio X no stirrup\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Working Ratio Y no stirrup\", \"WR Y NS\", \"Working Ratio Y no stirrup\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Working Ratio X\", \"WR X\", \"Working Ratio X\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Working Ratio Y\", \"WR Y\", \"Working Ratio Y\", GH_ParamAccess.item);"
+    },
+    {
+      "file": "RectangularSectionShearCheckNoStirrupComponent.cs",
+      "guid": "08625aa4-a62b-4d06-91fb-9c9ffcf076fc",
+      "sourceSha256": "40C8CCE86AC8ED67268B281B3B11F2A1D6358F9DB0C2920DDA5E0A8537067A04",
+      "inputRegistration": "pManager.AddGenericParameter(\"Concrete Checker\", \"CC\", \"Concrete Checker\", GH_ParamAccess.item);\r\n            pManager.AddGenericParameter(\"Force\", \"F\", \"Force\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Height\", \"H\", \"Height\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Base\", \"B\", \"Base\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Longitudinal rebar diameter\", \"LRD\", \"Longitudinal rebar diameter\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Number of Rebar\", \"NR\", \"Number of Rebar\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Concrete Cover\", \"CC\", \"Concrete Cover\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Concrete Area\", \"CA\", \"Concrete area\", GH_ParamAccess.item);",
+      "outputRegistration": "pManager.AddTextParameter(\"To Excel Header\", \"TEH\", \"To Excel Header\", GH_ParamAccess.item);\r\n            pManager.AddTextParameter(\"To Excel\", \"TE\", \"To Excel\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Vrds\", \"Vrdc\", \"Vrdc\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Vrdc\", \"Vrds\", \"Vrds\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Vrd\", \"Vrd\", \"Vrd\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Working Ratio\", \"WR\", \"Working Ratio\", GH_ParamAccess.item);"
+    },
+    {
+      "file": "ReinforcedConcreteSectionComponent.cs",
+      "guid": "f247cd41-e5cb-4a35-b9b8-e06b4c43afc6",
+      "sourceSha256": "B63B825D7204A03FE9C3ACADF26E7290B83BB5DEB9AC755FE208F2E2FF14F0E1",
+      "inputRegistration": "pManager.AddTextParameter(\"Section Name\", \"n\", \"The section name\", GH_ParamAccess.item, \"\");\r\n            pManager.AddBrepParameter(\"Surface\", \"S\", \"The section surface\", GH_ParamAccess.item);\r\n            pManager.AddGenericParameter(\"Concrete Material\", \"M\", \"The concrete material\", GH_ParamAccess.item);\r\n            pManager.AddGenericParameter(\"Rebar elements\", \"RE\", \"The rebar element list\", GH_ParamAccess.list);",
+      "outputRegistration": "pManager.AddGenericParameter(\"Reinforced Concrete Section\", \"RCS\", \"Reinforced Concrete Section\", GH_ParamAccess.item);"
+    },
+    {
+      "file": "SectionForceComponent.cs",
+      "guid": "ddd3c603-f931-4db5-ab11-6d1da9ffd01e",
+      "sourceSha256": "8C78680E8D07B23F2EAA14C87B0549A28A642C6D4909F7B86FF5DF65BDD2E743",
+      "inputRegistration": "pManager.AddTextParameter(\"Name\", \"N\", \"The force unique name\", GH_ParamAccess.item, \"\");\r\n            pManager.AddNumberParameter(\"Axial Force\", \"N\", \"The beam element forces\", GH_ParamAccess.item, 0);\r\n            pManager.AddNumberParameter(\"Shear X\", \"VX\", \"The beam element forces\", GH_ParamAccess.item, 0);\r\n            pManager.AddNumberParameter(\"Shear Y\", \"VY\", \"The beam element forces\", GH_ParamAccess.item, 0);\r\n            pManager.AddNumberParameter(\"Torsion\", \"T\", \"The beam element forces\", GH_ParamAccess.item, 0);\r\n            pManager.AddNumberParameter(\"Bending X\", \"MX\", \"The beam element forces\", GH_ParamAccess.item, 0);\r\n            pManager.AddNumberParameter(\"Bending Y\", \"MY\", \"The beam element forces\", GH_ParamAccess.item, 0);\r\n            pManager.AddGenericParameter(\"Coordinate System\", \"CS\", \"The Analysis Coordinate System\", GH_ParamAccess.item);\r\n            int i = pManager.AddIntegerParameter(\"Units\", \"U\", \"The Force Unit system\", GH_ParamAccess.item, 1);\r\n            Param_Integer mtParam = pManager[i] as Param_Integer;\r\n            foreach (KeyValuePair<int, string> v in _concreteList)\r\n                mtParam.AddNamedValue(v.Value, v.Key);",
+      "outputRegistration": "pManager.AddGenericParameter(\"Force\", \"F\", \"The force\", GH_ParamAccess.item);"
+    },
+    {
+      "file": "ServiceabilityCrackWidthControlCheckComponent.cs",
+      "guid": "22bb7ea8-8721-42bf-b016-67c4379f9ca3",
+      "sourceSha256": "9362301F5551A0D1DF13F5B72A4160ECC5B4F0654F763B7D8DD3152D08B10C9C",
+      "inputRegistration": "pManager.AddGenericParameter(\"Stress Analysis Results\", \"SA\", \"Stress Analysis Results\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Ricoprimento dell'armatura\", \"C\", \"Ricoprimento dell'armatura\", GH_ParamAccess.item);\r\n            int i = pManager.AddIntegerParameter(\"Serviceability Limit State\", \"SLS\", \"Serviceability Limit State\", GH_ParamAccess.item);\r\n            Param_Integer mtParam = pManager[i] as Param_Integer;\r\n            foreach (KeyValuePair<int, string> v in _serviceabilityLimitState)\r\n                mtParam.AddNamedValue(v.Value, v.Key);\r\n            i = pManager.AddIntegerParameter(\"Classe di Esposizione\", \"CE\", \"Classe di Esposizione\", GH_ParamAccess.item);\r\n            mtParam = pManager[i] as Param_Integer;\r\n            foreach (KeyValuePair<int, string> v in _classeEsposizione)\r\n                mtParam.AddNamedValue(v.Value, v.Key);\r\n            i = pManager.AddIntegerParameter(\"Tipo di Armatura\", \"TA\", \"Tipo di Armatura\", GH_ParamAccess.item, 1);\r\n            mtParam = pManager[i] as Param_Integer;\r\n            foreach (KeyValuePair<int, string> v in _tipoArmatura)\r\n                mtParam.AddNamedValue(v.Value, v.Key);\r\n            i = pManager.AddIntegerParameter(\"Tipo di barra\", \"TB\", \"Tipo di Barra\", GH_ParamAccess.item, 0);\r\n            mtParam = pManager[i] as Param_Integer;\r\n            foreach (KeyValuePair<int, (string, double)> v in _tipoBarra)\r\n                mtParam.AddNamedValue(v.Value.Item1, v.Key);\r\n            i = pManager.AddIntegerParameter(\"Tipo di Carico\", \"TA\", \"Tipo di Carico\", GH_ParamAccess.item, 1);\r\n            mtParam = pManager[i] as Param_Integer;\r\n            foreach (KeyValuePair<int, (string, double)> v in _tipoDiCarico)\r\n                mtParam.AddNamedValue(v.Value.Item1, v.Key);",
+      "outputRegistration": "pManager.AddTextParameter(\"To Excel Header\", \"TEH\", \"To Excel Header\", GH_ParamAccess.item);\r\n            pManager.AddTextParameter(\"To Excel\", \"TE\", \"To Excel\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Crack width\", \"CW\", \"Crack width\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Crack width limit\", \"CWL\", \"Crack width limit\", GH_ParamAccess.item);\r\n            pManager.AddTextParameter(\"Crack width limit\", \"CWL\", \"Crack width limit\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Working Ratio\", \"WR\", \"Working Ratio\", GH_ParamAccess.item);"
+    },
+    {
+      "file": "ServiceabilityStressCheckComponent.cs",
+      "guid": "4cdbe859-b9a3-42d1-87d4-42c24647fc68",
+      "sourceSha256": "78F227571A7410C3FEFC1298C0011006B6F20DBD7C28CCB20B414617B26C1D8C",
+      "inputRegistration": "pManager.AddGenericParameter(\"Stress Analysis Results\", \"SA\", \"Stress Analysis Results\", GH_ParamAccess.item);\r\n            int i = pManager.AddIntegerParameter(\"Serviceability Limit State\", \"SLS\", \"Serviceability Limit State\", GH_ParamAccess.item);\r\n            Param_Integer mtParam = pManager[i] as Param_Integer;\r\n            foreach (KeyValuePair<int, string> v in _serviceabilityLimitState)\r\n                mtParam.AddNamedValue(v.Value, v.Key);",
+      "outputRegistration": "pManager.AddTextParameter(\"To Excel Header\", \"TEH\", \"To Excel Header\", GH_ParamAccess.item);\r\n            pManager.AddTextParameter(\"To Excel\", \"TE\", \"To Excel\", GH_ParamAccess.item);\r\n            pManager.AddPointParameter(\"Concrete Points\", \"CP\", \"Concrete Points\", GH_ParamAccess.list);\r\n            pManager.AddNumberParameter(\"Concrete Values\", \"CV\", \"Concrete Values\", GH_ParamAccess.list);\r\n            pManager.AddNumberParameter(\"Concrete Working Ratio\", \"CWR\", \"Concrete Working Ratio\", GH_ParamAccess.list);\r\n            pManager.AddPointParameter(\"Rebar Points\", \"RP\", \"Rebar Points\", GH_ParamAccess.list);\r\n            pManager.AddNumberParameter(\"Rebar Values\", \"RV\", \"Rebar Values\", GH_ParamAccess.list);\r\n            pManager.AddNumberParameter(\"Rebar Working Ratio\", \"RWR\", \"Rebar Working Ratio\", GH_ParamAccess.list);"
+    },
+    {
+      "file": "StandardComponent.cs",
+      "guid": "3def8fa3-e056-4075-8661-bd51575c00ee",
+      "sourceSha256": "DA5F0E4AD893EA91EE42D1A508863463AA9C69B59262624F98B838E5F44D0C7C",
+      "inputRegistration": "int i = pManager.AddIntegerParameter(\"Type\", \"T\", \"The standard\", GH_ParamAccess.item, 0);\r\n            Param_Integer mtParam = pManager[i] as Param_Integer;\r\n            foreach (KeyValuePair<int, string> v in _standardList)\r\n                mtParam.AddNamedValue(v.Value.ToString(), v.Key);",
+      "outputRegistration": "pManager.AddGenericParameter(\"Standard\", \"S\", \"Standard\", GH_ParamAccess.item);"
+    },
+    {
+      "file": "SteelDesignValue.cs",
+      "guid": "939e852a-e1b4-4b5b-9454-4eb54be70394",
+      "sourceSha256": "2E2C9AFA5930FF912FA36FE9E77263129CABF1C4747245FE56820B3499BC1FA5",
+      "inputRegistration": "pManager.AddGenericParameter(\"Concrete Material\", \"CM\", \"Concrete Material\", GH_ParamAccess.item);\r\n            pManager.AddGenericParameter(\"Standard\", \"S\", \"Standard\", GH_ParamAccess.item);",
+      "outputRegistration": "pManager.AddTextParameter(\"Name\", \"Name\", \"Name\", GH_ParamAccess.item);\r\n            pManager.AddTextParameter(\"Elastic Modulus\", \"E\", \"Elastic Modulus\", GH_ParamAccess.item);\r\n            pManager.AddTextParameter(\"fyk\", \"fyk\", \"fyk\", GH_ParamAccess.item);\r\n            pManager.AddTextParameter(\"fu\", \"fu\", \"fu\", GH_ParamAccess.item);\r\n            pManager.AddTextParameter(\"Et\", \"Et\", \"Et\", GH_ParamAccess.item);\r\n            pManager.AddTextParameter(\"εy\", \"εy\", \"Yelding strain in compression\", GH_ParamAccess.item);\r\n            pManager.AddTextParameter(\"εu\", \"εu\", \"Ultimate strain in compression\", GH_ParamAccess.item);\r\n            pManager.AddTextParameter(\"fyd\", \"fyd\", \"fyd\", GH_ParamAccess.item);\r\n            pManager.AddTextParameter(\"fud\", \"fud\", \"fud\", GH_ParamAccess.item);\r\n            pManager.AddTextParameter(\"εyd\", \"εyd\", \"εyd\", GH_ParamAccess.item);\r\n            pManager.AddTextParameter(\"εud\", \"εud\", \"εud\", GH_ParamAccess.item);"
+    },
+    {
+      "file": "StressAnalysisComponent.cs",
+      "guid": "2c7939e3-5f53-4d53-989b-a56b65b773e4",
+      "sourceSha256": "4B08FED8BB57B18F49E48C4F600C9E6A97258680BE7929FE36C574C29E52A0CD",
+      "inputRegistration": "pManager.AddGenericParameter(\"Concrete Checker\", \"CC\", \"Concrete Checker\", GH_ParamAccess.item);\r\n            pManager.AddGenericParameter(\"Forces\", \"F\", \"Forces\", GH_ParamAccess.list);",
+      "outputRegistration": "pManager.AddGenericParameter(\"Stress Analysis Results\", \"SAR\", \"Stress Analysis Results\", GH_ParamAccess.list);\r\n            pManager.AddGenericParameter(\"Strain Plane Results\", \"SPR\", \"Strain Plane Results\", GH_ParamAccess.list);"
+    },
+    {
+      "file": "TendonComponent.cs",
+      "guid": "e0846aae-ae28-41dc-8773-b5e4232ba6df",
+      "sourceSha256": "657384E97A51B4FF098C7F5DD31EFC43355A18F1FCA3E09DE20EB8E521D6F61D",
+      "inputRegistration": "pManager.AddPointParameter(\"Position\", \"P\", \"The tendon position\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Diamater\", \"D\", \"The tendon diameter\", GH_ParamAccess.item);\r\n            pManager.AddGenericParameter(\"Tendon Material\", \"M\", \"The tendon material\", GH_ParamAccess.item);\r\n            pManager.AddNumberParameter(\"Pretension\", \"P\", \"The tendon pretension\", GH_ParamAccess.item, 1400);",
+      "outputRegistration": "pManager.AddGenericParameter(\"Tendon Element\", \"TE\", \"Tendon Element\", GH_ParamAccess.item);"
+    },
+    {
+      "file": "TendonMaterialComponent.cs",
+      "guid": "c709c2fa-5e63-4cf6-b3a2-bd505a149a4d",
+      "sourceSha256": "160678B540EB6809813042E814791C5B30B83441FFF33A34FF720DC5F4729BEA",
+      "inputRegistration": "int i = pManager.AddIntegerParameter(\"Type\", \"T\", \"The property type\", GH_ParamAccess.item, 4);\r\n            Param_Integer mtParam = pManager[i] as Param_Integer;\r\n            foreach (KeyValuePair<int, string> v in _steelList)\r\n                mtParam.AddNamedValue(v.Value, v.Key);\r\n            int j = pManager.AddIntegerParameter(\"Behaviour\", \"B\", \"The behaviour type\", GH_ParamAccess.item, 0);\r\n            Param_Integer mtParamj = pManager[j] as Param_Integer;\r\n            foreach (KeyValuePair<int, string> v in _hardeningType)\r\n                mtParamj.AddNamedValue(v.Value, v.Key);",
+      "outputRegistration": "pManager.AddGenericParameter(\"Tendon Steel Material\", \"TS\", \"Tendon Steel Material\", GH_ParamAccess.item);"
+    },
+    {
+      "file": "ViewStressAnalysisResultComponent.cs",
+      "guid": "65801921-575b-466e-8001-a7e833dbacb6",
+      "sourceSha256": "4BF0CD808EE14F7D4F341D11A87A5EF3B13DC20628933F2B35B63F8BBFBA4952",
+      "inputRegistration": "pManager.AddGenericParameter(\"Stress Analysis Results\", \"SA\", \"Stress Analysis Results\", GH_ParamAccess.item);",
+      "outputRegistration": "pManager.AddPointParameter(\"Concrete Points\", \"CP\", \"Concrete Points\", GH_ParamAccess.list);\r\n            pManager.AddNumberParameter(\"Concrete Values\", \"CV\", \"Concrete Values\", GH_ParamAccess.list);\r\n            pManager.AddPointParameter(\"Rebar Points\", \"RP\", \"Rebar Points\", GH_ParamAccess.list);\r\n            pManager.AddNumberParameter(\"Rebar Values\", \"RV\", \"Rebar Values\", GH_ParamAccess.list);\r\n            pManager.AddCurveParameter(\"Neutral Axis\", \"NA\", \"Neutral Axis\", GH_ParamAccess.item);\r\n            pManager.AddTextParameter(\"Combo Name\", \"CN\", \"Combo Name\", GH_ParamAccess.item);\r\n            pManager.AddMeshParameter(\"Mesh\", \"M\", \"Mesh\", GH_ParamAccess.item);"
+    },
+    {
+      "file": "ViewStressAnalysisResultMeshComponent.cs",
+      "guid": "8ae4225f-e39f-4304-bbdb-2610c34dd354",
+      "sourceSha256": "341063C6A07381E6DCF25A798345BFA0A99A4768C0127FA0427C666E67C15D31",
+      "inputRegistration": "pManager.AddGenericParameter(\"Stress Analysis Results\", \"SA\", \"Stress Analysis Results\", GH_ParamAccess.item);\r\n            pManager.AddPointParameter(\"Concrete Points\", \"CP\", \"Concrete Points\", GH_ParamAccess.list);",
+      "outputRegistration": "pManager.AddNumberParameter(\"Concrete Stress\", \"CS\", \"Concrete Stress\", GH_ParamAccess.list);"
+    }
+  ]
+}

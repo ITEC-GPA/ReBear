@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <UseWpf>true</UseWpf>
+    <ShouldRemoveRhinoReferences>false</ShouldRemoveRhinoReferences>
+  </PropertyGroup>
+  <Import Project="..\..\build\GpcReferences.props" />
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\ConcreteSectionChecker.Adapters\ConcreteSectionChecker.Adapters.csproj" />
+    <ProjectReference Include="..\..\src\ConcreteSectionChecker.Grasshopper\ConcreteSectionChecker.Grasshopper.csproj" ReferenceOutputAssembly="false" />
+    <PackageReference Include="Grasshopper" Version="8.27.26019.16021" />
+    <PackageReference Include="RhinoCommon" Version="8.27.26019.16021" />
+  </ItemGroup>
+</Project>

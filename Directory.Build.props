@@ -4,7 +4,7 @@
     <Nullable>disable</Nullable>
     <ImplicitUsings>disable</ImplicitUsings>
     <Deterministic>true</Deterministic>
-    <Version>0.2.1</Version>
+    <Version>0.2.2</Version>
     <Authors>GPC</Authors>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     <ReBearRoot>$(MSBuildThisFileDirectory)</ReBearRoot>

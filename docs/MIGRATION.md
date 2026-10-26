@@ -104,3 +104,11 @@ Questa procedura richiede il vero host ed esempi storici rappresentativi; non è
 5. Ripetere con gli altri plugin GPC che devono convivere nella sessione.
 
 Non è stata introdotta una nuova serializzazione persistente dei modelli GPC: il recupero di dati personalizzati internalizzati nei vecchi file deve essere verificato con file reali. Le sezioni vengono normalmente ricostruite dai componenti a monte.
+
+## Aggiornamento 0.2.2 — integrazione GPC del 26 ottobre 2026
+
+Le sei DLL in `lib/GPC` provengono dal set coerente Model `2acc60ef` / Checker `4a1b0090`, integrato su master. Concrete passa da 0.21.0.0 a **0.25.0.0**; gli altri cinque assembly usati da ReBear restano invariati. I cinque assembly comuni a ReBear e BridGHe provengono dallo stesso set. GUID, porte e formule degli adapter ReBear non sono cambiati.
+
+Il set include le correzioni GPC di copriferro/durabilita, campo di applicazione del taglio, soglia di fessurazione basata sul copriferro reale e solver lineare, oltre alle nuove funzioni per i pali. Queste modifiche delle librerie possono influire sui casi interessati: non si dichiara identita numerica per qualsiasi modello. I **25 gruppi di controllo ReBear** sono passati senza cambiare gli attesi, inclusi i confronti analitici e il caricamento dei **61 componenti**. Le suite complessive GPC superano 9.046 test Checker e 1.493 test Model; tre prove Model con fixture native facoltative non sono state eseguite.
+
+Il manifest rimane per ora **candidate=true**: la configurazione di compilazione Release non equivale alla pubblicazione ufficiale del set GPC. `build/Verify.ps1 -AllowCandidate` abilita il collaudo esplicito del candidato e mantiene tutti i confronti di versione/hash. Senza questa opzione il controllo di rilascio rifiuta il candidato. Il push di Checker/master attende autorizzazione.

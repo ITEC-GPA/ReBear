@@ -27,9 +27,11 @@ using GPC.Model.Standards;
 internal static class Program
 {
     private static int passed, failed;
+    private static bool allowCandidate;
     private static readonly string Root = FindRoot();
     private static int Main(string[] args)
     {
+        allowCandidate = args.Contains("--allow-candidate");
         if (args.Contains("--write-catalog")) { GrasshopperSmoke.WriteCatalog(); return 0; }
         if (args.Contains("--write-palette")) { GrasshopperSmoke.WritePalette(); return 0; }
         if (args.Contains("--only-grasshopper"))
@@ -131,7 +133,9 @@ internal static class Program
     private static void LibraryHashes()
     {
         using var manifest = JsonDocument.Parse(File.ReadAllText(Path.Combine(Root, "lib/GPC/release-set.json")));
-        Check(!manifest.RootElement.GetProperty("candidate").GetBoolean(), "Candidate set.");
+        bool candidate = manifest.RootElement.GetProperty("candidate").GetBoolean();
+        Check(!candidate || allowCandidate, "Candidate set: use --allow-candidate only for explicit pre-release testing.");
+        if (candidate) Console.WriteLine("GPC CANDIDATE: testing an unpublished set; not an official library release.");
         var files = Directory.GetFiles(Path.Combine(Root, "lib/GPC"), "*.dll");
         Check(files.Length == 6, "Unexpected GPC dependencies.");
         foreach (var file in files)

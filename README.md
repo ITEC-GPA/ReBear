@@ -26,7 +26,7 @@ bin/*.dll
 bin/ReBear.deps.json
 bin/ReBear.runtimeconfig.json
 bin/release-set.json
-artifacts/packages/ReBear-0.2.1-<timestamp>.zip
+artifacts/packages/ReBear-0.2.2-<timestamp>.zip
 ```
 
 Ogni compilazione Release, da Visual Studio o `dotnet build`, aggiorna direttamente la cartella `bin` alla radice con il plugin e tutte le sue dipendenze. È la cartella pronta da caricare in Grasshopper. Le compilazioni Debug non sovrascrivono la Release pubblicata.
@@ -83,7 +83,7 @@ Per il taglio rettangolare, l'input storico del copriferro è la distanza dal bo
 | `tools/IconGenerator` | Generatore riproducibile delle icone SVG/PNG e del simbolo |
 | `tools/ExampleGenerator` | Generatore e controlli numerici dei 20 esempi `.gh`/`.ghx`, tramite `build/Examples.ps1` |
 
-ReBear **0.2.1** usa il set GPC rilasciato il **26 ottobre 2026**, recuperato da `ANTHEA/lib/Checker`, con `candidate=false` e hash verificati. Le revisioni Model `2acc60ef` e Checker `799a6355` coincidono con i rispettivi `origin/master`, verificati sul remoto il 26 ottobre 2026.
+ReBear **0.2.2** usa il set GPC integrato del **26 ottobre 2026**, con Model `2acc60ef` e Checker `4a1b0090`. Le stesse DLL comuni sono distribuite da BridGHe 0.2.0. Il set e attualmente **candidato locale**, in attesa della pubblicazione autorizzata di Checker/master: per collaudarlo eseguire `build/Verify.ps1 -AllowCandidate`. La verifica ordinaria rifiuta i candidati e il manifest conserva `candidate=true`.
 
 | Assembly | Versione |
 |---|---|
@@ -92,7 +92,7 @@ ReBear **0.2.1** usa il set GPC rilasciato il **26 ottobre 2026**, recuperato da
 | DelaunayMesh | 2.0.0.14 |
 | GPCModel | 5.21.0.1 |
 | GPCModelData | 0.3.0.2 |
-| GPCChecker.Concrete | 0.21.0.0 |
+| GPCChecker.Concrete | 0.25.0.0 |
 | MathNet.Numerics, via NuGet | 5.0.0 |
 
 `lib/GPC/release-set.json` è il manifest completo del rilascio di origine: il plugin ne usa solo le sei DLL elencate. I progetti non dipendono dai percorsi dei repository fratelli. Per aggiornare GPC, sostituire il set coerente e il relativo manifest, quindi rieseguire le prove; non aggiornare una DLL isolata.

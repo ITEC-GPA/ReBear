@@ -4,7 +4,7 @@ Ogni cartella contiene una definizione nativa `.gh`, la corrispondente `.ghx` te
 
 ## Apertura
 
-1. Caricare tutta la cartella `bin` di ReBear 0.2.0 in Grasshopper/Rhino 8, modalità .NET 8.
+1. Caricare tutta la cartella `bin` di ReBear 0.2.1 in Grasshopper/Rhino 8, modalità .NET 8.
 2. Aprire `definition.gh` dell'esempio desiderato; non occorrono altri plugin né file esterni.
 3. I dati sono salvati nelle porte: tasto destro → Set… per modificarli. I Run sono attivi. Leggere il README della cartella per ipotesi, unità e verifiche.
 4. Confrontare risultati e messaggi con `results.json`. I casi volutamente non soddisfatti o non valutabili sono spiegati.

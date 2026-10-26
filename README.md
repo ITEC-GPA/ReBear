@@ -26,7 +26,7 @@ bin/*.dll
 bin/ReBear.deps.json
 bin/ReBear.runtimeconfig.json
 bin/release-set.json
-artifacts/packages/ReBear-0.2.0-<timestamp>.zip
+artifacts/packages/ReBear-0.2.1-<timestamp>.zip
 ```
 
 Ogni compilazione Release, da Visual Studio o `dotnet build`, aggiorna direttamente la cartella `bin` alla radice con il plugin e tutte le sue dipendenze. È la cartella pronta da caricare in Grasshopper. Le compilazioni Debug non sovrascrivono la Release pubblicata.
@@ -83,19 +83,21 @@ Per il taglio rettangolare, l'input storico del copriferro è la distanza dal bo
 | `tools/IconGenerator` | Generatore riproducibile delle icone SVG/PNG e del simbolo |
 | `tools/ExampleGenerator` | Generatore e controlli numerici dei 20 esempi `.gh`/`.ghx`, tramite `build/Examples.ps1` |
 
-Set GPC pubblicato il 19 ottobre 2026, recuperato da `ANTHEA/lib/Checker`, con `candidate=false` e hash verificati:
+ReBear **0.2.1** usa il set GPC rilasciato il **26 ottobre 2026**, recuperato da `ANTHEA/lib/Checker`, con `candidate=false` e hash verificati. Le revisioni Model `2acc60ef` e Checker `799a6355` coincidono con i rispettivi `origin/master`, verificati sul remoto il 26 ottobre 2026.
 
 | Assembly | Versione |
 |---|---|
 | GPCUtilities | 3.0.0.0 |
 | GPCGeometry | 2.3.0.0 |
 | DelaunayMesh | 2.0.0.14 |
-| GPCModel | 5.15.0.1 |
-| GPCModelData | 0.0.2.26 |
-| GPCChecker.Concrete | 0.12.0.4 |
+| GPCModel | 5.21.0.1 |
+| GPCModelData | 0.3.0.2 |
+| GPCChecker.Concrete | 0.21.0.0 |
 | MathNet.Numerics, via NuGet | 5.0.0 |
 
 `lib/GPC/release-set.json` è il manifest completo del rilascio di origine: il plugin ne usa solo le sei DLL elencate. I progetti non dipendono dai percorsi dei repository fratelli. Per aggiornare GPC, sostituire il set coerente e il relativo manifest, quindi rieseguire le prove; non aggiornare una DLL isolata.
+
+Il nuovo set usa per default la legge parabola-rettangolo analitica del calcestruzzo, conservando nella libreria la modalità tabulata storica. ReBear segue il default GPC: risultati non lineari, domini e momento-curvatura possono differire dalla versione 0.2.0. GUID, porte e collegamenti restano compatibili; vedere le [note di aggiornamento](docs/MIGRATION.md#aggiornamento-021--26-ottobre-2026).
 
 Gli ID normativi storici restano `0=NTC2018`, `1=EN 1992-1-1`, `2=UNI EN 1992-1-1`. Sono gli identificatori dei profili implementati nella versione GPC fissata: non implicano automaticamente l'uso dell'ultima edizione di una norma. ReBear non aggiunge una propria interpretazione normativa. Modello, riferimenti e dettagli restituiti da GPC sono riportati nei report dei controlli migrati.
 

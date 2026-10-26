@@ -4,7 +4,7 @@ Rettangolo 300 × 500, 8Ø20, N=−300 kN e direzione del momento 0° (Mx). Chec
 
 ## Esecuzione
 
-Aprire `definition.gh` (oppure l'equivalente testuale `definition.ghx`) con ReBear 0.2.0 in Rhino 8/.NET 8. Il file è autonomo: nessun Excel o plugin esterno aggiuntivo. Le porte contengono i dati persistenti; i componenti con Run sono già attivi. Geometria in **mm**, tensioni in **MPa**, azioni delle porte in **kN/kNm**, compressione **negativa**.
+Aprire `definition.gh` (oppure l'equivalente testuale `definition.ghx`) con ReBear 0.2.1 in Rhino 8/.NET 8. Il file è autonomo: nessun Excel o plugin esterno aggiuntivo. Le porte contengono i dati persistenti; i componenti con Run sono già attivi. Geometria in **mm**, tensioni in **MPa**, azioni delle porte in **kN/kNm**, compressione **negativa**.
 
 ## Svolgimento e controllo
 
@@ -12,11 +12,11 @@ Il motore cerca il momento limite a N costante e risolve gli stati intermedi. Le
 
 | Quantità calcolata | Valore |
 |---|---:|
-| Momento limite [kNm] | 262.745258 |
+| Momento limite [kNm] | 262.765218 |
 | Residuo N al limite [kN] | 0 |
 | Numero punti | 22 |
-| χy [1/m] | 0.00753075337 |
-| χu [1/m] | 0.0374229279 |
+| χy [1/m] | 0.00752263537 |
+| χu [1/m] | 0.0374733501 |
 
 Calcolo numerico eseguito dal generatore con le stesse chiamate adapter usate dal plugin. Eseguiti i controlli automatici descritti e la rilettura dell'archivio GH con verifica dei GUID e dei collegamenti. **Ricalcolo e preview nell'host Rhino da verificare dall'utente.** Questo esempio copre soltanto le verifiche indicate, non la progettazione completa dell'elemento.
 

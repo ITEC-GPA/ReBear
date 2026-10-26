@@ -159,7 +159,7 @@ internal sealed class Graph : IDisposable
             var projection=props.CreateChunk("Projection"); projection.SetDrawingPoint("Target",new System.Drawing.Point(20,20)); projection.SetSingle("Zoom",.8f);
             writer.CreateChunk("RcpLayout").SetInt32("GroupCount",0);
             var libraries=writer.CreateChunk("GHALibraries"); libraries.SetInt32("Count",1);
-            var lib=libraries.CreateChunk("Library",0); lib.SetGuid("Id",library); lib.SetString("Name","ReBear"); lib.SetString("Author","GPC"); lib.SetString("Version","0.2.0");
+            var lib=libraries.CreateChunk("Library",0); lib.SetGuid("Id",library); lib.SetString("Name","ReBear"); lib.SetString("Author","GPC"); lib.SetString("Version",Program.ReBearVersion);
             var definition=writer.CreateChunk("DefinitionObjects"); definition.SetInt32("ObjectCount",objects.Count);
             for(int i=0;i<objects.Count;i++)
             {

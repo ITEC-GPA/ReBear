@@ -4,7 +4,7 @@ Rettangolo 300 × 500, 8Ø20, C30/37 e B450C. Dominio plastico GPC, criterio a N
 
 ## Esecuzione
 
-Aprire `definition.gh` (oppure l'equivalente testuale `definition.ghx`) con ReBear 0.2.0 in Rhino 8/.NET 8. Il file è autonomo: nessun Excel o plugin esterno aggiuntivo. Le porte contengono i dati persistenti; i componenti con Run sono già attivi. Geometria in **mm**, tensioni in **MPa**, azioni delle porte in **kN/kNm**, compressione **negativa**.
+Aprire `definition.gh` (oppure l'equivalente testuale `definition.ghx`) con ReBear 0.2.1 in Rhino 8/.NET 8. Il file è autonomo: nessun Excel o plugin esterno aggiuntivo. Le porte contengono i dati persistenti; i componenti con Run sono già attivi. Geometria in **mm**, tensioni in **MPa**, azioni delle porte in **kN/kNm**, compressione **negativa**.
 
 ## Svolgimento e controllo
 
@@ -12,9 +12,9 @@ Le resistenze si cercano lungo la direzione dei momenti richiesti mantenendo N. 
 
 | Caso | Verifica | Esito GPC | η | Domanda | Capacità/limite | Unità |
 |---|---|---|---:|---:|---:|---|
-| SLU-moderato | N-Mx-My | Satisfied | 0.317774615 | — | — |  |
-| SLU-elevato | N-Mx-My | NotSatisfied | 1.52238713 | — | — |  |
-| Fuori-dominio | N-Mx-My | NotSatisfied | 2864.84912 | — | — |  |
+| SLU-moderato | N-Mx-My | Satisfied | 0.317753025 | — | — |  |
+| SLU-elevato | N-Mx-My | NotSatisfied | 1.52227149 | — | — |  |
+| Fuori-dominio | N-Mx-My | NotSatisfied | 2864.84708 | — | — |  |
 
 Esiti e dettagli integrali, riferimenti restituiti da GPC e precisione completa sono in `results.json`. Un rapporto non definito non equivale a zero; nei dettagli di armatura Actual/Limit conservano il verso della singola regola descritto nel messaggio.
 

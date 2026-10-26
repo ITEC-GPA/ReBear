@@ -10,6 +10,25 @@ Sono invariati i GUID, nomi/nickname delle porte, tipi, ordine, accesso item/lis
 
 Non vengono migrati altri moduli Rhino2FEM. I repository di origine e delle librerie non sono modificati.
 
+## Aggiornamento 0.2.1 — 26 ottobre 2026
+
+Aggiornato il set ufficiale GPC del 26 ottobre 2026: Model **5.21.0.1**, ModelData **0.3.0.2**, Checker.Concrete **0.21.0.0**. I commit di origine sono `2acc60efad0924b9b05aafdd75588f13842904a1` per Model e `799a63556e97f042d95d70c86db1a291ee47f2d4` per Checker, corrispondenti ai rispettivi master remoti al controllo del 26 ottobre. Utilities, Geometry e DelaunayMesh conservano gli stessi hash. Il manifest ufficiale con gli esiti delle suite delle librerie è in `lib/GPC/release-set.json`.
+
+Il set introduce il default analitico della legge parabola-rettangolo del calcestruzzo e aggiornamenti del solver di dominio. ReBear utilizza le API e i default del motore aggiornato; non forza il precedente metodo tabulato. L'identità numerica con 0.2.0 non è quindi attesa nei calcoli non lineari. Le formule restano nelle librerie GPC, senza modifiche ai GUID o alle porte dei 61 componenti.
+
+La Release supera i 25 gruppi di controlli numerici e di caricamento di `build/Verify.ps1`. Anche i 20 esempi ricalcolati separatamente superano i propri controlli. Risultati e spiegazioni sono aggiornati conservando le definizioni GH/GHX e verificando l'identità dei 20 grafi di input. Nessun esito `Satisfied`/`NotSatisfied`/`NotEvaluated` cambia nei casi degli esempi. Il ricalcolo nell'host Rhino rimane da eseguire.
+
+Differenze rappresentative rilevate a parità di input:
+
+| Esempio e risultato | ReBear 0.2.0 | ReBear 0.2.1 |
+|---|---:|---:|
+| 10, rapporto N-Mx-My del caso SLU moderato | 0.317774615 | 0.317753025 |
+| 18, momento limite [kNm] | 262.745258 | 262.765218 |
+| 18, curvatura ultima [1/m] | 0.037422928 | 0.037473350 |
+| 19, My massimo del dominio [kNm] | 125.109475 | 125.198017 |
+
+Variazioni numeriche superiori alla soglia di confronto (`1e-9` relativo, `1e-10` assoluto) compaiono negli esempi 10, 18, 19 e 20. Nell'esempio 09 cambia il riferimento testuale della verifica di torsione restituito da GPC; negli altri esempi i risultati coincidono entro tale soglia. La ricerca dell'esempio 20 seleziona ancora il candidato di indice 1, con barre Ø20 e As = 2513.274123 mm². Questi confronti descrivono i casi provati, non una stima dell'errore per sezioni generiche.
+
 ## Calcolo delegato alle librerie
 
 | Ambito | API utilizzata | Comportamento |

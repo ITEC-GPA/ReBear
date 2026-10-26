@@ -4,7 +4,7 @@ Tre sezioni 300 × 500 mm, tutte con quattro barre superiori e quattro inferiori
 
 ## Esecuzione
 
-Aprire `definition.gh` (oppure l'equivalente testuale `definition.ghx`) con ReBear 0.2.0 in Rhino 8/.NET 8. Il file è autonomo: nessun Excel o plugin esterno aggiuntivo. Le porte contengono i dati persistenti; i componenti con Run sono già attivi. Geometria in **mm**, tensioni in **MPa**, azioni delle porte in **kN/kNm**, compressione **negativa**.
+Aprire `definition.gh` (oppure l'equivalente testuale `definition.ghx`) con ReBear 0.2.1 in Rhino 8/.NET 8. Il file è autonomo: nessun Excel o plugin esterno aggiuntivo. Le porte contengono i dati persistenti; i componenti con Run sono già attivi. Geometria in **mm**, tensioni in **MPa**, azioni delle porte in **kN/kNm**, compressione **negativa**.
 
 ## Svolgimento e controllo
 
@@ -18,12 +18,12 @@ Per ogni candidato si eseguono entrambe le verifiche N-Mx-My. Si scartano quelli
 
 | Caso | Verifica | Esito GPC | η | Domanda | Capacità/limite | Unità |
 |---|---|---|---:|---:|---:|---|
-| SLU1 | N-Mx-My | Satisfied | 0.935562746 | — | — |  |
-| SLU2 | N-Mx-My | Satisfied | 0.869289685 | — | — |  |
-| SLU1 | N-Mx-My | Satisfied | 0.687476217 | — | — |  |
-| SLU2 | N-Mx-My | Satisfied | 0.620705607 | — | — |  |
-| SLU1 | N-Mx-My | Satisfied | 0.521178334 | — | — |  |
-| SLU2 | N-Mx-My | Satisfied | 0.462646485 | — | — |  |
+| SLU1 | N-Mx-My | Satisfied | 0.9355373 | — | — |  |
+| SLU2 | N-Mx-My | Satisfied | 0.869273737 | — | — |  |
+| SLU1 | N-Mx-My | Satisfied | 0.687471856 | — | — |  |
+| SLU2 | N-Mx-My | Satisfied | 0.620693418 | — | — |  |
+| SLU1 | N-Mx-My | Satisfied | 0.521183698 | — | — |  |
+| SLU2 | N-Mx-My | Satisfied | 0.462639205 | — | — |  |
 
 Esiti e dettagli integrali, riferimenti restituiti da GPC e precisione completa sono in `results.json`. Un rapporto non definito non equivale a zero; nei dettagli di armatura Actual/Limit conservano il verso della singola regola descritto nel messaggio.
 

@@ -43,14 +43,14 @@ internal static partial class Program
         { this.slug=slug; this.title=title; this.explanation=explanation; this.verification=verification; }
         internal void Save()
         {
-            string folder=Path.Combine(Root,"examples",slug); Directory.CreateDirectory(folder);
+            string folder=Path.Combine(OutputRoot,slug); Directory.CreateDirectory(folder);
             string wiring=Graph.Save(folder,title);
             File.WriteAllText(Path.Combine(folder,"results.json"),JsonSerializer.Serialize(new {
                 schema="ReBear.WorkedExample", version=1, example=slug, engine=typeof(SectionCheckerModelCode2010).Assembly.GetName().FullName,
                 verification="Calcolo adapter GPC eseguito; archivio GH riletto; soluzione dentro Rhino non eseguita.",
                 values=Values, checks=Results, series=Series },Json));
             var text=new StringBuilder("# "+slug[..2]+" — "+title+"\n\n"+explanation+"\n\n");
-            text.AppendLine("## Esecuzione\n\nAprire `definition.gh` (oppure l'equivalente testuale `definition.ghx`) con ReBear 0.2.0 in Rhino 8/.NET 8. Il file è autonomo: nessun Excel o plugin esterno aggiuntivo. Le porte contengono i dati persistenti; i componenti con Run sono già attivi. Geometria in **mm**, tensioni in **MPa**, azioni delle porte in **kN/kNm**, compressione **negativa**.\n");
+            text.AppendLine("## Esecuzione\n\nAprire `definition.gh` (oppure l'equivalente testuale `definition.ghx`) con ReBear " + ReBearVersion + " in Rhino 8/.NET 8. Il file è autonomo: nessun Excel o plugin esterno aggiuntivo. Le porte contengono i dati persistenti; i componenti con Run sono già attivi. Geometria in **mm**, tensioni in **MPa**, azioni delle porte in **kN/kNm**, compressione **negativa**.\n");
             text.AppendLine("## Svolgimento e controllo\n\n"+verification+"\n");
             if(Values.Count>0)
             {

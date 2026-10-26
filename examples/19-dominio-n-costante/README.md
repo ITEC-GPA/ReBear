@@ -4,7 +4,7 @@ Sezione rettangolare simmetrica, N=−300 kN e 16 direzioni. Ogni direzione vien
 
 ## Esecuzione
 
-Aprire `definition.gh` (oppure l'equivalente testuale `definition.ghx`) con ReBear 0.2.0 in Rhino 8/.NET 8. Il file è autonomo: nessun Excel o plugin esterno aggiuntivo. Le porte contengono i dati persistenti; i componenti con Run sono già attivi. Geometria in **mm**, tensioni in **MPa**, azioni delle porte in **kN/kNm**, compressione **negativa**.
+Aprire `definition.gh` (oppure l'equivalente testuale `definition.ghx`) con ReBear 0.2.1 in Rhino 8/.NET 8. Il file è autonomo: nessun Excel o plugin esterno aggiuntivo. Le porte contengono i dati persistenti; i componenti con Run sono già attivi. Geometria in **mm**, tensioni in **MPa**, azioni delle porte in **kN/kNm**, compressione **negativa**.
 
 ## Svolgimento e controllo
 
@@ -12,8 +12,8 @@ I vettori di prova sono Mx=cosθ e My=sinθ, campionati uniformemente. Per ogni 
 
 | Quantità calcolata | Valore |
 |---|---:|
-| Mx massimo [kNm] | 262.745258 |
-| My massimo [kNm] | 125.109475 |
+| Mx massimo [kNm] | 262.765218 |
+| My massimo [kNm] | 125.198017 |
 | Residuo N massimo [kN] | 0 |
 
 Calcolo numerico eseguito dal generatore con le stesse chiamate adapter usate dal plugin. Eseguiti i controlli automatici descritti e la rilettura dell'archivio GH con verifica dei GUID e dei collegamenti. **Ricalcolo e preview nell'host Rhino da verificare dall'utente.** Questo esempio copre soltanto le verifiche indicate, non la progettazione completa dell'elemento.

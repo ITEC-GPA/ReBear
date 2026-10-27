@@ -83,7 +83,7 @@ Per il taglio rettangolare, l'input storico del copriferro è la distanza dal bo
 | `tools/IconGenerator` | Generatore riproducibile delle icone SVG/PNG e del simbolo |
 | `tools/ExampleGenerator` | Generatore e controlli numerici dei 20 esempi `.gh`/`.ghx`, tramite `build/Examples.ps1` |
 
-ReBear **0.2.2** usa il set GPC integrato del **26 ottobre 2026**, con Model `2acc60ef` e Checker `4a1b0090`. Le stesse DLL comuni sono distribuite da BridGHe 0.2.0. Il set e attualmente **candidato locale**, in attesa della pubblicazione autorizzata di Checker/master: per collaudarlo eseguire `build/Verify.ps1 -AllowCandidate`. La verifica ordinaria rifiuta i candidati e il manifest conserva `candidate=true`.
+ReBear **0.2.2** usa il **set GPC ufficiale del 27 ottobre 2026**, con Model `2acc60ef` e Checker `4a1b0090`, entrambi pubblicati su origin/master. Il manifest contiene `candidate=false`; le DLL coincidono byte per byte con il candidato collaudato il 26 ottobre e con quelle comuni distribuite da BridGHe 0.2.0. La verifica ordinaria è `build/Verify.ps1`, senza opzioni per candidati.
 
 | Assembly | Versione |
 |---|---|

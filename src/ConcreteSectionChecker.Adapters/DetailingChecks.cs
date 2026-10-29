@@ -18,20 +18,34 @@ namespace ConcreteSectionChecker.Adapters
 
     public static class DetailingChecks
     {
-        public static (CheckResult Result, CoverResult Native) Cover(Standard standard, CoverInput input, double adopted, string section)
+        /// <summary>
+        /// GPC cover assessment: the requirement of the specification (bar diameter of <paramref name="specification"/>, e.g. the
+        /// material sheet) and, when known, the requirement for the actual bars (<paramref name="actualBarDiameter"/>).
+        /// Without the actual bars the check stays NotEvaluated unless the adopted cover is already insufficient.
+        /// Native is the requirement for the actual bars when given, otherwise that of the specification.
+        /// </summary>
+        public static (CheckResult Result, CoverResult Native, CoverAssessment Assessment) Cover(Standard standard, CoverInput specification,
+            double adopted, double? actualBarDiameter, string section)
         {
-            var r = CoverRequirements.Calculate(DurabilityProfiles.Resolve(standard), input);
-            var assessment = CoverAssessment.Evaluate(adopted, r.Nominal, r.Nominal);
+            if (standard is null || specification is null) throw new ArgumentException("Norma e dati di durabilità richiesti.");
+            var profile = DurabilityProfiles.Resolve(standard);
+            var material = CoverRequirements.Calculate(profile, specification);
+            var actual = actualBarDiameter.HasValue ? CoverRequirements.Calculate(profile, specification.WithBarDiameter(actualBarDiameter.Value)) : null;
+            var assessment = CoverAssessment.Evaluate(adopted, material.Nominal, actual?.Nominal);
+            var r = actual ?? material;
+            string message = actual is null
+                ? "Diametro effettivo delle barre non assegnato: requisito delle barre reali da completare."
+                : "Domanda = copriferro nominale richiesto (specifica e barre reali); capacità = copriferro disponibile.";
             return (new(section, "Durability", "Concrete cover", CheckResults.Status(assessment.Passed), null,
-                r.Nominal, adopted, "mm", "Domanda = copriferro nominale richiesto; capacità = copriferro disponibile.",
-                r.Reference, FormattableString.Invariant($"cmin,b={r.Bond}; cmin,dur={r.Durability}; cmin={r.Minimum}; cnom={r.Nominal} mm")), r);
+                assessment.Required, adopted, "mm", message, r.Reference, FormattableString.Invariant(
+                    $"cnom,specifica={material.Nominal} mm (Ø={specification.BarDiameter}); cnom,barre={actual?.Nominal} mm (Ø={actualBarDiameter}); cmin,b={r.Bond}; cmin,dur={r.Durability}; cmin={r.Minimum} mm")), r, assessment);
         }
 
         public static (CheckResult Result, AnchorageResult Native) Anchorage(StandardModelCode2010 standard,
             ConcreteMaterialEuropeanCommon concrete, SteelMaterial steel, double diameter, double stress,
             double length, bool goodBond, bool lap, double lapPercent, double lapClear, string section)
         {
-            if (standard == null || concrete == null || steel == null) throw new ArgumentException("Norma e materiali richiesti.");
+            if (standard is null || concrete is null || steel is null) throw new ArgumentException("Norma e materiali richiesti.");
             if (!double.IsFinite(stress) || stress < 0 || stress > Math.Abs(steel.CalculateFyd(standard)))
                 throw new ArgumentException("Tensione di ancoraggio: 0 ≤ σsd ≤ fyd.");
             if (steel.SteelType == SteelMaterial.SteelTypes.Tendon) throw new NotSupportedException("Ancoraggio di barre ordinarie ad aderenza migliorata richiesto.");
@@ -46,7 +60,7 @@ namespace ConcreteSectionChecker.Adapters
         public static IReadOnlyList<CheckResult> Member(SectionCheckerModelCode2010 checker, DetailingOptions p, double minimumN, string sectionId)
         {
             AdvancedShearChecks.Ordinary(checker);
-            if (p == null || !Enum.IsDefined(typeof(MemberDetailingKind), p.Kind) || !double.IsFinite(minimumN))
+            if (p is null || !Enum.IsDefined(typeof(MemberDetailingKind), p.Kind) || !double.IsFinite(minimumN))
                 throw new ArgumentException("Opzioni dei dettagli o sforzo normale non validi.");
             var section = checker.SectionCheckerAttribute.Section as ReinforcedConcreteSection
                 ?? throw new NotSupportedException("Sezione in calcestruzzo armato richiesta.");

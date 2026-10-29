@@ -1,68 +1,46 @@
-using Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Datatypes;
-using GPC.Checkers.Concrete.Attributes;
-using GPC.Checkers.Concrete.Checkers;
-using GPC.Checkers.Concrete.SectionSolvers;
+using System;
 using GPC.Model.Materials;
 using GPC.Model.Standards;
 using Grasshopper.Kernel;
-using Grasshopper.Kernel.Parameters;
-using Rhino.Geometry;
-using ConcreteSectionChecker.Grasshopper;
-using System;
-using System.Collections.Generic;
 
-namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
+namespace ConcreteSectionChecker.Grasshopper.Components
 {
-    public class ConcreteDesignValue : GpcComponent
+    public sealed class ConcreteDesignValue : ReBearComponent
     {
-        public ConcreteDesignValue()
-            : base("Concrete Material Design Value", "CD", "Concrete Material Design Value")
+        public ConcreteDesignValue() : base("Concrete Material Design Value", "CD", "Valori caratteristici e di progetto del calcestruzzo per la norma; MPa, moduli positivi.") { }
+        public override Guid ComponentGuid => new("b7e2c3a0-0300-4e1b-9d1a-000000000006");
+        protected override Port[] Inputs => new[] { G("Concrete Material", "CM", "Calcestruzzo GPC."), G("Standard", "S", "Norma GPC.") };
+        protected override Port[] Outputs => new[] { T("Name", "Name", "Classe."), N("fck", "fck", "Resistenza caratteristica cilindrica, MPa."),
+            N("fcm", "fcm", "Resistenza media, MPa."), N("Elastic modulus", "E", "Modulo elastico in compressione, MPa."),
+            N("εc2", "εc2", "Deformazione al limite elastico in compressione (adimensionale, modulo)."),
+            N("εcu", "εcu", "Deformazione ultima in compressione (adimensionale, modulo)."),
+            N("fcd", "fcd", "Resistenza di progetto a compressione, MPa."), N("fctd", "fctd", "Resistenza di progetto a trazione, MPa.") };
+        protected override void SolveGpc(IGH_DataAccess d)
         {
+            var c = Required<ConcreteMaterialEuropeanCommon>(d, 0); var s = Required<StandardModelCode2010>(d, 1);
+            object[] values = { c.Name, Math.Abs(c.Fck), Math.Abs(c.Fcm), Math.Abs(c.ElasticModulusCompression), Math.Abs(c.StrainYCompression),
+                Math.Abs(c.StrainUCompression), Math.Abs(c.CalculateFcd(s)), Math.Abs(c.CalculateFctd(s)) };
+            for (int i = 0; i < values.Length; i++) d.SetData(i, values[i]);
         }
+    }
 
-        protected override void RegisterInputParams(GH_InputParamManager pManager)
+    public sealed class SteelDesignValue : ReBearComponent
+    {
+        public SteelDesignValue() : base("Steel Material Design Value", "SD", "Valori caratteristici e di progetto dell'acciaio per la norma; MPa, deformazioni adimensionali.") { }
+        public override Guid ComponentGuid => new("b7e2c3a0-0300-4e1b-9d1a-000000000007");
+        protected override Port[] Inputs => new[] { G("Steel Material", "SM", "Acciaio GPC."), G("Standard", "S", "Norma GPC.") };
+        protected override Port[] Outputs => new[] { T("Name", "Name", "Qualità."), N("Elastic modulus", "E", "Modulo elastico, MPa."),
+            N("fyk", "fyk", "Snervamento caratteristico, MPa."), N("fu", "fu", "Resistenza a rottura, MPa."), N("Et", "Et", "Modulo incrudente, MPa."),
+            N("εy", "εy", "Deformazione di snervamento caratteristica."), N("εu", "εu", "Deformazione ultima caratteristica."),
+            N("fyd", "fyd", "Snervamento di progetto, MPa."), N("fud", "fud", "Tensione di progetto alla deformazione ultima, MPa."),
+            N("εyd", "εyd", "Deformazione di snervamento di progetto."), N("εud", "εud", "Deformazione ultima di progetto.") };
+        protected override void SolveGpc(IGH_DataAccess d)
         {
-            pManager.AddGenericParameter("Concrete Material", "CM", "Concrete Material", GH_ParamAccess.item);
-            pManager.AddGenericParameter("Standard", "S", "Standard", GH_ParamAccess.item);
+            var m = Required<SteelMaterialEN1992>(d, 0); var s = Required<StandardModelCode2010>(d, 1);
+            object[] values = { m.Name, m.ElasticModulusTension, m.Fyk, m.Fu, m.Et, m.StrainYTension, m.StrainUTension,
+                m.CalculateDesignYieldingStressTension(s), m.CalculateDesignStress(s, m.StrainUTension),
+                m.CalculateDesignYieldingStrainTension(s), m.CalculateDesignUltimateStrainTension(s) };
+            for (int i = 0; i < values.Length; i++) d.SetData(i, values[i]);
         }
-
-        protected override void RegisterOutputParams(GH_OutputParamManager pManager)
-        {
-            pManager.AddTextParameter("Name", "Name", "Name", GH_ParamAccess.item);
-            pManager.AddTextParameter("fck", "fck", "fck", GH_ParamAccess.item);
-            pManager.AddTextParameter("fcm", "fcm", "fcm", GH_ParamAccess.item);
-            pManager.AddTextParameter("Elastic Modulus", "E", "Elastic Modulus", GH_ParamAccess.item);
-            pManager.AddTextParameter("εy", "εy", "Yelding strain in compression", GH_ParamAccess.item);
-            pManager.AddTextParameter("εu", "εu", "Ultimate strain in compression", GH_ParamAccess.item);
-            pManager.AddTextParameter("fcd", "fcd", "fcd", GH_ParamAccess.item);
-            pManager.AddTextParameter("fctd", "fcd", "fcd", GH_ParamAccess.item);
-        }
-
-        protected override void SolveGpc(IGH_DataAccess DA)
-        {
-            GH_ConcreteMaterial gH_ConcreteMaterial = null;
-            GH_Standard gH_Standard = null;
-
-            if (DA.GetData(0, ref gH_ConcreteMaterial) && (DA.GetData(1, ref gH_Standard)))
-            {
-                ConcreteMaterialEuropeanCommon concrete = gH_ConcreteMaterial.Value;
-                StandardModelCode2010 standard = gH_Standard.Value;
-
-                var count = 0;
-                DA.SetData(count++, concrete.Name);
-                DA.SetData(count++, Math.Abs(concrete.Fck));
-                DA.SetData(count++, Math.Abs(concrete.Fcm));
-                DA.SetData(count++, concrete.ElasticModulusCompression);
-                DA.SetData(count++, concrete.StrainYCompression);
-                DA.SetData(count++, concrete.StrainUCompression);
-                DA.SetData(count++, Math.Abs(concrete.CalculateFcd(standard)));
-                DA.SetData(count++, Math.Abs(concrete.CalculateFctd(standard)));
-            }
-        }
-
-        //protected override Bitmap Icon => Resources.material;
-
-        public override Guid ComponentGuid => new Guid("a8098614-15d9-4789-bffe-ecb9e694b888");
-
     }
 }

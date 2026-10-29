@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
+using ConcreteSectionChecker.Grasshopper.Components;
 using ConcreteSectionChecker.Grasshopper.Features;
-using Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components;
 using Grasshopper.Kernel;
 
 namespace ConcreteSectionChecker.Grasshopper
 {
     /// <summary>
-    /// Shared workflow for recovered and new components. Panel prefixes order the workflow;
+    /// Shared workflow of all components. Panel prefixes order the workflow;
     /// native exposure sections order related operations without renaming components.
     /// Components in the same exposure section are alternative tools at the same workflow stage.
     /// </summary>
@@ -52,7 +52,7 @@ namespace ConcreteSectionChecker.Grasshopper
             const string setup = "4 Setup";
             Add(setup, GH_Exposure.primary, nameof(CheckerOptionsComponent));
             Add(setup, GH_Exposure.secondary, nameof(CheckerComponent));
-            Add(setup, GH_Exposure.tertiary, nameof(ShearOptionsComponent));
+            Add(setup, GH_Exposure.tertiary, nameof(ShearOptionsComponent), nameof(RectangularShearOptionsComponent), nameof(CircularShearOptionsComponent));
             Add(setup, GH_Exposure.quarternary, nameof(TorsionOptionsComponent));
             Add(setup, GH_Exposure.quinary, nameof(SleOptionsComponent));
             Add(setup, GH_Exposure.senary, nameof(PlateDetailingOptionsComponent));
@@ -67,13 +67,10 @@ namespace ConcreteSectionChecker.Grasshopper
             const string checks = "6 Checks";
             Add(checks, GH_Exposure.primary, nameof(ResistanceCheckComponent), nameof(PostProcessFailureDomain3DComponent));
             Add(checks, GH_Exposure.secondary, nameof(ShearCheckComponent));
-            Add(checks, GH_Exposure.tertiary, nameof(RectangularSectionShearCheckNoStirrupComponent),
-                nameof(RectangularSectionShearCheckComponent), nameof(CircularSectionShearCheckComponent));
-            Add(checks, GH_Exposure.quarternary, nameof(TorsionShearCheckComponent));
-            Add(checks, GH_Exposure.quinary, nameof(ServiceabilityCheckComponent));
-            Add(checks, GH_Exposure.senary, nameof(ServiceabilityStressCheckComponent), nameof(ServiceabilityCrackWidthControlCheckComponent));
-            Add(checks, GH_Exposure.septenary, nameof(BatchSectionChecksComponent));
-            Add(checks, GH_Exposure.octonary, nameof(ReinforcementSearchComponent));
+            Add(checks, GH_Exposure.tertiary, nameof(TorsionShearCheckComponent));
+            Add(checks, GH_Exposure.quarternary, nameof(ServiceabilityCheckComponent));
+            Add(checks, GH_Exposure.quinary, nameof(BatchSectionChecksComponent));
+            Add(checks, GH_Exposure.senary, nameof(ReinforcementSearchComponent));
 
             const string detailing = "7 Detailing";
             Add(detailing, GH_Exposure.primary, nameof(ConcreteCoverComponent));

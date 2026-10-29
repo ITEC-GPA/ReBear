@@ -1,90 +1,75 @@
+using System;
 using Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Datatypes;
 using GPC.Model.Data.Steel;
 using GPC.Model.Materials;
 using Grasshopper.Kernel;
-using Grasshopper.Kernel.Parameters;
-using ConcreteSectionChecker.Grasshopper;
-using System;
-using System.Collections.Generic;
 
-namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
+namespace ConcreteSectionChecker.Grasshopper.Components
 {
-    public class RebarMaterialComponent : GpcComponent
+    /// <summary>Steel from the GPC database with the selected stress-strain law; every output is a new material instance.</summary>
+    public abstract class SteelDatabaseComponent : ReBearComponent
     {
-        protected Dictionary<int, string> _steelList = new Dictionary<int, string>() {
-            { 0, "B450A" },
-            { 1, "B450C" },
-            { 2, "B500A" },
-            { 3, "B500B" },
-            { 4, "B500C" },
+        protected SteelDatabaseComponent(string name, string nick, string description) : base(name, nick, description) { }
+        // Read while the base constructor registers the ports: derived classes return static data.
+        protected abstract (string Name, Func<SteelMaterialEN1992> Create)[] Grades { get; }
+        protected abstract int DefaultGrade { get; }
+        protected abstract (string Name, string Nick) Output { get; }
+        protected override Port[] Inputs => new[] {
+            I("Type", "T", "Qualità dell'acciaio (indice della lista).", DefaultGrade, Named(Array.ConvertAll(Grades, g => g.Name))),
+            I("Behaviour", "B", "0 elastico-perfettamente plastico; 1 elastico-incrudente.", 0, Named("Elasto-Plastic", "Elasto-Hardening")) };
+        protected override Port[] Outputs => new[] { G(Output.Name, Output.Nick, "Acciaio GPC.") };
+        protected override void SolveGpc(IGH_DataAccess d)
+        {
+            var steel = Grades[Choice(d, 0, Grades.Length)].Create();
+            if (Choice(d, 1, 2) == 1) steel.StressStrainCurve = SteelMaterial.StressStrainCurveType.ElasticHardening;
+            d.SetData(0, new GH_SteelMaterial(steel));
+        }
+    }
+
+    public sealed class RebarMaterialComponent : SteelDatabaseComponent
+    {
+        private static readonly (string, Func<SteelMaterialEN1992>)[] Items =
+        {
+            ("B450A", () => SteelMaterialEN1992Data.B450A), ("B450C", () => SteelMaterialEN1992Data.B450C),
+            ("B500A", () => SteelMaterialEN1992Data.B500A), ("B500B", () => SteelMaterialEN1992Data.B500B),
+            ("B500C", () => SteelMaterialEN1992Data.B500C)
         };
+        public RebarMaterialComponent() : base("Database Rebar Steel", "RS", "Acciaio per barre ordinarie del database GPC.") { }
+        public override Guid ComponentGuid => new("606ebfd0-d9e7-407e-aaa3-eb8579fe2f6b");
+        protected override (string Name, Func<SteelMaterialEN1992> Create)[] Grades => Items;
+        protected override int DefaultGrade => 1;
+        protected override (string Name, string Nick) Output => ("Rebar Steel Material", "RS");
+    }
 
-        protected Dictionary<int, string> _hardeningType = new Dictionary<int, string>() {
-            { 0, "Elasto-Plastic" },
-            { 1, "Elasto-Hardening" },
+    public sealed class BarMaterialComponent : SteelDatabaseComponent
+    {
+        private static readonly (string, Func<SteelMaterialEN1992>)[] Items =
+        {
+            ("Y1180C", () => SteelMaterialEN1992Data.Y1180C), ("Y1240C", () => SteelMaterialEN1992Data.Y1240C),
+            ("Y1280C", () => SteelMaterialEN1992Data.Y1280C), ("Y1370C", () => SteelMaterialEN1992Data.Y1370C),
+            ("Y1420C", () => SteelMaterialEN1992Data.Y1420C), ("Y1470C", () => SteelMaterialEN1992Data.Y1470C)
         };
+        public BarMaterialComponent() : base("Database Bar Steel", "DBS", "Acciaio per barre da precompressione del database GPC.") { }
+        public override Guid ComponentGuid => new("23875d38-d43a-4051-b19c-a6ae39139f7b");
+        protected override (string Name, Func<SteelMaterialEN1992> Create)[] Grades => Items;
+        protected override int DefaultGrade => 0;
+        protected override (string Name, string Nick) Output => ("Bar Steel Material", "BS");
+    }
 
-        public RebarMaterialComponent()
-            : base("Database Rebar Steel", "RS", "Database Rebar Steel")
+    public sealed class TendonMaterialComponent : SteelDatabaseComponent
+    {
+        private static readonly (string, Func<SteelMaterialEN1992>)[] Items =
         {
-        }
-
-        protected override void RegisterInputParams(GH_InputParamManager pManager)
-        {
-            int i = pManager.AddIntegerParameter("Type", "T", "The property type", GH_ParamAccess.item, 1);
-            Param_Integer mtParam = pManager[i] as Param_Integer;
-            foreach (KeyValuePair<int, string> v in _steelList)
-                mtParam.AddNamedValue(v.Value, v.Key);
-            int j = pManager.AddIntegerParameter("Behaviour", "B", "The behaviour type", GH_ParamAccess.item, 0);
-            Param_Integer mtParamj = pManager[j] as Param_Integer;
-            foreach (KeyValuePair<int, string> v in _hardeningType)
-                mtParamj.AddNamedValue(v.Value, v.Key);
-        }
-
-        protected override void RegisterOutputParams(GH_OutputParamManager pManager)
-        {
-            pManager.AddGenericParameter("Rebar Steel Material", "RS", "Rebar Steel Material", GH_ParamAccess.item);
-        }
-
-        protected override void SolveGpc(IGH_DataAccess DA)
-        {
-            int type = 0;
-            int hard = 0;
-
-            if (DA.GetData(0, ref type) && DA.GetData(1, ref hard))
-            {
-                if (!_steelList.ContainsKey(type))
-                {
-                    AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Invalid type");
-                    return;
-                }
-                SteelMaterialEN1992 steelMaterialEN1992 = null;
-                if (type == 0)
-                    steelMaterialEN1992 = SteelMaterialEN1992Data.B450A;
-                else if (type == 1)
-                    steelMaterialEN1992 = SteelMaterialEN1992Data.B450C;
-                else if (type == 2)
-                    steelMaterialEN1992 = SteelMaterialEN1992Data.B500A;
-                else if (type == 3)
-                    steelMaterialEN1992 = SteelMaterialEN1992Data.B500B;
-                else if (type == 4)
-                    steelMaterialEN1992 = SteelMaterialEN1992Data.B500C;
-                else
-                {
-                    AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Failed to get data");
-                    return;
-                }
-
-                if(hard  == 1)
-                    steelMaterialEN1992.StressStrainCurve = SteelMaterial.StressStrainCurveType.ElasticHardening;
-
-                DA.SetData(0, new GH_SteelMaterial(steelMaterialEN1992));
-            }
-        }
-
-        //protected override Bitmap Icon => Resources.material;
-        
-        public override Guid ComponentGuid => new Guid("606ebfd0-d9e7-407e-aaa3-eb8579fe2f6b");
-
+            ("Y1570C", () => SteelMaterialEN1992Data.Y1570C), ("Y1620C", () => SteelMaterialEN1992Data.Y1620C),
+            ("Y1670C", () => SteelMaterialEN1992Data.Y1670C), ("Y1770C", () => SteelMaterialEN1992Data.Y1770C),
+            ("Y1860C", () => SteelMaterialEN1992Data.Y1860C), ("Y1960C", () => SteelMaterialEN1992Data.Y1960C),
+            ("Y2060C", () => SteelMaterialEN1992Data.Y2060C), ("Y2160C", () => SteelMaterialEN1992Data.Y2160C),
+            ("Y2260C", () => SteelMaterialEN1992Data.Y2260C), ("Y2360C", () => SteelMaterialEN1992Data.Y2360C)
+        };
+        public TendonMaterialComponent() : base("Database Tendon Steel", "DTS", "Acciaio per trefoli del database GPC.") { }
+        public override Guid ComponentGuid => new("c709c2fa-5e63-4cf6-b3a2-bd505a149a4d");
+        protected override (string Name, Func<SteelMaterialEN1992> Create)[] Grades => Items;
+        protected override int DefaultGrade => 4;
+        protected override (string Name, string Nick) Output => ("Tendon Steel Material", "TS");
     }
 }

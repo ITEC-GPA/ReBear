@@ -1,0 +1,4371 @@
+{
+  "product": "ReBear",
+  "version": "0.3.0",
+  "count": 58,
+  "components": [
+    {
+      "type": "StandardComponent",
+      "guid": "3def8fa3-e056-4075-8661-bd51575c00ee",
+      "name": "Standard",
+      "nickname": "S",
+      "panel": "1 Materials",
+      "exposure": "primary",
+      "inputs": [
+        {
+          "name": "Type",
+          "nickname": "T",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Standard",
+          "nickname": "S",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "ConcreteMaterialComponent",
+      "guid": "e2aa1e8b-3fa9-49a5-8d5e-991d4eac5bc6",
+      "name": "Database Concrete",
+      "nickname": "DCM",
+      "panel": "1 Materials",
+      "exposure": "secondary",
+      "inputs": [
+        {
+          "name": "Type",
+          "nickname": "T",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Concrete Material",
+          "nickname": "CM",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "RebarMaterialComponent",
+      "guid": "606ebfd0-d9e7-407e-aaa3-eb8579fe2f6b",
+      "name": "Database Rebar Steel",
+      "nickname": "RS",
+      "panel": "1 Materials",
+      "exposure": "tertiary",
+      "inputs": [
+        {
+          "name": "Type",
+          "nickname": "T",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Behaviour",
+          "nickname": "B",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Rebar Steel Material",
+          "nickname": "RS",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "BarMaterialComponent",
+      "guid": "23875d38-d43a-4051-b19c-a6ae39139f7b",
+      "name": "Database Bar Steel",
+      "nickname": "DBS",
+      "panel": "1 Materials",
+      "exposure": "quarternary",
+      "inputs": [
+        {
+          "name": "Type",
+          "nickname": "T",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Behaviour",
+          "nickname": "B",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Bar Steel Material",
+          "nickname": "BS",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "TendonMaterialComponent",
+      "guid": "c709c2fa-5e63-4cf6-b3a2-bd505a149a4d",
+      "name": "Database Tendon Steel",
+      "nickname": "DTS",
+      "panel": "1 Materials",
+      "exposure": "quarternary",
+      "inputs": [
+        {
+          "name": "Type",
+          "nickname": "T",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Behaviour",
+          "nickname": "B",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Tendon Steel Material",
+          "nickname": "TS",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "ConcreteDesignValue",
+      "guid": "b7e2c3a0-0300-4e1b-9d1a-000000000006",
+      "name": "Concrete Material Design Value",
+      "nickname": "CD",
+      "panel": "1 Materials",
+      "exposure": "quinary",
+      "inputs": [
+        {
+          "name": "Concrete Material",
+          "nickname": "CM",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Standard",
+          "nickname": "S",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Name",
+          "nickname": "Name",
+          "kind": "Param_String",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "fck",
+          "nickname": "fck",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "fcm",
+          "nickname": "fcm",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Elastic modulus",
+          "nickname": "E",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "εc2",
+          "nickname": "εc2",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "εcu",
+          "nickname": "εcu",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "fcd",
+          "nickname": "fcd",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "fctd",
+          "nickname": "fctd",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "SteelDesignValue",
+      "guid": "b7e2c3a0-0300-4e1b-9d1a-000000000007",
+      "name": "Steel Material Design Value",
+      "nickname": "SD",
+      "panel": "1 Materials",
+      "exposure": "quinary",
+      "inputs": [
+        {
+          "name": "Steel Material",
+          "nickname": "SM",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Standard",
+          "nickname": "S",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Name",
+          "nickname": "Name",
+          "kind": "Param_String",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Elastic modulus",
+          "nickname": "E",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "fyk",
+          "nickname": "fyk",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "fu",
+          "nickname": "fu",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Et",
+          "nickname": "Et",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "εy",
+          "nickname": "εy",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "εu",
+          "nickname": "εu",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "fyd",
+          "nickname": "fyd",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "fud",
+          "nickname": "fud",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "εyd",
+          "nickname": "εyd",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "εud",
+          "nickname": "εud",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "RebarComponent",
+      "guid": "b7e2c3a0-0300-4e1b-9d1a-000000000008",
+      "name": "Rebar Element",
+      "nickname": "RE",
+      "panel": "2 Sections",
+      "exposure": "primary",
+      "inputs": [
+        {
+          "name": "Position",
+          "nickname": "P",
+          "kind": "Param_Point",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Diameter",
+          "nickname": "Ø",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Rebar Material",
+          "nickname": "M",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Rebar Element",
+          "nickname": "RE",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "RebarLayoutComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0029",
+      "name": "Rebar Path Layout",
+      "nickname": "RebarPath",
+      "panel": "2 Sections",
+      "exposure": "primary",
+      "inputs": [
+        {
+          "name": "Bar centre path",
+          "nickname": "Path",
+          "kind": "Param_Curve",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Steel",
+          "nickname": "S",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Diameter",
+          "nickname": "Ø",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Count",
+          "nickname": "n",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Maximum path spacing",
+          "nickname": "s",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Rebars",
+          "nickname": "R",
+          "kind": "Param_GenericObject",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "Centres",
+          "nickname": "P",
+          "kind": "Param_Point",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "Path spacing",
+          "nickname": "s",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "TendonComponent",
+      "guid": "b7e2c3a0-0300-4e1b-9d1a-000000000009",
+      "name": "Tendon Element",
+      "nickname": "TE",
+      "panel": "2 Sections",
+      "exposure": "primary",
+      "inputs": [
+        {
+          "name": "Position",
+          "nickname": "P",
+          "kind": "Param_Point",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Diameter",
+          "nickname": "Ø",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Tendon Material",
+          "nickname": "M",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Pretension",
+          "nickname": "σp",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Tendon Element",
+          "nickname": "TE",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "CircularRcSectionComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0025",
+      "name": "Circular RC Section",
+      "nickname": "CircRC",
+      "panel": "2 Sections",
+      "exposure": "secondary",
+      "inputs": [
+        {
+          "name": "Concrete",
+          "nickname": "C",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Steel",
+          "nickname": "S",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Diameter",
+          "nickname": "D",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Link cover",
+          "nickname": "c",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Link diameter",
+          "nickname": "Øw",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Bar diameter",
+          "nickname": "Ø",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Bar count",
+          "nickname": "n",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Polygon sides",
+          "nickname": "Seg",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "RC section",
+          "nickname": "S",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Concrete preview",
+          "nickname": "C",
+          "kind": "Param_Brep",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Rebars",
+          "nickname": "R",
+          "kind": "Param_GenericObject",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "Concrete area",
+          "nickname": "Ac",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Steel area",
+          "nickname": "As",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Minimum bar cover",
+          "nickname": "cbar",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "RectangularRcSectionComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0024",
+      "name": "Rectangular RC Section",
+      "nickname": "RectRC",
+      "panel": "2 Sections",
+      "exposure": "secondary",
+      "inputs": [
+        {
+          "name": "Concrete",
+          "nickname": "C",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Steel",
+          "nickname": "S",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Width",
+          "nickname": "b",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Height",
+          "nickname": "h",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Link cover",
+          "nickname": "c",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Link diameter",
+          "nickname": "Øw",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Bar diameter",
+          "nickname": "Ø",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Top bars",
+          "nickname": "nt",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Bottom bars",
+          "nickname": "nb",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Side bars per face",
+          "nickname": "ns",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "RC section",
+          "nickname": "S",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Concrete preview",
+          "nickname": "C",
+          "kind": "Param_Brep",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Rebars",
+          "nickname": "R",
+          "kind": "Param_GenericObject",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "Concrete area",
+          "nickname": "Ac",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Steel area",
+          "nickname": "As",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Minimum bar cover",
+          "nickname": "cbar",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "BoxRcSectionComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0028",
+      "name": "Box RC Section",
+      "nickname": "BoxRC",
+      "panel": "2 Sections",
+      "exposure": "tertiary",
+      "inputs": [
+        {
+          "name": "Concrete",
+          "nickname": "C",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Steel",
+          "nickname": "S",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Width",
+          "nickname": "b",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Height",
+          "nickname": "h",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Hole width",
+          "nickname": "bi",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Hole height",
+          "nickname": "hi",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Link cover",
+          "nickname": "c",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Link diameter",
+          "nickname": "Øw",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Bar diameter",
+          "nickname": "Ø",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Outer bars per horizontal side",
+          "nickname": "nx",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Outer bars per vertical side",
+          "nickname": "ny",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Inner bars per horizontal side",
+          "nickname": "nix",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Inner bars per vertical side",
+          "nickname": "niy",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "RC section",
+          "nickname": "S",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Concrete preview",
+          "nickname": "C",
+          "kind": "Param_Brep",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Rebars",
+          "nickname": "R",
+          "kind": "Param_GenericObject",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "Concrete area",
+          "nickname": "Ac",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Steel area",
+          "nickname": "As",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Minimum bar cover",
+          "nickname": "cbar",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "IRcSectionComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0027",
+      "name": "I RC Section",
+      "nickname": "IRC",
+      "panel": "2 Sections",
+      "exposure": "tertiary",
+      "inputs": [
+        {
+          "name": "Concrete",
+          "nickname": "C",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Steel",
+          "nickname": "S",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Top flange width",
+          "nickname": "bt",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Bottom flange width",
+          "nickname": "bb",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Height",
+          "nickname": "h",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Web width",
+          "nickname": "bw",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Top flange thickness",
+          "nickname": "tt",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Bottom flange thickness",
+          "nickname": "tb",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Link cover",
+          "nickname": "c",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Link diameter",
+          "nickname": "Øw",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Bar diameter",
+          "nickname": "Ø",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Top bars",
+          "nickname": "nt",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Bottom bars",
+          "nickname": "nb",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Web bars per face",
+          "nickname": "ns",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "RC section",
+          "nickname": "S",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Concrete preview",
+          "nickname": "C",
+          "kind": "Param_Brep",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Rebars",
+          "nickname": "R",
+          "kind": "Param_GenericObject",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "Concrete area",
+          "nickname": "Ac",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Steel area",
+          "nickname": "As",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Minimum bar cover",
+          "nickname": "cbar",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "TeeRcSectionComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0026",
+      "name": "T RC Section",
+      "nickname": "TRC",
+      "panel": "2 Sections",
+      "exposure": "tertiary",
+      "inputs": [
+        {
+          "name": "Concrete",
+          "nickname": "C",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Steel",
+          "nickname": "S",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Flange width",
+          "nickname": "bf",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Height",
+          "nickname": "h",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Web width",
+          "nickname": "bw",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Flange thickness",
+          "nickname": "tf",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Link cover",
+          "nickname": "c",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Link diameter",
+          "nickname": "Øw",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Bar diameter",
+          "nickname": "Ø",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Top bars",
+          "nickname": "nt",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Bottom bars",
+          "nickname": "nb",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Web bars per face",
+          "nickname": "ns",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "RC section",
+          "nickname": "S",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Concrete preview",
+          "nickname": "C",
+          "kind": "Param_Brep",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Rebars",
+          "nickname": "R",
+          "kind": "Param_GenericObject",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "Concrete area",
+          "nickname": "Ac",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Steel area",
+          "nickname": "As",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Minimum bar cover",
+          "nickname": "cbar",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "ReinforcedConcreteSectionComponent",
+      "guid": "f247cd41-e5cb-4a35-b9b8-e06b4c43afc6",
+      "name": "Reinforced Concrete Section",
+      "nickname": "RCS",
+      "panel": "2 Sections",
+      "exposure": "quarternary",
+      "inputs": [
+        {
+          "name": "Section Name",
+          "nickname": "n",
+          "kind": "Param_String",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Surface",
+          "nickname": "S",
+          "kind": "Param_Brep",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Concrete Material",
+          "nickname": "M",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Rebar elements",
+          "nickname": "RE",
+          "kind": "Param_GenericObject",
+          "access": "list",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Reinforced Concrete Section",
+          "nickname": "RCS",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "SectionGeometryCheckComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0030",
+      "name": "Section Geometry Check",
+      "nickname": "GeomCheck",
+      "panel": "2 Sections",
+      "exposure": "quinary",
+      "inputs": [
+        {
+          "name": "Section",
+          "nickname": "S",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Required bar cover",
+          "nickname": "c",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Required clear spacing",
+          "nickname": "s",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Section ID",
+          "nickname": "ID",
+          "kind": "Param_String",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Result",
+          "nickname": "R",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Minimum bar cover",
+          "nickname": "c",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Minimum clear spacing",
+          "nickname": "s",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Steel area",
+          "nickname": "As",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "ConcreteMechanicalPropertiesComponent",
+      "guid": "b7e2c3a0-0300-4e1b-9d1a-000000000010",
+      "name": "Concrete Mechanical Properties",
+      "nickname": "CP",
+      "panel": "2 Sections",
+      "exposure": "senary",
+      "inputs": [
+        {
+          "name": "Reinforced Concrete Section",
+          "nickname": "RCS",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Name",
+          "nickname": "N",
+          "kind": "Param_String",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Area",
+          "nickname": "A",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Sx",
+          "nickname": "Sx",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Sy",
+          "nickname": "Sy",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Jxx",
+          "nickname": "Jxx",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Jyy",
+          "nickname": "Jyy",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Jxy",
+          "nickname": "Jxy",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Jp",
+          "nickname": "Jp",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "J11",
+          "nickname": "J11",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "J22",
+          "nickname": "J22",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Principal angle",
+          "nickname": "θ1",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Centroid",
+          "nickname": "C",
+          "kind": "Param_Point",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "HomogenizedMechanicalPropertiesComponent",
+      "guid": "b7e2c3a0-0300-4e1b-9d1a-000000000011",
+      "name": "Homogenized Mechanical Properties",
+      "nickname": "HP",
+      "panel": "2 Sections",
+      "exposure": "senary",
+      "inputs": [
+        {
+          "name": "Reinforced Concrete Section",
+          "nickname": "RCS",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "ψ factor",
+          "nickname": "ψ",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Name",
+          "nickname": "N",
+          "kind": "Param_String",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Area",
+          "nickname": "A",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Sx",
+          "nickname": "Sx",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Sy",
+          "nickname": "Sy",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Jxx",
+          "nickname": "Jxx",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Jyy",
+          "nickname": "Jyy",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Jxy",
+          "nickname": "Jxy",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Jp",
+          "nickname": "Jp",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "J11",
+          "nickname": "J11",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "J22",
+          "nickname": "J22",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Principal angle",
+          "nickname": "θ1",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Centroid",
+          "nickname": "C",
+          "kind": "Param_Point",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "CoordinateSystemComponent",
+      "guid": "8f839216-244a-4891-a1d5-bb0fb42f7909",
+      "name": "Coordinate System",
+      "nickname": "CS",
+      "panel": "3 Input",
+      "exposure": "primary",
+      "inputs": [
+        {
+          "name": "Name",
+          "nickname": "N",
+          "kind": "Param_String",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Origin",
+          "nickname": "O",
+          "kind": "Param_Point",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "P1",
+          "nickname": "P1",
+          "kind": "Param_Point",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "P2",
+          "nickname": "P2",
+          "kind": "Param_Point",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Coordinate System",
+          "nickname": "CS",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "CoordinateSystemSectionComponent",
+      "guid": "b7e2c3a0-0300-4e1b-9d1a-000000000012",
+      "name": "Section Coordinate System",
+      "nickname": "SCS",
+      "panel": "3 Input",
+      "exposure": "primary",
+      "inputs": [
+        {
+          "name": "Section",
+          "nickname": "S",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Coordinate System",
+          "nickname": "CS",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "SectionForceComponent",
+      "guid": "ddd3c603-f931-4db5-ab11-6d1da9ffd01e",
+      "name": "Force component",
+      "nickname": "FC",
+      "panel": "3 Input",
+      "exposure": "secondary",
+      "inputs": [
+        {
+          "name": "Name",
+          "nickname": "N",
+          "kind": "Param_String",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Axial Force",
+          "nickname": "N",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Shear X",
+          "nickname": "VX",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Shear Y",
+          "nickname": "VY",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Torsion",
+          "nickname": "T",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Bending X",
+          "nickname": "MX",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Bending Y",
+          "nickname": "MY",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Coordinate System",
+          "nickname": "CS",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Units",
+          "nickname": "U",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Force",
+          "nickname": "F",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "LoadEnvelopeComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0001",
+      "name": "Load Envelope",
+      "nickname": "LoadEnv",
+      "panel": "3 Input",
+      "exposure": "tertiary",
+      "inputs": [
+        {
+          "name": "Forces",
+          "nickname": "F",
+          "kind": "Param_GenericObject",
+          "access": "list",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Extremum",
+          "nickname": "E",
+          "kind": "Param_String",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "Value",
+          "nickname": "V",
+          "kind": "Param_Number",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "Case index",
+          "nickname": "i",
+          "kind": "Param_Integer",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "Concomitant forces",
+          "nickname": "F",
+          "kind": "Param_GenericObject",
+          "access": "list",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "HomogenizationOptionsComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0021",
+      "name": "Creep and Homogenization",
+      "nickname": "φ-n",
+      "panel": "3 Input",
+      "exposure": "quarternary",
+      "inputs": [
+        {
+          "name": "Concrete",
+          "nickname": "C",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Steel",
+          "nickname": "S",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Input is n",
+          "nickname": "n?",
+          "kind": "Param_Boolean",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Value",
+          "nickname": "V",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Creep coefficient",
+          "nickname": "φ",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Modular ratio",
+          "nickname": "n",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Effective concrete modulus",
+          "nickname": "Ec,eff",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "PsiFactorComponent",
+      "guid": "7480e84d-4e82-4be1-a021-425dff4803e1",
+      "name": "Psi coefficient",
+      "nickname": "ψ",
+      "panel": "3 Input",
+      "exposure": "quarternary",
+      "inputs": [
+        {
+          "name": "Concrete Material",
+          "nickname": "CM",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Steel material",
+          "nickname": "SM",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Homogenized factor",
+          "nickname": "n",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "ψ factor",
+          "nickname": "ψ",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "CheckerOptionsComponent",
+      "guid": "b7e2c3a0-0300-4e1b-9d1a-000000000003",
+      "name": "Concrete Checker Options",
+      "nickname": "CCO",
+      "panel": "4 Setup",
+      "exposure": "primary",
+      "inputs": [
+        {
+          "name": "Coordinate System",
+          "nickname": "CS",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Failure Domain Types",
+          "nickname": "FDT",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Failure Analysis Types",
+          "nickname": "FAT",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Domain Point Strategy Types",
+          "nickname": "DPST",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Stress Analysis Types",
+          "nickname": "SAT",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "ψ rebar",
+          "nickname": "ψ r",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "ψ tendon",
+          "nickname": "ψ t",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Consider tensile concrete",
+          "nickname": "TC",
+          "kind": "Param_Boolean",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Theta discretization",
+          "nickname": "θn",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Checker Options",
+          "nickname": "CO",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "CheckerComponent",
+      "guid": "c485957b-3d8e-4f19-8176-f30ffcda952e",
+      "name": "Concrete Checker",
+      "nickname": "CC",
+      "panel": "4 Setup",
+      "exposure": "secondary",
+      "inputs": [
+        {
+          "name": "Reinforced Concrete Section",
+          "nickname": "RCS",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Standard",
+          "nickname": "S",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Options",
+          "nickname": "O",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Concrete Checker",
+          "nickname": "CC",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "CircularShearOptionsComponent",
+      "guid": "b7e2c3a0-0300-4e1b-9d1a-000000000002",
+      "name": "Circular Shear Options",
+      "nickname": "VCirc",
+      "panel": "4 Setup",
+      "exposure": "tertiary",
+      "inputs": [
+        {
+          "name": "Standard",
+          "nickname": "S",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Link steel",
+          "nickname": "Sw",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Longitudinal steel",
+          "nickname": "Sl",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Diameter",
+          "nickname": "D",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Link cover",
+          "nickname": "c",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Link diameter",
+          "nickname": "Øw",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Legs",
+          "nickname": "n",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Spacing",
+          "nickname": "s",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Link angle",
+          "nickname": "α",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Bar diameter",
+          "nickname": "Ø",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Cot theta",
+          "nickname": "cotθ",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Aggregate",
+          "nickname": "dg",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Options",
+          "nickname": "O",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "RectangularShearOptionsComponent",
+      "guid": "b7e2c3a0-0300-4e1b-9d1a-000000000001",
+      "name": "Rectangular Shear Options",
+      "nickname": "VRect",
+      "panel": "4 Setup",
+      "exposure": "tertiary",
+      "inputs": [
+        {
+          "name": "Standard",
+          "nickname": "S",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Link steel",
+          "nickname": "Sw",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Longitudinal steel",
+          "nickname": "Sl",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Base",
+          "nickname": "B",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Height",
+          "nickname": "H",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Bar cover",
+          "nickname": "c",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Link diameter",
+          "nickname": "Øw",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Legs X",
+          "nickname": "nX",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Legs Y",
+          "nickname": "nY",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Spacing",
+          "nickname": "s",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Link angle X",
+          "nickname": "αX",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Link angle Y",
+          "nickname": "αY",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Bar diameter X",
+          "nickname": "ØX",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Bar diameter Y",
+          "nickname": "ØY",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Bar count X",
+          "nickname": "nlX",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Bar count Y",
+          "nickname": "nlY",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Cot theta",
+          "nickname": "cotθ",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Aggregate",
+          "nickname": "dg",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Options X",
+          "nickname": "X",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Options Y",
+          "nickname": "Y",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "ShearOptionsComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0005",
+      "name": "Shear Options",
+      "nickname": "VOpt",
+      "panel": "4 Setup",
+      "exposure": "tertiary",
+      "inputs": [
+        {
+          "name": "Link steel",
+          "nickname": "Sw",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Longitudinal steel",
+          "nickname": "Sl",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Web width",
+          "nickname": "bw",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Effective depth",
+          "nickname": "d",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Longitudinal area",
+          "nickname": "Asl",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Link area",
+          "nickname": "Asw",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Spacing",
+          "nickname": "s",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Link angle",
+          "nickname": "α",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Cot theta",
+          "nickname": "cotθ",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Lever factor",
+          "nickname": "z/d",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Aggregate",
+          "nickname": "dg",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Axial eccentricity",
+          "nickname": "Δe",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Options",
+          "nickname": "O",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "TorsionOptionsComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0007",
+      "name": "Torsion Options",
+      "nickname": "TOpt",
+      "panel": "4 Setup",
+      "exposure": "quarternary",
+      "inputs": [
+        {
+          "name": "Enclosed area",
+          "nickname": "Ak",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Midline perimeter",
+          "nickname": "uk",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Effective thickness",
+          "nickname": "tef",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Link steel",
+          "nickname": "Sw",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Longitudinal steel",
+          "nickname": "Sl",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "One leg area",
+          "nickname": "At",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Spacing",
+          "nickname": "s",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Torsion longitudinal area",
+          "nickname": "ΣAsl",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Cot theta",
+          "nickname": "cotθ",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Hollow, both faces reinforced",
+          "nickname": "H",
+          "kind": "Param_Boolean",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Closed links and distributed bars confirmed",
+          "nickname": "OK",
+          "kind": "Param_Boolean",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Options",
+          "nickname": "O",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "SleOptionsComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0010",
+      "name": "SLE Options",
+      "nickname": "SLEOpt",
+      "panel": "4 Setup",
+      "exposure": "quinary",
+      "inputs": [
+        {
+          "name": "Combination",
+          "nickname": "C",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Exposure",
+          "nickname": "E",
+          "kind": "Param_String",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Sensitive reinforcement",
+          "nickname": "Sens",
+          "kind": "Param_Boolean",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Short term",
+          "nickname": "Short",
+          "kind": "Param_Boolean",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Ribbed bars",
+          "nickname": "Rib",
+          "kind": "Param_Boolean",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Longitudinal bar cover",
+          "nickname": "c",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Design crack limit",
+          "nickname": "wlim",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": true
+        },
+        {
+          "name": "Spacing override",
+          "nickname": "s",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": true
+        },
+        {
+          "name": "Formula cover override",
+          "nickname": "cf",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": true
+        },
+        {
+          "name": "Concentric rings",
+          "nickname": "Rings",
+          "kind": "Param_Boolean",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Options",
+          "nickname": "O",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Exposure catalogue",
+          "nickname": "E",
+          "kind": "Param_String",
+          "access": "list",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "PlateDetailingOptionsComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0015",
+      "name": "Plate Detailing Options",
+      "nickname": "PlateOpt",
+      "panel": "4 Setup",
+      "exposure": "senary",
+      "inputs": [
+        {
+          "name": "Secondary steel",
+          "nickname": "As2",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Secondary spacing",
+          "nickname": "s2",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Critical region",
+          "nickname": "Crit",
+          "kind": "Param_Boolean",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Plate data",
+          "nickname": "P",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "DetailingOptionsComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0016",
+      "name": "Detailing Options",
+      "nickname": "DetOpt",
+      "panel": "4 Setup",
+      "exposure": "septenary",
+      "inputs": [
+        {
+          "name": "Member kind",
+          "nickname": "K",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Top tension width",
+          "nickname": "bt+",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Bottom tension width",
+          "nickname": "bt−",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Web width",
+          "nickname": "bw",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Link diameter",
+          "nickname": "Øw",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Link spacing",
+          "nickname": "sw",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Link legs",
+          "nickname": "nw",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Nominal cover",
+          "nickname": "c",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Aggregate",
+          "nickname": "dg",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Cover deviation",
+          "nickname": "Δc",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Durability minimum",
+          "nickname": "cmin,dur",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": true
+        },
+        {
+          "name": "Lap zone",
+          "nickname": "Lap",
+          "kind": "Param_Boolean",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Compression bars restrained",
+          "nickname": "Restr",
+          "kind": "Param_Boolean",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "End zones confirmed",
+          "nickname": "Ends",
+          "kind": "Param_Boolean",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Plate data",
+          "nickname": "P",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Options",
+          "nickname": "O",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "StressAnalysisComponent",
+      "guid": "2c7939e3-5f53-4d53-989b-a56b65b773e4",
+      "name": "Stress Analysis",
+      "nickname": "SA",
+      "panel": "5 Analysis",
+      "exposure": "primary",
+      "inputs": [
+        {
+          "name": "Concrete Checker",
+          "nickname": "CC",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Forces",
+          "nickname": "F",
+          "kind": "Param_GenericObject",
+          "access": "list",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Stress Analysis Results",
+          "nickname": "SAR",
+          "kind": "Param_GenericObject",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "Strain Plane Results",
+          "nickname": "SPR",
+          "kind": "Param_GenericObject",
+          "access": "list",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "FailureDomain3DComponent",
+      "guid": "a4c3e502-6c1e-4954-a9ef-7ac9e8bab5ef",
+      "name": "3D Failure Domain Check",
+      "nickname": "FDA",
+      "panel": "5 Analysis",
+      "exposure": "secondary",
+      "inputs": [
+        {
+          "name": "Concrete Checker",
+          "nickname": "CC",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "3D Failure Domain Analysis",
+          "nickname": "FDA",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "3D Failure Domain Points",
+          "nickname": "FDP",
+          "kind": "Param_Point",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "3D Failure Domain Mesh",
+          "nickname": "FDM",
+          "kind": "Param_Mesh",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "DomainSliceComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0019",
+      "name": "Domain Slice at N",
+      "nickname": "MxMy",
+      "panel": "5 Analysis",
+      "exposure": "tertiary",
+      "inputs": [
+        {
+          "name": "Checker",
+          "nickname": "C",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Axial force",
+          "nickname": "N",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Directions",
+          "nickname": "n",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Run",
+          "nickname": "Run",
+          "kind": "Param_Boolean",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Mx-My curve",
+          "nickname": "D",
+          "kind": "Param_Curve",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Mx",
+          "nickname": "Mx",
+          "kind": "Param_Number",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "My",
+          "nickname": "My",
+          "kind": "Param_Number",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "Solved N",
+          "nickname": "N",
+          "kind": "Param_Number",
+          "access": "list",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "MomentCurvatureComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0018",
+      "name": "Moment Curvature",
+      "nickname": "Mχ",
+      "panel": "5 Analysis",
+      "exposure": "quarternary",
+      "inputs": [
+        {
+          "name": "Checker",
+          "nickname": "C",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Axial force",
+          "nickname": "N",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Moment direction",
+          "nickname": "θ",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Steps",
+          "nickname": "n",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "End fraction",
+          "nickname": "f",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Axial tolerance",
+          "nickname": "tolN",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Run",
+          "nickname": "Run",
+          "kind": "Param_Boolean",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Diagram",
+          "nickname": "D",
+          "kind": "Param_Curve",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Curvature",
+          "nickname": "χ",
+          "kind": "Param_Number",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "Moment",
+          "nickname": "M",
+          "kind": "Param_Number",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "Yield curvature",
+          "nickname": "χy",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Ultimate curvature",
+          "nickname": "χu",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Status",
+          "nickname": "S",
+          "kind": "Param_String",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Response",
+          "nickname": "R",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "PostProcessFailureDomain3DComponent",
+      "guid": "b7e2c3a0-0300-4e1b-9d1a-000000000013",
+      "name": "3D Failure Domain Analysis",
+      "nickname": "FDP",
+      "panel": "6 Checks",
+      "exposure": "primary",
+      "inputs": [
+        {
+          "name": "3D Failure Domain Analysis",
+          "nickname": "FDA",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Forces",
+          "nickname": "F",
+          "kind": "Param_GenericObject",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "Section ID",
+          "nickname": "ID",
+          "kind": "Param_String",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Results",
+          "nickname": "R",
+          "kind": "Param_GenericObject",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "External Force",
+          "nickname": "EF",
+          "kind": "Param_Point",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "Resistance Force",
+          "nickname": "RF",
+          "kind": "Param_Point",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "Utilization",
+          "nickname": "η",
+          "kind": "Param_Number",
+          "access": "list",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "ResistanceCheckComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0009",
+      "name": "Section Resistance Check",
+      "nickname": "NM",
+      "panel": "6 Checks",
+      "exposure": "primary",
+      "inputs": [
+        {
+          "name": "Checker",
+          "nickname": "C",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Force",
+          "nickname": "F",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Section ID",
+          "nickname": "ID",
+          "kind": "Param_String",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Result",
+          "nickname": "R",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "ShearCheckComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0006",
+      "name": "Shear Check",
+      "nickname": "Shear",
+      "panel": "6 Checks",
+      "exposure": "secondary",
+      "inputs": [
+        {
+          "name": "Checker",
+          "nickname": "C",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Force",
+          "nickname": "F",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Options",
+          "nickname": "O",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Direction",
+          "nickname": "A",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Section ID",
+          "nickname": "ID",
+          "kind": "Param_String",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Result",
+          "nickname": "R",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "TorsionShearCheckComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0008",
+      "name": "Torsion and Shear",
+      "nickname": "TV",
+      "panel": "6 Checks",
+      "exposure": "tertiary",
+      "inputs": [
+        {
+          "name": "Checker",
+          "nickname": "C",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Force",
+          "nickname": "F",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Torsion options",
+          "nickname": "T",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Shear X options",
+          "nickname": "X",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": true
+        },
+        {
+          "name": "Shear Y options",
+          "nickname": "Y",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": true
+        },
+        {
+          "name": "Section ID",
+          "nickname": "ID",
+          "kind": "Param_String",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Result",
+          "nickname": "R",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "ServiceabilityCheckComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0011",
+      "name": "Serviceability Check",
+      "nickname": "SLE",
+      "panel": "6 Checks",
+      "exposure": "quarternary",
+      "inputs": [
+        {
+          "name": "Stress result",
+          "nickname": "S",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Options",
+          "nickname": "O",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Section ID",
+          "nickname": "ID",
+          "kind": "Param_String",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Results",
+          "nickname": "R",
+          "kind": "Param_GenericObject",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "Crack data",
+          "nickname": "Cr",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "BatchSectionChecksComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0012",
+      "name": "Batch Section Checks",
+      "nickname": "Batch",
+      "panel": "6 Checks",
+      "exposure": "quinary",
+      "inputs": [
+        {
+          "name": "Checker",
+          "nickname": "C",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Forces",
+          "nickname": "F",
+          "kind": "Param_GenericObject",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "Section ID",
+          "nickname": "ID",
+          "kind": "Param_String",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "N-Mx-My",
+          "nickname": "NM",
+          "kind": "Param_Boolean",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Shear X",
+          "nickname": "X",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": true
+        },
+        {
+          "name": "Shear Y",
+          "nickname": "Y",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": true
+        },
+        {
+          "name": "Torsion",
+          "nickname": "T",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": true
+        },
+        {
+          "name": "SLE",
+          "nickname": "SLE",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": true
+        },
+        {
+          "name": "Run",
+          "nickname": "Run",
+          "kind": "Param_Boolean",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Results",
+          "nickname": "R",
+          "kind": "Param_GenericObject",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "CSV",
+          "nickname": "CSV",
+          "kind": "Param_String",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Envelope",
+          "nickname": "Env",
+          "kind": "Param_String",
+          "access": "list",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "ReinforcementSearchComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0022",
+      "name": "Reinforcement Candidate Search",
+      "nickname": "AsSearch",
+      "panel": "6 Checks",
+      "exposure": "senary",
+      "inputs": [
+        {
+          "name": "Candidate checkers",
+          "nickname": "C",
+          "kind": "Param_GenericObject",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "Forces",
+          "nickname": "F",
+          "kind": "Param_GenericObject",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "Target utilization",
+          "nickname": "η",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Run",
+          "nickname": "Run",
+          "kind": "Param_Boolean",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Selected index",
+          "nickname": "i",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Selected checker",
+          "nickname": "C",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "All results",
+          "nickname": "R",
+          "kind": "Param_GenericObject",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "Selected steel area",
+          "nickname": "As",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "ConcreteCoverComponent",
+      "guid": "b7e2c3a0-0300-4e1b-9d1a-000000000004",
+      "name": "Concrete Cover",
+      "nickname": "Cover",
+      "panel": "7 Detailing",
+      "exposure": "primary",
+      "inputs": [
+        {
+          "name": "Standard",
+          "nickname": "S",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Concrete",
+          "nickname": "C",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Exposures",
+          "nickname": "E",
+          "kind": "Param_String",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "Specification bar diameter",
+          "nickname": "Øspec",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Actual bar diameter",
+          "nickname": "Ø",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": true
+        },
+        {
+          "name": "Adopted cover",
+          "nickname": "c",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Design life",
+          "nickname": "Life",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Deviation",
+          "nickname": "Δc",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Aggregate",
+          "nickname": "dg",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Slab geometry (EN)",
+          "nickname": "Slab",
+          "kind": "Param_Boolean",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Special quality control (EN)",
+          "nickname": "QC",
+          "kind": "Param_Boolean",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Strength class reduction (EN)",
+          "nickname": "Strength",
+          "kind": "Param_Boolean",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Plate element (NTC)",
+          "nickname": "Plate",
+          "kind": "Param_Boolean",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Quality control reduction (NTC)",
+          "nickname": "QC NTC",
+          "kind": "Param_Boolean",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Rough surface",
+          "nickname": "Rough",
+          "kind": "Param_Boolean",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Abrasion",
+          "nickname": "Abr",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Ground",
+          "nickname": "Soil",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Pertinent minimum strength",
+          "nickname": "Cmin",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": true
+        },
+        {
+          "name": "Section ID",
+          "nickname": "ID",
+          "kind": "Param_String",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Result",
+          "nickname": "R",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Required nominal",
+          "nickname": "cnom",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Durability minimum",
+          "nickname": "cmin,dur",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Cover data",
+          "nickname": "D",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "AnchorageLapComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0014",
+      "name": "Anchorage and Lap",
+      "nickname": "Anchor",
+      "panel": "7 Detailing",
+      "exposure": "secondary",
+      "inputs": [
+        {
+          "name": "Standard",
+          "nickname": "S",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Concrete",
+          "nickname": "C",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Steel",
+          "nickname": "S",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Diameter",
+          "nickname": "Ø",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Design stress",
+          "nickname": "σ",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Available length",
+          "nickname": "l",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Good bond",
+          "nickname": "Bond",
+          "kind": "Param_Boolean",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Lap",
+          "nickname": "Lap",
+          "kind": "Param_Boolean",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Lapped percentage",
+          "nickname": "%",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Lap clear distance",
+          "nickname": "a",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Section ID",
+          "nickname": "ID",
+          "kind": "Param_String",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Result",
+          "nickname": "R",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Required length",
+          "nickname": "lreq",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Bond strength",
+          "nickname": "fbd",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "ReinforcementDetailingComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0017",
+      "name": "Reinforcement Detailing",
+      "nickname": "Detail",
+      "panel": "7 Detailing",
+      "exposure": "tertiary",
+      "inputs": [
+        {
+          "name": "Checker",
+          "nickname": "C",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Options",
+          "nickname": "O",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Minimum axial force",
+          "nickname": "Nmin",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Section ID",
+          "nickname": "ID",
+          "kind": "Param_String",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Results",
+          "nickname": "R",
+          "kind": "Param_GenericObject",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "CSV",
+          "nickname": "CSV",
+          "kind": "Param_String",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "CheckResultComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0003",
+      "name": "Check Result",
+      "nickname": "Result",
+      "panel": "8 Results",
+      "exposure": "primary",
+      "inputs": [
+        {
+          "name": "Result",
+          "nickname": "R",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Section",
+          "nickname": "S",
+          "kind": "Param_String",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Case",
+          "nickname": "C",
+          "kind": "Param_String",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Check",
+          "nickname": "K",
+          "kind": "Param_String",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Status",
+          "nickname": "St",
+          "kind": "Param_String",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Utilization",
+          "nickname": "η",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Demand",
+          "nickname": "Ed",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Capacity",
+          "nickname": "Rd",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Unit",
+          "nickname": "U",
+          "kind": "Param_String",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Message",
+          "nickname": "M",
+          "kind": "Param_String",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Reference",
+          "nickname": "Ref",
+          "kind": "Param_String",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Details",
+          "nickname": "D",
+          "kind": "Param_String",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "EffectiveCrackedSectionComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0020",
+      "name": "Effective Cracked Section",
+      "nickname": "AcEff",
+      "panel": "8 Results",
+      "exposure": "secondary",
+      "inputs": [
+        {
+          "name": "Crack data",
+          "nickname": "Cr",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Regions",
+          "nickname": "K",
+          "kind": "Param_String",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "Effective concrete area",
+          "nickname": "Ac",
+          "kind": "Param_Number",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "Effective steel area",
+          "nickname": "As",
+          "kind": "Param_Number",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "Crack width",
+          "nickname": "w",
+          "kind": "Param_Number",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "Regions preview",
+          "nickname": "G",
+          "kind": "Param_Brep",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "Bar indices",
+          "nickname": "i",
+          "kind": "Param_String",
+          "access": "list",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "PostProcessStrainResultComponent",
+      "guid": "b7e2c3a0-0300-4e1b-9d1a-000000000005",
+      "name": "Stress Analysis Summary",
+      "nickname": "SAS",
+      "panel": "8 Results",
+      "exposure": "secondary",
+      "inputs": [
+        {
+          "name": "Strain Plane Result",
+          "nickname": "SPR",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Summary",
+          "nickname": "S",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Id",
+          "nickname": "Id",
+          "kind": "Param_Integer",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Case",
+          "nickname": "Case",
+          "kind": "Param_String",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "N [kN]",
+          "nickname": "N",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Mx [kNm]",
+          "nickname": "Mx",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "My [kNm]",
+          "nickname": "My",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "σc min [MPa]",
+          "nickname": "σc-",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "σc max [MPa]",
+          "nickname": "σc+",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "σs min [MPa]",
+          "nickname": "σs-",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "σs max [MPa]",
+          "nickname": "σs+",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "σp min [MPa]",
+          "nickname": "σp-",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "σp max [MPa]",
+          "nickname": "σp+",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "σss min [MPa]",
+          "nickname": "σss-",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "σss max [MPa]",
+          "nickname": "σss+",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "εc min [‰]",
+          "nickname": "εc-",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "εc max [‰]",
+          "nickname": "εc+",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "εs min [‰]",
+          "nickname": "εs-",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "εs max [‰]",
+          "nickname": "εs+",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "εp min [‰]",
+          "nickname": "εp-",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "εp max [‰]",
+          "nickname": "εp+",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "εss min [‰]",
+          "nickname": "εss-",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "εss max [‰]",
+          "nickname": "εss+",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "d [mm]",
+          "nickname": "d",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "x [mm]",
+          "nickname": "x",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "θ [°]",
+          "nickname": "θ",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "FailureDomainSummaryComponent",
+      "guid": "0a07f98a-2c47-4bc6-84c3-5833a4f6b65a",
+      "name": "Section Resistance Summary",
+      "nickname": "SRS",
+      "panel": "8 Results",
+      "exposure": "tertiary",
+      "inputs": [
+        {
+          "name": "Reinforced Concrete Section",
+          "nickname": "RCS",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Standard",
+          "nickname": "S",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Axial Force [kN]",
+          "nickname": "N [kN]",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MxRd+ pl [kNm]",
+          "nickname": "MxRd+ pl [kNm]",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "MyRd+ pl [kNm]",
+          "nickname": "MyRd+ pl [kNm]",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "MxRd- pl [kNm]",
+          "nickname": "MxRd- pl [kNm]",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "MyRd- pl [kNm]",
+          "nickname": "MyRd- pl [kNm]",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "MxRd+ el [kNm]",
+          "nickname": "MxRd+ el [kNm]",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "MyRd+ el [kNm]",
+          "nickname": "MyRd+ el [kNm]",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "MxRd- el [kNm]",
+          "nickname": "MxRd- el [kNm]",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "MyRd- el [kNm]",
+          "nickname": "MyRd- el [kNm]",
+          "kind": "Param_Number",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "CheckEnvelopeComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0002",
+      "name": "Check Envelope",
+      "nickname": "CheckEnv",
+      "panel": "8 Results",
+      "exposure": "quarternary",
+      "inputs": [
+        {
+          "name": "Results",
+          "nickname": "R",
+          "kind": "Param_GenericObject",
+          "access": "list",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Group",
+          "nickname": "G",
+          "kind": "Param_String",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "Status",
+          "nickname": "S",
+          "kind": "Param_String",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "Governing",
+          "nickname": "R",
+          "kind": "Param_GenericObject",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "Pending",
+          "nickname": "P",
+          "kind": "Param_Integer",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "Count",
+          "nickname": "N",
+          "kind": "Param_Integer",
+          "access": "list",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "CheckReportComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0004",
+      "name": "Check Report",
+      "nickname": "Report",
+      "panel": "8 Results",
+      "exposure": "quinary",
+      "inputs": [
+        {
+          "name": "Results",
+          "nickname": "R",
+          "kind": "Param_GenericObject",
+          "access": "list",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CSV",
+          "nickname": "CSV",
+          "kind": "Param_String",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "JSON",
+          "nickname": "JSON",
+          "kind": "Param_String",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Summary",
+          "nickname": "S",
+          "kind": "Param_String",
+          "access": "list",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "ViewStressAnalysisResultComponent",
+      "guid": "65801921-575b-466e-8001-a7e833dbacb6",
+      "name": "View Strain Analysis Results",
+      "nickname": "VSAR",
+      "panel": "9 Display",
+      "exposure": "primary",
+      "inputs": [
+        {
+          "name": "Stress Analysis Results",
+          "nickname": "SA",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Concrete Points",
+          "nickname": "CP",
+          "kind": "Param_Point",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "Concrete Values",
+          "nickname": "CV",
+          "kind": "Param_Number",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "Rebar Points",
+          "nickname": "RP",
+          "kind": "Param_Point",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "Rebar Values",
+          "nickname": "RV",
+          "kind": "Param_Number",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "Neutral Axis",
+          "nickname": "NA",
+          "kind": "Param_Curve",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Combo Name",
+          "nickname": "CN",
+          "kind": "Param_String",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Mesh",
+          "nickname": "M",
+          "kind": "Param_Mesh",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "ColorMeshComponent",
+      "guid": "1c72c75b-9ede-461a-8553-973173695f79",
+      "name": "Color Mesh",
+      "nickname": "CM",
+      "panel": "9 Display",
+      "exposure": "secondary",
+      "inputs": [
+        {
+          "name": "Points",
+          "nickname": "pts",
+          "kind": "Param_Point",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "Colours",
+          "nickname": "col",
+          "kind": "Param_Colour",
+          "access": "list",
+          "optional": false
+        },
+        {
+          "name": "Mesh",
+          "nickname": "msh",
+          "kind": "Param_Mesh",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Smooth",
+          "nickname": "s",
+          "kind": "Param_Boolean",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Mesh",
+          "nickname": "msh",
+          "kind": "Param_Mesh",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "ColorGradientMeshComponent",
+      "guid": "b62a91c6-b7bb-4e99-800f-1fafb45707ad",
+      "name": "Result Color Mesh",
+      "nickname": "RCM",
+      "panel": "9 Display",
+      "exposure": "secondary",
+      "inputs": [
+        {
+          "name": "Stress Analysis Results",
+          "nickname": "SA",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Smooth",
+          "nickname": "s",
+          "kind": "Param_Boolean",
+          "access": "item",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Mesh",
+          "nickname": "msh",
+          "kind": "Param_Mesh",
+          "access": "item",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "type": "ViewStressAnalysisResultMeshComponent",
+      "guid": "8ae4225f-e39f-4304-bbdb-2610c34dd354",
+      "name": "Inspect Strain Analysis Results",
+      "nickname": "ISAR",
+      "panel": "9 Display",
+      "exposure": "tertiary",
+      "inputs": [
+        {
+          "name": "Stress Analysis Results",
+          "nickname": "SA",
+          "kind": "Param_GenericObject",
+          "access": "item",
+          "optional": false
+        },
+        {
+          "name": "Concrete Points",
+          "nickname": "CP",
+          "kind": "Param_Point",
+          "access": "list",
+          "optional": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Concrete Stress",
+          "nickname": "CS",
+          "kind": "Param_Number",
+          "access": "list",
+          "optional": false
+        }
+      ]
+    }
+  ]
+}

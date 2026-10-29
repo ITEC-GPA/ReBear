@@ -100,7 +100,7 @@ internal static class FeatureChecks
     {
         var standard = new StandardEN1992p11();
         var input = new CoverInput(new[] { "XC4" }, 30, 50, false, false, false, 20, 20, 10);
-        var cover = DetailingChecks.Cover(standard, input, 35, "S");
+        var cover = DetailingChecks.Cover(standard, input, 35, 20, "S");
         Close(40, cover.Native.Nominal, "EN S4 XC4: cnom 30+10 mm");
         Check(cover.Result.Status == CheckStatus.NotSatisfied && cover.Result.Ratio == null, "Insufficient cover must fail");
         var anchorage = DetailingChecks.Anchorage(standard, ConcreteMaterialEN1992Data.C30_37, SteelMaterialEN1992Data.B450C,

@@ -2,10 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.Loader;
 using System.Text.Json;
-using System.Text.RegularExpressions;
 using ConcreteSectionChecker.Adapters;
 using GPC.Checkers.Concrete.Analysis;
 using GPC.Checkers.Concrete.Attributes;
@@ -32,36 +29,32 @@ internal static class Program
     private static int Main(string[] args)
     {
         allowCandidate = args.Contains("--allow-candidate");
-        if (args.Contains("--write-catalog")) { GrasshopperSmoke.WriteCatalog(); return 0; }
         if (args.Contains("--write-palette")) { GrasshopperSmoke.WritePalette(); return 0; }
         int contract = Array.IndexOf(args, "--write-contract");
         if (contract >= 0) { GrasshopperSmoke.WriteContract(Path.GetFullPath(args[contract + 1]), args[contract + 2]); return 0; }
         if (args.Contains("--benchmark")) { Benchmark.Run(); return 0; }
         if (args.Contains("--only-grasshopper"))
         {
-            Run("Caricamento assembly e 61 componenti Grasshopper", GrasshopperSmoke.Run);
-            Run("Porte Grasshopper: unità, taglio X/Y, errori e SLE non applicabili", ComponentBoundary.Run);
+            GrasshopperChecks();
             Console.WriteLine($"TOTAL: {passed} PASS, {failed} FAIL");
             return failed == 0 ? 0 : 1;
         }
-        Run("32 GUID e registrazioni delle porte identici a 66555b", Compatibility);
         Run("Sei DLL GPC identiche al set di rilascio", LibraryHashes);
         Run("Taglio senza staffe: confronto analitico NTC", AnalyticalShear);
         foreach (var standard in new StandardModelCode2010[] { new StandardNTC2018Concrete(), new StandardEN1992p11(), new StandardUNIEN1992p11() })
         {
             var selected = standard;
-            Run("Taglio X/Y, N/Nmm e materiali: " + standard.Name, () => RectangularMapping(selected));
+            Run("Opzioni di taglio rettangolari X/Y, N/Nmm e materiali: " + standard.Name, () => RectangularMapping(selected));
         }
         Run("Taglio in trazione NTC: non valutato", () =>
         {
-            var r = ShearChecks.WithoutStirrups(Checker(), Force(100000), 500, 300, 20, 4, 30, 150000);
-            Check(r.Verdict == ShearVerdict.NotEvaluated && r.Ratio == null, "Axial tension must not become compression.");
+            var r = AdvancedShearChecks.Shear(Checker(), Force(100000), NoLinks().Y, ShearDirections.Y, "S");
+            Check(r.Status == CheckStatus.NotEvaluated && r.Ratio == null, "Axial tension must not become compression.");
         });
-        Run("Taglio: area esplicita usata", () =>
+        Run("Taglio: area della sezione usata per σcp", () =>
         {
-            var a = ShearChecks.WithoutStirrups(Checker(), Force(-300000), 500, 300, 20, 4, 30, 150000);
-            var b = ShearChecks.WithoutStirrups(Checker(), Force(-300000), 500, 300, 20, 4, 30, 120000);
-            Check(b.VRd > a.VRd, "Explicit gross area must affect axial stress.");
+            var c = Checker();
+            Close(c.SectionCheckerAttribute.Section.Area, AdvancedShearChecks.Input(c, Force(), NoLinks().Y, 1).Area, "Section area");
         });
         Run("Taglio circolare: braccio GPC e risultante V", Circular);
         Run("Taglio: ingressi non validi e modello circolare fuori campo", InvalidShear);
@@ -78,13 +71,19 @@ internal static class Program
         Run("SLE decompressione: analisi ausiliaria GPC", Decompression);
         Run("SLU: domanda nulla e punto resistente convergente", Resistance);
         FeatureChecks.RunAll(Run);
-        if (args.Contains("--grasshopper"))
-        {
-            Run("Caricamento assembly e 61 componenti Grasshopper", GrasshopperSmoke.Run);
-            Run("Porte Grasshopper: unità, taglio X/Y, errori e SLE non applicabili", ComponentBoundary.Run);
-        }
+        RegressionChecks.RunAll(Run);
+        if (args.Contains("--grasshopper")) GrasshopperChecks();
         Console.WriteLine($"TOTAL: {passed} PASS, {failed} FAIL");
         return failed == 0 ? 0 : 1;
+    }
+
+    private static void GrasshopperChecks()
+    {
+        Run("Palette 0.3: identità, porte e GUID come la fotografia palette-0.3.json", GrasshopperSmoke.Snapshot);
+        Run("GUID 0.2.2 riusati solo con porte identiche; componenti rimossi assenti", GrasshopperSmoke.GuidPolicy);
+        Run("Caricamento assembly, icone e tipi di dato vuoti", GrasshopperSmoke.Run);
+        Run("Persistenza versionata dei dati internalizzati e avviso per i risultati", GrasshopperSmoke.Persistence);
+        Run("Porte Grasshopper: unità, NaN, errori, nomi dei casi e report", ComponentBoundary.Run);
     }
 
     internal static void Check(bool condition, string message)
@@ -94,7 +93,7 @@ internal static class Program
     internal static void Close(double expected, double actual, string message, double tolerance = 1e-9)
         => Check(double.IsFinite(actual) && Math.Abs(expected - actual) <= tolerance * Math.Max(1, Math.Abs(expected)),
             $"{message}: expected {expected:G17}, actual {actual:G17}");
-    private static void Throws<T>(Action action) where T : Exception
+    internal static void Throws<T>(Action action) where T : Exception
     {
         try { action(); } catch (T) { return; }
         throw new Exception("Expected " + typeof(T).Name);
@@ -111,28 +110,6 @@ internal static class Program
         return dir?.FullName ?? throw new DirectoryNotFoundException("Repository root not found.");
     }
     internal static string RepositoryRoot => Root;
-    private static void Compatibility()
-    {
-        using var manifest = JsonDocument.Parse(File.ReadAllText(Path.Combine(Root, "tests/Compatibility/components-66555b.json")));
-        var entries = manifest.RootElement.GetProperty("components").EnumerateArray().ToArray();
-        Check(entries.Length == 32, "Expected 32 historical components.");
-        var guids = new HashSet<Guid>();
-        var files = Directory.GetFiles(Path.Combine(Root, "src/ConcreteSectionChecker.Grasshopper/Components"), "*.cs");
-        Check(files.Length == entries.Length, "Unexpected component count.");
-        foreach (var entry in entries)
-        {
-            string path = Path.Combine(Root, "src/ConcreteSectionChecker.Grasshopper/Components", entry.GetProperty("file").GetString());
-            string source = File.ReadAllText(path);
-            var guid = Guid.Parse(Regex.Match(source, "ComponentGuid\\s*=>\\s*new Guid\\(\"([^\"]+)\"\\)").Groups[1].Value);
-            Check(guid == Guid.Parse(entry.GetProperty("guid").GetString()) && guids.Add(guid), path + " GUID");
-            foreach (string direction in new[] { "Input", "Output" })
-            {
-                string registration = Regex.Match(source, @"(?s)protected override void Register" + direction + @"Params.*?\{(.*?)\n        \}").Groups[1].Value.Trim();
-                string expected = entry.GetProperty(direction.ToLowerInvariant() + "Registration").GetString();
-                Check(registration.Replace("\r\n", "\n") == expected.Replace("\r\n", "\n"), path + " " + direction + " registration changed.");
-            }
-        }
-    }
     private static void LibraryHashes()
     {
         using var manifest = JsonDocument.Parse(File.ReadAllText(Path.Combine(Root, "lib/GPC/release-set.json")));
@@ -148,7 +125,8 @@ internal static class Program
             Check(hash.Equals(entry.GetProperty("sha256").GetString(), StringComparison.OrdinalIgnoreCase), file + " hash mismatch");
         }
     }
-    internal static SectionCheckerModelCode2010 Checker(StandardModelCode2010 standard = null, bool tensile = false)
+    /// <summary>300 × 500 C30/37, 4Ø20 B450C at the corners; default 0.3 options: Iterative, constant N, linear analysis.</summary>
+    internal static SectionCheckerModelCode2010 Checker(StandardModelCode2010 standard = null, bool tensile = false, CoordinateSystem axes = null)
     {
         var shape = new Shape2d(new Polygon2d(new[] { new Point2d(-150, -250), new Point2d(150, -250), new Point2d(150, 250), new Point2d(-150, 250) }));
         var section = new ReinforcedConcreteSection(shape, ConcreteMaterialEN1992Data.C30_37);
@@ -158,18 +136,23 @@ internal static class Program
         return new SectionCheckerModelCode2010(new SectionCheckerAttribute(section),
             new SectionCheckerModelCode2010.SectionOptionsModelCode2010
             {
-                ForceReferenceCoordinateSystem = CoordinateSystem.Global,
+                ForceReferenceCoordinateSystem = axes ?? CoordinateSystem.Global,
                 StressAnalysisType = SectionSolver.StressAnalysisTypes.Linear,
                 FailureAnalysisType = SectionSolver.FailureAnalysisTypes.ConstantN,
-                DomainPointStrategy = SectionSolver.DomainPointStrategyTypes.Intersection,
+                DomainPointStrategy = SectionSolver.DomainPointStrategyTypes.Iterative,
                 ConsiderTensileConcrete = tensile
             }, standard ?? new StandardNTC2018Concrete());
     }
     internal static ResultBeamForces Force(double n = -300000, double v1 = 60000, double v2 = 90000, double m1 = 45e6, double m2 = 15e6)
         => new ResultBeamForces(n, v1, v2, 0, m1, m2, CoordinateSystem.Global);
+    /// <summary>The geometry of the 0.2 shear tests: b = 300 (X), h = 500 (Y), bar cover 30, 3Ø16 for X and 4Ø20 for Y.</summary>
+    private static (ShearOptions X, ShearOptions Y) NoLinks(StandardModelCode2010 standard = null) => ShearGeometry.Rectangular(
+        standard ?? new StandardNTC2018Concrete(), SteelMaterialEN1992Data.B450C, SteelMaterialEN1992Data.B450C,
+        300, 500, 30, 0, 0, 0, 0, 90, 90, 16, 20, 3, 4);
     private static void AnalyticalShear()
     {
-        var r = ShearChecks.WithoutStirrups(Checker(), Force(), 500, 300, 20, 4, 30, 150000);
+        var c = Checker();
+        var r = SectionShearCalculator.Calculate(AdvancedShearChecks.Input(c, Force(), NoLinks().Y, ShearDirections.Y));
         // Independent scalar check of the mapped inputs: d=460 mm, As=4*pi*20²/4, sigmaCp=2 MPa.
         double k = 1 + Math.Sqrt(200d / 460), rho = 400 * Math.PI / (300 * 460);
         double expected = (.18 / 1.5 * k * Math.Pow(100 * rho * 30, 1d / 3) + .15 * 2) * 300 * 460;
@@ -180,9 +163,12 @@ internal static class Program
     private static void RectangularMapping(StandardModelCode2010 standard)
     {
         var checker = Checker(standard);
-        var r = ShearChecks.Rectangular(checker, Force(), 500, 300, 8, 2, 4, 150, 60, 90, 16, 20, 3, 4, 30, 150000);
+        var noLinks = NoLinks(standard);
+        var links = ShearGeometry.Rectangular(standard, SteelMaterialEN1992Data.B450C, SteelMaterialEN1992Data.B450C,
+            300, 500, 30, 8, 2, 4, 150, 60, 90, 16, 20, 3, 4);
         var concrete = (ConcreteMaterialEuropeanCommon)checker.SectionCheckerAttribute.Section.ConcreteMaterial;
         var steel = checker.SectionCheckerAttribute.Section.Rebars.First().RebarMaterial;
+        var options = new[] { noLinks.X, noLinks.Y, links.X, links.Y };
         for (int i = 0; i < 4; i++)
         {
             bool x = i % 2 == 0;
@@ -191,25 +177,31 @@ internal static class Program
                 x ? 3 * Math.PI * 64 : 400 * Math.PI, 30, Math.Abs(concrete.CalculateFcd(standard)),
                 steel.CalculateFyd(standard), standard.GammaC, steel.E,
                 i < 2 ? 0 : (x ? 2 : 4) * Math.PI * 16, i < 2 ? 1 : 150, i < 2 ? 90 : x ? 60 : 90));
-            Close(direct.VRd, r[i].VRd, "Axis " + i);
-            Close(direct.Ratio.Value, r[i].Ratio.Value, "Ratio " + i);
+            var mapped = SectionShearCalculator.Calculate(AdvancedShearChecks.Input(checker, Force(), options[i], x ? 0 : 1));
+            Close(direct.VRd, mapped.VRd, "Axis " + i);
+            Close(direct.Ratio.Value, mapped.Ratio.Value, "Ratio " + i);
         }
-        var noLinks = ShearChecks.Rectangular(checker, Force(), 500, 300, 0, 0, 0, 0, 0, 0, 16, 20, 3, 4, 30, 150000);
-        Check(noLinks[2] == null && noLinks[3] == null, "Absent links must not produce a passed check.");
+        Check(noLinks.X.LinkArea == 0 && noLinks.Y.LinkArea == 0, "Link diameter 0 means no shear reinforcement.");
     }
     private static void Circular()
     {
-        var r = ShearChecks.Circular(Checker(), Force(), 600, 10, 2, 150, 90, 20, 40);
+        var options = ShearGeometry.Circular(new StandardNTC2018Concrete(), SteelMaterialEN1992Data.B450C, SteelMaterialEN1992Data.B450C,
+            600, 40, 10, 2, 150, 90, 20);
+        var r = SectionShearCalculator.Calculate(AdvancedShearChecks.Input(Checker(), Force(), options, ShearDirections.Resultant));
         Close(Math.Sqrt(60000d * 60000 + 90000d * 90000), r.Demand, "Resultant");
         Close(.75 * 540, r.Details.Single(d => d.Symbol == "z").Value, "GPC lever arm");
+        var result = AdvancedShearChecks.Shear(Checker(), Force(), options, ShearDirections.Resultant, "S");
+        Check(result.Check == "Shear R" && result.Demand > 0, "Resultant shear check name and demand");
     }
     private static void InvalidShear()
     {
-        Throws<ArgumentException>(() => ShearChecks.WithoutStirrups(Checker(), Force(), 500, 300, 20, 3.5, 30, 150000));
-        Throws<ArgumentException>(() => ShearChecks.WithoutStirrups(Checker(), Force(), 500, 300, 20, 4, 600, 150000));
-        Throws<ArgumentException>(() => ShearChecks.Circular(Checker(new StandardEN1992p11()), Force(), 600, 10, 2, 150, 90, 20, 40));
-        Throws<ArgumentException>(() => ShearChecks.Circular(Checker(), Force(), 600, 10, 2, 0, 90, 20, 40));
-        Throws<ArgumentException>(() => ShearChecks.WithoutStirrups(Checker(), Force(), 500, 300, 20, 4, 30, double.NaN));
+        var ntc = new StandardNTC2018Concrete(); var s = SteelMaterialEN1992Data.B450C;
+        Throws<ArgumentException>(() => ShearGeometry.BarArea(20, 3.5));
+        Throws<ArgumentException>(() => ShearGeometry.Rectangular(ntc, s, s, 300, 500, 600, 0, 0, 0, 0, 90, 90, 16, 20, 3, 4));
+        Throws<ArgumentException>(() => ShearGeometry.Circular(new StandardEN1992p11(), s, s, 600, 40, 10, 2, 150, 90, 20));
+        Throws<ArgumentException>(() => ShearGeometry.Circular(ntc, s, s, 600, 40, 10, 2, 0, 90, 20));
+        Throws<ArgumentException>(() => ShearGeometry.Rectangular(ntc, s, s, double.NaN, 500, 30, 0, 0, 0, 0, 90, 90, 16, 20, 3, 4));
+        Throws<ArgumentException>(() => AdvancedShearChecks.Input(Checker(), Force(), NoLinks().Y, 3));
     }
     private static void StressChecks()
     {
@@ -226,7 +218,7 @@ internal static class Program
         Close(13.5, ServiceabilityChecks.Stress(stress, 0).ConcreteLimit.Value, "Quasi-permanent concrete limit");
         Check(ServiceabilityChecks.Stress(stress, 1).Ratio == null, "Frequent has no stress utilization.");
     }
-    private static StressAnalysisResult CrackedState()
+    internal static StressAnalysisResult CrackedState()
     {
         var checker = Checker();
         return checker.GetTensionAnalysisResult(Force(-100000, 0, 0, 80e6, 0));

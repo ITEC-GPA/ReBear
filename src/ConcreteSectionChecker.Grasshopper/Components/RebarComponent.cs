@@ -1,84 +1,43 @@
+using System;
 using Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Datatypes;
-using GPC.Geometry;
-using GPC.Model.Data.Steel;
 using GPC.Model.Materials;
 using GPC.Model.Sections.Concrete;
 using GPC.Model.Sections.Rebar;
 using Grasshopper.Kernel;
-using Grasshopper.Kernel.Parameters;
 using Rhino.Geometry;
-using ConcreteSectionChecker.Grasshopper;
-using System;
-using System.Collections.Generic;
 
-namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
+namespace ConcreteSectionChecker.Grasshopper.Components
 {
-    public class RebarComponent : GpcComponent
+    public sealed class RebarComponent : ReBearComponent
     {
-        protected Dictionary<int, int> _diameterList = new Dictionary<int, int>() {
-            { 0, 6 },
-            { 1, 8 },
-            { 2, 10 },
-            { 3, 12 },
-            { 4, 14 },
-            { 5, 16 },
-            { 6, 18 },
-            { 7, 20 },
-            { 8, 22 },
-            { 9, 24 },
-            { 10, 26 },
-            { 11, 28 },
-            { 12, 30 },
-            { 13, 32 },
-        };
-
-        public RebarComponent()
-            : base("Rebar Element", "RE", "Rebar Element")
+        public RebarComponent() : base("Rebar Element", "RE", "Barra ordinaria circolare nel piano XY della sezione; diametro in mm.") { }
+        public override Guid ComponentGuid => new("b7e2c3a0-0300-4e1b-9d1a-000000000008");
+        protected override Port[] Inputs => new[] { P("Position", "P", "Centro della barra in XY, mm (Z ignorata se nulla)."),
+            N("Diameter", "Ø", "Diametro, mm.", 20), G("Rebar Material", "M", "Acciaio per barre ordinarie.") };
+        protected override Port[] Outputs => new[] { G("Rebar Element", "RE", "Barra GPC con preview.") };
+        protected override void SolveGpc(IGH_DataAccess d)
         {
+            var position = Required<Point3d>(d, 0); double diameter = Finite(d, 1, positive: true);
+            var steel = Required<SteelMaterialEN1992>(d, 2);
+            if (steel.SteelType == SteelMaterial.SteelTypes.Tendon) throw new ArgumentException("Usare Tendon Element per l'acciaio da precompressione.");
+            if (Math.Abs(position.Z) > 1e-6) throw new ArgumentException("La barra deve giacere nel piano XY della sezione.");
+            d.SetData(0, new GH_Rebar(new ReinforcedConcreteRebar(new RebarSectionCircular(diameter, steel), new GPC.Geometry.Point2d(position.X, position.Y))));
         }
+    }
 
-        protected override void RegisterInputParams(GH_InputParamManager pManager)
+    public sealed class TendonComponent : ReBearComponent
+    {
+        public TendonComponent() : base("Tendon Element", "TE", "Trefolo o barra da precompressione nel piano XY; diametro in mm, tensione iniziale in MPa.") { }
+        public override Guid ComponentGuid => new("b7e2c3a0-0300-4e1b-9d1a-000000000009");
+        protected override Port[] Inputs => new[] { P("Position", "P", "Centro in XY, mm."), N("Diameter", "Ø", "Diametro equivalente, mm."),
+            G("Tendon Material", "M", "Acciaio da precompressione."), N("Pretension", "σp", "Tensione di precompressione, MPa (trazione positiva).", 1400) };
+        protected override Port[] Outputs => new[] { G("Tendon Element", "TE", "Trefolo GPC con preview.") };
+        protected override void SolveGpc(IGH_DataAccess d)
         {
-            pManager.AddPointParameter("Position", "P", "The rebar position", GH_ParamAccess.item);
-            int i = pManager.AddIntegerParameter("Diamater", "D", "The rebar diameter", GH_ParamAccess.item);
-            Param_Integer mtParam = pManager[i] as Param_Integer;
-            foreach (KeyValuePair<int, int> v in _diameterList)
-                mtParam.AddNamedValue(v.Value.ToString(), v.Key);
-            pManager.AddGenericParameter("Rebar Material", "M", "The rebar material", GH_ParamAccess.item);
+            var position = Required<Point3d>(d, 0); double diameter = Finite(d, 1, positive: true);
+            var steel = Required<SteelMaterialEN1992>(d, 2); double sigma = Finite(d, 3, nonNegative: true);
+            if (Math.Abs(position.Z) > 1e-6) throw new ArgumentException("Il trefolo deve giacere nel piano XY della sezione.");
+            d.SetData(0, new GH_Rebar(new ReinforcedConcreteRebar(new RebarSectionCircular(diameter, steel), new GPC.Geometry.Point2d(position.X, position.Y), sigma)));
         }
-
-        protected override void RegisterOutputParams(GH_OutputParamManager pManager)
-        {
-            pManager.AddGenericParameter("Rebar Element", "RE", "Rebar Element", GH_ParamAccess.item);
-        }
-
-        protected override void SolveGpc(IGH_DataAccess DA)
-        {
-            int type = 0;
-            GH_SteelMaterial rebarMaterial = null;
-            Rhino.Geometry.Point3d location = Rhino.Geometry.Point3d.Unset;
-
-            if (DA.GetData(1, ref type) && DA.GetData(2, ref rebarMaterial) && DA.GetData(0, ref location))
-            {
-                if (!_diameterList.ContainsKey(type))
-                {
-                    AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Invalid diameter");
-                    return;
-                }
-
-                int diameter = _diameterList[type]; 
-                RebarSectionCircular rebarSection = rebarSection = new RebarSectionCircular(diameter, rebarMaterial.Value);
-                GPC.Geometry.Point2d rebarPosition = new GPC.Geometry.Point2d(location.X, location.Y);
-
-                ReinforcedConcreteRebar reinforcedConcreteRebar = new ReinforcedConcreteRebar(rebarSection, rebarPosition);
-                
-                DA.SetData(0, new GH_Rebar(reinforcedConcreteRebar));
-            }
-        }
-
-        //protected override Bitmap Icon => Resources.material;
-        
-        public override Guid ComponentGuid => new Guid("411284c2-923a-4475-94a5-8405ece71ce0");
-
     }
 }

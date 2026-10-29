@@ -1,72 +1,38 @@
+using System;
+using System.Linq;
+using ConcreteSectionChecker.Adapters;
 using Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Datatypes;
-using GPC.Checkers.Concrete.Attributes;
+using GPC.Checkers.Concrete.Analysis;
 using GPC.Checkers.Concrete.Checkers;
 using GPC.Model.Results;
 using Grasshopper.Kernel;
-using ConcreteSectionChecker.Grasshopper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
-namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Components
+namespace ConcreteSectionChecker.Grasshopper.Components
 {
-    public class StressAnalysisComponent : GpcComponent
+    public sealed class StressAnalysisComponent : ReBearComponent
     {
-        public StressAnalysisComponent()
-            : base("Stress Analysis", "SA", "Stress Analysis")
+        public StressAnalysisComponent() : base("Stress Analysis", "SA",
+            "Analisi tensionale GPC (lineare o non lineare secondo il checker) di ogni combinazione della lista.") { }
+        public override Guid ComponentGuid => new("2c7939e3-5f53-4d53-989b-a56b65b773e4");
+        protected override Port[] Inputs => new[] { G("Concrete Checker", "CC", "Checker GPC."), List(G("Forces", "F", "Combinazioni.")) };
+        protected override Port[] Outputs => new[] { List(G("Stress Analysis Results", "SAR", "Analisi tensionali, una per combinazione.")),
+            List(G("Strain Plane Results", "SPR", "Estremi tensionali e deformativi, uno per combinazione.")) };
+        protected override void SolveGpc(IGH_DataAccess d)
         {
-        }
-
-        protected override void RegisterInputParams(GH_InputParamManager pManager)
-        {
-            pManager.AddGenericParameter("Concrete Checker", "CC", "Concrete Checker", GH_ParamAccess.item);
-            pManager.AddGenericParameter("Forces", "F", "Forces", GH_ParamAccess.list);
-        }
-
-        protected override void RegisterOutputParams(GH_OutputParamManager pManager)
-        {
-            pManager.AddGenericParameter("Stress Analysis Results", "SAR", "Stress Analysis Results", GH_ParamAccess.list);
-            pManager.AddGenericParameter("Strain Plane Results", "SPR", "Strain Plane Results", GH_ParamAccess.list);
-        }
-
-        protected override void SolveGpc(IGH_DataAccess DA)
-        {
-            GH_SectionChecker gH_SectionChecker = null;
-            List<GH_ResultBeamForces> gH_ResultBeamForces = new List<GH_ResultBeamForces>();
-
-            if (DA.GetData(0, ref gH_SectionChecker) && DA.GetDataList(1, gH_ResultBeamForces))
+            var checker = Required<SectionCheckerModelCode2010>(d, 0);
+            var forces = ReadList<ResultBeamForces>(d, 1);
+            // Identify each case by its list position; unnamed cases become "Caso k" for the downstream reports.
+            var cases = forces.Select((f, i) => new ResultBeamForces(f.N, f.V1, f.V2, f.T, f.M1, f.M2, f.CoordinateSystem, i, LoadEnvelopes.Name(f, i))).ToArray();
+            var results = SectionAnalyses.Stress(checker, cases);
+            var planes = results.Select((r, i) =>
             {
-                ResultBeamForces[] resultBeamForces = new ResultBeamForces[gH_ResultBeamForces.Count];
-                for (int i = 0; i < gH_ResultBeamForces.Count; i++)
-                    resultBeamForces[i] = new ResultBeamForces(gH_ResultBeamForces[i].Value.N, gH_ResultBeamForces[i].Value.V1,
-                        gH_ResultBeamForces[i].Value.V2, gH_ResultBeamForces[i].Value.T, gH_ResultBeamForces[i].Value.M1, gH_ResultBeamForces[i].Value.M2,
-                        gH_ResultBeamForces[i].Value.CoordinateSystem, i, gH_ResultBeamForces[i].Value.Name);
-
-                SectionCheckerAttribute copy = new SectionCheckerAttribute(gH_SectionChecker.Value.SectionCheckerAttribute.Section, resultBeamForces, null);
-                SectionCheckerModelCode2010 checkerCopy = new SectionCheckerModelCode2010(copy, gH_SectionChecker.Value.SectionCheckerOptionsModelCode2010, gH_SectionChecker.Value.StandardModelCode2010);
-                GPC.Checkers.Concrete.Results.StressAnalysisResult[] result = checkerCopy.GetTensionAnalysisResult();
-                GPC.Checker.Results.ResultType.StrainPlaneResult[] stressPlaneResult = new GPC.Checker.Results.ResultType.StrainPlaneResult[result.Length];
-
-                for (int i = 0; i < result.Length; i++)
-                {
-                    var response = GPC.Checkers.Concrete.Analysis.LegacySectionCalculation.Capture(result[i]);
-                    if (response.Diagnostics.Status != GPC.Checkers.Concrete.Analysis.CalculationStatus.Completed)
-                        throw new InvalidOperationException("Analisi " + i + ": " + response.Diagnostics.Message);
-                    if (result[i].LinearElasticAnalysis)
-                        stressPlaneResult[i] = result[i].CalculateStrainPlaneResult(result[i].LinearElasticAnalysis, result[i].PsiRebar != null ? result[i].PsiRebar.Value : 0,
-                            result[i].PsiTendon != null ? result[i].PsiTendon.Value : 0);
-                    else
-                        stressPlaneResult[i] = result[i].CalculateStrainPlaneResult();
-                }
-
-                DA.SetDataList(0, result.Select(r => new GH_StressAnalysisResult(r)).ToList());
-                DA.SetDataList(1, stressPlaneResult.Select(r => new GH_StrainPlaneResult(r)).ToList());
-            }
+                var response = LegacySectionCalculation.Capture(r);
+                if (response.Diagnostics.Status != CalculationStatus.Completed)
+                    throw new InvalidOperationException($"Analisi '{cases[i].Name}': {response.Diagnostics.Message}");
+                return r.LinearElasticAnalysis ? r.CalculateStrainPlaneResult(true, r.PsiRebar ?? 0, r.PsiTendon ?? 0) : r.CalculateStrainPlaneResult();
+            }).ToArray();
+            d.SetDataList(0, results.Select(r => new GH_StressAnalysisResult(r)));
+            d.SetDataList(1, planes.Select(r => new GH_StrainPlaneResult(r)));
         }
-
-        //protected override Bitmap Icon => Resources.material;
-
-        public override Guid ComponentGuid => new Guid("2c7939e3-5f53-4d53-989b-a56b65b773e4");
-
     }
 }

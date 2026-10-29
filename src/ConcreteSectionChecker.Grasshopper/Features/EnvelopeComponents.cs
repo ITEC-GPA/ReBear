@@ -63,17 +63,25 @@ namespace ConcreteSectionChecker.Grasshopper.Features
     }
     public sealed class CheckReportComponent : ReBearComponent
     {
-        public CheckReportComponent() : base("Check Report", "Report", "Tabella CSV e JSON versionato; nessuna scrittura automatica su disco.") { }
+        public CheckReportComponent() : base("Check Report", "Report",
+            "Unico report di ReBear: tabella CSV e JSON versionato di esiti (Check Result) oppure di riepiloghi tensionali (Stress Analysis Summary); nessuna scrittura su disco.") { }
         public override Guid ComponentGuid => new("98dc4c10-e882-41ed-ae13-208c325c0004");
-        protected override Port[] Inputs => new[] { List(G("Results", "R", "Risultati nello stesso ramo.")) };
-        protected override Port[] Outputs => new[] { T("CSV", "CSV", "Separatore ;, numeri invariant, campi con escaping."),
-            T("JSON", "JSON", "Schema ReBear.CheckReport v1 e versione motore."), List(T("Summary", "S", "Sintesi degli inviluppi.")) };
+        protected override Port[] Inputs => new[] { List(G("Results", "R", "Esiti oppure riepiloghi tensionali dello stesso ramo (un solo tipo per report).")) };
+        protected override Port[] Outputs => new[] { T("CSV", "CSV", "Separatore ;, numeri invariant, campi con escaping, valore mancante = campo vuoto."),
+            T("JSON", "JSON", "Schema ReBear.CheckReport o ReBear.StressReport v1 e versione motore."), List(T("Summary", "S", "Sintesi degli inviluppi o degli estremi.")) };
         protected override void SolveGpc(IGH_DataAccess d)
         {
-            var results = ReadList<CheckResult>(d, 0);
-            d.SetData(0, CheckResults.Csv(results)); d.SetData(1, CheckResults.Json(results));
-            d.SetDataList(2, CheckResults.Envelope(results).Select(r =>
-                $"{r.Section} / {r.Check}: {r.Status}; caso={r.Governing?.Case}; valutati={r.Evaluated}/{r.Count}; non valutati={r.NotEvaluated}"));
+            var values = ReadList<object>(d, 0);
+            if (values.Count > 0 && values.All(v => v is StressSummary))
+            {
+                var rows = values.Cast<StressSummary>().ToArray();
+                d.SetData(0, StressSummary.Csv(rows)); d.SetData(1, StressSummary.Json(rows)); d.SetDataList(2, StressSummary.Summary(rows));
+                return;
+            }
+            if (values.Any(v => v is not CheckResult))
+                throw new ArgumentException($"{Label(0)}: collegare soli esiti (Check Result) oppure soli riepiloghi tensionali, in report separati.");
+            var results = values.Cast<CheckResult>().ToArray();
+            d.SetData(0, CheckResults.Csv(results)); d.SetData(1, CheckResults.Json(results)); d.SetDataList(2, CheckResults.Summary(results));
         }
     }
 }

@@ -22,12 +22,11 @@ internal static class Program
         Directory.CreateDirectory(Path.Combine(assets, "icons"));
         Directory.CreateDirectory(Path.Combine(assets, "branding"));
         Directory.CreateDirectory(resources);
-        using var manifest = JsonDocument.Parse(File.ReadAllText(Path.Combine(root, "tests/Compatibility/components-66555b.json")));
-        var names = manifest.RootElement.GetProperty("components").EnumerateArray()
-            .Select(c => Path.GetFileNameWithoutExtension(c.GetProperty("file").GetString()))
-            .Concat(Directory.GetFiles(Path.Combine(root, "src/ConcreteSectionChecker.Grasshopper/Features"), "*.cs")
-                .SelectMany(file => System.Text.RegularExpressions.Regex.Matches(File.ReadAllText(file),
-                    @"public sealed class (\w+) : ").Select(m => m.Groups[1].Value)))
+        // Every concrete component class of the plugin (Components and Features), one icon each.
+        var names = new[] { "Components", "Features" }
+            .SelectMany(folder => Directory.GetFiles(Path.Combine(root, "src/ConcreteSectionChecker.Grasshopper", folder), "*.cs"))
+            .SelectMany(file => System.Text.RegularExpressions.Regex.Matches(File.ReadAllText(file),
+                @"public sealed class (\w+) : ").Select(m => m.Groups[1].Value))
             .Distinct().OrderBy(n => n).ToArray();
         foreach (string name in names)
         {
@@ -135,6 +134,8 @@ internal static class Program
             case "CheckReportComponent": Page(p);
                 for (int i = 0; i < 3; i++) { p.Line(7, 11 + i * 4, 17, 11 + i * 4, Teal, 1); p.Circle(8, 11 + i * 4, 1, Steel); } break;
             case "ShearOptionsComponent": Draw(p, "CheckerOptionsComponent"); Arrow(p, 3, 22, 21, 22, Blue); break;
+            case "RectangularShearOptionsComponent": Section(p); Arrow(p, 21, 21, 21, 3, Blue); Arrow(p, 2, 22, 18, 22, Blue); break;
+            case "CircularShearOptionsComponent": Section(p, true); Arrow(p, 21, 21, 21, 3, Blue); Arrow(p, 2, 22, 18, 22, Blue); break;
             case "ShearCheckComponent": Section(p); Arrow(p, 21, 21, 21, 3, Blue); Tick(p, 12, 18); break;
             case "TorsionOptionsComponent": Section(p); p.Text("T", 8, 6, 12, Ink); break;
             case "TorsionShearCheckComponent": Section(p); p.Text("T", 8, 6, 12, Ink); Arrow(p, 21, 21, 21, 3, Blue); break;

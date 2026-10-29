@@ -71,6 +71,12 @@ namespace ConcreteSectionChecker.Grasshopper
                 Rhino.RhinoApp.InvokeOnUiThread((Action)(() =>
                 {
                     if (current != generation || token.IsCancellationRequested) return;
+                    var document = OnPingDocument();
+                    if (document is null || !document.Enabled || !GH_Document.EnableSolutions)
+                    {
+                        // Solutions are off: inputs may change before the next solution, which recomputes.
+                        IsComputing = false; Message = null; return;
+                    }
                     results = done; applying = true;
                     ExpireSolution(true);
                 }));

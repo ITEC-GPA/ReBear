@@ -34,8 +34,14 @@ namespace ConcreteSectionChecker.Grasshopper
         {
             try
             {
-                string path = Path.Combine(Path.GetDirectoryName(typeof(GpcReleaseGuard).Assembly.Location) ?? "", "release-set.json");
-                if (!File.Exists(path)) { Report("release-set.json assente accanto a ReBear.gha: impossibile verificare le librerie GPC caricate."); return; }
+                string folder = Path.GetDirectoryName(typeof(GpcReleaseGuard).Assembly.Location);
+                string path = string.IsNullOrEmpty(folder) ? null : Path.Combine(folder, "release-set.json");
+                if (path == null || !File.Exists(path))
+                {
+                    // Not a mismatch: say it once on the command line, without a warning on every component.
+                    try { Rhino.RhinoApp.WriteLine("ReBear: release-set.json non trovato accanto a ReBear.gha; set GPC caricato non verificato."); } catch (Exception) { }
+                    return;
+                }
                 manifest = ReleaseSetCheck.Manifest(File.ReadAllText(path)).ToArray();
                 AppDomain.CurrentDomain.AssemblyLoad += (_, e) => { if (e.LoadedAssembly.GetName().Name?.StartsWith("GPC", StringComparison.Ordinal) == true || e.LoadedAssembly.GetName().Name == "DelaunayMesh") Check(); };
                 Check();

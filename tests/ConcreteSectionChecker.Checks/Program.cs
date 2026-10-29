@@ -34,6 +34,9 @@ internal static class Program
         allowCandidate = args.Contains("--allow-candidate");
         if (args.Contains("--write-catalog")) { GrasshopperSmoke.WriteCatalog(); return 0; }
         if (args.Contains("--write-palette")) { GrasshopperSmoke.WritePalette(); return 0; }
+        int contract = Array.IndexOf(args, "--write-contract");
+        if (contract >= 0) { GrasshopperSmoke.WriteContract(Path.GetFullPath(args[contract + 1]), args[contract + 2]); return 0; }
+        if (args.Contains("--benchmark")) { Benchmark.Run(); return 0; }
         if (args.Contains("--only-grasshopper"))
         {
             Run("Caricamento assembly e 61 componenti Grasshopper", GrasshopperSmoke.Run);

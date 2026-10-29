@@ -48,6 +48,24 @@ internal static class GrasshopperSmoke
         index.Append(previous[previous.IndexOf("## Porte e unità", StringComparison.Ordinal)..].TrimEnd());
         File.WriteAllText(path, index.ToString() + Environment.NewLine);
     }
+    /// <summary>Complete port contract of the built palette: identity, placement and every port (kind, access, optional).</summary>
+    internal static object Contract(string version)
+    {
+        var assembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(Path.Combine(Program.RepositoryRoot, "bin/ReBear.gha"));
+        object Port(IGH_Param p) => new { name = p.Name, nickname = p.NickName, kind = p.GetType().Name, access = p.Access.ToString(), optional = p.Optional };
+        var components = assembly.GetTypes().Where(t => !t.IsAbstract && typeof(GH_Component).IsAssignableFrom(t))
+            .Select(t => (GH_Component)Activator.CreateInstance(t)).OrderBy(c => c.SubCategory).ThenBy(c => (int)c.Exposure).ThenBy(c => c.Name)
+            .Select(c => new
+            {
+                type = c.GetType().Name, guid = c.ComponentGuid, name = c.Name, nickname = c.NickName,
+                panel = c.SubCategory, exposure = c.Exposure.ToString(),
+                inputs = c.Params.Input.Select(Port).ToArray(), outputs = c.Params.Output.Select(Port).ToArray()
+            }).ToArray();
+        return new { product = "ReBear", version, count = components.Length, components };
+    }
+    public static void WriteContract(string path, string version) => File.WriteAllText(path,
+        JsonSerializer.Serialize(Contract(version), new JsonSerializerOptions { WriteIndented = true,
+            Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping }).Replace("\r\n", "\n") + "\n");
     public static void WriteCatalog()
     {
         var assembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(Path.Combine(Program.RepositoryRoot, "bin/ReBear.gha"));

@@ -11,7 +11,8 @@ try {
     if ($LASTEXITCODE -ne 0) { throw "Build failed: $LASTEXITCODE" }
     $checkArguments = @("--grasshopper")
     if ($AllowCandidate) { $checkArguments += "--allow-candidate" }
-    & dotnet run --project tests/ConcreteSectionChecker.Checks -c Release --no-build -- @checkArguments
+    # Run the built assembly through the host: a freshly built apphost .exe may be blocked by antivirus software.
+    & dotnet obj/bin/ConcreteSectionChecker.Checks/Release/net8.0-windows/ConcreteSectionChecker.Checks.dll @checkArguments
     if ($LASTEXITCODE -ne 0) { throw "Checks failed: $LASTEXITCODE" }
 }
 finally { Pop-Location }

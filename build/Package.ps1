@@ -1,8 +1,13 @@
 [CmdletBinding()]
-param()
+param(
+    # Keep the packages created before this one (by default only the new package remains).
+    [switch]$KeepPrevious
+)
 $ErrorActionPreference = 'Stop'
 $projectRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
 & (Join-Path $PSScriptRoot 'Verify.ps1')
+$packages = Join-Path $projectRoot 'artifacts/packages'
+$previous = if (Test-Path -LiteralPath $packages) { @(Get-ChildItem -LiteralPath $packages -Filter 'ReBear-*' -Force) } else { @() }
 
 $stamp = Get-Date -Format 'yyyyMMdd-HHmmss-fff'
 $version = ([xml](Get-Content -LiteralPath (Join-Path $projectRoot 'Directory.Build.props') -Raw)).Project.PropertyGroup.Version
@@ -30,4 +35,12 @@ $hashes = Get-ChildItem -LiteralPath $destination -File | ForEach-Object {
 $manifest = [ordered]@{ product = 'ReBear'; version = $version; created = (Get-Date -Format o); files = @($hashes) }
 $manifest | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath (Join-Path $destination 'package-manifest.json') -Encoding utf8
 Compress-Archive -LiteralPath $destination -DestinationPath "$packageRoot.zip"
+# Package cleanup belongs here, not to the build: only after the new package exists, never through links.
+if (-not $KeepPrevious) {
+    foreach ($item in $previous) {
+        if ($item.Attributes -band [IO.FileAttributes]::ReparsePoint) { Write-Warning "Non eliminato (link): $($item.FullName)"; continue }
+        Remove-Item -LiteralPath $item.FullName -Recurse -Force
+        Write-Output "Pacchetto precedente eliminato: $($item.FullName)"
+    }
+}
 Write-Output "Package: $packageRoot.zip"

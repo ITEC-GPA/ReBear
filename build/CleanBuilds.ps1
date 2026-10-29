@@ -32,7 +32,8 @@ function Find-LegacyOutputs([string]$Directory) {
         if ($child.FullName -eq $releaseRoot) {
             continue
         }
-        if ($child.Name -in @('bin', 'obj') -or $child.FullName -eq (Join-Path $projectRoot 'artifacts\packages')) { $child.FullName }
+        # Packages are managed by Package.ps1: a build never deletes them.
+        if ($child.Name -in @('bin', 'obj')) { $child.FullName }
         elseif (-not ($child.Attributes -band [IO.FileAttributes]::ReparsePoint)) {
             Find-LegacyOutputs $child.FullName
         }

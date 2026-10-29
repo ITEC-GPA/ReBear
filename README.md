@@ -8,7 +8,7 @@ Plugin autonomo per la modellazione e la verifica di sezioni in calcestruzzo arm
 
 Le verifiche di resistenza, taglio, torsione, tensioni SLE, fessurazione, copriferro e dettagli richiamano le librerie GPC. Il plugin contiene adattamento degli input, conversioni di unità, gestione degli esiti, report e visualizzazione; le formule di verifica sono nelle librerie. Il progetto non include lettori/esportatori SAP, Midas, Straus o altri moduli già separati da Rhino2FEM.
 
-Chi aggiorna definizioni 0.2 deve leggere la [tabella 0.2.2 → 0.3](docs/MIGRATION.md#componenti-022--03): 13 componenti hanno un nuovo `ComponentGuid` (porte o significato cambiati) e 5 componenti storici sono sostituiti dalle verifiche strutturate.
+Chi aggiorna definizioni 0.2 deve leggere la [tabella 0.2.2 → 0.3](docs/MIGRATION.md#componenti-022--03): 45 componenti conservano il `ComponentGuid` con porte identiche, 11 ne hanno uno nuovo (porte o significato cambiati), 5 componenti storici sono sostituiti dalle verifiche strutturate e 2 componenti sono nuovi.
 
 ## Compilazione e verifiche
 

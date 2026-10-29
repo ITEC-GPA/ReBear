@@ -1,0 +1,27 @@
+name: Verify
+
+on:
+  push:
+    branches: [master, 'claude/**']
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        shell: powershell
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Build Release and run the checks (numerical, regressions, palette, Grasshopper)
+        run: ./build/Verify.ps1
+      - name: Regenerate and check the 20 examples
+        run: ./build/Examples.ps1
+      - name: Committed example results match the regenerated ones
+        # GH/GHX archives contain new instance identifiers at every generation; results, READMEs and graphs must not change.
+        run: git diff --exit-code --stat -- examples ':(exclude)examples/*/definition.gh' ':(exclude)examples/*/definition.ghx'

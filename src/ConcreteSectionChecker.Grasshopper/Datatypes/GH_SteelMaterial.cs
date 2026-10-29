@@ -1,42 +1,18 @@
-using Grasshopper.Kernel.Types;
+using ConcreteSectionChecker.Grasshopper;
 using GPC.Model.Materials;
+using Grasshopper.Kernel.Types;
 
 namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Datatypes
 {
-    public class GH_SteelMaterial : GH_Goo<SteelMaterialEN1992>
+    public class GH_SteelMaterial : ReBearGoo<SteelMaterialEN1992>
     {
-        public GH_SteelMaterial(SteelMaterialEN1992 model)
-        {
-            Value = model;
-        }
-
-        public GH_SteelMaterial()
-        {
-
-        }
-
-        public override bool IsValid => Value is not null;
-
-        public override string TypeName => "v";
-
-        public override string TypeDescription => "MaterialModel";
-
-        public override IGH_Goo Duplicate()
-        {
-            return new GH_SteelMaterial(Value);
-        }
-
-        public override string ToString()
-        {
-            if (Value is null) return "Empty GH_SteelMaterial";
-            return "Name: " + Value.Name + ", \r\n" +
-                "Elastic modulus: " + Value.E + "MPa" + ", \r\n" +
-                "Yield strength: " + Value.Fyk + "MPa" + ", \r\n" +
-                "Ultimate strength: " + Value.Fu + "MPa" + ", \r\n" +
-                "Strain at maximum strength: " + Value.StrainUTension + "‰" + ", \r\n" +
-                "Strain at yielding: " + Value.StrainYTension + "‰" + ", \r\n" +
-                "Density: " + Value.Density + "kg/m3" + ", \r\n" +
-                "Thermal expansion coefficient: " + Value.AlfaThermalExpansion + " 1/°C";
-        }
+        public GH_SteelMaterial(SteelMaterialEN1992 model) : base(model) { }
+        public GH_SteelMaterial() { }
+        public override string TypeName => "ReBear Steel";
+        public override string TypeDescription => "Acciaio per barre o trefoli del database GPC.";
+        public override IGH_Goo Duplicate() => new GH_SteelMaterial(Value); // database materials are created per output and never modified
+        protected override string Describe(SteelMaterialEN1992 s) =>
+            $"{s.Name} ({s.SteelType}, {s.StressStrainCurve}): Es={Persistence.Number(s.E)} MPa, fyk={Persistence.Number(s.Fyk)} MPa, " +
+            $"fu={Persistence.Number(s.Fu)} MPa, εuk={Persistence.Number(s.StrainUTension)}";
     }
 }

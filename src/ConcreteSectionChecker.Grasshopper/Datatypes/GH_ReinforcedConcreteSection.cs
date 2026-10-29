@@ -1,49 +1,22 @@
-using GPC.Model.Materials;
+using System;
+using System.Linq;
+using ConcreteSectionChecker.Grasshopper;
 using GPC.Model.Sections.Concrete;
 using Grasshopper.Kernel.Types;
-using System.Linq;
 
 namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Datatypes
 {
-    public class GH_ReinforcedConcreteSection : GH_Goo<ReinforcedConcreteSection>
+    public class GH_ReinforcedConcreteSection : ReBearGoo<ReinforcedConcreteSection>
     {
-        public GH_ReinforcedConcreteSection(ReinforcedConcreteSection model)
-        {
-            Value = model;
-        }
-
-        public GH_ReinforcedConcreteSection()
-        {
-
-        }
-
-        public override bool IsValid => Value is not null;
-
-        public override string TypeName => "v";
-
-        public override string TypeDescription => "MaterialModel";
-
-        public override IGH_Goo Duplicate()
-        {
-            return new GH_ReinforcedConcreteSection(Value);
-        }
-
-        public override string ToString()
-        {
-            if (Value is null) return "Empty GH_ReinforcedConcreteSection";
-            return "Name: " + Value.Name+ ", \r\n" +
-                "Concrete material: " + Value.ConcreteMaterial.Name + ", \r\n" +
-                "Area: " + Value.Area + "mm2" + ", \r\n" +
-                "Rebars: " + Value.Rebars.Count() + ", \r\n" +
-                "Moment of inertia x-x: " + Value.Jxx + "mm4" + ", \r\n" +
-                "Moment of inertia y-y: " + Value.Jyy + "mm4" + ", \r\n" +
-                "Moment of inertia x-y: " + Value.Jxy + "mm4" + ", \r\n" +
-                "Moment of inertia 1-1: " + Value.J11 + "mm4" + ", \r\n" +
-                "Moment of inertia 2-2: " + Value.J22 + "mm4" + ", \r\n" +
-                "Angle: " + double.RadiansToDegrees(Value.AngleX1) + "°" + ", \r\n" +
-                "Centroid X: " + Value.Centroid.X + "mm" + ", \r\n" +
-                "Centroid Y: " + Value.Centroid.Y + "mm" + ", \r\n" +
-                "Rebars: " + Value.Rebars.Count();
-        }
+        public GH_ReinforcedConcreteSection(ReinforcedConcreteSection model) : base(model) { }
+        public GH_ReinforcedConcreteSection() { }
+        public override string TypeName => "ReBear RC Section";
+        public override string TypeDescription => "Sezione GPC in calcestruzzo armato, mm.";
+        public override IGH_Goo Duplicate() => new GH_ReinforcedConcreteSection(Value); // sections are never modified after construction
+        protected override string Describe(ReinforcedConcreteSection s) => Text(s);
+        internal static string Text(ReinforcedConcreteSection s) =>
+            $"Sezione '{s.Name}' {s.ConcreteMaterial?.Name}: Ac={Persistence.Number(s.Area)} mm², {s.Rebars.Count()} barre, As={Persistence.Number(s.AreaRebars)} mm², " +
+            $"G=({Persistence.Number(s.Centroid.X)}, {Persistence.Number(s.Centroid.Y)}) mm, Jxx={Persistence.Number(s.Jxx)} mm⁴, Jyy={Persistence.Number(s.Jyy)} mm⁴, " +
+            $"θ1={Persistence.Number(s.AngleX1 * 180 / Math.PI)}°";
     }
 }

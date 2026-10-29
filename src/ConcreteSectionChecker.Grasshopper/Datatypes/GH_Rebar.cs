@@ -1,12 +1,14 @@
+using System;
+using ConcreteSectionChecker.Grasshopper;
+using GH_IO.Serialization;
 using GPC.Model.Sections.Concrete;
 using Grasshopper.Kernel;
 using Grasshopper.Kernel.Types;
 using Rhino.Geometry;
-using System;
 
 namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Datatypes
 {
-    public class GH_Rebar : GH_GeometricGoo<ReinforcedConcreteRebar>, IGH_PreviewData
+    public class GH_Rebar : GH_GeometricGoo<ReinforcedConcreteRebar>, IGH_PreviewData, IReBearPlaceholder
     {
         public GH_Rebar(ReinforcedConcreteRebar model)
         {
@@ -18,12 +20,26 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Datatypes
 
         }
 
+        public string Note { get; private set; }
+
         public override bool IsValid => Value is not null;
 
-        public override string TypeName => "ReinforcedConcreteRebar";
+        public override string IsValidWhyNot => Value is null ? Note ?? "Barra vuota." : string.Empty;
 
-        public override string TypeDescription => "ReinforcedConcreteRebar";
+        public override string TypeName => "ReBear Rebar";
 
+        public override string TypeDescription => "Barra o trefolo GPC nel piano XY della sezione, mm.";
+
+        public override object ScriptVariable() => Value;
+
+        public override bool Write(GH_IWriter writer) => Persistence.Write(writer, Value, TypeName);
+
+        public override bool Read(GH_IReader reader)
+        {
+            Value = Persistence.Read<ReinforcedConcreteRebar>(reader, TypeName, out string note);
+            Note = note;
+            return true;
+        }
 
         BoundingBox IGH_PreviewData.ClippingBox => Boundingbox;
 
@@ -45,12 +61,9 @@ namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Datatypes
 
         public override string ToString()
         {
-            if (Value is null) return "Empty GH_Rebar";
-            return "Position: " + Value.Position.ToString() + ", \r\n" +
-                "Diameter: " + Value.RebarSection.Diameter + "mm" + ", \r\n" +
-                "Area: " + Value.Area + "mm2" + ", \r\n" +
-                "Material: " + Value.RebarMaterial.Name + ", \r\n" +
-                "Pretension: " + Value.EpsilonP * Value.RebarMaterial.E + "MPa";
+            if (Value is null) return Note ?? "Empty GH_Rebar";
+            return $"Barra Ø{Persistence.Number(Value.RebarSection.Diameter)} mm {Value.RebarMaterial.Name} in ({Persistence.Number(Value.Position.X)}, " +
+                $"{Persistence.Number(Value.Position.Y)}) mm: A={Persistence.Number(Value.Area)} mm², σp={Persistence.Number(Value.EpsilonP * Value.RebarMaterial.E)} MPa";
         }
 
         public override IGH_GeometricGoo DuplicateGeometry()

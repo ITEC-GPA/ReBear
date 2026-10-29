@@ -1,40 +1,19 @@
-using Grasshopper.Kernel.Types;
-using GPC.Model.Materials;
+using ConcreteSectionChecker.Grasshopper;
 using GPC.Geometry;
+using Grasshopper.Kernel.Types;
 
 namespace Fem2Rhino.Grasshopper.Checkers.ConcreteChecker.Datatypes
 {
-    public class GH_CoordinateSystem : GH_Goo<CoordinateSystem>
+    public class GH_CoordinateSystem : ReBearGoo<CoordinateSystem>
     {
-        public GH_CoordinateSystem(CoordinateSystem model)
-        {
-            Value = model;
-        }
-
-        public GH_CoordinateSystem()
-        {
-
-        }
-
-        public override bool IsValid => Value is not null;
-
-        public override string TypeName => "CoordinateSystem";
-
-        public override string TypeDescription => "CoordinateSystem";
-
-        public override IGH_Goo Duplicate()
-        {
-            return new GH_CoordinateSystem(Value);
-        }
-
-        public override string ToString()
-        {
-            if (Value is null) return "Empty GH_CoordinateSystem";
-            return "Name: " + Value.Name + ", \r\n" +
-                "Origin: " + Value.Origin + ", \r\n" +
-                "X " + Value.V1 + ", \r\n" +
-                "Y " + Value.V2 + ", \r\n" +
-                "Z " + Value.V3 + ", \r\n";
-        }
+        public GH_CoordinateSystem(CoordinateSystem model) : base(model) { }
+        public GH_CoordinateSystem() { }
+        public override string TypeName => "ReBear Coordinate System";
+        public override string TypeDescription => "Riferimento delle azioni: origine e assi, mm.";
+        public override IGH_Goo Duplicate() => new GH_CoordinateSystem(Value is null ? null : new CoordinateSystem(Value));
+        protected override string Describe(CoordinateSystem value) => Text(value);
+        internal static string Text(CoordinateSystem a) => a is null ? "—" :
+            $"'{a.Name}' O=({P(a.Origin.X)}, {P(a.Origin.Y)}, {P(a.Origin.Z)}) X=({P(a.V1.X)}, {P(a.V1.Y)}, {P(a.V1.Z)}) Y=({P(a.V2.X)}, {P(a.V2.Y)}, {P(a.V2.Z)})";
+        private static string P(double v) => Persistence.Number(v);
     }
 }

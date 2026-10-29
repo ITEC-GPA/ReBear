@@ -164,6 +164,82 @@ internal static class ComponentBoundary
         ((GH_IO.GH_ISerializable)placeholder).Read(archive.GetRootNode);
         var (lost, _) = Solve("ServiceabilityCheck", placeholder, frequentOptions.Outputs[0], "S");
         Program.Check(Errors(lost).Contains("Ricollegare"), "Placeholder input explained: " + Errors(lost));
+        Sweep();
+    }
+
+    /// <summary>Every component without native Rhino geometry, solved with valid inputs: no error and every output set.</summary>
+    private static void Sweep()
+    {
+        var checker = Program.Checker(); var section = checker.SectionCheckerAttribute.Section;
+        var ntc = Goo("Standard", new GPC.Model.Standards.StandardNTC2018Concrete()); var en = Goo("Standard", new GPC.Model.Standards.StandardEN1992p11());
+        var c30 = Goo("ConcreteMaterial", ConcreteMaterialEN1992Data.C30_37); var b450 = Goo("SteelMaterial", SteelMaterialEN1992Data.B450C);
+        var checkGoo = Goo("SectionChecker", checker); var sectionGoo = Goo("ReinforcedConcreteSection", section);
+        var force = Goo("ResultBeamForces", Program.Force()); var unnamed = Goo("ResultBeamForces", Program.Force(-200e3, 0, 0, 30e6, 0));
+        var origin = new GH_Point(new Rhino.Geometry.Point3d(0, 0, 0));
+        (GH_Component, DataAccessProxy) Ok(string name, params object[] inputs)
+        {
+            var (c, d) = Solve(name, inputs);
+            Program.Check(Errors(c).Length == 0, name + ": " + Errors(c));
+            Program.Check(d.Outputs.Count == c.Params.Output.Count, $"{name}: {d.Outputs.Count}/{c.Params.Output.Count} outputs set");
+            return (c, d);
+        }
+        Program.Check(Unwrap(Ok("Standard", 1).Item2.Outputs[0]) is GPC.Model.Standards.StandardEN1992p11, "Standard 1 = EN");
+        Program.Check(((GPC.Model.Materials.ConcreteMaterialEuropeanCommon)Unwrap(Ok("ConcreteMaterial", 3).Item2.Outputs[0])).Name == "C30/37", "C30/37");
+        var hardening = (GPC.Model.Materials.SteelMaterialEN1992)Unwrap(Ok("RebarMaterial", 1, 1).Item2.Outputs[0]);
+        Program.Check(hardening.Name == "B450C" && hardening.StressStrainCurve == GPC.Model.Materials.SteelMaterial.StressStrainCurveType.ElasticHardening, "B450C hardening");
+        Program.Check(((GPC.Model.Materials.SteelMaterialEN1992)Unwrap(Ok("RebarMaterial", 1, 0).Item2.Outputs[0])).StressStrainCurve
+            == GPC.Model.Materials.SteelMaterial.StressStrainCurveType.ElasticPerfectPlastic, "Database entries are not shared");
+        Ok("BarMaterial", 0, 0); var tendonSteel = Ok("TendonMaterial", 4, 0).Item2.Outputs[0];
+        var (_, concreteValues) = Ok("ConcreteDesignValue", c30, ntc);
+        Expected(30, concreteValues.Outputs[1], "fck"); Expected(.85 * 30 / 1.5, concreteValues.Outputs[6], "fcd NTC");
+        var (_, steelValues) = Ok("SteelDesignValue", b450, ntc);
+        Expected(450, steelValues.Outputs[2], "fyk"); Expected(450 / 1.15, steelValues.Outputs[7], "fyd");
+        var bar = (GPC.Model.Sections.Concrete.ReinforcedConcreteRebar)Unwrap(Ok("Rebar", new GH_Point(new Rhino.Geometry.Point3d(10, 20, 0)), 20d, b450).Item2.Outputs[0]);
+        Expected(100 * Math.PI, bar.Area, "Rebar area [mm²]"); Expected(20, bar.Position.Y, "Rebar y");
+        var (badBar, _) = Solve("Rebar", new GH_Point(new Rhino.Geometry.Point3d(10, 20, 0)), 20d, tendonSteel);
+        Program.Check(Errors(badBar).Contains("Tendon"), "Tendon steel refused for ordinary rebars");
+        var tendon = (GPC.Model.Sections.Concrete.ReinforcedConcreteRebar)Unwrap(Ok("Tendon", origin, 15d, tendonSteel, 1400d).Item2.Outputs[0]);
+        Expected(1400, tendon.EpsilonP * tendon.RebarMaterial.E, "Tendon pretension [MPa]");
+        var (_, properties) = Ok("ConcreteMechanicalProperties", sectionGoo);
+        Expected(150000, properties.Outputs[1], "Area"); Expected(300 * Math.Pow(500, 3) / 12, properties.Outputs[4], "Jxx");
+        Program.Check(Math.Abs((double)properties.Outputs[10]) % 90 < 1e-6, "Principal angle in degrees (0 or 90 for a rectangle)");
+        Ok("HomogenizedMechanicalProperties", sectionGoo, 0d);
+        var axes = (CoordinateSystem)Unwrap(Ok("CoordinateSystem", "A", origin, new GH_Point(new Rhino.Geometry.Point3d(0, 1, 0)), new GH_Point(new Rhino.Geometry.Point3d(-1, 0, 0))).Item2.Outputs[0]);
+        Program.Check(Math.Abs(axes.V1.Y - 1) < 1e-12 && axes.Name == "A", "Coordinate system axes");
+        var centroid = (CoordinateSystem)Unwrap(Ok("CoordinateSystemSection", sectionGoo).Item2.Outputs[0]);
+        Program.Check(centroid.V1.X == 1 && centroid.V2.Y == 1, "Section coordinate system: global directions");
+        Ok("PsiFactor", c30, b450, 15d); Ok("HomogenizationOptions", c30, b450, false, 1.5d);
+        var (_, envelope) = Ok("LoadEnvelope", (object)new[] { force, unnamed });
+        Program.Check(((object[])envelope.Outputs[0]).Length == 12, "12 extremes");
+        var (_, analysis) = Ok("StressAnalysis", checkGoo, new[] { unnamed, force });
+        var stresses = ((object[])analysis.Outputs[0]).Select(r => (GPC.Checkers.Concrete.Results.StressAnalysisResult)Unwrap(r)).ToArray();
+        Program.Check(stresses.Length == 2 && stresses[0].Force.Name == "Caso 1" && stresses[0].Force.Id == 0 && ((object[])analysis.Outputs[1]).Length == 2, "Stress analyses by position");
+        var single = checker.GetTensionAnalysisResult(Program.Force(-200e3, 0, 0, 30e6, 0));
+        Expected(single.StrainPlane.Chi, stresses[0].StrainPlane.Chi, "Same analysis as the checker");
+        var (_, summary) = Ok("PostProcessStrainResult", ((object[])analysis.Outputs[1])[0]);
+        Program.Check((string)summary.Outputs[2] == "Caso 1", "Summary case name");
+        var (_, resistance) = Ok("ResistanceCheck", checkGoo, force, "S");
+        var (_, inspect) = Ok("CheckResult", resistance.Outputs[0]);
+        Program.Check((string)inspect.Outputs[2] == "N-Mx-My" && (string)inspect.Outputs[3] == "Satisfied" && double.IsNaN((double)inspect.Outputs[5]), "Check Result ports");
+        Ok("CheckEnvelope", (object)new[] { resistance.Outputs[0], resistance.Outputs[0] });
+        var (_, anchorage) = Ok("AnchorageLap", en, c30, b450, 20d, 300d, 1000d, true, false, 100d, 0d, "S");
+        Expected(2.25 * .7 * .3 * Math.Pow(30, 2d / 3) / 1.5, anchorage.Outputs[2], "fbd");
+        var plate = Ok("PlateDetailingOptions", 500d, 200d, false).Item2.Outputs[0];
+        var (_, column) = Ok("DetailingOptions", 1, 300d, 300d, 300d, 8d, 150d, 2, 30d, 20d, 10d, null, false, false, false, null);
+        Ok("DetailingOptions", 2, 1000d, 1000d, 1000d, 0d, 200d, 0, 30d, 20d, 10d, 20d, false, true, true, plate);
+        var (detailing, detailingData) = Solve("ReinforcementDetailing", checkGoo, column.Outputs[0], -300d, "S");
+        Program.Check(Errors(detailing).Length == 0 && ((object[])detailingData.Outputs[0]).Length > 5, "Detailing rules");
+        var (_, shearOptions) = Ok("ShearOptions", b450, b450, 300d, 460d, 400 * Math.PI, 32 * Math.PI, 150d, 90d, 1.5d, .9d, 20d, 0d);
+        var (_, torsionOptions) = Ok("TorsionOptions", 80000d, 1200d, 100d, b450, b450, 16 * Math.PI, 150d, 800d, 1.5d, false, true);
+        var (_, torsion) = Ok("TorsionShearCheck", checkGoo, Goo("ResultBeamForces", new ResultBeamForces(-300e3, 20e3, 30e3, 5e6, 45e6, 15e6, CoordinateSystem.Global)),
+            torsionOptions.Outputs[0], shearOptions.Outputs[0], shearOptions.Outputs[0], "S");
+        Program.Check(((CheckResult)Unwrap(torsion.Outputs[0])).Check == "Torsion + shear", "Torsion result");
+        var (unconfirmed, _) = Solve("TorsionOptions", 80000d, 1200d, 100d, b450, b450, 16 * Math.PI, 150d, 800d, 1.5d, false, false);
+        Program.Check(Errors(unconfirmed).Contains("Confermare"), "Torsion layout confirmation required");
+        var (_, search) = Ok("ReinforcementSearch", new[] { checkGoo, checkGoo }, new[] { force }, 1d, true);
+        Program.Check((int)search.Outputs[0] == 0, "Search selects the first equal candidate");
+        var (_, geometry) = Ok("SectionGeometryCheck", sectionGoo, 30d, 25d, "S");
+        Program.Check(((CheckResult)Unwrap(geometry.Outputs[0])).Status == CheckStatus.Satisfied, "Geometry check");
     }
 }
 

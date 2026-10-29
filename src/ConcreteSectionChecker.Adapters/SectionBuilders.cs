@@ -49,7 +49,7 @@ namespace ConcreteSectionChecker.Adapters
             IEnumerable<IEnumerable<(double X, double Y)>> holes, IEnumerable<Point2d> positions, ConcreteMaterial concrete,
             SteelMaterial steel, double diameter, double requiredCover, string name)
         {
-            if (concrete == null || steel == null) throw new ArgumentException("Materiali richiesti.");
+            if (concrete is null || steel is null) throw new ArgumentException("Materiali richiesti.");
             if (steel.SteelType == SteelMaterial.SteelTypes.Tendon) throw new ArgumentException("Usare acciaio per armature ordinarie.");
             var shape = new Shape2d(new Polygon2d(outline.Select(v => new Point2d(v.X, v.Y))),
                 holes.Select(h => new Polygon2d(h.Reverse().Select(v => new Point2d(v.X, v.Y)))).ToArray());
@@ -63,7 +63,7 @@ namespace ConcreteSectionChecker.Adapters
         }
         public static SectionGeometryInfo Inspect(ReinforcedConcreteSection section)
         {
-            if (section == null) throw new ArgumentNullException(nameof(section));
+            if (section is null) throw new ArgumentNullException(nameof(section));
             var bars = section.Rebars.ToArray(); var outline = section.ConcreteShape.Fill2d;
             double cover = double.PositiveInfinity, clear = double.PositiveInfinity;
             for (int i = 0; i < bars.Length; i++)

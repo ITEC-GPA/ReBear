@@ -1,0 +1,23 @@
+# Normalize text to LF in the repository; the working tree uses the platform line ending.
+* text=auto
+
+*.cs      text diff=csharp
+*.csproj  text
+*.props   text
+*.targets text
+*.sln     text eol=crlf
+*.ps1     text
+*.py      text
+*.md      text
+*.json    text
+*.yml     text
+*.svg     text
+*.txt     text
+*.ghx     text
+
+# Binary payloads: never convert.
+*.png binary
+*.gh  binary
+*.gha binary
+*.dll binary
+*.zip binary

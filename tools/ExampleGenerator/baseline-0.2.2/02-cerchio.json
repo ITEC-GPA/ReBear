@@ -1,0 +1,33 @@
+{
+  "schema": "ReBear.WorkedExample",
+  "version": 1,
+  "example": "02-cerchio",
+  "engine": "GPCChecker.Concrete, Version=0.21.0.0, Culture=neutral, PublicKeyToken=null",
+  "verification": "Calcolo adapter GPC eseguito; archivio GH riletto; soluzione dentro Rhino non eseguita.",
+  "values": {
+    "Ac [mm\u00B2]": 282289.36414913466,
+    "As [mm\u00B2]": 3769.9111843077512,
+    "Numero barre": 12,
+    "cbar,min [mm]": 50.032078528880014,
+    "Interferro minimo [mm]": 104.04608632435296,
+    "Errore area rispetto al cerchio [%]": 0.16056069643811677,
+    "n [-]": 15.226926258643363,
+    "Ec,eff [MPa]": 13134.627212532316
+  },
+  "checks": [
+    {
+      "Section": "S",
+      "Case": "Geometry",
+      "Check": "Geometry",
+      "Status": "Satisfied",
+      "Ratio": null,
+      "Demand": null,
+      "Capacity": null,
+      "Unit": "",
+      "Message": "Copriferro minimo 50.0320785 mm \u2265 50; interferro 104.046086 mm \u2265 25.",
+      "Reference": "",
+      "Details": ""
+    }
+  ],
+  "series": null
+}

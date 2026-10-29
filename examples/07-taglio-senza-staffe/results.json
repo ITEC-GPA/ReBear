@@ -2,7 +2,7 @@
   "schema": "ReBear.WorkedExample",
   "version": 1,
   "example": "07-taglio-senza-staffe",
-  "engine": "GPCChecker.Concrete, Version=0.21.0.0, Culture=neutral, PublicKeyToken=null",
+  "engine": "GPCChecker.Concrete, Version=0.25.0.0, Culture=neutral, PublicKeyToken=null",
   "verification": "Calcolo adapter GPC eseguito; archivio GH riletto; soluzione dentro Rhino non eseguita.",
   "values": {
     "VRd analitico [kN]": 122.76464045486883
@@ -19,7 +19,7 @@
       "Unit": "kN",
       "Message": "Resistance sufficient; detailing to be verified",
       "Reference": "NTC 2018 \u00A7\u00A74.1.2.3.5.1-2",
-      "Details": "\u03C3cp=2 MPa: min(\u2212N/Ac; 0.2 fcd), compression positive\nk=1.6651901052377394 \u2212: min[2; 1 \u002B \u221A(200/d)]\n\u03C1l=0.0092672349663415737 \u2212: min[0.02; Asl/(bw d)]\nvmin=0.41193093165105532 MPa: 0.035 k^1.5 \u221Afck"
+      "Details": "\u03C3cp=2 MPa: min(\u2212N/Ac; 0.2 fcd), compression positive\nk=1.6651901052377394 \u2212: min[2; 1 \u002B \u221A(200/d)]\n\u03C1l=0.0092672349663415737 \u2212: min[0.02; Asl/(bw d)]\nvmin=0.41193093165105532 MPa: 0.035 k^1.5 \u221Afck\nModel=NTC variable-inclination truss; VRsd=122.76464045486883 kN; VRcd=96.5378343318831 kN; cot\u03B8=0"
     },
     {
       "Section": "S",
@@ -32,7 +32,7 @@
       "Unit": "kN",
       "Message": "Tension without shear reinforcement: not verified automatically",
       "Reference": "NTC 2018 \u00A7\u00A74.1.2.3.5.1-2",
-      "Details": ""
+      "Details": "\nModel=NTC variable-inclination truss; VRsd= kN; VRcd= kN; cot\u03B8=0"
     }
   ],
   "series": null

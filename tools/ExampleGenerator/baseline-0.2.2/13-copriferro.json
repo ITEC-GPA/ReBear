@@ -1,0 +1,28 @@
+{
+  "schema": "ReBear.WorkedExample",
+  "version": 1,
+  "example": "13-copriferro",
+  "engine": "GPCChecker.Concrete, Version=0.21.0.0, Culture=neutral, PublicKeyToken=null",
+  "verification": "Calcolo adapter GPC eseguito; archivio GH riletto; soluzione dentro Rhino non eseguita.",
+  "values": {
+    "cmin,b [mm]": 20,
+    "cmin,dur [mm]": 35,
+    "cnom [mm]": 45
+  },
+  "checks": [
+    {
+      "Section": "S",
+      "Case": "Durability",
+      "Check": "Concrete cover",
+      "Status": "NotSatisfied",
+      "Ratio": null,
+      "Demand": 45,
+      "Capacity": 40,
+      "Unit": "mm",
+      "Message": "Domanda = copriferro nominale richiesto; capacit\u00E0 = copriferro disponibile.",
+      "Reference": "EN 1992-1-1 \u00A74.4.1, Tables 4.3N and 4.4N",
+      "Details": "cmin,b=20; cmin,dur=35; cmin=35; cnom=45 mm"
+    }
+  ],
+  "series": null
+}

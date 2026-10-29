@@ -2,7 +2,7 @@
   "schema": "ReBear.WorkedExample",
   "version": 1,
   "example": "12-fessurazione",
-  "engine": "GPCChecker.Concrete, Version=0.21.0.0, Culture=neutral, PublicKeyToken=null",
+  "engine": "GPCChecker.Concrete, Version=0.25.0.0, Culture=neutral, PublicKeyToken=null",
   "verification": "Calcolo adapter GPC eseguito; archivio GH riletto; soluzione dentro Rhino non eseguita.",
   "values": {
     "Regioni efficaci": 1,
@@ -31,7 +31,7 @@
       "Demand": 0.13578964484654074,
       "Capacity": 0.2,
       "Unit": "mm",
-      "Message": "Crack width within the limit",
+      "Message": "CrackWidth: Crack width within the limit",
       "Reference": "NTC 2018 \u00A74.1.2.2.4 and Circolare 2019 C4.1.2.2.4",
       "Details": "\u03B5c,min=-0.00022604000932546011 \u2212: minimum strain at the vertices\n\u03B5c,max=0.00038411017190716451 \u2212: maximum strain at the vertices\nk2=0.5 \u2212: neutral axis inside the section: bending, k2 = 0.5 (Circolare 2019 C4.1.2.2.4.5; EN 1992-1-1 7.3.4(3))\nh=500.00005970174266 mm: projected height along the strain gradient\nh \u2212 x=314.76694557008801 mm: \u03B5c,max / |\u2207\u03B5|\nh \u2212 d=48.000029850875308 mm: Qmax \u2212 Q of the tensile bars\nhc,eff=104.92231519002934 mm: min[2.5 (h \u2212 d); (h \u2212 x)/3; h/2]\nAc,eff=31476.685601746547 mm2: concrete beyond Q = Qmax \u2212 hc,eff\nAs,eff=1256.6370614359173 mm2: 4 tensile bars\n\u00D8eq=20 mm: \u03A3\u00D8\u00B2/\u03A3\u00D8\n\u03C3s=162.76787492308628 MPa: maximum stress of the effective bars\nc=38 mm: nominal cover \u002B link\ns=68 mm: maximum spacing of the effective tensile bars\n\u03C1p,eff=0.0399227884833653 \u2212: As,eff / Ac,eff\n\u03B1e=6.0907705034573452 \u2212: Es / Ecm\nkt=0.40000000000000002 \u2212: long term\nk1=0.80000000000000004 \u2212: ribbed bars\n\u03B5sm \u2212 \u03B5cm=0.00063345242980254583 \u2212: max[(\u03C3s \u2212 kt fct/\u03C1 (1 \u002B \u03B1e \u03C1))/Es; 0.6 \u03C3s/Es]\n\u0394sm,near=126.09670105667453 mm: (3.4 c \u002B k1 k2 0.425 \u00D8/\u03C1)/1.7\ns,lim=240 mm: 5 (c \u002B \u00D8/2)\n\u0394sm,far=236.07520917756602 mm: 0.75 (h \u2212 x)\n\u0394sm=126.09670105667453 mm: near bars\nwk=0.13578964484654074 mm: max[0; 1.7 \u0394sm (\u03B5sm \u2212 \u03B5cm)]"
     }

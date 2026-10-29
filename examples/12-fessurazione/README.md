@@ -4,11 +4,11 @@ Rettangolo 300 × 500, 8Ø20, analisi lineare con ψrebar=1.5. Caso quasi perman
 
 ## Esecuzione
 
-Aprire `definition.gh` (oppure l'equivalente testuale `definition.ghx`) con ReBear 0.2.1 in Rhino 8/.NET 8. Il file è autonomo: nessun Excel o plugin esterno aggiuntivo. Le porte contengono i dati persistenti; i componenti con Run sono già attivi. Geometria in **mm**, tensioni in **MPa**, azioni delle porte in **kN/kNm**, compressione **negativa**.
+Aprire `definition.gh` (oppure l'equivalente testuale `definition.ghx`) con ReBear 0.3.0 in Rhino 8/.NET 8. Il file è autonomo: nessun Excel o plugin esterno aggiuntivo. Le porte contengono i dati persistenti; i componenti con Run sono già attivi. Geometria in **mm**, tensioni in **MPa**, azioni delle porte in **kN/kNm**, compressione **negativa**.
 
 ## Svolgimento e controllo
 
-Stress Analysis determina la sezione fessurata. Serviceability Check v2 applica i limiti tensionali e il modello di fessurazione GPC; Effective Cracked Section visualizza le regioni Ac,eff e le barre contribuenti. Il controllo automatico richiede larghezza finita non negativa, almeno una regione e η = w/limite quando il criterio è quello di ampiezza. Nei dettagli sono disponibili kt, aree efficaci e passaggi del motore: non si sostituiscono con formule locali nel plugin.
+Stress Analysis determina la sezione fessurata. Serviceability Check applica i limiti tensionali e il modello di fessurazione GPC; Effective Cracked Section visualizza le regioni Ac,eff e le barre contribuenti. Il controllo automatico richiede larghezza finita non negativa, almeno una regione e η = w/limite quando il criterio è quello di ampiezza. Nei dettagli sono disponibili kt, aree efficaci e passaggi del motore: non si sostituiscono con formule locali nel plugin.
 
 | Quantità calcolata | Valore |
 |---|---:|
@@ -23,6 +23,14 @@ Stress Analysis determina la sezione fessurata. Serviceability Check v2 applica 
 Esiti e dettagli integrali, riferimenti restituiti da GPC e precisione completa sono in `results.json`. Un rapporto non definito non equivale a zero; nei dettagli di armatura Actual/Limit conservano il verso della singola regola descritto nel messaggio.
 
 Calcolo numerico eseguito dal generatore con le stesse chiamate adapter usate dal plugin. Eseguiti i controlli automatici descritti e la rilettura dell'archivio GH con verifica dei GUID e dei collegamenti. **Ricalcolo e preview nell'host Rhino da verificare dall'utente.** Questo esempio copre soltanto le verifiche indicate, non la progettazione completa dell'elemento.
+
+## Differenze rispetto a ReBear 0.2.2
+
+Componenti con `ComponentGuid` nuovo in 0.3 (porte o significato cambiati, vedere [MIGRATION](../../docs/MIGRATION.md)): **Concrete Checker Options**. Gli altri componenti del grafo conservano il GUID di 0.2.2.
+
+Confronto automatico con i risultati pubblicati in 0.2.2 (`tools/ExampleGenerator/baseline-0.2.2/12-fessurazione.json`); soglia 1E-09 relativo, 1E-10 assoluto.
+
+Nessuna variazione numerica oltre la soglia e nessun esito diverso.
 
 ## Componenti e collegamenti
 
@@ -58,7 +66,7 @@ I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set
 
 - Failure Domain Types = `1`
 - Failure Analysis Types = `0`
-- Domain Point Strategy Types = `1`
+- Domain Point Strategy Types = `0`
 - Stress Analysis Types = `1`
 - ψ rebar = `1.5`
 - ψ tendon = `0`
@@ -105,7 +113,7 @@ I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set
 - Longitudinal bar cover = `38`
 - Concentric rings = `False`
 
-**10 — Serviceability Check v2**
+**10 — Serviceability Check**
 
 - Section ID = `S`
 - Stress result ← 08 Stress Analysis / Stress Analysis Results
@@ -113,12 +121,12 @@ I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set
 
 **11 — Check Report**
 
-- Results ← 10 Serviceability Check v2 / Results
+- Results ← 10 Serviceability Check / Results
 
 **12 — Check Result**
 
-- Result ← 10 Serviceability Check v2 / Results
+- Result ← 10 Serviceability Check / Results
 
 **13 — Effective Cracked Section**
 
-- Crack data ← 10 Serviceability Check v2 / Crack data
+- Crack data ← 10 Serviceability Check / Crack data

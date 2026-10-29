@@ -23,6 +23,7 @@ internal sealed class Graph : IDisposable
     // container explicitly; every component and panel still uses its own official GH serializer.
     private readonly List<IGH_DocumentObject> objects = new();
     private readonly List<GH_Component> nodes = new();
+    internal IReadOnlyList<GH_Component> Nodes => nodes;
     private readonly List<(GH_Component From, int Output, GH_Component To, int Input)> wires = new();
     private readonly Dictionary<GH_Component, Dictionary<int, string>> values = new();
     public GH_Component Add(string type)

@@ -38,6 +38,8 @@ internal static partial class Program
         internal readonly Dictionary<string,double> Values = new();
         internal readonly List<CheckResult> Results = new();
         internal object Series;
+        /// <summary>Why this example differs from 0.2.2 beyond the engine change (component replacements, fixes).</summary>
+        internal string changes = "";
         private readonly string slug, title, explanation, verification;
         internal Example(string slug, string title, string explanation, string verification)
         { this.slug=slug; this.title=title; this.explanation=explanation; this.verification=verification; }
@@ -45,10 +47,11 @@ internal static partial class Program
         {
             string folder=Path.Combine(OutputRoot,slug); Directory.CreateDirectory(folder);
             string wiring=Graph.Save(folder,title);
-            File.WriteAllText(Path.Combine(folder,"results.json"),JsonSerializer.Serialize(new {
+            string results=JsonSerializer.Serialize(new {
                 schema="ReBear.WorkedExample", version=1, example=slug, engine=typeof(SectionCheckerModelCode2010).Assembly.GetName().FullName,
                 verification="Calcolo adapter GPC eseguito; archivio GH riletto; soluzione dentro Rhino non eseguita.",
-                values=Values, checks=Results, series=Series },Json));
+                values=Values, checks=Results, series=Series },Json);
+            File.WriteAllText(Path.Combine(folder,"results.json"),results);
             var text=new StringBuilder("# "+slug[..2]+" — "+title+"\n\n"+explanation+"\n\n");
             text.AppendLine("## Esecuzione\n\nAprire `definition.gh` (oppure l'equivalente testuale `definition.ghx`) con ReBear " + ReBearVersion + " in Rhino 8/.NET 8. Il file è autonomo: nessun Excel o plugin esterno aggiuntivo. Le porte contengono i dati persistenti; i componenti con Run sono già attivi. Geometria in **mm**, tensioni in **MPa**, azioni delle porte in **kN/kNm**, compressione **negativa**.\n");
             text.AppendLine("## Svolgimento e controllo\n\n"+verification+"\n");
@@ -65,6 +68,7 @@ internal static partial class Program
                 text.AppendLine("\nEsiti e dettagli integrali, riferimenti restituiti da GPC e precisione completa sono in `results.json`. Un rapporto non definito non equivale a zero; nei dettagli di armatura Actual/Limit conservano il verso della singola regola descritto nel messaggio.\n");
             }
             text.AppendLine("Calcolo numerico eseguito dal generatore con le stesse chiamate adapter usate dal plugin. Eseguiti i controlli automatici descritti e la rilettura dell'archivio GH con verifica dei GUID e dei collegamenti. **Ricalcolo e preview nell'host Rhino da verificare dall'utente.** Questo esempio copre soltanto le verifiche indicate, non la progettazione completa dell'elemento.");
+            text.Append(Baseline.Differences(slug,results,changes,Graph.Nodes));
             text.Append(wiring);
             File.WriteAllText(Path.Combine(folder,"README.md"),text.ToString().TrimEnd()+Environment.NewLine);
             Index.Add((slug,title,$"{Results.Count} esiti; {Values.Count} valori"));
@@ -112,7 +116,7 @@ internal static partial class Program
         {
             Standard=G.Add("StandardComponent"); G.Set(Standard,0,standard);
             Options=G.Add("CheckerOptionsComponent"); G.Wire(CoordinateSystem(),Options,0);
-            G.Set(Options,1,1); G.Set(Options,2,0); G.Set(Options,3,1); G.Set(Options,4,nonlinear?0:1);
+            G.Set(Options,1,1); G.Set(Options,2,0); G.Set(Options,3,0); G.Set(Options,4,nonlinear?0:1);
             G.Set(Options,5,1.5); G.Set(Options,6,0); G.Set(Options,7,false);
             Checker=MakeChecker(Section);
             Engine=ModelChecker(Model,nonlinear,standard);
@@ -147,7 +151,7 @@ internal static partial class Program
     private static SectionCheckerModelCode2010 ModelChecker(ReinforcedConcreteSection section,bool nonlinear=false,int standard=0)
         => new(new SectionCheckerAttribute(section),new SectionCheckerModelCode2010.SectionOptionsModelCode2010 {
             ForceReferenceCoordinateSystem=CoordinateSystem.Global, FailureDomainType=SectionSolver.FailureDomainTypes.Plastic,
-            FailureAnalysisType=SectionSolver.FailureAnalysisTypes.ConstantN, DomainPointStrategy=SectionSolver.DomainPointStrategyTypes.Intersection,
+            FailureAnalysisType=SectionSolver.FailureAnalysisTypes.ConstantN, DomainPointStrategy=SectionSolver.DomainPointStrategyTypes.Iterative,
             StressAnalysisType=nonlinear?SectionSolver.StressAnalysisTypes.NonLinear:SectionSolver.StressAnalysisTypes.Linear,
             PsiCoefficientRebar=1.5,PsiCoefficientTendon=0,ConsiderTensileConcrete=false
         },standard==0?new StandardNTC2018Concrete():new StandardEN1992p11());
@@ -181,7 +185,7 @@ internal static partial class Program
         }
         using(var e=new Example("04-sezione-i","Sezione a I con ali differenti",
             "Sezione a I: bt=600, bb=500, h=800, bw=240, tt=tb=180 mm. Ø20 con cinque barre superiori, quattro inferiori e due per ogni lato dell'anima. Copriferro esterno staffa 30 mm, staffa Ø8.",
-            "Ac = bt tt + bb tb + bw(h−tt−tb) = 303600 mm². As è la somma delle 13 barre Ø20. Si controllano i rientri, il copriferro e l'interferro. L'asse dell'ingombro rimane il riferimento geometrico; per analisi baricentriche predisporre il riferimento mediante Coordinate System of Section."))
+            "Ac = bt tt + bb tb + bw(h−tt−tb) = 303600 mm². As è la somma delle 13 barre Ø20. Si controllano i rientri, il copriferro e l'interferro. L'asse dell'ingombro rimane il riferimento geometrico; per analisi baricentriche predisporre il riferimento mediante Section Coordinate System (assi globali nel baricentro)."))
         {
             var f=new Fixture(e,"IRcSectionComponent",600,500,800,240,180,180,30,8,20,5,4,2);f.Geometry(38,25);
             Close(303600,f.Model.Area,"I area");e.Save();

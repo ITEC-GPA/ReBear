@@ -1,0 +1,63 @@
+{
+  "schema": "ReBear.WorkedExample",
+  "version": 1,
+  "example": "08-taglio-xy",
+  "engine": "GPCChecker.Concrete, Version=0.21.0.0, Culture=neutral, PublicKeyToken=null",
+  "verification": "Calcolo adapter GPC eseguito; archivio GH riletto; soluzione dentro Rhino non eseguita.",
+  "values": {},
+  "checks": [
+    {
+      "Section": "S",
+      "Case": "SLU1",
+      "Check": "Shear X",
+      "Status": "Satisfied",
+      "Ratio": 0.6725021478383291,
+      "Demand": 60,
+      "Capacity": 89.21904590619111,
+      "Unit": "kN",
+      "Message": "Resistance sufficient; detailing to be verified",
+      "Reference": "NTC 2018 \u00A7\u00A74.1.2.3.5.1-2",
+      "Details": "z=226.80000000000001 mm: z/d \u00B7 d\n\u03C3cp=2 MPa: \u2212N/Ac, compression positive\n\u03B1c=1.1176470588235294 \u2212: 1 \u002B \u03C3cp/fcd; 1.25; 2.5(1 \u2212 \u03C3cp/fcd)\n\u03BD fcd=8.5 MPa: 0.5 fcd\ncot \u03B8=1.5 \u2212: Assigned"
+    },
+    {
+      "Section": "S",
+      "Case": "SLU1",
+      "Check": "Shear Y",
+      "Status": "Satisfied",
+      "Ratio": 0.5624022386789564,
+      "Demand": 90,
+      "Capacity": 160.02781249840632,
+      "Unit": "kN",
+      "Message": "Resistance sufficient; detailing to be verified",
+      "Reference": "NTC 2018 \u00A7\u00A74.1.2.3.5.1-2",
+      "Details": "z=406.80000000000001 mm: z/d \u00B7 d\n\u03C3cp=2 MPa: \u2212N/Ac, compression positive\n\u03B1c=1.1176470588235294 \u2212: 1 \u002B \u03C3cp/fcd; 1.25; 2.5(1 \u2212 \u03C3cp/fcd)\n\u03BD fcd=8.5 MPa: 0.5 fcd\ncot \u03B8=1.5 \u2212: Assigned"
+    },
+    {
+      "Section": "S",
+      "Case": "SLU2",
+      "Check": "Shear X",
+      "Status": "NotSatisfied",
+      "Ratio": 1.1208369130638818,
+      "Demand": 100,
+      "Capacity": 89.21904590619111,
+      "Unit": "kN",
+      "Message": "Resistance insufficient",
+      "Reference": "NTC 2018 \u00A7\u00A74.1.2.3.5.1-2",
+      "Details": "z=226.80000000000001 mm: z/d \u00B7 d\n\u03C3cp=1.3333333333333333 MPa: \u2212N/Ac, compression positive\n\u03B1c=1.0784313725490196 \u2212: 1 \u002B \u03C3cp/fcd; 1.25; 2.5(1 \u2212 \u03C3cp/fcd)\n\u03BD fcd=8.5 MPa: 0.5 fcd\ncot \u03B8=1.5 \u2212: Assigned"
+    },
+    {
+      "Section": "S",
+      "Case": "SLU2",
+      "Check": "Shear Y",
+      "Status": "Satisfied",
+      "Ratio": 0.4374239634169661,
+      "Demand": 70,
+      "Capacity": 160.02781249840632,
+      "Unit": "kN",
+      "Message": "Resistance sufficient; detailing to be verified",
+      "Reference": "NTC 2018 \u00A7\u00A74.1.2.3.5.1-2",
+      "Details": "z=406.80000000000001 mm: z/d \u00B7 d\n\u03C3cp=1.3333333333333333 MPa: \u2212N/Ac, compression positive\n\u03B1c=1.0784313725490196 \u2212: 1 \u002B \u03C3cp/fcd; 1.25; 2.5(1 \u2212 \u03C3cp/fcd)\n\u03BD fcd=8.5 MPa: 0.5 fcd\ncot \u03B8=1.5 \u2212: Assigned"
+    }
+  ],
+  "series": null
+}

@@ -4,7 +4,7 @@ Trave rettangolare 300 × 500, 8Ø20, staffe Ø8 a due bracci /150, cnom=30 mm e
 
 ## Esecuzione
 
-Aprire `definition.gh` (oppure l'equivalente testuale `definition.ghx`) con ReBear 0.2.1 in Rhino 8/.NET 8. Il file è autonomo: nessun Excel o plugin esterno aggiuntivo. Le porte contengono i dati persistenti; i componenti con Run sono già attivi. Geometria in **mm**, tensioni in **MPa**, azioni delle porte in **kN/kNm**, compressione **negativa**.
+Aprire `definition.gh` (oppure l'equivalente testuale `definition.ghx`) con ReBear 0.3.0 in Rhino 8/.NET 8. Il file è autonomo: nessun Excel o plugin esterno aggiuntivo. Le porte contengono i dati persistenti; i componenti con Run sono già attivi. Geometria in **mm**, tensioni in **MPa**, azioni delle porte in **kN/kNm**, compressione **negativa**.
 
 ## Svolgimento e controllo
 
@@ -32,6 +32,14 @@ Reinforcement Detailing produce una riga per ogni regola GPC, conservando Actual
 Esiti e dettagli integrali, riferimenti restituiti da GPC e precisione completa sono in `results.json`. Un rapporto non definito non equivale a zero; nei dettagli di armatura Actual/Limit conservano il verso della singola regola descritto nel messaggio.
 
 Calcolo numerico eseguito dal generatore con le stesse chiamate adapter usate dal plugin. Eseguiti i controlli automatici descritti e la rilettura dell'archivio GH con verifica dei GUID e dei collegamenti. **Ricalcolo e preview nell'host Rhino da verificare dall'utente.** Questo esempio copre soltanto le verifiche indicate, non la progettazione completa dell'elemento.
+
+## Differenze rispetto a ReBear 0.2.2
+
+Componenti con `ComponentGuid` nuovo in 0.3 (porte o significato cambiati, vedere [MIGRATION](../../docs/MIGRATION.md)): **Concrete Checker Options**. Gli altri componenti del grafo conservano il GUID di 0.2.2.
+
+Confronto automatico con i risultati pubblicati in 0.2.2 (`tools/ExampleGenerator/baseline-0.2.2/15-dettagli-trave.json`); soglia 1E-09 relativo, 1E-10 assoluto.
+
+Nessuna variazione numerica oltre la soglia e nessun esito diverso.
 
 ## Componenti e collegamenti
 
@@ -67,7 +75,7 @@ I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set
 
 - Failure Domain Types = `1`
 - Failure Analysis Types = `0`
-- Domain Point Strategy Types = `1`
+- Domain Point Strategy Types = `0`
 - Stress Analysis Types = `1`
 - ψ rebar = `1.5`
 - ψ tendon = `0`

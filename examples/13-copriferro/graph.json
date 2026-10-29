@@ -19,9 +19,10 @@
     {
       "index": 2,
       "type": "ConcreteCoverComponent",
-      "guid": "98dc4c10-e882-41ed-ae13-208c325c0013",
+      "guid": "b7e2c3a0-0300-4e1b-9d1a-000000000004",
       "inputs": {
         "Exposures": "XC4, XD1",
+        "Specification bar diameter": "20",
         "Actual bar diameter": "20",
         "Adopted cover": "40",
         "Section ID": "S"

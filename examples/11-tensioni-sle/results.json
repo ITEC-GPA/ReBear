@@ -2,7 +2,7 @@
   "schema": "ReBear.WorkedExample",
   "version": 1,
   "example": "11-tensioni-sle",
-  "engine": "GPCChecker.Concrete, Version=0.21.0.0, Culture=neutral, PublicKeyToken=null",
+  "engine": "GPCChecker.Concrete, Version=0.25.0.0, Culture=neutral, PublicKeyToken=null",
   "verification": "Calcolo adapter GPC eseguito; archivio GH riletto; soluzione dentro Rhino non eseguita.",
   "values": {
     "Area omogeneizzata [mm\u00B2]": 162794.50177181856,
@@ -32,7 +32,7 @@
       "Demand": null,
       "Capacity": null,
       "Unit": "MPa",
-      "Message": "Not required for this combination",
+      "Message": "NotRequired: Not required for this combination",
       "Reference": "NTC 2018 \u00A74.1.2.2.4 and Circolare 2019 C4.1.2.2.4",
       "Details": ""
     },
@@ -58,7 +58,7 @@
       "Demand": 0,
       "Capacity": 0.3,
       "Unit": "mm",
-      "Message": "Section entirely compressed",
+      "Message": "CrackWidth: Section entirely compressed",
       "Reference": "NTC 2018 \u00A74.1.2.2.4 and Circolare 2019 C4.1.2.2.4",
       "Details": "\u03B5c,min=-5.6120789891351422E-05 \u2212: minimum strain at the vertices\n\u03B5c,max=-5.6120789796232481E-05 \u2212: maximum strain at the vertices"
     }

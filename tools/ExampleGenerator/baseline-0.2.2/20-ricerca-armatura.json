@@ -1,0 +1,93 @@
+{
+  "schema": "ReBear.WorkedExample",
+  "version": 1,
+  "example": "20-ricerca-armatura",
+  "engine": "GPCChecker.Concrete, Version=0.21.0.0, Culture=neutral, PublicKeyToken=null",
+  "verification": "Calcolo adapter GPC eseguito; archivio GH riletto; soluzione dentro Rhino non eseguita.",
+  "values": {
+    "Indice selezionato (base zero)": 1,
+    "As selezionata [mm\u00B2]": 2513.2741228718346,
+    "Diametro selezionato [mm]": 20
+  },
+  "checks": [
+    {
+      "Section": "Candidate 0",
+      "Case": "SLU1",
+      "Check": "N-Mx-My",
+      "Status": "Satisfied",
+      "Ratio": 0.9355373000780562,
+      "Demand": null,
+      "Capacity": null,
+      "Unit": "",
+      "Message": "Returned point satisfies the search constraints.",
+      "Reference": "NTC2018",
+      "Details": "Criterion=ConstantN; Mode=F3A; NRd=-300 kN; MxRd=192.40280423344078 kNm; MyRd=5.344522339817799 kNm"
+    },
+    {
+      "Section": "Candidate 0",
+      "Case": "SLU2",
+      "Check": "N-Mx-My",
+      "Status": "Satisfied",
+      "Ratio": 0.8692737368933839,
+      "Demand": null,
+      "Capacity": null,
+      "Unit": "",
+      "Message": "Returned point satisfies the search constraints.",
+      "Reference": "NTC2018",
+      "Details": "Criterion=ConstantN; Mode=F3A; NRd=-200 kN; MxRd=172.557841832506 kNm; MyRd=11.503856122167067 kNm"
+    },
+    {
+      "Section": "Candidate 1",
+      "Case": "SLU1",
+      "Check": "N-Mx-My",
+      "Status": "Satisfied",
+      "Ratio": 0.6874718562775277,
+      "Demand": null,
+      "Capacity": null,
+      "Unit": "",
+      "Message": "Returned point satisfies the search constraints.",
+      "Reference": "NTC2018",
+      "Details": "Criterion=ConstantN; Mode=F3A; NRd=-300 kN; MxRd=261.82890013076434 kNm; MyRd=7.273025003632343 kNm"
+    },
+    {
+      "Section": "Candidate 1",
+      "Case": "SLU2",
+      "Check": "N-Mx-My",
+      "Status": "Satisfied",
+      "Ratio": 0.6206934183011997,
+      "Demand": null,
+      "Capacity": null,
+      "Unit": "",
+      "Message": "Returned point satisfies the search constraints.",
+      "Reference": "NTC2018",
+      "Details": "Criterion=ConstantN; Mode=F3A; NRd=-200 kN; MxRd=241.66520149438816 kNm; MyRd=16.11101343295921 kNm"
+    },
+    {
+      "Section": "Candidate 2",
+      "Case": "SLU1",
+      "Check": "N-Mx-My",
+      "Status": "Satisfied",
+      "Ratio": 0.5211836978720286,
+      "Demand": null,
+      "Capacity": null,
+      "Unit": "",
+      "Message": "Returned point satisfies the search constraints.",
+      "Reference": "NTC2018",
+      "Details": "Criterion=ConstantN; Mode=F3A; NRd=-300 kN; MxRd=345.3676711971854 kNm; MyRd=9.593546422144039 kNm"
+    },
+    {
+      "Section": "Candidate 2",
+      "Case": "SLU2",
+      "Check": "N-Mx-My",
+      "Status": "Satisfied",
+      "Ratio": 0.462639205344198,
+      "Demand": null,
+      "Capacity": null,
+      "Unit": "",
+      "Message": "Returned point satisfies the search constraints.",
+      "Reference": "NTC2018",
+      "Details": "Criterion=ConstantN; Mode=F3A; NRd=-200 kN; MxRd=324.2267370928968 kNm; MyRd=21.61511580619312 kNm"
+    }
+  ],
+  "series": null
+}

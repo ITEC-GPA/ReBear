@@ -4,7 +4,7 @@ Rettangolo 300 × 500, 8Ø20, N=−300 kN e direzione del momento 0° (Mx). Chec
 
 ## Esecuzione
 
-Aprire `definition.gh` (oppure l'equivalente testuale `definition.ghx`) con ReBear 0.2.1 in Rhino 8/.NET 8. Il file è autonomo: nessun Excel o plugin esterno aggiuntivo. Le porte contengono i dati persistenti; i componenti con Run sono già attivi. Geometria in **mm**, tensioni in **MPa**, azioni delle porte in **kN/kNm**, compressione **negativa**.
+Aprire `definition.gh` (oppure l'equivalente testuale `definition.ghx`) con ReBear 0.3.0 in Rhino 8/.NET 8. Il file è autonomo: nessun Excel o plugin esterno aggiuntivo. Le porte contengono i dati persistenti; i componenti con Run sono già attivi. Geometria in **mm**, tensioni in **MPa**, azioni delle porte in **kN/kNm**, compressione **negativa**.
 
 ## Svolgimento e controllo
 
@@ -12,13 +12,29 @@ Il motore cerca il momento limite a N costante e risolve gli stati intermedi. Le
 
 | Quantità calcolata | Valore |
 |---|---:|
-| Momento limite [kNm] | 262.765218 |
-| Residuo N al limite [kN] | 0 |
+| Momento limite [kNm] | 262.793655 |
+| Residuo N al limite [kN] | 8.62801663E-06 |
 | Numero punti | 22 |
-| χy [1/m] | 0.00752263537 |
-| χu [1/m] | 0.0374733501 |
+| χy [1/m] | 0.00752270156 |
+| χu [1/m] | 0.0374991089 |
 
 Calcolo numerico eseguito dal generatore con le stesse chiamate adapter usate dal plugin. Eseguiti i controlli automatici descritti e la rilettura dell'archivio GH con verifica dei GUID e dei collegamenti. **Ricalcolo e preview nell'host Rhino da verificare dall'utente.** Questo esempio copre soltanto le verifiche indicate, non la progettazione completa dell'elemento.
+
+## Differenze rispetto a ReBear 0.2.2
+
+Componenti con `ComponentGuid` nuovo in 0.3 (porte o significato cambiati, vedere [MIGRATION](../../docs/MIGRATION.md)): **Concrete Checker Options**. Gli altri componenti del grafo conservano il GUID di 0.2.2.
+
+Il checker usa la strategia Iterative del punto di dominio, default di ReBear 0.3 (0.2.2: Intersection, che interpola il dominio discretizzato e costa 0.4–0.6 s per checker). I punti resistenti sono risolti direttamente sulla legge della sezione invece che interpolati sul dominio discretizzato; le differenze numeriche sono nella tabella, gli esiti (Satisfied/NotSatisfied) e le scelte non cambiano.
+
+Confronto automatico con i risultati pubblicati in 0.2.2 (`tools/ExampleGenerator/baseline-0.2.2/18-momento-curvatura.json`); soglia 1E-09 relativo, 1E-10 assoluto.
+
+| Grandezza | 0.2.2 | 0.3 | Δ relativo (ass. se un valore è nullo) |
+|---|---:|---:|---:|
+| Momento limite [kNm] | 262.765218 | 262.793655 | 1.1E-4 |
+| Residuo N al limite [kN] | 0 | 8.62801663E-06 | ass. 8.6E-6 |
+| χy [1/m] | 0.00752263537 | 0.00752270156 | 8.8E-6 |
+| χu [1/m] | 0.0374733501 | 0.0374991089 | 6.9E-4 |
+| Serie numerica (Δ massimo / valore massimo della serie) | 44 valori | 42 diversi | 1.1E-4 |
 
 ## Componenti e collegamenti
 
@@ -54,7 +70,7 @@ I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set
 
 - Failure Domain Types = `1`
 - Failure Analysis Types = `0`
-- Domain Point Strategy Types = `1`
+- Domain Point Strategy Types = `0`
 - Stress Analysis Types = `0`
 - ψ rebar = `1.5`
 - ψ tendon = `0`

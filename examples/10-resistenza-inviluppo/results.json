@@ -2,7 +2,7 @@
   "schema": "ReBear.WorkedExample",
   "version": 1,
   "example": "10-resistenza-inviluppo",
-  "engine": "GPCChecker.Concrete, Version=0.21.0.0, Culture=neutral, PublicKeyToken=null",
+  "engine": "GPCChecker.Concrete, Version=0.25.0.0, Culture=neutral, PublicKeyToken=null",
   "verification": "Calcolo adapter GPC eseguito; archivio GH riletto; soluzione dentro Rhino non eseguita.",
   "values": {},
   "checks": [
@@ -11,39 +11,39 @@
       "Case": "SLU-moderato",
       "Check": "N-Mx-My",
       "Status": "Satisfied",
-      "Ratio": 0.31775302498544516,
+      "Ratio": 0.3176805153478604,
       "Demand": null,
       "Capacity": null,
       "Unit": "",
       "Message": "Returned point satisfies the search constraints.",
       "Reference": "NTC2018",
-      "Details": "Criterion=ConstantN; Mode=F3A; NRd=-300 kN; MxRd=251.7678628037119 kNm; MyRd=31.470982850463987 kNm"
+      "Details": "Criterion=ConstantN; Mode=F3A; NRd=-300.0011033861962 kN; MxRd=251.82526043064576 kNm; MyRd=31.47870714644064 kNm"
     },
     {
       "Section": "S",
       "Case": "SLU-elevato",
       "Check": "N-Mx-My",
       "Status": "NotSatisfied",
-      "Ratio": 1.5222714901483907,
+      "Ratio": 1.5221067631075227,
       "Demand": null,
       "Capacity": null,
       "Unit": "",
       "Message": "Returned point satisfies the search constraints.",
       "Reference": "NTC2018",
-      "Details": "Criterion=ConstantN; Mode=F3A; NRd=-300 kN; MxRd=262.7652180236313 kNm; MyRd=0 kNm"
+      "Details": "Criterion=ConstantN; Mode=F3A; NRd=-299.99999137198336 kN; MxRd=262.7936552777433 kNm; MyRd=2.7539954317035152E-14 kNm"
     },
     {
       "Section": "S",
       "Case": "Fuori-dominio",
       "Check": "N-Mx-My",
       "Status": "NotSatisfied",
-      "Ratio": 2864.847084184159,
+      "Ratio": 2864.98979323562,
       "Demand": null,
       "Capacity": null,
       "Unit": "",
       "Message": "Axial force outside the range [NRd,c; NRd,t] of the domain: declared point and utilization at constant eccentricity.",
       "Reference": "NTC2018",
-      "Details": "Criterion=ConstantN; Mode=AxialForceOutsideDomain; NRd=-3490.58770194283 kN; MxRd=0.027924701615542637 kNm; MyRd=0 kNm"
+      "Details": "Criterion=ConstantN; Mode=AxialForceOutsideDomain; NRd=-3490.4138306662344 kN; MxRd=0.0561251001991934 kNm; MyRd=-4.8997854662502506E-15 kNm"
     }
   ],
   "series": null

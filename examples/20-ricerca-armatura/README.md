@@ -4,7 +4,7 @@ Tre sezioni 300 × 500 mm, tutte con quattro barre superiori e quattro inferiori
 
 ## Esecuzione
 
-Aprire `definition.gh` (oppure l'equivalente testuale `definition.ghx`) con ReBear 0.2.1 in Rhino 8/.NET 8. Il file è autonomo: nessun Excel o plugin esterno aggiuntivo. Le porte contengono i dati persistenti; i componenti con Run sono già attivi. Geometria in **mm**, tensioni in **MPa**, azioni delle porte in **kN/kNm**, compressione **negativa**.
+Aprire `definition.gh` (oppure l'equivalente testuale `definition.ghx`) con ReBear 0.3.0 in Rhino 8/.NET 8. Il file è autonomo: nessun Excel o plugin esterno aggiuntivo. Le porte contengono i dati persistenti; i componenti con Run sono già attivi. Geometria in **mm**, tensioni in **MPa**, azioni delle porte in **kN/kNm**, compressione **negativa**.
 
 ## Svolgimento e controllo
 
@@ -18,16 +18,33 @@ Per ogni candidato si eseguono entrambe le verifiche N-Mx-My. Si scartano quelli
 
 | Caso | Verifica | Esito GPC | η | Domanda | Capacità/limite | Unità |
 |---|---|---|---:|---:|---:|---|
-| SLU1 | N-Mx-My | Satisfied | 0.9355373 | — | — |  |
-| SLU2 | N-Mx-My | Satisfied | 0.869273737 | — | — |  |
-| SLU1 | N-Mx-My | Satisfied | 0.687471856 | — | — |  |
-| SLU2 | N-Mx-My | Satisfied | 0.620693418 | — | — |  |
-| SLU1 | N-Mx-My | Satisfied | 0.521183698 | — | — |  |
-| SLU2 | N-Mx-My | Satisfied | 0.462639205 | — | — |  |
+| SLU1 | N-Mx-My | Satisfied | 0.935161059 | — | — |  |
+| SLU2 | N-Mx-My | Satisfied | 0.868815427 | — | — |  |
+| SLU1 | N-Mx-My | Satisfied | 0.687315285 | — | — |  |
+| SLU2 | N-Mx-My | Satisfied | 0.62054976 | — | — |  |
+| SLU1 | N-Mx-My | Satisfied | 0.520995522 | — | — |  |
+| SLU2 | N-Mx-My | Satisfied | 0.462551963 | — | — |  |
 
 Esiti e dettagli integrali, riferimenti restituiti da GPC e precisione completa sono in `results.json`. Un rapporto non definito non equivale a zero; nei dettagli di armatura Actual/Limit conservano il verso della singola regola descritto nel messaggio.
 
 Calcolo numerico eseguito dal generatore con le stesse chiamate adapter usate dal plugin. Eseguiti i controlli automatici descritti e la rilettura dell'archivio GH con verifica dei GUID e dei collegamenti. **Ricalcolo e preview nell'host Rhino da verificare dall'utente.** Questo esempio copre soltanto le verifiche indicate, non la progettazione completa dell'elemento.
+
+## Differenze rispetto a ReBear 0.2.2
+
+Componenti con `ComponentGuid` nuovo in 0.3 (porte o significato cambiati, vedere [MIGRATION](../../docs/MIGRATION.md)): **Concrete Checker Options**. Gli altri componenti del grafo conservano il GUID di 0.2.2.
+
+Il checker usa la strategia Iterative del punto di dominio, default di ReBear 0.3 (0.2.2: Intersection, che interpola il dominio discretizzato e costa 0.4–0.6 s per checker). I punti resistenti sono risolti direttamente sulla legge della sezione invece che interpolati sul dominio discretizzato; le differenze numeriche sono nella tabella, gli esiti (Satisfied/NotSatisfied) e le scelte non cambiano.
+
+Confronto automatico con i risultati pubblicati in 0.2.2 (`tools/ExampleGenerator/baseline-0.2.2/20-ricerca-armatura.json`); soglia 1E-09 relativo, 1E-10 assoluto.
+
+| Grandezza | 0.2.2 | 0.3 | Δ relativo (ass. se un valore è nullo) |
+|---|---:|---:|---:|
+| SLU1 / N-Mx-My [1] η | 0.9355373 | 0.935161059 | 4.0E-4 |
+| SLU1 / N-Mx-My [2] η | 0.687471856 | 0.687315285 | 2.3E-4 |
+| SLU1 / N-Mx-My [3] η | 0.521183698 | 0.520995522 | 3.6E-4 |
+| SLU2 / N-Mx-My [1] η | 0.869273737 | 0.868815427 | 5.3E-4 |
+| SLU2 / N-Mx-My [2] η | 0.620693418 | 0.62054976 | 2.3E-4 |
+| SLU2 / N-Mx-My [3] η | 0.462639205 | 0.462551963 | 1.9E-4 |
 
 ## Componenti e collegamenti
 
@@ -63,7 +80,7 @@ I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set
 
 - Failure Domain Types = `1`
 - Failure Analysis Types = `0`
-- Domain Point Strategy Types = `1`
+- Domain Point Strategy Types = `0`
 - Stress Analysis Types = `1`
 - ψ rebar = `1.5`
 - ψ tendon = `0`

@@ -38,6 +38,7 @@ internal static partial class Program
                 index.AppendLine($"| {item.Folder[..2]} | [{item.Title}]({item.Folder}/README.md) | [Apri definizione]({item.Folder}/definition.gh) |");
             index.AppendLine("\n## Riproduzione\n\nDa PowerShell nella radice del repository:\n\n```powershell\npowershell -File build/Examples.ps1\n```\n\nLo script compila in Release, ricalcola i 20 esempi e rigenera le cartelle. Non avvia Rhino. I file GH contengono identificatori di istanza nuovi a ogni generazione; i GUID dei tipi di componente rimangono stabili. Nessun export ANTHEA è incluso.\n\nIl generatore usa i serializer ufficiali dei componenti Grasshopper e un contenitore di definizione conforme alla struttura osservata nell'archivio storico. Evita l'inizializzazione di GH_Document, che richiede Rhino nativo. I risultati vengono calcolati separatamente dagli adapter, con gli stessi input dei grafi; questo non costituisce un test del ricalcolo nell'host.\n");
             File.WriteAllText(Path.Combine(OutputRoot,"README.md"),index.ToString().TrimEnd()+Environment.NewLine);
+            foreach (var d in Baseline.All) Console.WriteLine($"DIFF {d.Example} | {d.Quantity} | {d.Old} -> {d.New} | {Baseline.Show(d.Delta)}");
             Console.WriteLine("TOTAL: 20 examples generated and numerically checked.");
             return 0;
         }

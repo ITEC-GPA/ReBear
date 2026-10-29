@@ -9,16 +9,18 @@ using GPC.Model.Standards;
 
 internal static partial class Program
 {
+    private const string Iterative="Il checker usa la strategia Iterative del punto di dominio, default di ReBear 0.3 (0.2.2: Intersection, che interpola il dominio discretizzato e costa 0.4–0.6 s per checker). I punti resistenti sono risolti direttamente sulla legge della sezione invece che interpolati sul dominio discretizzato; le differenze numeriche sono nella tabella, gli esiti (Satisfied/NotSatisfied) e le scelte non cambiano.";
     private static void ResistanceExample()
     {
         using var e=new Example("10-resistenza-inviluppo","Resistenza N-Mx-My e inviluppo degli esiti",
-            "Rettangolo 300 × 500, 8Ø20, C30/37 e B450C. Dominio plastico GPC, criterio a N costante e strategia Intersection. Tre combinazioni includono flessione deviata, domanda elevata e sforzo normale esterno al dominio.",
+            "Rettangolo 300 × 500, 8Ø20, C30/37 e B450C. Dominio plastico GPC, criterio a N costante e strategia Iterative (default di ReBear 0.3). Tre combinazioni includono flessione deviata, domanda elevata e sforzo normale esterno al dominio.",
             "Le resistenze si cercano lungo la direzione dei momenti richiesti mantenendo N. Il primo caso N=−300 kN, Mx=80 e My=10 kNm è moderato; il secondo Mx=400 kNm mostra un possibile superamento; il terzo N=−10000000 kN è intenzionalmente fuori campo resistente. Quest'ultimo deve risultare NotSatisfied anche senza un rapporto numerico disponibile. L'inviluppo non può eliminare il caso esterno perché η è null.");
         var f=new Fixture(e);f.Prepare();
         var cases=new[]{f.Force("SLU-moderato",-300,0,0,0,80,10),f.Force("SLU-elevato",-300,0,0,0,400,0),f.Force("Fuori-dominio",-1e7,0,0,0,80,0)};
         var batch=e.Graph.Add("BatchSectionChecksComponent");e.Graph.Wire(f.Checker,batch,0);foreach(var c in cases)e.Graph.Wire(c.Node,batch,1);
         e.Graph.Set(batch,2,"S");e.Graph.Set(batch,3,true);e.Graph.Set(batch,8,true);
         var env=e.Graph.Add("CheckEnvelopeComponent");e.Graph.Wire(batch,env,0);e.Graph.Report(batch);
+        e.changes=Iterative;
         e.Results.AddRange(SectionChecks.Batch(f.Engine,cases.Select(c=>c.Force).ToArray(),"S",true));
         Require(e.Results[0].Status==CheckStatus.Satisfied && e.Results[2].Status==CheckStatus.NotSatisfied,"Resistance expected verdicts");
         Require(CheckResults.Envelope(e.Results).Single().Status==CheckStatus.NotSatisfied,"Envelope fail");e.Save();
@@ -30,7 +32,7 @@ internal static partial class Program
             using var e=cracking
                 ?new Example("12-fessurazione","Fessurazione e regioni efficaci",
                     "Rettangolo 300 × 500, 8Ø20, analisi lineare con ψrebar=1.5. Caso quasi permanente N=−100 kN e Mx=100 kNm, esposizione XC4, barre non sensibili ad aderenza migliorata, lunga durata. Il copriferro di fessurazione è alla barra: 30+8=38 mm.",
-                    "Stress Analysis determina la sezione fessurata. Serviceability Check v2 applica i limiti tensionali e il modello di fessurazione GPC; Effective Cracked Section visualizza le regioni Ac,eff e le barre contribuenti. Il controllo automatico richiede larghezza finita non negativa, almeno una regione e η = w/limite quando il criterio è quello di ampiezza. Nei dettagli sono disponibili kt, aree efficaci e passaggi del motore: non si sostituiscono con formule locali nel plugin.")
+                    "Stress Analysis determina la sezione fessurata. Serviceability Check applica i limiti tensionali e il modello di fessurazione GPC; Effective Cracked Section visualizza le regioni Ac,eff e le barre contribuenti. Il controllo automatico richiede larghezza finita non negativa, almeno una regione e η = w/limite quando il criterio è quello di ampiezza. Nei dettagli sono disponibili kt, aree efficaci e passaggi del motore: non si sostituiscono con formule locali nel plugin.")
                 :new Example("11-tensioni-sle","SLE in compressione uniforme e combinazione frequente",
                     "Sezione 300 × 500 con 8Ø20, N=−300 kN e momenti nulli. Per questo confronto analitico si imposta ψrebar=0, analisi lineare e calcestruzzo teso escluso. Si esaminano la combinazione caratteristica e quella frequente.",
                     "Con n=Es/Ec e Ah=Ac+(n−1)As, la compressione uniforme vale σc=N/Ah e |σs|=n|σc|. Il generatore confronta le tensioni effettive GPC con tali valori (tolleranza relativa 10⁻⁶). Il controllo caratteristico restituisce un rapporto; per la combinazione frequente i limiti tensionali non definiti dal profilo restano NotRequired. Non interpretare tale esito come una capacità infinita.");
@@ -75,8 +77,8 @@ internal static partial class Program
             "Calcestruzzo C30/37 e profilo EN 1992-1-1 disponibile nel set GPC. Esposizioni concorrenti XC4 e XD1, vita 50 anni, diametro effettivo Ø20, aggregato 20 mm e Δcdev=10 mm. Non si applicano riduzioni di classe, controllo speciale, abrasione o contatto col terreno.",
             "Classe strutturale S4 senza modificatori: cmin,dur governa su XD1 (35 mm), rispetto a XC4 (30 mm). cmin,b=20 mm; cmin=max(10,20,35)=35 mm e cnom=35+10=45 mm. Il copriferro adottato 40 mm è insufficiente: l'esito atteso è NotSatisfied, con domanda 45 e disponibile 40 mm. Il riferimento è il profilo GPC fissato, non una selezione automatica dell'edizione normativa più recente.");
         var g=e.Graph;var concrete=g.Add("ConcreteMaterialComponent");g.Set(concrete,0,3);var standard=g.Add("StandardComponent");g.Set(standard,0,1);
-        var cover=g.Add("ConcreteCoverComponent");g.Wire(standard,cover,0);g.Wire(concrete,cover,1);g.Set(cover,2,"XC4","XD1");g.Set(cover,3,20d);g.Set(cover,4,40d);g.Set(cover,15,"S");g.Report(cover);
-        var r=DetailingChecks.Cover(new StandardEN1992p11(),new CoverInput(new[]{"XC4","XD1"},30,50,false,false,false,20,20,10),40,"S");
+        var cover=g.Add("ConcreteCoverComponent");g.Wire(standard,cover,0);g.Wire(concrete,cover,1);g.Set(cover,2,"XC4","XD1");g.Set(cover,3,20d);g.Set(cover,4,20d);g.Set(cover,5,40d);g.Set(cover,18,"S");g.Report(cover);
+        var r=DetailingChecks.Cover(new StandardEN1992p11(),new CoverInput(new[]{"XC4","XD1"},30,50,false,false,false,20,20,10),40,20,"S");
         e.Results.Add(r.Result);e.Values["cmin,b [mm]"]=r.Native.Bond;e.Values["cmin,dur [mm]"]=r.Native.Durability;e.Values["cnom [mm]"]=r.Native.Nominal;
         Close(45,r.Native.Nominal,"Cover example");Require(r.Result.Status==CheckStatus.NotSatisfied,"Cover insufficiency");e.Save();
     }
@@ -142,6 +144,7 @@ internal static partial class Program
         {
             var f=new Fixture(e);f.Prepare(true);
             var m=e.Graph.Add("MomentCurvatureComponent");e.Graph.Wire(f.Checker,m,0);e.Graph.Set(m,1,-300d);e.Graph.Set(m,2,0d);e.Graph.Set(m,3,20);e.Graph.Set(m,4,1d);e.Graph.Set(m,5,1d);e.Graph.Set(m,6,true);
+            e.changes=Iterative;
             var r=SectionAnalyses.MomentCurvature(f.Engine,-300000,0,20,1,1000);
             Require(r.Points.Count>=2&&Math.Abs(r.AxialResidual)<=1000&&r.Points.All(p=>double.IsFinite(p.Curvature)&&double.IsFinite(p.Moment)),"M-chi result");
             e.Values["Momento limite [kNm]"]=r.LimitMoment/1e6;e.Values["Residuo N al limite [kN]"]=r.AxialResidual/1000;e.Values["Numero punti"]=r.Points.Count;
@@ -154,6 +157,7 @@ internal static partial class Program
             "I vettori di prova sono Mx=cosθ e My=sinθ, campionati uniformemente. Per ogni punto si controlla lo sforzo normale effettivamente equilibrato, con tolleranza relativa 10⁻³ (0.3 kN per questo esempio). I punti opposti devono mostrare la simmetria della sezione e delle armature: si confrontano Mx(θ) e −Mx(θ+π), analogamente per My, entro l'1%. La polilinea è una discretizzazione: raddoppiare le direzioni per valutarne la sensibilità."))
         {
             var f=new Fixture(e);f.Prepare();var d=e.Graph.Add("DomainSliceComponent");e.Graph.Wire(f.Checker,d,0);e.Graph.Set(d,1,-300d);e.Graph.Set(d,2,16);e.Graph.Set(d,3,true);
+            e.changes=Iterative;
             var r=SectionAnalyses.Slice(f.Engine,-300000,16);
             foreach(var point in r)Close(-300,point.N,"Slice axial balance",1e-3);
             for(int i=0;i<8;i++){Close(r[i].Mx,-r[i+8].Mx,"Mx symmetry",.01);Close(r[i].My,-r[i+8].My,"My symmetry",.01);}
@@ -171,6 +175,7 @@ internal static partial class Program
             var loads=new[]{f.Force("SLU1",-300,0,0,0,180,5),f.Force("SLU2",-200,0,0,0,150,10)};
             var search=e.Graph.Add("ReinforcementSearchComponent");foreach(var c in candidateNodes)e.Graph.Wire(c,search,0);foreach(var load in loads)e.Graph.Wire(load.Node,search,1);
             e.Graph.Set(search,2,.9);e.Graph.Set(search,3,true);e.Graph.Report(search,2);
+            e.changes=Iterative;
             var r=SectionAnalyses.Search(models,loads.Select(x=>x.Force).ToArray(),.9);e.Results.AddRange(r.Results);
             int expected=Enumerable.Range(0,3).Where(i=>r.Results.Where(x=>x.Section=="Candidate "+i).All(x=>x.Status==CheckStatus.Satisfied&&x.Ratio<=.9))
                 .OrderBy(i=>models[i].SectionCheckerAttribute.Section.AreaRebars).DefaultIfEmpty(-1).First();

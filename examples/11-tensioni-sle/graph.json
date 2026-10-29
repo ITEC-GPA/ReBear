@@ -43,11 +43,11 @@
     {
       "index": 4,
       "type": "CheckerOptionsComponent",
-      "guid": "acd21b40-347d-487b-ad3d-c355e19b5315",
+      "guid": "b7e2c3a0-0300-4e1b-9d1a-000000000003",
       "inputs": {
         "Failure Domain Types": "1",
         "Failure Analysis Types": "0",
-        "Domain Point Strategy Types": "1",
+        "Domain Point Strategy Types": "0",
         "Stress Analysis Types": "1",
         "\u03C8 rebar": "0",
         "\u03C8 tendon": "0",

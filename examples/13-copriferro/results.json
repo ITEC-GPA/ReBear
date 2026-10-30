@@ -2,7 +2,7 @@
   "schema": "ReBear.WorkedExample",
   "version": 1,
   "example": "13-copriferro",
-  "engine": "GPCChecker.Concrete, Version=0.25.0.0, Culture=neutral, PublicKeyToken=null",
+  "engine": "GPCChecker.Concrete, Version=0.32.0.1, Culture=neutral, PublicKeyToken=null",
   "verification": "Calcolo adapter GPC eseguito; archivio GH riletto; soluzione dentro Rhino non eseguita.",
   "values": {
     "cmin,b [mm]": 20,

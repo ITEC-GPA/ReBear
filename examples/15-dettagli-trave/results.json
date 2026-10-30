@@ -2,7 +2,7 @@
   "schema": "ReBear.WorkedExample",
   "version": 1,
   "example": "15-dettagli-trave",
-  "engine": "GPCChecker.Concrete, Version=0.25.0.0, Culture=neutral, PublicKeyToken=null",
+  "engine": "GPCChecker.Concrete, Version=0.32.0.1, Culture=neutral, PublicKeyToken=null",
   "verification": "Calcolo adapter GPC eseguito; archivio GH riletto; soluzione dentro Rhino non eseguita.",
   "values": {
     "As totale [mm\u00B2]": 2513.2741228718346
@@ -18,7 +18,7 @@
       "Capacity": 25,
       "Unit": "mm",
       "Message": "max(20 mm; \u00D8max; dg \u002B 5 mm) on every pair of bars",
-      "Reference": "NTC 2018 \u00A74.1.6.1 .3 / EC2 \u00A78.2",
+      "Reference": "NTC 2018 \u00A74.1.6.1.3 / EC2 \u00A78.2",
       "Details": "Actual e Limit mantengono il verso di confronto della regola GPC; consultare Message."
     },
     {
@@ -31,7 +31,7 @@
       "Capacity": 30,
       "Unit": "mm",
       "Message": "max(10; cmin,dur; cmin,b) \u002B \u0394cdev",
-      "Reference": "NTC 2018 \u00A74.1.6.1 .3 / EC2 \u00A74.4",
+      "Reference": "NTC 2018 \u00A74.1.6.1.3 / EC2 \u00A74.4",
       "Details": "Actual e Limit mantengono il verso di confronto della regola GPC; consultare Message."
     },
     {
@@ -44,7 +44,7 @@
       "Capacity": 0,
       "Unit": "mm",
       "Message": "minimum (geometric cover of the bar \u2212 required cover), outline and holes",
-      "Reference": "NTC 2018 \u00A74.1.6.1 .3 / EC2 \u00A74.4",
+      "Reference": "NTC 2018 \u00A74.1.6.1.3 / EC2 \u00A74.4",
       "Details": "Actual e Limit mantengono il verso di confronto della regola GPC; consultare Message."
     },
     {
@@ -57,7 +57,7 @@
       "Capacity": 226.92862495770723,
       "Unit": "mm2",
       "Message": "max(0.26 fctm/fyk; 0.0013) bt d; both faces potentially tensioned",
-      "Reference": "NTC 2018 \u00A74.1.6.1 .1 / EC2 \u00A79.3.1.1",
+      "Reference": "NTC 2018 \u00A74.1.6.1.1 / EC2 \u00A79.2.1.1",
       "Details": "Actual e Limit mantengono il verso di confronto della regola GPC; consultare Message."
     },
     {
@@ -70,7 +70,7 @@
       "Capacity": 6000,
       "Unit": "mm2",
       "Message": "As of the zone \u2264 0.04 Ac",
-      "Reference": "NTC 2018 \u00A74.1.6.1 .1",
+      "Reference": "NTC 2018 \u00A74.1.6.1.1",
       "Details": "Actual e Limit mantengono il verso di confronto della regola GPC; consultare Message."
     },
     {
@@ -83,7 +83,7 @@
       "Capacity": 450,
       "Unit": "mm2/m",
       "Message": "Ast/s \u2265 1.5 b mm\u00B2/m",
-      "Reference": "NTC 2018 \u00A74.1.6.1 .1",
+      "Reference": "NTC 2018 \u00A74.1.6.1.1",
       "Details": "Actual e Limit mantengono il verso di confronto della regola GPC; consultare Message."
     },
     {
@@ -96,7 +96,7 @@
       "Capacity": 333.3333333333333,
       "Unit": "mm",
       "Message": "at least 3 links per metre; spacing \u2264 0.8 d",
-      "Reference": "NTC 2018 \u00A74.1.6.1 .1",
+      "Reference": "NTC 2018 \u00A74.1.6.1.1",
       "Details": "Actual e Limit mantengono il verso di confronto della regola GPC; consultare Message."
     },
     {
@@ -109,7 +109,7 @@
       "Capacity": 226.92862495770723,
       "Unit": "mm2",
       "Message": "max(0.26 fctm/fyk; 0.0013) bt d; both faces potentially tensioned",
-      "Reference": "NTC 2018 \u00A74.1.6.1 .1 / EC2 \u00A79.3.1.1",
+      "Reference": "NTC 2018 \u00A74.1.6.1.1 / EC2 \u00A79.2.1.1",
       "Details": "Actual e Limit mantengono il verso di confronto della regola GPC; consultare Message."
     },
     {
@@ -122,7 +122,7 @@
       "Capacity": 6000,
       "Unit": "mm2",
       "Message": "As of the zone \u2264 0.04 Ac",
-      "Reference": "NTC 2018 \u00A74.1.6.1 .1",
+      "Reference": "NTC 2018 \u00A74.1.6.1.1",
       "Details": "Actual e Limit mantengono il verso di confronto della regola GPC; consultare Message."
     },
     {
@@ -135,7 +135,7 @@
       "Capacity": 450,
       "Unit": "mm2/m",
       "Message": "Ast/s \u2265 1.5 b mm\u00B2/m",
-      "Reference": "NTC 2018 \u00A74.1.6.1 .1",
+      "Reference": "NTC 2018 \u00A74.1.6.1.1",
       "Details": "Actual e Limit mantengono il verso di confronto della regola GPC; consultare Message."
     },
     {
@@ -148,7 +148,7 @@
       "Capacity": 333.3333333333333,
       "Unit": "mm",
       "Message": "at least 3 links per metre; spacing \u2264 0.8 d",
-      "Reference": "NTC 2018 \u00A74.1.6.1 .1",
+      "Reference": "NTC 2018 \u00A74.1.6.1.1",
       "Details": "Actual e Limit mantengono il verso di confronto della regola GPC; consultare Message."
     },
     {
@@ -161,7 +161,7 @@
       "Capacity": 300,
       "Unit": "mm",
       "Message": "spacing \u2264 15\u00D8 of the compression bars considered resistant",
-      "Reference": "NTC 2018 \u00A74.1.6.1 .1",
+      "Reference": "NTC 2018 \u00A74.1.6.1.1",
       "Details": "Actual e Limit mantengono il verso di confronto della regola GPC; consultare Message."
     }
   ],

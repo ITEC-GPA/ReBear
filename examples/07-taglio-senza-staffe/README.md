@@ -33,18 +33,28 @@ Nessuna variazione numerica oltre la soglia e nessun esito diverso.
 
 ## Componenti e collegamenti
 
-I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set…). I valori non elencati mantengono il default del componente.
+Componenti numerati come sulla tela, da sinistra a destra e dall'alto in basso. I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set…). I valori non elencati mantengono il default del componente.
 
 **00 — Database Concrete**
 
 - Type = `3`
 
-**01 — Database Rebar Steel**
+**01 — Standard**
 
-- Type = `1`
-- Behaviour = `0`
+- tutti i valori di default
 
-**02 — Rectangular RC Section**
+**02 — Database Rebar Steel**
+
+- tutti i valori di default
+
+**03 — Coordinate System**
+
+- Name = `Global XY`
+- Origin = `0,0,0`
+- P1 = `1,0,0`
+- P2 = `0,1,0`
+
+**04 — Rectangular RC Section**
 
 - Width = `300`
 - Height = `500`
@@ -55,84 +65,55 @@ I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set
 - Bottom bars = `4`
 - Side bars per face = `0`
 - Concrete ← 00 Database Concrete / Concrete Material
-- Steel ← 01 Database Rebar Steel / Rebar Steel Material
+- Steel ← 02 Database Rebar Steel / Rebar Steel Material
 
-**03 — Standard**
-
-- Type = `0`
-
-**04 — Concrete Checker Options**
-
-- Failure Domain Types = `1`
-- Failure Analysis Types = `0`
-- Domain Point Strategy Types = `0`
-- Stress Analysis Types = `1`
-- ψ rebar = `1.5`
-- ψ tendon = `0`
-- Consider tensile concrete = `False`
-- Coordinate System ← 05 Coordinate System / Coordinate System
-
-**05 — Coordinate System**
-
-- Name = `Global XY`
-- Origin = `0,0,0`
-- P1 = `1,0,0`
-- P2 = `0,1,0`
-
-**06 — Concrete Checker**
-
-- Reinforced Concrete Section ← 02 Rectangular RC Section / RC section
-- Standard ← 03 Standard / Standard
-- Options ← 04 Concrete Checker Options / Checker Options
-
-**07 — Shear Options**
+**05 — Shear Options**
 
 - Web width = `300`
 - Effective depth = `452`
 - Longitudinal area = `1256.6370614359173`
 - Link area = `0`
 - Spacing = `150`
-- Link angle = `90`
 - Cot theta = `1.5`
-- Lever factor = `0.9`
-- Aggregate = `20`
-- Axial eccentricity = `0`
-- Link steel ← 01 Database Rebar Steel / Rebar Steel Material
-- Longitudinal steel ← 01 Database Rebar Steel / Rebar Steel Material
+- Link steel ← 02 Database Rebar Steel / Rebar Steel Material
+- Longitudinal steel ← 02 Database Rebar Steel / Rebar Steel Material
 
-**08 — Force component**
+**06 — Concrete Checker Options**
+
+- Failure Analysis Types = `0`
+- Coordinate System ← 03 Coordinate System / Coordinate System
+
+**07 — Force component**
 
 - Name = `Compresso`
 - Axial Force = `-300`
-- Shear X = `0`
 - Shear Y = `60`
-- Torsion = `0`
 - Bending X = `45`
-- Bending Y = `0`
-- Units = `1`
-- Coordinate System ← 05 Coordinate System / Coordinate System
+- Coordinate System ← 03 Coordinate System / Coordinate System
 
-**09 — Force component**
+**08 — Force component**
 
 - Name = `Teso`
 - Axial Force = `100`
-- Shear X = `0`
 - Shear Y = `60`
-- Torsion = `0`
 - Bending X = `45`
-- Bending Y = `0`
-- Units = `1`
-- Coordinate System ← 05 Coordinate System / Coordinate System
+- Coordinate System ← 03 Coordinate System / Coordinate System
+
+**09 — Concrete Checker**
+
+- Reinforced Concrete Section ← 04 Rectangular RC Section / RC section
+- Standard ← 01 Standard / Standard
+- Options ← 06 Concrete Checker Options / Checker Options
 
 **10 — Batch Section Checks**
 
 - Section ID = `S`
 - N-Mx-My = `False`
 - Run = `True`
-- Checker ← 06 Concrete Checker / Concrete Checker
+- Checker ← 09 Concrete Checker / Concrete Checker
+- Forces ← 07 Force component / Force
 - Forces ← 08 Force component / Force
-- Forces ← 09 Force component / Force
-- Shear Y ← 07 Shear Options / Options
+- Shear Y ← 05 Shear Options / Options
 
 **11 — Check Report**
 

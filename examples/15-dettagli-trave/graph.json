@@ -12,13 +12,43 @@
       "index": 1,
       "type": "RebarMaterialComponent",
       "guid": "606ebfd0-d9e7-407e-aaa3-eb8579fe2f6b",
-      "inputs": {
-        "Type": "1",
-        "Behaviour": "0"
-      }
+      "inputs": {}
     },
     {
       "index": 2,
+      "type": "StandardComponent",
+      "guid": "3def8fa3-e056-4075-8661-bd51575c00ee",
+      "inputs": {}
+    },
+    {
+      "index": 3,
+      "type": "DetailingOptionsComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0016",
+      "inputs": {
+        "Top tension width": "300",
+        "Bottom tension width": "300",
+        "Web width": "300",
+        "Link diameter": "8",
+        "Link spacing": "150",
+        "Nominal cover": "30",
+        "Durability minimum": "20",
+        "Compression bars restrained": "True",
+        "End zones confirmed": "True"
+      }
+    },
+    {
+      "index": 4,
+      "type": "CoordinateSystemComponent",
+      "guid": "8f839216-244a-4891-a1d5-bb0fb42f7909",
+      "inputs": {
+        "Name": "Global XY",
+        "Origin": "0,0,0",
+        "P1": "1,0,0",
+        "P2": "0,1,0"
+      }
+    },
+    {
+      "index": 5,
       "type": "RectangularRcSectionComponent",
       "guid": "98dc4c10-e882-41ed-ae13-208c325c0024",
       "inputs": {
@@ -33,71 +63,24 @@
       }
     },
     {
-      "index": 3,
-      "type": "StandardComponent",
-      "guid": "3def8fa3-e056-4075-8661-bd51575c00ee",
-      "inputs": {
-        "Type": "0"
-      }
-    },
-    {
-      "index": 4,
+      "index": 6,
       "type": "CheckerOptionsComponent",
       "guid": "b7e2c3a0-0300-4e1b-9d1a-000000000003",
       "inputs": {
-        "Failure Domain Types": "1",
-        "Failure Analysis Types": "0",
-        "Domain Point Strategy Types": "0",
-        "Stress Analysis Types": "1",
-        "\u03C8 rebar": "1.5",
-        "\u03C8 tendon": "0",
-        "Consider tensile concrete": "False"
+        "Failure Analysis Types": "0"
       }
-    },
-    {
-      "index": 5,
-      "type": "CoordinateSystemComponent",
-      "guid": "8f839216-244a-4891-a1d5-bb0fb42f7909",
-      "inputs": {
-        "Name": "Global XY",
-        "Origin": "0,0,0",
-        "P1": "1,0,0",
-        "P2": "0,1,0"
-      }
-    },
-    {
-      "index": 6,
-      "type": "CheckerComponent",
-      "guid": "c485957b-3d8e-4f19-8176-f30ffcda952e",
-      "inputs": {}
     },
     {
       "index": 7,
-      "type": "DetailingOptionsComponent",
-      "guid": "98dc4c10-e882-41ed-ae13-208c325c0016",
-      "inputs": {
-        "Member kind": "0",
-        "Top tension width": "300",
-        "Bottom tension width": "300",
-        "Web width": "300",
-        "Link diameter": "8",
-        "Link spacing": "150",
-        "Link legs": "2",
-        "Nominal cover": "30",
-        "Aggregate": "20",
-        "Cover deviation": "10",
-        "Durability minimum": "20",
-        "Lap zone": "False",
-        "Compression bars restrained": "True",
-        "End zones confirmed": "True"
-      }
+      "type": "CheckerComponent",
+      "guid": "c485957b-3d8e-4f19-8176-f30ffcda952e",
+      "inputs": {}
     },
     {
       "index": 8,
       "type": "ReinforcementDetailingComponent",
       "guid": "98dc4c10-e882-41ed-ae13-208c325c0017",
       "inputs": {
-        "Minimum axial force": "0",
         "Section ID": "S"
       }
     },
@@ -118,47 +101,47 @@
     {
       "from": 0,
       "output": 0,
-      "to": 2,
+      "to": 5,
       "input": 0
     },
     {
       "from": 1,
       "output": 0,
-      "to": 2,
-      "input": 1
-    },
-    {
-      "from": 5,
-      "output": 0,
-      "to": 4,
-      "input": 0
-    },
-    {
-      "from": 2,
-      "output": 0,
-      "to": 6,
-      "input": 0
-    },
-    {
-      "from": 3,
-      "output": 0,
-      "to": 6,
+      "to": 5,
       "input": 1
     },
     {
       "from": 4,
       "output": 0,
       "to": 6,
-      "input": 2
+      "input": 0
+    },
+    {
+      "from": 5,
+      "output": 0,
+      "to": 7,
+      "input": 0
+    },
+    {
+      "from": 2,
+      "output": 0,
+      "to": 7,
+      "input": 1
     },
     {
       "from": 6,
+      "output": 0,
+      "to": 7,
+      "input": 2
+    },
+    {
+      "from": 7,
       "output": 0,
       "to": 8,
       "input": 0
     },
     {
-      "from": 7,
+      "from": 3,
       "output": 0,
       "to": 8,
       "input": 1

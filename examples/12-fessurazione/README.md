@@ -34,7 +34,7 @@ Nessuna variazione numerica oltre la soglia e nessun esito diverso.
 
 ## Componenti e collegamenti
 
-I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set…). I valori non elencati mantengono il default del componente.
+Componenti numerati come sulla tela, da sinistra a destra e dall'alto in basso. I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set…). I valori non elencati mantengono il default del componente.
 
 **00 — Database Concrete**
 
@@ -42,10 +42,25 @@ I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set
 
 **01 — Database Rebar Steel**
 
-- Type = `1`
-- Behaviour = `0`
+- tutti i valori di default
 
-**02 — Rectangular RC Section**
+**02 — Standard**
+
+- tutti i valori di default
+
+**03 — SLE Options**
+
+- Exposure = `XC4`
+- Longitudinal bar cover = `38`
+
+**04 — Coordinate System**
+
+- Name = `Global XY`
+- Origin = `0,0,0`
+- P1 = `1,0,0`
+- P2 = `0,1,0`
+
+**05 — Rectangular RC Section**
 
 - Width = `300`
 - Height = `500`
@@ -58,66 +73,34 @@ I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set
 - Concrete ← 00 Database Concrete / Concrete Material
 - Steel ← 01 Database Rebar Steel / Rebar Steel Material
 
-**03 — Standard**
+**06 — Concrete Checker Options**
 
-- Type = `0`
-
-**04 — Concrete Checker Options**
-
-- Failure Domain Types = `1`
 - Failure Analysis Types = `0`
-- Domain Point Strategy Types = `0`
-- Stress Analysis Types = `1`
-- ψ rebar = `1.5`
-- ψ tendon = `0`
-- Consider tensile concrete = `False`
-- Coordinate System ← 05 Coordinate System / Coordinate System
-
-**05 — Coordinate System**
-
-- Name = `Global XY`
-- Origin = `0,0,0`
-- P1 = `1,0,0`
-- P2 = `0,1,0`
-
-**06 — Concrete Checker**
-
-- Reinforced Concrete Section ← 02 Rectangular RC Section / RC section
-- Standard ← 03 Standard / Standard
-- Options ← 04 Concrete Checker Options / Checker Options
+- Coordinate System ← 04 Coordinate System / Coordinate System
 
 **07 — Force component**
 
 - Name = `SLE-QP`
 - Axial Force = `-100`
-- Shear X = `0`
-- Shear Y = `0`
-- Torsion = `0`
 - Bending X = `100`
-- Bending Y = `0`
-- Units = `1`
-- Coordinate System ← 05 Coordinate System / Coordinate System
+- Coordinate System ← 04 Coordinate System / Coordinate System
 
-**08 — Stress Analysis**
+**08 — Concrete Checker**
 
-- Concrete Checker ← 06 Concrete Checker / Concrete Checker
+- Reinforced Concrete Section ← 05 Rectangular RC Section / RC section
+- Standard ← 02 Standard / Standard
+- Options ← 06 Concrete Checker Options / Checker Options
+
+**09 — Stress Analysis**
+
+- Concrete Checker ← 08 Concrete Checker / Concrete Checker
 - Forces ← 07 Force component / Force
-
-**09 — SLE Options**
-
-- Combination = `0`
-- Exposure = `XC4`
-- Sensitive reinforcement = `False`
-- Short term = `False`
-- Ribbed bars = `True`
-- Longitudinal bar cover = `38`
-- Concentric rings = `False`
 
 **10 — Serviceability Check**
 
 - Section ID = `S`
-- Stress result ← 08 Stress Analysis / Stress Analysis Results
-- Options ← 09 SLE Options / Options
+- Stress result ← 09 Stress Analysis / Stress Analysis Results
+- Options ← 03 SLE Options / Options
 
 **11 — Check Report**
 

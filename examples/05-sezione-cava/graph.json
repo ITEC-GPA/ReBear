@@ -12,10 +12,7 @@
       "index": 1,
       "type": "RebarMaterialComponent",
       "guid": "606ebfd0-d9e7-407e-aaa3-eb8579fe2f6b",
-      "inputs": {
-        "Type": "1",
-        "Behaviour": "0"
-      }
+      "inputs": {}
     },
     {
       "index": 2,

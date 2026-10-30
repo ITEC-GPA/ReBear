@@ -48,18 +48,44 @@ Confronto automatico con i risultati pubblicati in 0.2.2 (`tools/ExampleGenerato
 
 ## Componenti e collegamenti
 
-I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set…). I valori non elencati mantengono il default del componente.
+Componenti numerati come sulla tela, da sinistra a destra e dall'alto in basso. I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set…). I valori non elencati mantengono il default del componente.
 
-**00 — Database Concrete**
+**00 — Standard**
+
+- tutti i valori di default
+
+**01 — Coordinate System**
+
+- Name = `Global XY`
+- Origin = `0,0,0`
+- P1 = `1,0,0`
+- P2 = `0,1,0`
+
+**02 — Database Concrete**
 
 - Type = `3`
 
-**01 — Database Rebar Steel**
+**03 — Database Rebar Steel**
 
-- Type = `1`
-- Behaviour = `0`
+- tutti i valori di default
 
-**02 — Rectangular RC Section**
+**04 — Force component**
+
+- Name = `SLU1`
+- Axial Force = `-300`
+- Bending X = `180`
+- Bending Y = `5`
+- Coordinate System ← 01 Coordinate System / Coordinate System
+
+**05 — Force component**
+
+- Name = `SLU2`
+- Axial Force = `-200`
+- Bending X = `150`
+- Bending Y = `10`
+- Coordinate System ← 01 Coordinate System / Coordinate System
+
+**06 — Rectangular RC Section**
 
 - Width = `300`
 - Height = `500`
@@ -69,38 +95,15 @@ I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set
 - Top bars = `4`
 - Bottom bars = `4`
 - Side bars per face = `0`
-- Concrete ← 00 Database Concrete / Concrete Material
-- Steel ← 01 Database Rebar Steel / Rebar Steel Material
+- Concrete ← 02 Database Concrete / Concrete Material
+- Steel ← 03 Database Rebar Steel / Rebar Steel Material
 
-**03 — Standard**
+**07 — Concrete Checker Options**
 
-- Type = `0`
-
-**04 — Concrete Checker Options**
-
-- Failure Domain Types = `1`
 - Failure Analysis Types = `0`
-- Domain Point Strategy Types = `0`
-- Stress Analysis Types = `1`
-- ψ rebar = `1.5`
-- ψ tendon = `0`
-- Consider tensile concrete = `False`
-- Coordinate System ← 05 Coordinate System / Coordinate System
+- Coordinate System ← 01 Coordinate System / Coordinate System
 
-**05 — Coordinate System**
-
-- Name = `Global XY`
-- Origin = `0,0,0`
-- P1 = `1,0,0`
-- P2 = `0,1,0`
-
-**06 — Concrete Checker**
-
-- Reinforced Concrete Section ← 02 Rectangular RC Section / RC section
-- Standard ← 03 Standard / Standard
-- Options ← 04 Concrete Checker Options / Checker Options
-
-**07 — Rectangular RC Section**
+**08 — Rectangular RC Section**
 
 - Width = `300`
 - Height = `500`
@@ -110,10 +113,10 @@ I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set
 - Top bars = `4`
 - Bottom bars = `4`
 - Side bars per face = `0`
-- Concrete ← 00 Database Concrete / Concrete Material
-- Steel ← 01 Database Rebar Steel / Rebar Steel Material
+- Concrete ← 02 Database Concrete / Concrete Material
+- Steel ← 03 Database Rebar Steel / Rebar Steel Material
 
-**08 — Rectangular RC Section**
+**09 — Rectangular RC Section**
 
 - Width = `300`
 - Height = `500`
@@ -123,54 +126,36 @@ I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set
 - Top bars = `4`
 - Bottom bars = `4`
 - Side bars per face = `0`
-- Concrete ← 00 Database Concrete / Concrete Material
-- Steel ← 01 Database Rebar Steel / Rebar Steel Material
-
-**09 — Concrete Checker**
-
-- Reinforced Concrete Section ← 07 Rectangular RC Section / RC section
-- Standard ← 03 Standard / Standard
-- Options ← 04 Concrete Checker Options / Checker Options
+- Concrete ← 02 Database Concrete / Concrete Material
+- Steel ← 03 Database Rebar Steel / Rebar Steel Material
 
 **10 — Concrete Checker**
 
+- Reinforced Concrete Section ← 06 Rectangular RC Section / RC section
+- Standard ← 00 Standard / Standard
+- Options ← 07 Concrete Checker Options / Checker Options
+
+**11 — Concrete Checker**
+
 - Reinforced Concrete Section ← 08 Rectangular RC Section / RC section
-- Standard ← 03 Standard / Standard
-- Options ← 04 Concrete Checker Options / Checker Options
+- Standard ← 00 Standard / Standard
+- Options ← 07 Concrete Checker Options / Checker Options
 
-**11 — Force component**
+**12 — Concrete Checker**
 
-- Name = `SLU1`
-- Axial Force = `-300`
-- Shear X = `0`
-- Shear Y = `0`
-- Torsion = `0`
-- Bending X = `180`
-- Bending Y = `5`
-- Units = `1`
-- Coordinate System ← 05 Coordinate System / Coordinate System
-
-**12 — Force component**
-
-- Name = `SLU2`
-- Axial Force = `-200`
-- Shear X = `0`
-- Shear Y = `0`
-- Torsion = `0`
-- Bending X = `150`
-- Bending Y = `10`
-- Units = `1`
-- Coordinate System ← 05 Coordinate System / Coordinate System
+- Reinforced Concrete Section ← 09 Rectangular RC Section / RC section
+- Standard ← 00 Standard / Standard
+- Options ← 07 Concrete Checker Options / Checker Options
 
 **13 — Reinforcement Candidate Search**
 
 - Target utilization = `0.9`
 - Run = `True`
-- Candidate checkers ← 06 Concrete Checker / Concrete Checker
-- Candidate checkers ← 09 Concrete Checker / Concrete Checker
 - Candidate checkers ← 10 Concrete Checker / Concrete Checker
-- Forces ← 11 Force component / Force
-- Forces ← 12 Force component / Force
+- Candidate checkers ← 11 Concrete Checker / Concrete Checker
+- Candidate checkers ← 12 Concrete Checker / Concrete Checker
+- Forces ← 04 Force component / Force
+- Forces ← 05 Force component / Force
 
 **14 — Check Report**
 

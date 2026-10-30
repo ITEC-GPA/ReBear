@@ -36,7 +36,7 @@ Confronto automatico con i risultati pubblicati in 0.2.2 (`tools/ExampleGenerato
 
 ## Componenti e collegamenti
 
-I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set…). I valori non elencati mantengono il default del componente.
+Componenti numerati come sulla tela, da sinistra a destra e dall'alto in basso. I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set…). I valori non elencati mantengono il default del componente.
 
 **00 — Database Concrete**
 
@@ -44,10 +44,20 @@ I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set
 
 **01 — Database Rebar Steel**
 
-- Type = `1`
-- Behaviour = `0`
+- tutti i valori di default
 
-**02 — Rectangular RC Section**
+**02 — Standard**
+
+- tutti i valori di default
+
+**03 — Coordinate System**
+
+- Name = `Global XY`
+- Origin = `0,0,0`
+- P1 = `1,0,0`
+- P2 = `0,1,0`
+
+**04 — Rectangular RC Section**
 
 - Width = `300`
 - Height = `500`
@@ -60,79 +70,47 @@ I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set
 - Concrete ← 00 Database Concrete / Concrete Material
 - Steel ← 01 Database Rebar Steel / Rebar Steel Material
 
-**03 — Standard**
+**05 — Concrete Checker Options**
 
-- Type = `0`
-
-**04 — Concrete Checker Options**
-
-- Failure Domain Types = `1`
 - Failure Analysis Types = `0`
-- Domain Point Strategy Types = `0`
-- Stress Analysis Types = `1`
-- ψ rebar = `1.5`
-- ψ tendon = `0`
-- Consider tensile concrete = `False`
-- Coordinate System ← 05 Coordinate System / Coordinate System
+- Coordinate System ← 03 Coordinate System / Coordinate System
 
-**05 — Coordinate System**
-
-- Name = `Global XY`
-- Origin = `0,0,0`
-- P1 = `1,0,0`
-- P2 = `0,1,0`
-
-**06 — Concrete Checker**
-
-- Reinforced Concrete Section ← 02 Rectangular RC Section / RC section
-- Standard ← 03 Standard / Standard
-- Options ← 04 Concrete Checker Options / Checker Options
-
-**07 — Force component**
+**06 — Force component**
 
 - Name = `SLU-moderato`
 - Axial Force = `-300`
-- Shear X = `0`
-- Shear Y = `0`
-- Torsion = `0`
 - Bending X = `80`
 - Bending Y = `10`
-- Units = `1`
-- Coordinate System ← 05 Coordinate System / Coordinate System
+- Coordinate System ← 03 Coordinate System / Coordinate System
 
-**08 — Force component**
+**07 — Force component**
 
 - Name = `SLU-elevato`
 - Axial Force = `-300`
-- Shear X = `0`
-- Shear Y = `0`
-- Torsion = `0`
 - Bending X = `400`
-- Bending Y = `0`
-- Units = `1`
-- Coordinate System ← 05 Coordinate System / Coordinate System
+- Coordinate System ← 03 Coordinate System / Coordinate System
 
-**09 — Force component**
+**08 — Force component**
 
 - Name = `Fuori-dominio`
 - Axial Force = `-10000000`
-- Shear X = `0`
-- Shear Y = `0`
-- Torsion = `0`
 - Bending X = `80`
-- Bending Y = `0`
-- Units = `1`
-- Coordinate System ← 05 Coordinate System / Coordinate System
+- Coordinate System ← 03 Coordinate System / Coordinate System
+
+**09 — Concrete Checker**
+
+- Reinforced Concrete Section ← 04 Rectangular RC Section / RC section
+- Standard ← 02 Standard / Standard
+- Options ← 05 Concrete Checker Options / Checker Options
 
 **10 — Batch Section Checks**
 
 - Section ID = `S`
-- N-Mx-My = `True`
 - Run = `True`
-- Checker ← 06 Concrete Checker / Concrete Checker
+- Checker ← 09 Concrete Checker / Concrete Checker
+- Forces ← 06 Force component / Force
 - Forces ← 07 Force component / Force
 - Forces ← 08 Force component / Force
-- Forces ← 09 Force component / Force
 
 **11 — Check Envelope**
 

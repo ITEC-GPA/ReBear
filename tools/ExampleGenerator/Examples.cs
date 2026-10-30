@@ -84,16 +84,18 @@ internal static partial class Program
         internal GH_Component Concrete, Steel, Section, Standard, Axes, Options, Checker;
         internal ReinforcedConcreteSection Model;
         internal SectionCheckerModelCode2010 Engine;
+        /// <summary>Without a shape only the actions and their coordinate system: no materials or section on the canvas.</summary>
         internal Fixture(Example e, string shape="RectangularRcSectionComponent", params double[] dimensions)
         {
-            E=e; Concrete=G.Add("ConcreteMaterialComponent"); G.Set(Concrete,0,3);
-            Steel=G.Add("RebarMaterialComponent"); G.Set(Steel,0,1); G.Set(Steel,1,0);
+            E=e; if(shape==null) return;
+            Concrete=G.Add("ConcreteMaterialComponent"); G.Set(Concrete,0,3);
+            Steel=G.Add("RebarMaterialComponent");
             if(dimensions.Length==0) dimensions=new double[]{300,500,30,8,20,4,4,0};
             (Section,Model)=Build(shape,dimensions);
         }
         internal (GH_Component,ReinforcedConcreteSection) Build(string shape, double[] p)
         {
-            var section=G.Add(shape); G.Wire(Concrete,section,0); G.Wire(Steel,section,1); G.Numbers(section,2,p);
+            var section=G.Add(shape); G.Wire(Concrete,section,0); G.Wire(Steel,section,1); G.Dimensions(section,2,p);
             var c=ConcreteMaterialEN1992Data.C30_37; var s=SteelMaterialEN1992Data.B450C;
             ReinforcedConcreteSection model=shape switch {
                 "RectangularRcSectionComponent"=>SectionBuilders.Rectangle(c,s,p[0],p[1],p[2],p[3],p[4],(int)p[5],(int)p[6],(int)p[7]),
@@ -114,10 +116,9 @@ internal static partial class Program
         }
         internal void Prepare(bool nonlinear=false, int standard=0)
         {
-            Standard=G.Add("StandardComponent"); G.Set(Standard,0,standard);
+            Standard=G.Add("StandardComponent"); if(standard!=0) G.Set(Standard,0,standard);
             Options=G.Add("CheckerOptionsComponent"); G.Wire(CoordinateSystem(),Options,0);
-            G.Set(Options,1,1); G.Set(Options,2,0); G.Set(Options,3,0); G.Set(Options,4,nonlinear?0:1);
-            G.Set(Options,5,1.5); G.Set(Options,6,0); G.Set(Options,7,false);
+            G.Set(Options,2,0); if(nonlinear) G.Set(Options,4,0);
             Checker=MakeChecker(Section);
             Engine=ModelChecker(Model,nonlinear,standard);
         }
@@ -127,14 +128,16 @@ internal static partial class Program
         }
         internal (GH_Component Node,ResultBeamForces Force) Force(string name,double n,double vx,double vy,double t,double mx,double my)
         {
-            var force=G.Add("SectionForceComponent"); G.Set(force,0,name); G.Numbers(force,1,n,vx,vy,t,mx,my);
-            G.Wire(CoordinateSystem(),force,7); G.Set(force,8,1);
+            var force=G.Add("SectionForceComponent"); G.Set(force,0,name);
+            var actions=new[]{n,vx,vy,t,mx,my};
+            for(int i=0;i<actions.Length;i++) if(actions[i]!=0) G.Set(force,i+1,actions[i]);
+            G.Wire(CoordinateSystem(),force,7);
             return(force,new ResultBeamForces(n*1000,vx*1000,vy*1000,t*1e6,mx*1e6,my*1e6,GPC.Geometry.CoordinateSystem.Global,name:name));
         }
         internal (GH_Component Node,ShearOptions Value) Shear(double bw,double depth,double area,double links=2*Math.PI*16)
         {
             var options=G.Add("ShearOptionsComponent"); G.Wire(Steel,options,0); G.Wire(Steel,options,1);
-            G.Numbers(options,2,bw,depth,area,links,150,90,1.5,.9,20,0);
+            G.Numbers(options,2,bw,depth,area,links,150); G.Set(options,8,1.5);
             return(options,new ShearOptions(SteelMaterialEN1992Data.B450C,SteelMaterialEN1992Data.B450C,bw,depth,area,links,150,CotTheta:1.5));
         }
         internal void Geometry(double requiredCover,double requiredClear)
@@ -171,7 +174,7 @@ internal static partial class Program
         {
             var f=new Fixture(e,"CircularRcSectionComponent",600,40,10,20,12,64); f.Geometry(50,25);
             e.Values["Errore area rispetto al cerchio [%]"]=100*(1-f.Model.Area/(Math.PI*300*300));
-            var h=e.Graph.Add("HomogenizationOptionsComponent"); e.Graph.Wire(f.Concrete,h,0); e.Graph.Wire(f.Steel,h,1); e.Graph.Set(h,2,false); e.Graph.Set(h,3,1.5);
+            var h=e.Graph.Add("HomogenizationOptionsComponent"); e.Graph.Wire(f.Concrete,h,0); e.Graph.Wire(f.Steel,h,1); e.Graph.Set(h,3,1.5);
             var r=Homogenization.Resolve(SteelMaterialEN1992Data.B450C.E,ConcreteMaterialEN1992Data.C30_37.Ecm,false,1.5);
             e.Values["n [-]"]=r.N; e.Values["Ec,eff [MPa]"]=ConcreteMaterialEN1992Data.C30_37.Ecm/2.5;
             Close(64*.5*90000*Math.Sin(2*Math.PI/64),f.Model.Area,"Polygon area"); e.Save();
@@ -204,7 +207,7 @@ internal static partial class Program
         using var e=new Example("06-inviluppo-azioni","Inviluppo con combinazioni concomitanti",
             "Tre combinazioni nominali A, B e C nello stesso riferimento globale. Nessun coefficiente di combinazione è generato dal componente: le azioni sono già combinate. L'obiettivo è conservare l'associazione fra l'estremo e le altre cinque azioni dello stesso caso.",
             "Si confrontano min/max separatamente per N, Vx, Vy, T, Mx e My. Il minimo N è −500 kN nel caso B; il massimo Mx è 120 kNm nel caso C. Il vettore restituito per Mx max conserva N=−100 kN e Vy=120 kN di C, anche se il minimo N appartiene a B. L'indice è base zero e gli estremi ripetuti mantengono la prima occorrenza.");
-        var f=new Fixture(e);
+        var f=new Fixture(e,shape:null);
         var cases=new[]{f.Force("A",-300,60,90,2,45,15),f.Force("B",-500,-80,40,-4,100,-25),f.Force("C",-100,20,120,7,120,35)};
         var env=e.Graph.Add("LoadEnvelopeComponent");foreach(var item in cases)e.Graph.Wire(item.Node,env,0);
         var r=LoadEnvelopes.Calculate(cases.Select(x=>x.Force).ToArray());
@@ -246,7 +249,7 @@ internal static partial class Program
             "Azioni: N=−300 kN, Vx=20 kN, Vy=30 kN, T=5 kNm, Mx=45 kNm e My=15 kNm. La torsione usa l'area di un braccio At=π8²/4; le opzioni dei tagli usano due bracci. Il controllo richiama GPC con entrambe le direzioni e confronta il rapporto con quello della sola torsione, a parità degli altri dati. L'interazione non deve migliorare l'utilizzo. Geometria efficace e quota aggiuntiva di armatura non vengono inferite dal builder."))
         {
             var f=new Fixture(e);f.Prepare();var x=f.Shear(500,252,200*Math.PI);var y=f.Shear(300,452,400*Math.PI);var load=f.Force("SLU-TV",-300,20,30,5,45,15);
-            var t=e.Graph.Add("TorsionOptionsComponent");e.Graph.Numbers(t,0,80000,1200,100);e.Graph.Wire(f.Steel,t,3);e.Graph.Wire(f.Steel,t,4);e.Graph.Numbers(t,5,Math.PI*16,150,800,1.5);e.Graph.Set(t,9,false);e.Graph.Set(t,10,true);
+            var t=e.Graph.Add("TorsionOptionsComponent");e.Graph.Numbers(t,0,80000,1200,100);e.Graph.Wire(f.Steel,t,3);e.Graph.Wire(f.Steel,t,4);e.Graph.Numbers(t,5,Math.PI*16,150,800,1.5);e.Graph.Set(t,10,true);
             var check=e.Graph.Add("TorsionShearCheckComponent");e.Graph.Wire(f.Checker,check,0);e.Graph.Wire(load.Node,check,1);e.Graph.Wire(t,check,2);e.Graph.Wire(x.Node,check,3);e.Graph.Wire(y.Node,check,4);e.Graph.Set(check,5,"S");e.Graph.Report(check);
             var opt=new TorsionOptions(new TorsionGeometry(80000,1200,100),SteelMaterialEN1992Data.B450C,SteelMaterialEN1992Data.B450C,Math.PI*16,150,800,1.5);
             var r=AdvancedShearChecks.Torsion(f.Engine,load.Force,opt,x.Value,y.Value,"S");e.Results.Add(r);

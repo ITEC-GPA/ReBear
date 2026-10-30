@@ -12,9 +12,7 @@
       "index": 1,
       "type": "RebarMaterialComponent",
       "guid": "606ebfd0-d9e7-407e-aaa3-eb8579fe2f6b",
-      "inputs": {
-        "Type": "1"
-      }
+      "inputs": {}
     },
     {
       "index": 2,
@@ -33,26 +31,12 @@
         "Design stress": "300",
         "Available length": "1000",
         "Good bond": "True",
-        "Lap": "False",
-        "Lapped percentage": "100",
         "Lap clear distance": "20",
         "Section ID": "S"
       }
     },
     {
       "index": 4,
-      "type": "CheckReportComponent",
-      "guid": "98dc4c10-e882-41ed-ae13-208c325c0004",
-      "inputs": {}
-    },
-    {
-      "index": 5,
-      "type": "CheckResultComponent",
-      "guid": "98dc4c10-e882-41ed-ae13-208c325c0003",
-      "inputs": {}
-    },
-    {
-      "index": 6,
       "type": "AnchorageLapComponent",
       "guid": "98dc4c10-e882-41ed-ae13-208c325c0014",
       "inputs": {
@@ -61,10 +45,21 @@
         "Available length": "1000",
         "Good bond": "True",
         "Lap": "True",
-        "Lapped percentage": "100",
         "Lap clear distance": "20",
         "Section ID": "S"
       }
+    },
+    {
+      "index": 5,
+      "type": "CheckReportComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0004",
+      "inputs": {}
+    },
+    {
+      "index": 6,
+      "type": "CheckResultComponent",
+      "guid": "98dc4c10-e882-41ed-ae13-208c325c0003",
+      "inputs": {}
     },
     {
       "index": 7,
@@ -101,41 +96,41 @@
     {
       "from": 3,
       "output": 0,
-      "to": 4,
+      "to": 5,
       "input": 0
     },
     {
       "from": 3,
       "output": 0,
-      "to": 5,
+      "to": 6,
       "input": 0
     },
     {
       "from": 2,
       "output": 0,
-      "to": 6,
+      "to": 4,
       "input": 0
     },
     {
       "from": 0,
       "output": 0,
-      "to": 6,
+      "to": 4,
       "input": 1
     },
     {
       "from": 1,
       "output": 0,
-      "to": 6,
+      "to": 4,
       "input": 2
     },
     {
-      "from": 6,
+      "from": 4,
       "output": 0,
       "to": 7,
       "input": 0
     },
     {
-      "from": 6,
+      "from": 4,
       "output": 0,
       "to": 8,
       "input": 0

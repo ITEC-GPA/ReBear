@@ -2,6 +2,23 @@
   "components": [
     {
       "index": 0,
+      "type": "StandardComponent",
+      "guid": "3def8fa3-e056-4075-8661-bd51575c00ee",
+      "inputs": {}
+    },
+    {
+      "index": 1,
+      "type": "CoordinateSystemComponent",
+      "guid": "8f839216-244a-4891-a1d5-bb0fb42f7909",
+      "inputs": {
+        "Name": "Global XY",
+        "Origin": "0,0,0",
+        "P1": "1,0,0",
+        "P2": "0,1,0"
+      }
+    },
+    {
+      "index": 2,
       "type": "ConcreteMaterialComponent",
       "guid": "e2aa1e8b-3fa9-49a5-8d5e-991d4eac5bc6",
       "inputs": {
@@ -9,16 +26,35 @@
       }
     },
     {
-      "index": 1,
+      "index": 3,
       "type": "RebarMaterialComponent",
       "guid": "606ebfd0-d9e7-407e-aaa3-eb8579fe2f6b",
+      "inputs": {}
+    },
+    {
+      "index": 4,
+      "type": "SectionForceComponent",
+      "guid": "ddd3c603-f931-4db5-ab11-6d1da9ffd01e",
       "inputs": {
-        "Type": "1",
-        "Behaviour": "0"
+        "Name": "SLU1",
+        "Axial Force": "-300",
+        "Bending X": "180",
+        "Bending Y": "5"
       }
     },
     {
-      "index": 2,
+      "index": 5,
+      "type": "SectionForceComponent",
+      "guid": "ddd3c603-f931-4db5-ab11-6d1da9ffd01e",
+      "inputs": {
+        "Name": "SLU2",
+        "Axial Force": "-200",
+        "Bending X": "150",
+        "Bending Y": "10"
+      }
+    },
+    {
+      "index": 6,
       "type": "RectangularRcSectionComponent",
       "guid": "98dc4c10-e882-41ed-ae13-208c325c0024",
       "inputs": {
@@ -33,46 +69,15 @@
       }
     },
     {
-      "index": 3,
-      "type": "StandardComponent",
-      "guid": "3def8fa3-e056-4075-8661-bd51575c00ee",
-      "inputs": {
-        "Type": "0"
-      }
-    },
-    {
-      "index": 4,
+      "index": 7,
       "type": "CheckerOptionsComponent",
       "guid": "b7e2c3a0-0300-4e1b-9d1a-000000000003",
       "inputs": {
-        "Failure Domain Types": "1",
-        "Failure Analysis Types": "0",
-        "Domain Point Strategy Types": "0",
-        "Stress Analysis Types": "1",
-        "\u03C8 rebar": "1.5",
-        "\u03C8 tendon": "0",
-        "Consider tensile concrete": "False"
+        "Failure Analysis Types": "0"
       }
     },
     {
-      "index": 5,
-      "type": "CoordinateSystemComponent",
-      "guid": "8f839216-244a-4891-a1d5-bb0fb42f7909",
-      "inputs": {
-        "Name": "Global XY",
-        "Origin": "0,0,0",
-        "P1": "1,0,0",
-        "P2": "0,1,0"
-      }
-    },
-    {
-      "index": 6,
-      "type": "CheckerComponent",
-      "guid": "c485957b-3d8e-4f19-8176-f30ffcda952e",
-      "inputs": {}
-    },
-    {
-      "index": 7,
+      "index": 8,
       "type": "RectangularRcSectionComponent",
       "guid": "98dc4c10-e882-41ed-ae13-208c325c0024",
       "inputs": {
@@ -87,7 +92,7 @@
       }
     },
     {
-      "index": 8,
+      "index": 9,
       "type": "RectangularRcSectionComponent",
       "guid": "98dc4c10-e882-41ed-ae13-208c325c0024",
       "inputs": {
@@ -102,12 +107,6 @@
       }
     },
     {
-      "index": 9,
-      "type": "CheckerComponent",
-      "guid": "c485957b-3d8e-4f19-8176-f30ffcda952e",
-      "inputs": {}
-    },
-    {
       "index": 10,
       "type": "CheckerComponent",
       "guid": "c485957b-3d8e-4f19-8176-f30ffcda952e",
@@ -115,33 +114,15 @@
     },
     {
       "index": 11,
-      "type": "SectionForceComponent",
-      "guid": "ddd3c603-f931-4db5-ab11-6d1da9ffd01e",
-      "inputs": {
-        "Name": "SLU1",
-        "Axial Force": "-300",
-        "Shear X": "0",
-        "Shear Y": "0",
-        "Torsion": "0",
-        "Bending X": "180",
-        "Bending Y": "5",
-        "Units": "1"
-      }
+      "type": "CheckerComponent",
+      "guid": "c485957b-3d8e-4f19-8176-f30ffcda952e",
+      "inputs": {}
     },
     {
       "index": 12,
-      "type": "SectionForceComponent",
-      "guid": "ddd3c603-f931-4db5-ab11-6d1da9ffd01e",
-      "inputs": {
-        "Name": "SLU2",
-        "Axial Force": "-200",
-        "Shear X": "0",
-        "Shear Y": "0",
-        "Torsion": "0",
-        "Bending X": "150",
-        "Bending Y": "10",
-        "Units": "1"
-      }
+      "type": "CheckerComponent",
+      "guid": "c485957b-3d8e-4f19-8176-f30ffcda952e",
+      "inputs": {}
     },
     {
       "index": 13,
@@ -167,24 +148,6 @@
   ],
   "connections": [
     {
-      "from": 0,
-      "output": 0,
-      "to": 2,
-      "input": 0
-    },
-    {
-      "from": 1,
-      "output": 0,
-      "to": 2,
-      "input": 1
-    },
-    {
-      "from": 5,
-      "output": 0,
-      "to": 4,
-      "input": 0
-    },
-    {
       "from": 2,
       "output": 0,
       "to": 6,
@@ -197,38 +160,44 @@
       "input": 1
     },
     {
-      "from": 4,
-      "output": 0,
-      "to": 6,
-      "input": 2
-    },
-    {
-      "from": 0,
+      "from": 1,
       "output": 0,
       "to": 7,
       "input": 0
     },
     {
-      "from": 1,
+      "from": 6,
       "output": 0,
-      "to": 7,
-      "input": 1
+      "to": 10,
+      "input": 0
     },
     {
       "from": 0,
       "output": 0,
-      "to": 8,
-      "input": 0
-    },
-    {
-      "from": 1,
-      "output": 0,
-      "to": 8,
+      "to": 10,
       "input": 1
     },
     {
       "from": 7,
       "output": 0,
+      "to": 10,
+      "input": 2
+    },
+    {
+      "from": 2,
+      "output": 0,
+      "to": 8,
+      "input": 0
+    },
+    {
+      "from": 3,
+      "output": 0,
+      "to": 8,
+      "input": 1
+    },
+    {
+      "from": 2,
+      "output": 0,
       "to": 9,
       "input": 0
     },
@@ -237,54 +206,54 @@
       "output": 0,
       "to": 9,
       "input": 1
-    },
-    {
-      "from": 4,
-      "output": 0,
-      "to": 9,
-      "input": 2
     },
     {
       "from": 8,
       "output": 0,
-      "to": 10,
+      "to": 11,
       "input": 0
     },
     {
-      "from": 3,
+      "from": 0,
       "output": 0,
-      "to": 10,
+      "to": 11,
       "input": 1
     },
     {
-      "from": 4,
-      "output": 0,
-      "to": 10,
-      "input": 2
-    },
-    {
-      "from": 5,
+      "from": 7,
       "output": 0,
       "to": 11,
-      "input": 7
-    },
-    {
-      "from": 5,
-      "output": 0,
-      "to": 12,
-      "input": 7
-    },
-    {
-      "from": 6,
-      "output": 0,
-      "to": 13,
-      "input": 0
+      "input": 2
     },
     {
       "from": 9,
       "output": 0,
-      "to": 13,
+      "to": 12,
       "input": 0
+    },
+    {
+      "from": 0,
+      "output": 0,
+      "to": 12,
+      "input": 1
+    },
+    {
+      "from": 7,
+      "output": 0,
+      "to": 12,
+      "input": 2
+    },
+    {
+      "from": 1,
+      "output": 0,
+      "to": 4,
+      "input": 7
+    },
+    {
+      "from": 1,
+      "output": 0,
+      "to": 5,
+      "input": 7
     },
     {
       "from": 10,
@@ -296,10 +265,22 @@
       "from": 11,
       "output": 0,
       "to": 13,
-      "input": 1
+      "input": 0
     },
     {
       "from": 12,
+      "output": 0,
+      "to": 13,
+      "input": 0
+    },
+    {
+      "from": 4,
+      "output": 0,
+      "to": 13,
+      "input": 1
+    },
+    {
+      "from": 5,
       "output": 0,
       "to": 13,
       "input": 1

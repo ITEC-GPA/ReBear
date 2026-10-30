@@ -43,7 +43,7 @@ Nessuna variazione numerica oltre la soglia e nessun esito diverso.
 
 ## Componenti e collegamenti
 
-I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set…). I valori non elencati mantengono il default del componente.
+Componenti numerati come sulla tela, da sinistra a destra e dall'alto in basso. I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set…). I valori non elencati mantengono il default del componente.
 
 **00 — Database Concrete**
 
@@ -51,10 +51,25 @@ I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set
 
 **01 — Database Rebar Steel**
 
-- Type = `1`
-- Behaviour = `0`
+- tutti i valori di default
 
-**02 — Rectangular RC Section**
+**02 — Standard**
+
+- tutti i valori di default
+
+**03 — Coordinate System**
+
+- Name = `Global XY`
+- Origin = `0,0,0`
+- P1 = `1,0,0`
+- P2 = `0,1,0`
+
+**04 — Plate Detailing Options**
+
+- Secondary steel = `500`
+- Secondary spacing = `200`
+
+**05 — Rectangular RC Section**
 
 - Width = `1000`
 - Height = `250`
@@ -67,33 +82,10 @@ I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set
 - Concrete ← 00 Database Concrete / Concrete Material
 - Steel ← 01 Database Rebar Steel / Rebar Steel Material
 
-**03 — Standard**
+**06 — Concrete Checker Options**
 
-- Type = `0`
-
-**04 — Concrete Checker Options**
-
-- Failure Domain Types = `1`
 - Failure Analysis Types = `0`
-- Domain Point Strategy Types = `0`
-- Stress Analysis Types = `1`
-- ψ rebar = `1.5`
-- ψ tendon = `0`
-- Consider tensile concrete = `False`
-- Coordinate System ← 05 Coordinate System / Coordinate System
-
-**05 — Coordinate System**
-
-- Name = `Global XY`
-- Origin = `0,0,0`
-- P1 = `1,0,0`
-- P2 = `0,1,0`
-
-**06 — Concrete Checker**
-
-- Reinforced Concrete Section ← 02 Rectangular RC Section / RC section
-- Standard ← 03 Standard / Standard
-- Options ← 04 Concrete Checker Options / Checker Options
+- Coordinate System ← 03 Coordinate System / Coordinate System
 
 **07 — Detailing Options**
 
@@ -105,25 +97,21 @@ I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set
 - Link spacing = `0`
 - Link legs = `0`
 - Nominal cover = `30`
-- Aggregate = `20`
-- Cover deviation = `10`
 - Durability minimum = `20`
-- Lap zone = `False`
 - Compression bars restrained = `True`
 - End zones confirmed = `True`
-- Plate data ← 08 Plate Detailing Options / Plate data
+- Plate data ← 04 Plate Detailing Options / Plate data
 
-**08 — Plate Detailing Options**
+**08 — Concrete Checker**
 
-- Secondary steel = `500`
-- Secondary spacing = `200`
-- Critical region = `False`
+- Reinforced Concrete Section ← 05 Rectangular RC Section / RC section
+- Standard ← 02 Standard / Standard
+- Options ← 06 Concrete Checker Options / Checker Options
 
 **09 — Reinforcement Detailing**
 
-- Minimum axial force = `0`
 - Section ID = `S`
-- Checker ← 06 Concrete Checker / Concrete Checker
+- Checker ← 08 Concrete Checker / Concrete Checker
 - Options ← 07 Detailing Options / Options
 
 **10 — Check Report**

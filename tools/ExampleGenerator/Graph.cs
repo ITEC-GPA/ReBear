@@ -26,6 +26,9 @@ internal sealed class Graph : IDisposable
     internal IReadOnlyList<GH_Component> Nodes => nodes;
     private readonly List<(GH_Component From, int Output, GH_Component To, int Input)> wires = new();
     private readonly Dictionary<GH_Component, Dictionary<int, string>> values = new();
+    private readonly List<(GH_Panel Panel, GH_Component Source)> panels = new();
+    private static readonly SizeF PanelSize = new(650, 350);
+    private const float Left = 40, Top = 240, RowGap = 40, ColumnGap = 120;
     public GH_Component Add(string type)
     {
         var t = Plugin.GetTypes().Single(x => x.Name == type && !x.IsAbstract && typeof(GH_Component).IsAssignableFrom(x));
@@ -33,10 +36,21 @@ internal sealed class Graph : IDisposable
         c.CreateAttributes(); nodes.Add(c); values.Add(c, new()); objects.Add(c);
         return c;
     }
-    public void Set(GH_Component c, int index, params object[] data)
+    /// <summary>Stores a value in an input port. A value equal to the component default is refused: the port already holds it.</summary>
+    public void Set(GH_Component c, int index, params object[] data) => Assign(c, index, data, keepDefault: false);
+    private void Assign(GH_Component c, int index, object[] data, bool keepDefault)
     {
         var p = c.Params.Input[index];
         if (p.SourceCount != 0) throw new InvalidOperationException("Cannot set a connected input.");
+        string Stored() => p.GetType().GetProperty("PersistentData")?.GetValue(p) is IGH_Structure s ? string.Join("|", s.AllData(true).Select(v => v?.ToString())) : null;
+        string before = Stored();
+        Store(p, data);
+        if (!keepDefault && Stored() == before)
+            throw new InvalidOperationException($"{c.Name}: {p.Name} = {before} is the component default; omit it.");
+        values[c][index] = string.Join(", ", data.Select(v => v is IFormattable f ? f.ToString(null, CultureInfo.InvariantCulture) : v.ToString()));
+    }
+    private static void Store(IGH_Param p, object[] data)
+    {
         switch (p)
         {
             case Param_Number n: n.PersistentData.Clear(); foreach (var v in data) n.PersistentData.Append(new GH_Number(Convert.ToDouble(v, CultureInfo.InvariantCulture))); break;
@@ -46,7 +60,6 @@ internal sealed class Graph : IDisposable
             case Param_Point n: n.PersistentData.Clear(); foreach (var v in data) n.PersistentData.Append(new GH_Point((Point3d)v)); break;
             default: throw new NotSupportedException(p.GetType().Name);
         }
-        values[c][index] = string.Join(", ", data.Select(v => v is IFormattable f ? f.ToString(null, CultureInfo.InvariantCulture) : v.ToString()));
     }
     public void Wire(GH_Component from, GH_Component to, int input, int output = 0)
     {
@@ -55,12 +68,15 @@ internal sealed class Graph : IDisposable
     }
     public void Numbers(GH_Component c, int offset, params double[] data)
     { for (int i = 0; i < data.Length; i++) Set(c, i + offset, data[i]); }
+    /// <summary>Section dimensions and bars: all stored, also when equal to a default, because together they describe the section.</summary>
+    public void Dimensions(GH_Component c, int offset, params double[] data)
+    { for (int i = 0; i < data.Length; i++) Assign(c, i + offset, new object[] { data[i] }, keepDefault: true); }
     public void Report(GH_Component result, int output = 0)
     {
         var report = Add("CheckReportComponent"); Wire(result, report, 0, output);
         var inspect = Add("CheckResultComponent"); Wire(result, inspect, 0, output);
         var panel = new GH_Panel { NickName = "CSV / risultati" };
-        panel.CreateAttributes(); panel.AddSource(report.Params.Output[0]); objects.Add(panel);
+        panel.CreateAttributes(); panel.AddSource(report.Params.Output[0]); objects.Add(panel); panels.Add((panel, report));
     }
     public string Save(string folder, string title)
     {
@@ -71,24 +87,103 @@ internal sealed class Graph : IDisposable
             var sources = wires.Where(w => w.To == c).Select(w => w.From).ToArray();
             return sources.Length == 0 ? 0 : 1 + sources.Max(s => Level(s, new(visited)));
         }
+        // Left to right: one column per depth of the longest path from the inputs, each report panel in the column after
+        // its Check Report. Rows follow the connected objects, so wires stay short and seldom cross.
         var levels = nodes.ToDictionary(c => c, c => Level(c));
-        var counts = new Dictionary<int,int>();
-        foreach (var c in nodes)
+        var items = nodes.Cast<IGH_DocumentObject>().Concat(panels.Select(p => p.Panel)).ToList();
+        var sources = items.ToDictionary(o => o, _ => new List<IGH_DocumentObject>());
+        var targets = items.ToDictionary(o => o, _ => new List<IGH_DocumentObject>());
+        foreach (var (from, to) in wires.Select(w => ((IGH_DocumentObject)w.From, (IGH_DocumentObject)w.To))
+            .Concat(panels.Select(p => ((IGH_DocumentObject)p.Source, (IGH_DocumentObject)p.Panel))))
+        { sources[to].Add(from); targets[from].Add(to); }
+        int Column(IGH_DocumentObject o) => o is GH_Component c ? levels[c] : levels[panels.Single(p => p.Panel == o).Source] + 1;
+        var columns = items.GroupBy(Column).OrderBy(g => g.Key).Select(g => g.ToList()).ToList();
+        if (columns.Count != items.Max(Column) + 1) throw new InvalidOperationException("Empty column in the layout.");
+        int Rank(IGH_DocumentObject o) => columns[Column(o)].IndexOf(o);
+        void Order(List<IGH_DocumentObject> column, Dictionary<IGH_DocumentObject, List<IGH_DocumentObject>> neighbours)
         {
-            int level = levels[c]; counts.TryGetValue(level, out int row); counts[level] = row + 1;
-            c.Attributes.Pivot = new PointF(200 + level * 380, 280 + row * 480);
-            c.Attributes.ExpireLayout(); c.Attributes.PerformLayout();
+            var key = column.ToDictionary(o => o, o => neighbours[o].Count == 0 ? column.IndexOf(o) : neighbours[o].Average(Rank));
+            var sorted = column.OrderBy(o => key[o]).ThenBy(column.IndexOf).ToList();
+            column.Clear(); column.AddRange(sorted);
         }
-        int panelRow = 0;
-        foreach (var panel in objects.OfType<GH_Panel>())
+        for (int sweep = 0; sweep < 4; sweep++)
         {
-            panel.Attributes.Pivot = new PointF(200 + (levels.Values.Max() + 1) * 380, 280 + panelRow++ * 430);
-            panel.Attributes.Bounds = new RectangleF(panel.Attributes.Pivot, new SizeF(650, 350));
+            for (int k = 1; k < columns.Count; k++) Order(columns[k], sources);
+            for (int k = columns.Count - 2; k >= 0; k--) Order(columns[k], targets);
+        }
+        SizeF Size(IGH_DocumentObject o)
+        {
+            if (o is GH_Panel) return PanelSize;
+            o.Attributes.ExpireLayout(); o.Attributes.PerformLayout(); return o.Attributes.Bounds.Size;
+        }
+        void Place(IGH_DocumentObject o, float left, float top)
+        {
+            if (o is GH_Panel panel) { panel.Attributes.Pivot = new PointF(left, top); panel.Attributes.Bounds = new RectangleF(left, top, PanelSize.Width, PanelSize.Height); return; }
+            var bounds = o.Attributes.Bounds; var pivot = o.Attributes.Pivot;
+            o.Attributes.Pivot = new PointF(left + pivot.X - bounds.X, top + pivot.Y - bounds.Y);
+            o.Attributes.ExpireLayout(); o.Attributes.PerformLayout();
+        }
+        // Each object at the mean height of the objects it is wired to, alternately towards its targets and its sources.
+        // The order inside a column is kept: objects that would overlap form a block placed at the mean of their wishes.
+        var sizes = items.ToDictionary(o => o, Size);
+        var tops = new Dictionary<IGH_DocumentObject, float>();
+        float Centre(IGH_DocumentObject o) => tops[o] + sizes[o].Height / 2;
+        void Align(List<IGH_DocumentObject> column, Dictionary<IGH_DocumentObject, List<IGH_DocumentObject>> neighbours)
+        {
+            // Sum = Σ (wanted top − offset inside the block), so the block top is Sum / count.
+            var blocks = new List<(List<IGH_DocumentObject> Items, float Sum, float Height)>();
+            foreach (var o in column)
+            {
+                float wanted = neighbours[o].Count == 0 ? tops[o] : neighbours[o].Average(Centre) - sizes[o].Height / 2;
+                blocks.Add((new List<IGH_DocumentObject> { o }, wanted, sizes[o].Height));
+                while (blocks.Count > 1)
+                {
+                    var (upper, lower) = (blocks[^2], blocks[^1]);
+                    if (upper.Sum / upper.Items.Count + upper.Height + RowGap <= lower.Sum / lower.Items.Count) break;
+                    float offset = upper.Height + RowGap;
+                    upper.Items.AddRange(lower.Items);
+                    blocks[^2] = (upper.Items, upper.Sum + lower.Sum - offset * lower.Items.Count, offset + lower.Height);
+                    blocks.RemoveAt(blocks.Count - 1);
+                }
+            }
+            foreach (var block in blocks)
+            {
+                float y = block.Sum / block.Items.Count;
+                foreach (var o in block.Items) { tops[o] = y; y += sizes[o].Height + RowGap; }
+            }
+        }
+        foreach (var column in columns)
+        {
+            float y = Top;
+            foreach (var o in column) { tops[o] = y; y += sizes[o].Height + RowGap; }
+        }
+        for (int sweep = 0; sweep < 3; sweep++)
+        {
+            for (int k = columns.Count - 2; k >= 0; k--) Align(columns[k], targets);
+            for (int k = 1; k < columns.Count; k++) Align(columns[k], sources);
+        }
+        float shift = Top - tops.Values.Min(), x = Left;
+        foreach (var column in columns)
+        {
+            foreach (var o in column) Place(o, x, tops[o] + shift);
+            x += column.Max(o => sizes[o].Width) + ColumnGap;
         }
         var note = new GH_Panel { NickName = "ReBear — esempio svolto", UserText = title +
-            "\nGeometria: mm; forze: kN; momenti: kNm; compressione negativa.\nDati persistenti nelle porte: tasto destro > Set...\nConsultare README.md e results.json nella stessa cartella.\nRun=True nei componenti di analisi predisposti." };
-        note.CreateAttributes(); note.Attributes.Pivot = new PointF(20, 20); note.Attributes.Bounds = new RectangleF(20,20,700,160);
+            "\nGeometria: mm; forze: kN; momenti: kNm; compressione negativa.\nDati a sinistra, verifiche e risultati verso destra.\nDati persistenti nelle porte: tasto destro > Set...\nConsultare README.md e results.json nella stessa cartella.\nRun=True nei componenti di analisi predisposti." };
+        note.CreateAttributes(); note.Attributes.Pivot = new PointF(Left, 20); note.Attributes.Bounds = new RectangleF(Left, 20, 700, 180);
         objects.Add(note);
+        var boxes = items.Append(note).Select(o => (Object: o, Box: o.Attributes.Bounds)).ToArray();
+        for (int i = 0; i < boxes.Length; i++)
+            for (int j = i + 1; j < boxes.Length; j++)
+                if (RectangleF.Inflate(boxes[i].Box, RowGap / 4, RowGap / 4).IntersectsWith(boxes[j].Box))
+                    throw new InvalidOperationException($"Layout: {boxes[i].Object.Name} overlaps {boxes[j].Object.Name}.");
+        foreach (var o in items)
+            foreach (var s in sources[o])
+                if (s.Attributes.Bounds.Right + ColumnGap / 2 > o.Attributes.Bounds.Left)
+                    throw new InvalidOperationException($"Layout: the wire {s.Name} → {o.Name} does not run left to right.");
+        // graph.json and the README number the components as they are read on the canvas.
+        var reading = columns.SelectMany(column => column).OfType<GH_Component>().ToList();
+        nodes.Clear(); nodes.AddRange(reading);
         foreach (var c in nodes)
             foreach (var p in c.Params.Input.Where(p => !p.Optional && p.SourceCount == 0))
                 if (p.GetType().GetProperty("PersistentData")?.GetValue(p) is not IGH_Structure tree || tree.DataCount == 0)
@@ -132,12 +227,13 @@ internal sealed class Graph : IDisposable
                 inputs=values[c].ToDictionary(v=>c.Params.Input[v.Key].Name,v=>v.Value) }),
             connections = wires.Select(w => new { from=nodes.IndexOf(w.From), output=w.Output, to=nodes.IndexOf(w.To), input=w.Input })
         }, new JsonSerializerOptions { WriteIndented=true }));
-        var text = new StringBuilder("\n## Componenti e collegamenti\n\nI valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set…). I valori non elencati mantengono il default del componente.\n\n");
+        var text = new StringBuilder("\n## Componenti e collegamenti\n\nComponenti numerati come sulla tela, da sinistra a destra e dall'alto in basso. I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set…). I valori non elencati mantengono il default del componente.\n\n");
         foreach (var c in nodes)
         {
             text.AppendLine($"**{nodes.IndexOf(c):D2} — {c.Name}**\n");
             foreach (var v in values[c]) text.AppendLine($"- {c.Params.Input[v.Key].Name} = `{v.Value}`");
             foreach (var w in wires.Where(w=>w.To==c)) text.AppendLine($"- {c.Params.Input[w.Input].Name} ← {nodes.IndexOf(w.From):D2} {w.From.Name} / {w.From.Params.Output[w.Output].Name}");
+            if (values[c].Count == 0 && !wires.Any(w => w.To == c)) text.AppendLine("- tutti i valori di default");
             text.AppendLine();
         }
         return text.ToString();

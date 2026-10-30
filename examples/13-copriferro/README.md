@@ -34,7 +34,7 @@ Nessuna variazione numerica oltre la soglia e nessun esito diverso.
 
 ## Componenti e collegamenti
 
-I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set…). I valori non elencati mantengono il default del componente.
+Componenti numerati come sulla tela, da sinistra a destra e dall'alto in basso. I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set…). I valori non elencati mantengono il default del componente.
 
 **00 — Database Concrete**
 
@@ -47,7 +47,6 @@ I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set
 **02 — Concrete Cover**
 
 - Exposures = `XC4, XD1`
-- Specification bar diameter = `20`
 - Actual bar diameter = `20`
 - Adopted cover = `40`
 - Section ID = `S`

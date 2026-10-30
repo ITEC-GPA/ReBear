@@ -18,7 +18,7 @@ internal static partial class Program
         var f=new Fixture(e);f.Prepare();
         var cases=new[]{f.Force("SLU-moderato",-300,0,0,0,80,10),f.Force("SLU-elevato",-300,0,0,0,400,0),f.Force("Fuori-dominio",-1e7,0,0,0,80,0)};
         var batch=e.Graph.Add("BatchSectionChecksComponent");e.Graph.Wire(f.Checker,batch,0);foreach(var c in cases)e.Graph.Wire(c.Node,batch,1);
-        e.Graph.Set(batch,2,"S");e.Graph.Set(batch,3,true);e.Graph.Set(batch,8,true);
+        e.Graph.Set(batch,2,"S");e.Graph.Set(batch,8,true);
         var env=e.Graph.Add("CheckEnvelopeComponent");e.Graph.Wire(batch,env,0);e.Graph.Report(batch);
         e.changes=Iterative;
         e.Results.AddRange(SectionChecks.Batch(f.Engine,cases.Select(c=>c.Force).ToArray(),"S",true));
@@ -40,8 +40,7 @@ internal static partial class Program
             if(!cracking){e.Graph.Set(f.Options,5,0d);f.Engine.SectionCheckerOptions.PsiCoefficientRebar=0;}
             var force=f.Force(cracking?"SLE-QP":"SLE-CHAR",cracking?-100:-300,0,0,0,cracking?100:0,0);
             var analysis=e.Graph.Add("StressAnalysisComponent");e.Graph.Wire(f.Checker,analysis,0);e.Graph.Wire(force.Node,analysis,1);
-            var options=e.Graph.Add("SleOptionsComponent");e.Graph.Set(options,0,cracking?0:2);e.Graph.Set(options,1,"XC4");
-            e.Graph.Set(options,2,false);e.Graph.Set(options,3,false);e.Graph.Set(options,4,true);e.Graph.Set(options,5,38d);e.Graph.Set(options,9,false);
+            var options=e.Graph.Add("SleOptionsComponent");if(!cracking)e.Graph.Set(options,0,2);e.Graph.Set(options,1,"XC4");e.Graph.Set(options,5,38d);
             var check=e.Graph.Add("ServiceabilityCheckComponent");e.Graph.Wire(analysis,check,0);e.Graph.Wire(options,check,1);e.Graph.Set(check,2,"S");e.Graph.Report(check);
             var stress=f.Engine.GetTensionAnalysisResult(force.Force);var p=new SleOptions(cracking?0:2,"XC4",false,false,true,38);
             e.Results.Add(SectionChecks.Stress(stress,p,"S"));var crack=SectionChecks.Crack(stress,p,"S");e.Results.Add(crack.Result);
@@ -77,7 +76,7 @@ internal static partial class Program
             "Calcestruzzo C30/37 e profilo EN 1992-1-1 disponibile nel set GPC. Esposizioni concorrenti XC4 e XD1, vita 50 anni, diametro effettivo Ø20, aggregato 20 mm e Δcdev=10 mm. Non si applicano riduzioni di classe, controllo speciale, abrasione o contatto col terreno.",
             "Classe strutturale S4 senza modificatori: cmin,dur governa su XD1 (35 mm), rispetto a XC4 (30 mm). cmin,b=20 mm; cmin=max(10,20,35)=35 mm e cnom=35+10=45 mm. Il copriferro adottato 40 mm è insufficiente: l'esito atteso è NotSatisfied, con domanda 45 e disponibile 40 mm. Il riferimento è il profilo GPC fissato, non una selezione automatica dell'edizione normativa più recente.");
         var g=e.Graph;var concrete=g.Add("ConcreteMaterialComponent");g.Set(concrete,0,3);var standard=g.Add("StandardComponent");g.Set(standard,0,1);
-        var cover=g.Add("ConcreteCoverComponent");g.Wire(standard,cover,0);g.Wire(concrete,cover,1);g.Set(cover,2,"XC4","XD1");g.Set(cover,3,20d);g.Set(cover,4,20d);g.Set(cover,5,40d);g.Set(cover,18,"S");g.Report(cover);
+        var cover=g.Add("ConcreteCoverComponent");g.Wire(standard,cover,0);g.Wire(concrete,cover,1);g.Set(cover,2,"XC4","XD1");g.Set(cover,4,20d);g.Set(cover,5,40d);g.Set(cover,18,"S");g.Report(cover);
         var r=DetailingChecks.Cover(new StandardEN1992p11(),new CoverInput(new[]{"XC4","XD1"},30,50,false,false,false,20,20,10),40,20,"S");
         e.Results.Add(r.Result);e.Values["cmin,b [mm]"]=r.Native.Bond;e.Values["cmin,dur [mm]"]=r.Native.Durability;e.Values["cnom [mm]"]=r.Native.Nominal;
         Close(45,r.Native.Nominal,"Cover example");Require(r.Result.Status==CheckStatus.NotSatisfied,"Cover insufficiency");e.Save();
@@ -87,11 +86,11 @@ internal static partial class Program
         using var e=new Example("14-ancoraggio-sovrapposizione","Ancoraggio e sovrapposizione di barre tese",
             "C30/37, B450C Ø20 e σsd=300 MPa, EN 1992-1-1, condizioni di buona aderenza. Barra rettilinea tesa, coefficienti α1…α5 unitari. Lunghezza disponibile 1000 mm; per la sovrapposizione si assume il 100% delle barre sovrapposte e interferro 20 mm.",
             "Con fctk,0.05=0.7×0.3×fck^(2/3), fbd=2.25 fctk,0.05/γc e lb,rqd=Øσsd/(4fbd), si verifica indipendentemente la lunghezza base. Il ramo di ancoraggio e quello di sovrapposizione richiamano separatamente GPC, che applica i minimi e i coefficienti pertinenti. La lunghezza di sovrapposizione deve risultare non inferiore a quella di ancoraggio in questa configurazione. Nessuna riduzione per ganci o confinamento è assunta.");
-        var g=e.Graph;var c=g.Add("ConcreteMaterialComponent");g.Set(c,0,3);var s=g.Add("RebarMaterialComponent");g.Set(s,0,1);
+        var g=e.Graph;var c=g.Add("ConcreteMaterialComponent");g.Set(c,0,3);var s=g.Add("RebarMaterialComponent");
         var standard=g.Add("StandardComponent");g.Set(standard,0,1);
         foreach(bool lap in new[]{false,true})
         {
-            var a=g.Add("AnchorageLapComponent");g.Wire(standard,a,0);g.Wire(c,a,1);g.Wire(s,a,2);g.Numbers(a,3,20,300,1000);g.Set(a,6,true);g.Set(a,7,lap);g.Set(a,8,100d);g.Set(a,9,20d);g.Set(a,10,"S");g.Report(a);
+            var a=g.Add("AnchorageLapComponent");g.Wire(standard,a,0);g.Wire(c,a,1);g.Wire(s,a,2);g.Numbers(a,3,20,300,1000);g.Set(a,6,true);if(lap)g.Set(a,7,true);g.Set(a,9,20d);g.Set(a,10,"S");g.Report(a);
             var r=DetailingChecks.Anchorage(new StandardEN1992p11(),ConcreteMaterialEN1992Data.C30_37,SteelMaterialEN1992Data.B450C,20,300,1000,true,lap,100,20,"S");
             e.Results.Add(r.Result);
             if(!lap)
@@ -118,17 +117,17 @@ internal static partial class Program
                 "Reinforcement Detailing produce una riga per ogni regola GPC, conservando Actual, Limit, unità, riferimento e verso del confronto. Gli esiti possono includere regole non soddisfatte o non valutabili: l'esempio serve a leggerle, non assume che il layout sia già approvato. Check Report espone la lista completa. Il controllo automatico richiede un insieme di regole non vuoto e valori disponibili finiti; nel pilastro richiede esplicitamente almeno una regola NotEvaluated, così la mancanza delle conferme non diventa un esito positivo.");
             var f=kind==2?new Fixture(e,"RectangularRcSectionComponent",1000,250,30,0,12,6,6,0):new Fixture(e);f.Prepare();
             double width=kind==2?1000:300, link=kind==2?0:8, spacing=kind==2?0:150;int legs=kind==2?0:2;
-            var options=e.Graph.Add("DetailingOptionsComponent");e.Graph.Set(options,0,kind);e.Graph.Numbers(options,1,width,width,width,link,spacing);e.Graph.Set(options,6,legs);
-            e.Graph.Numbers(options,7,30,20,10);if(kind!=1)e.Graph.Set(options,10,20d);
-            e.Graph.Set(options,11,false);e.Graph.Set(options,12,kind!=1);e.Graph.Set(options,13,kind!=1);
+            var options=e.Graph.Add("DetailingOptionsComponent");if(kind!=0)e.Graph.Set(options,0,kind);e.Graph.Numbers(options,1,width,width,width,link,spacing);if(legs!=2)e.Graph.Set(options,6,legs);
+            e.Graph.Set(options,7,30d);if(kind!=1)e.Graph.Set(options,10,20d);
+            if(kind!=1){e.Graph.Set(options,12,true);e.Graph.Set(options,13,true);}
             PlateDetailingData plate=null;
             if(kind==2)
             {
-                var p=e.Graph.Add("PlateDetailingOptionsComponent");e.Graph.Set(p,0,500d);e.Graph.Set(p,1,200d);e.Graph.Set(p,2,false);e.Graph.Wire(p,options,14);
+                var p=e.Graph.Add("PlateDetailingOptionsComponent");e.Graph.Set(p,0,500d);e.Graph.Set(p,1,200d);e.Graph.Wire(p,options,14);
                 plate=new PlateDetailingData(500,200,false);
             }
             double n=kind==1?-600:0;
-            var check=e.Graph.Add("ReinforcementDetailingComponent");e.Graph.Wire(f.Checker,check,0);e.Graph.Wire(options,check,1);e.Graph.Set(check,2,n);e.Graph.Set(check,3,"S");e.Graph.Report(check);
+            var check=e.Graph.Add("ReinforcementDetailingComponent");e.Graph.Wire(f.Checker,check,0);e.Graph.Wire(options,check,1);if(n!=0)e.Graph.Set(check,2,n);e.Graph.Set(check,3,"S");e.Graph.Report(check);
             var pdet=new DetailingOptions((MemberDetailingKind)kind,width,width,width,link,spacing,legs,30,20,10,kind==1?null:20,false,kind!=1,kind!=1,plate);
             e.Results.AddRange(DetailingChecks.Member(f.Engine,pdet,n*1000,"S"));
             Require(e.Results.Count>5 && e.Results.All(r=>(!r.Demand.HasValue||double.IsFinite(r.Demand.Value))&&(!r.Capacity.HasValue||double.IsFinite(r.Capacity.Value))),"Detailing results");
@@ -143,7 +142,7 @@ internal static partial class Program
             "Il motore cerca il momento limite a N costante e risolve gli stati intermedi. Le curvature GPC in 1/mm sono moltiplicate per 1000 per ottenere 1/m; i momenti Nmm sono divisi per 10⁶ per ottenere kNm. Il controllo automatico verifica equilibrio assiale del punto limite entro 1 kN, almeno due punti e valori finiti. Leggere Status e InterruptedAtStep: una curva interrotta resta parziale e non viene presentata come interamente convergente. Per uso progettuale aumentare i passi e confrontare curva, snervamento e limite."))
         {
             var f=new Fixture(e);f.Prepare(true);
-            var m=e.Graph.Add("MomentCurvatureComponent");e.Graph.Wire(f.Checker,m,0);e.Graph.Set(m,1,-300d);e.Graph.Set(m,2,0d);e.Graph.Set(m,3,20);e.Graph.Set(m,4,1d);e.Graph.Set(m,5,1d);e.Graph.Set(m,6,true);
+            var m=e.Graph.Add("MomentCurvatureComponent");e.Graph.Wire(f.Checker,m,0);e.Graph.Set(m,1,-300d);e.Graph.Set(m,3,20);e.Graph.Set(m,6,true);
             e.changes=Iterative;
             var r=SectionAnalyses.MomentCurvature(f.Engine,-300000,0,20,1,1000);
             Require(r.Points.Count>=2&&Math.Abs(r.AxialResidual)<=1000&&r.Points.All(p=>double.IsFinite(p.Curvature)&&double.IsFinite(p.Moment)),"M-chi result");

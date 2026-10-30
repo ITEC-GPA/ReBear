@@ -39,7 +39,7 @@ Nessuna variazione numerica oltre la soglia e nessun esito diverso.
 
 ## Componenti e collegamenti
 
-I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set…). I valori non elencati mantengono il default del componente.
+Componenti numerati come sulla tela, da sinistra a destra e dall'alto in basso. I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set…). I valori non elencati mantengono il default del componente.
 
 **00 — Database Concrete**
 
@@ -47,8 +47,7 @@ I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set
 
 **01 — Database Rebar Steel**
 
-- Type = `1`
-- Behaviour = `0`
+- tutti i valori di default
 
 **02 — Circular RC Section**
 
@@ -61,24 +60,23 @@ I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set
 - Concrete ← 00 Database Concrete / Concrete Material
 - Steel ← 01 Database Rebar Steel / Rebar Steel Material
 
-**03 — Section Geometry Check**
+**03 — Creep and Homogenization**
+
+- Value = `1.5`
+- Concrete ← 00 Database Concrete / Concrete Material
+- Steel ← 01 Database Rebar Steel / Rebar Steel Material
+
+**04 — Section Geometry Check**
 
 - Required bar cover = `50`
 - Required clear spacing = `25`
 - Section ID = `S`
 - Section ← 02 Circular RC Section / RC section
 
-**04 — Check Report**
+**05 — Check Report**
 
-- Results ← 03 Section Geometry Check / Result
+- Results ← 04 Section Geometry Check / Result
 
-**05 — Check Result**
+**06 — Check Result**
 
-- Result ← 03 Section Geometry Check / Result
-
-**06 — Creep and Homogenization**
-
-- Input is n = `False`
-- Value = `1.5`
-- Concrete ← 00 Database Concrete / Concrete Material
-- Steel ← 01 Database Rebar Steel / Rebar Steel Material
+- Result ← 04 Section Geometry Check / Result

@@ -27,31 +27,16 @@ Nessuna variazione numerica oltre la soglia e nessun esito diverso.
 
 ## Componenti e collegamenti
 
-I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set…). I valori non elencati mantengono il default del componente.
+Componenti numerati come sulla tela, da sinistra a destra e dall'alto in basso. I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set…). I valori non elencati mantengono il default del componente.
 
-**00 — Database Concrete**
+**00 — Coordinate System**
 
-- Type = `3`
+- Name = `Global XY`
+- Origin = `0,0,0`
+- P1 = `1,0,0`
+- P2 = `0,1,0`
 
-**01 — Database Rebar Steel**
-
-- Type = `1`
-- Behaviour = `0`
-
-**02 — Rectangular RC Section**
-
-- Width = `300`
-- Height = `500`
-- Link cover = `30`
-- Link diameter = `8`
-- Bar diameter = `20`
-- Top bars = `4`
-- Bottom bars = `4`
-- Side bars per face = `0`
-- Concrete ← 00 Database Concrete / Concrete Material
-- Steel ← 01 Database Rebar Steel / Rebar Steel Material
-
-**03 — Force component**
+**01 — Force component**
 
 - Name = `A`
 - Axial Force = `-300`
@@ -60,17 +45,9 @@ I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set
 - Torsion = `2`
 - Bending X = `45`
 - Bending Y = `15`
-- Units = `1`
-- Coordinate System ← 04 Coordinate System / Coordinate System
+- Coordinate System ← 00 Coordinate System / Coordinate System
 
-**04 — Coordinate System**
-
-- Name = `Global XY`
-- Origin = `0,0,0`
-- P1 = `1,0,0`
-- P2 = `0,1,0`
-
-**05 — Force component**
+**02 — Force component**
 
 - Name = `B`
 - Axial Force = `-500`
@@ -79,10 +56,9 @@ I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set
 - Torsion = `-4`
 - Bending X = `100`
 - Bending Y = `-25`
-- Units = `1`
-- Coordinate System ← 04 Coordinate System / Coordinate System
+- Coordinate System ← 00 Coordinate System / Coordinate System
 
-**06 — Force component**
+**03 — Force component**
 
 - Name = `C`
 - Axial Force = `-100`
@@ -91,11 +67,10 @@ I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set
 - Torsion = `7`
 - Bending X = `120`
 - Bending Y = `35`
-- Units = `1`
-- Coordinate System ← 04 Coordinate System / Coordinate System
+- Coordinate System ← 00 Coordinate System / Coordinate System
 
-**07 — Load Envelope**
+**04 — Load Envelope**
 
+- Forces ← 01 Force component / Force
+- Forces ← 02 Force component / Force
 - Forces ← 03 Force component / Force
-- Forces ← 05 Force component / Force
-- Forces ← 06 Force component / Force

@@ -34,7 +34,7 @@ Nessuna variazione numerica oltre la soglia e nessun esito diverso.
 
 ## Componenti e collegamenti
 
-I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set…). I valori non elencati mantengono il default del componente.
+Componenti numerati come sulla tela, da sinistra a destra e dall'alto in basso. I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set…). I valori non elencati mantengono il default del componente.
 
 **00 — Database Concrete**
 
@@ -42,7 +42,7 @@ I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set
 
 **01 — Database Rebar Steel**
 
-- Type = `1`
+- tutti i valori di default
 
 **02 — Standard**
 
@@ -54,40 +54,37 @@ I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set
 - Design stress = `300`
 - Available length = `1000`
 - Good bond = `True`
-- Lap = `False`
-- Lapped percentage = `100`
 - Lap clear distance = `20`
 - Section ID = `S`
 - Standard ← 02 Standard / Standard
 - Concrete ← 00 Database Concrete / Concrete Material
 - Steel ← 01 Database Rebar Steel / Rebar Steel Material
 
-**04 — Check Report**
-
-- Results ← 03 Anchorage and Lap / Result
-
-**05 — Check Result**
-
-- Result ← 03 Anchorage and Lap / Result
-
-**06 — Anchorage and Lap**
+**04 — Anchorage and Lap**
 
 - Diameter = `20`
 - Design stress = `300`
 - Available length = `1000`
 - Good bond = `True`
 - Lap = `True`
-- Lapped percentage = `100`
 - Lap clear distance = `20`
 - Section ID = `S`
 - Standard ← 02 Standard / Standard
 - Concrete ← 00 Database Concrete / Concrete Material
 - Steel ← 01 Database Rebar Steel / Rebar Steel Material
 
+**05 — Check Report**
+
+- Results ← 03 Anchorage and Lap / Result
+
+**06 — Check Result**
+
+- Result ← 03 Anchorage and Lap / Result
+
 **07 — Check Report**
 
-- Results ← 06 Anchorage and Lap / Result
+- Results ← 04 Anchorage and Lap / Result
 
 **08 — Check Result**
 
-- Result ← 06 Anchorage and Lap / Result
+- Result ← 04 Anchorage and Lap / Result

@@ -37,7 +37,7 @@ Nessuna variazione numerica oltre la soglia e nessun esito diverso.
 
 ## Componenti e collegamenti
 
-I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set…). I valori non elencati mantengono il default del componente.
+Componenti numerati come sulla tela, da sinistra a destra e dall'alto in basso. I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set…). I valori non elencati mantengono il default del componente.
 
 **00 — Database Concrete**
 
@@ -45,10 +45,32 @@ I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set
 
 **01 — Database Rebar Steel**
 
-- Type = `1`
-- Behaviour = `0`
+- tutti i valori di default
 
-**02 — Rectangular RC Section**
+**02 — Standard**
+
+- tutti i valori di default
+
+**03 — SLE Options**
+
+- Combination = `2`
+- Exposure = `XC4`
+- Longitudinal bar cover = `38`
+
+**04 — SLE Options**
+
+- Combination = `1`
+- Exposure = `XC4`
+- Longitudinal bar cover = `38`
+
+**05 — Coordinate System**
+
+- Name = `Global XY`
+- Origin = `0,0,0`
+- P1 = `1,0,0`
+- P2 = `0,1,0`
+
+**06 — Rectangular RC Section**
 
 - Width = `300`
 - Height = `500`
@@ -61,91 +83,53 @@ I valori modificabili sono salvati nelle porte (tasto destro sulla porta → Set
 - Concrete ← 00 Database Concrete / Concrete Material
 - Steel ← 01 Database Rebar Steel / Rebar Steel Material
 
-**03 — Standard**
+**07 — Concrete Checker Options**
 
-- Type = `0`
-
-**04 — Concrete Checker Options**
-
-- Failure Domain Types = `1`
 - Failure Analysis Types = `0`
-- Domain Point Strategy Types = `0`
-- Stress Analysis Types = `1`
 - ψ rebar = `0`
-- ψ tendon = `0`
-- Consider tensile concrete = `False`
 - Coordinate System ← 05 Coordinate System / Coordinate System
 
-**05 — Coordinate System**
-
-- Name = `Global XY`
-- Origin = `0,0,0`
-- P1 = `1,0,0`
-- P2 = `0,1,0`
-
-**06 — Concrete Checker**
-
-- Reinforced Concrete Section ← 02 Rectangular RC Section / RC section
-- Standard ← 03 Standard / Standard
-- Options ← 04 Concrete Checker Options / Checker Options
-
-**07 — Force component**
+**08 — Force component**
 
 - Name = `SLE-CHAR`
 - Axial Force = `-300`
-- Shear X = `0`
-- Shear Y = `0`
-- Torsion = `0`
-- Bending X = `0`
-- Bending Y = `0`
-- Units = `1`
 - Coordinate System ← 05 Coordinate System / Coordinate System
 
-**08 — Stress Analysis**
+**09 — Concrete Checker**
 
-- Concrete Checker ← 06 Concrete Checker / Concrete Checker
-- Forces ← 07 Force component / Force
+- Reinforced Concrete Section ← 06 Rectangular RC Section / RC section
+- Standard ← 02 Standard / Standard
+- Options ← 07 Concrete Checker Options / Checker Options
 
-**09 — SLE Options**
+**10 — Stress Analysis**
 
-- Combination = `2`
-- Exposure = `XC4`
-- Sensitive reinforcement = `False`
-- Short term = `False`
-- Ribbed bars = `True`
-- Longitudinal bar cover = `38`
-- Concentric rings = `False`
+- Concrete Checker ← 09 Concrete Checker / Concrete Checker
+- Forces ← 08 Force component / Force
 
-**10 — Serviceability Check**
+**11 — Serviceability Check**
 
 - Section ID = `S`
-- Stress result ← 08 Stress Analysis / Stress Analysis Results
-- Options ← 09 SLE Options / Options
+- Stress result ← 10 Stress Analysis / Stress Analysis Results
+- Options ← 03 SLE Options / Options
 
-**11 — Check Report**
-
-- Results ← 10 Serviceability Check / Results
-
-**12 — Check Result**
-
-- Result ← 10 Serviceability Check / Results
-
-**13 — SLE Options**
-
-- Combination = `1`
-- Exposure = `XC4`
-- Longitudinal bar cover = `38`
-
-**14 — Serviceability Check**
+**12 — Serviceability Check**
 
 - Section ID = `S-frequente`
-- Stress result ← 08 Stress Analysis / Stress Analysis Results
-- Options ← 13 SLE Options / Options
+- Stress result ← 10 Stress Analysis / Stress Analysis Results
+- Options ← 04 SLE Options / Options
+
+**13 — Check Report**
+
+- Results ← 11 Serviceability Check / Results
+
+**14 — Check Result**
+
+- Result ← 11 Serviceability Check / Results
 
 **15 — Check Report**
 
-- Results ← 14 Serviceability Check / Results
+- Results ← 12 Serviceability Check / Results
 
 **16 — Check Result**
 
-- Result ← 14 Serviceability Check / Results
+- Result ← 12 Serviceability Check / Results

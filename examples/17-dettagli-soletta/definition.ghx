@@ -22,7 +22,7 @@
       <chunks count="5">
         <chunk name="DocumentHeader">
           <items count="5">
-            <item name="DocumentID" type_name="gh_guid" type_code="9">86968268-537b-46c9-b046-d6258e3a851a</item>
+            <item name="DocumentID" type_name="gh_guid" type_code="9">8bf16775-8e4e-4839-861b-5762043d9c2a</item>
             <item name="Preview" type_name="gh_string" type_code="10">Shaded</item>
             <item name="PreviewMeshType" type_name="gh_int32" type_code="3">1</item>
             <item name="PreviewNormal" type_name="gh_drawing_color" type_code="36">
@@ -97,7 +97,7 @@
                 <chunk name="Container">
                   <items count="4">
                     <item name="Description" type_name="gh_string" type_code="10">Calcestruzzo del database GPC (EN 1992-1-1); una nuova istanza per ogni uscita.</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">0cb1a349-857b-44c1-a4a7-b407c7ff3e4c</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">c1443d46-4472-43f4-8ff4-c928e57facc3</item>
                     <item name="Name" type_name="gh_string" type_code="10">Database Concrete</item>
                     <item name="NickName" type_name="gh_string" type_code="10">DCM</item>
                   </items>
@@ -105,21 +105,21 @@
                     <chunk name="Attributes">
                       <items count="2">
                         <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                          <X>174</X>
-                          <Y>266</Y>
+                          <X>40</X>
+                          <Y>290</Y>
                           <W>60</W>
                           <H>28</H>
                         </item>
                         <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                          <X>200</X>
-                          <Y>280</Y>
+                          <X>66</X>
+                          <Y>304</Y>
                         </item>
                       </items>
                     </chunk>
                     <chunk name="param_input" index="0">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Classe di resistenza, 0 = C20/25 … 13 = C90/105.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">aa4ac856-692d-4d2d-8bbc-6012ec7af808</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">f13b0c65-6cea-4100-a74e-b77e45f17f38</item>
                         <item name="Name" type_name="gh_string" type_code="10">Type</item>
                         <item name="NickName" type_name="gh_string" type_code="10">T</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -129,14 +129,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>176</X>
-                              <Y>268</Y>
+                              <X>42</X>
+                              <Y>292</Y>
                               <W>9</W>
                               <H>24</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>182</X>
-                              <Y>280</Y>
+                              <X>48</X>
+                              <Y>304</Y>
                             </item>
                           </items>
                         </chunk>
@@ -165,7 +165,7 @@
                     <chunk name="param_output" index="0">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Calcestruzzo GPC.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">01e94ff2-2a0a-48c5-a413-ba5bc613fbb1</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">35860bab-4880-4804-bb81-07266991a65c</item>
                         <item name="Name" type_name="gh_string" type_code="10">Concrete Material</item>
                         <item name="NickName" type_name="gh_string" type_code="10">CM</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -175,14 +175,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>215</X>
-                              <Y>268</Y>
+                              <X>81</X>
+                              <Y>292</Y>
                               <W>17</W>
                               <H>24</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>223.5</X>
-                              <Y>280</Y>
+                              <X>89.5</X>
+                              <Y>304</Y>
                             </item>
                           </items>
                         </chunk>
@@ -202,7 +202,7 @@
                 <chunk name="Container">
                   <items count="4">
                     <item name="Description" type_name="gh_string" type_code="10">Acciaio per barre ordinarie del database GPC.</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">f9918457-de7f-4bf5-b56b-afd49b03ae62</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">77fde5d0-8316-4fcd-acde-8e7505b087f9</item>
                     <item name="Name" type_name="gh_string" type_code="10">Database Rebar Steel</item>
                     <item name="NickName" type_name="gh_string" type_code="10">RS</item>
                   </items>
@@ -210,21 +210,21 @@
                     <chunk name="Attributes">
                       <items count="2">
                         <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                          <X>174</X>
-                          <Y>738</Y>
+                          <X>40</X>
+                          <Y>358</Y>
                           <W>57</W>
                           <H>44</H>
                         </item>
                         <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                          <X>200</X>
-                          <Y>760</Y>
+                          <X>66</X>
+                          <Y>380</Y>
                         </item>
                       </items>
                     </chunk>
                     <chunk name="param_input" index="0">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Qualità dell'acciaio (indice della lista).</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">f80296d1-96e0-4691-b144-459733da76fc</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">881e6c57-4b44-4a98-901e-d12c9cd09775</item>
                         <item name="Name" type_name="gh_string" type_code="10">Type</item>
                         <item name="NickName" type_name="gh_string" type_code="10">T</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -234,14 +234,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>176</X>
-                              <Y>740</Y>
+                              <X>42</X>
+                              <Y>360</Y>
                               <W>9</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>182</X>
-                              <Y>750</Y>
+                              <X>48</X>
+                              <Y>370</Y>
                             </item>
                           </items>
                         </chunk>
@@ -270,7 +270,7 @@
                     <chunk name="param_input" index="1">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">0 elastico-perfettamente plastico; 1 elastico-incrudente.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">e171c2e4-b330-4ff3-b6b3-5db6def45d15</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">4ac74329-3c7a-4698-bd07-d71e8da6c1a1</item>
                         <item name="Name" type_name="gh_string" type_code="10">Behaviour</item>
                         <item name="NickName" type_name="gh_string" type_code="10">B</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -280,14 +280,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>176</X>
-                              <Y>760</Y>
+                              <X>42</X>
+                              <Y>380</Y>
                               <W>9</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>182</X>
-                              <Y>770</Y>
+                              <X>48</X>
+                              <Y>390</Y>
                             </item>
                           </items>
                         </chunk>
@@ -316,7 +316,7 @@
                     <chunk name="param_output" index="0">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Acciaio GPC.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">3bf852d8-faf9-4dc9-af11-212624c73b23</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">f1a76308-0b19-495b-8676-d1cf3fdaa8dd</item>
                         <item name="Name" type_name="gh_string" type_code="10">Rebar Steel Material</item>
                         <item name="NickName" type_name="gh_string" type_code="10">RS</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -326,14 +326,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>215</X>
-                              <Y>740</Y>
+                              <X>81</X>
+                              <Y>360</Y>
                               <W>14</W>
                               <H>40</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>222</X>
-                              <Y>760</Y>
+                              <X>88</X>
+                              <Y>380</Y>
                             </item>
                           </items>
                         </chunk>
@@ -353,7 +353,7 @@
                 <chunk name="Container">
                   <items count="4">
                     <item name="Description" type_name="gh_string" type_code="10">Rettangolo centrato nell'origine XY. Barre superiori/inferiori e laterali; geometria in mm.</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">b5ad0426-0025-4f33-a001-ddda1765dc24</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">6414f966-280f-4fbe-8af5-3dbbc7c17edb</item>
                     <item name="Name" type_name="gh_string" type_code="10">Rectangular RC Section</item>
                     <item name="NickName" type_name="gh_string" type_code="10">RectRC</item>
                   </items>
@@ -361,39 +361,39 @@
                     <chunk name="Attributes">
                       <items count="2">
                         <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                          <X>550</X>
-                          <Y>178</Y>
+                          <X>220</X>
+                          <Y>240</Y>
                           <W>66</W>
                           <H>204</H>
                         </item>
                         <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                          <X>580</X>
-                          <Y>280</Y>
+                          <X>250</X>
+                          <Y>342</Y>
                         </item>
                       </items>
                     </chunk>
                     <chunk name="param_input" index="0">
                       <items count="7">
                         <item name="Description" type_name="gh_string" type_code="10">Materiale calcestruzzo.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">2436d189-bc75-444e-8be1-81bb22b1250a</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">c1c67e6f-a72b-4ed5-9779-00968faa97ea</item>
                         <item name="Name" type_name="gh_string" type_code="10">Concrete</item>
                         <item name="NickName" type_name="gh_string" type_code="10">C</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
-                        <item name="Source" index="0" type_name="gh_guid" type_code="9">01e94ff2-2a0a-48c5-a413-ba5bc613fbb1</item>
+                        <item name="Source" index="0" type_name="gh_guid" type_code="9">35860bab-4880-4804-bb81-07266991a65c</item>
                         <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                       </items>
                       <chunks count="1">
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>552</X>
-                              <Y>180</Y>
+                              <X>222</X>
+                              <Y>242</Y>
                               <W>13</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>560</X>
-                              <Y>190</Y>
+                              <X>230</X>
+                              <Y>252</Y>
                             </item>
                           </items>
                         </chunk>
@@ -402,25 +402,25 @@
                     <chunk name="param_input" index="1">
                       <items count="7">
                         <item name="Description" type_name="gh_string" type_code="10">Acciaio delle barre longitudinali.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">3eda49de-4ceb-4cf6-b43f-f459ca497854</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">7d832c91-05e1-42b6-8ef6-5e1d9327359e</item>
                         <item name="Name" type_name="gh_string" type_code="10">Steel</item>
                         <item name="NickName" type_name="gh_string" type_code="10">S</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
-                        <item name="Source" index="0" type_name="gh_guid" type_code="9">3bf852d8-faf9-4dc9-af11-212624c73b23</item>
+                        <item name="Source" index="0" type_name="gh_guid" type_code="9">f1a76308-0b19-495b-8676-d1cf3fdaa8dd</item>
                         <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                       </items>
                       <chunks count="1">
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>552</X>
-                              <Y>200</Y>
+                              <X>222</X>
+                              <Y>262</Y>
                               <W>13</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>560</X>
-                              <Y>210</Y>
+                              <X>230</X>
+                              <Y>272</Y>
                             </item>
                           </items>
                         </chunk>
@@ -429,7 +429,7 @@
                     <chunk name="param_input" index="2">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Dimensione X, mm.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">888869d8-b840-444f-8cd4-4aad8f39bff4</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">0ad854d7-8799-4d5c-8d55-200a3a819e81</item>
                         <item name="Name" type_name="gh_string" type_code="10">Width</item>
                         <item name="NickName" type_name="gh_string" type_code="10">b</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -439,14 +439,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>552</X>
-                              <Y>220</Y>
+                              <X>222</X>
+                              <Y>282</Y>
                               <W>13</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>560</X>
-                              <Y>230</Y>
+                              <X>230</X>
+                              <Y>292</Y>
                             </item>
                           </items>
                         </chunk>
@@ -475,7 +475,7 @@
                     <chunk name="param_input" index="3">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Dimensione Y, mm.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">00b95b0f-c26c-4271-bbb7-1ccc493d8eed</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">938ec543-a19d-4d4a-a83c-5e39db49b953</item>
                         <item name="Name" type_name="gh_string" type_code="10">Height</item>
                         <item name="NickName" type_name="gh_string" type_code="10">h</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -485,14 +485,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>552</X>
-                              <Y>240</Y>
+                              <X>222</X>
+                              <Y>302</Y>
                               <W>13</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>560</X>
-                              <Y>250</Y>
+                              <X>230</X>
+                              <Y>312</Y>
                             </item>
                           </items>
                         </chunk>
@@ -521,7 +521,7 @@
                     <chunk name="param_input" index="4">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Copriferro alla superficie esterna della staffa, mm.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">07f05a36-84ff-421b-8f1b-ae4299b667bc</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">8735661d-cf46-4fda-8050-fa63285f15ef</item>
                         <item name="Name" type_name="gh_string" type_code="10">Link cover</item>
                         <item name="NickName" type_name="gh_string" type_code="10">c</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -531,14 +531,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>552</X>
-                              <Y>260</Y>
+                              <X>222</X>
+                              <Y>322</Y>
                               <W>13</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>560</X>
-                              <Y>270</Y>
+                              <X>230</X>
+                              <Y>332</Y>
                             </item>
                           </items>
                         </chunk>
@@ -567,7 +567,7 @@
                     <chunk name="param_input" index="5">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Diametro staffa usato per posizionare le barre, mm; non definisce il modello di taglio.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">10d93854-b9cd-4684-b8b9-1e2fe11fb1d8</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">de98ba82-8192-44a4-abd9-768676b5d4d9</item>
                         <item name="Name" type_name="gh_string" type_code="10">Link diameter</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Øw</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -577,14 +577,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>552</X>
-                              <Y>280</Y>
+                              <X>222</X>
+                              <Y>342</Y>
                               <W>13</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>560</X>
-                              <Y>290</Y>
+                              <X>230</X>
+                              <Y>352</Y>
                             </item>
                           </items>
                         </chunk>
@@ -613,7 +613,7 @@
                     <chunk name="param_input" index="6">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Diametro delle barre longitudinali, mm.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">2fa4b084-fca5-4eb8-9018-4f840ba9a30a</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">2bdbe6b3-c25c-42c7-96d3-9491aa959fff</item>
                         <item name="Name" type_name="gh_string" type_code="10">Bar diameter</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Ø</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -623,14 +623,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>552</X>
-                              <Y>300</Y>
+                              <X>222</X>
+                              <Y>362</Y>
                               <W>13</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>560</X>
-                              <Y>310</Y>
+                              <X>230</X>
+                              <Y>372</Y>
                             </item>
                           </items>
                         </chunk>
@@ -659,7 +659,7 @@
                     <chunk name="param_input" index="7">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Barre fila superiore.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">1d4543b8-e7e6-4680-b933-18944a0f18bd</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">be7ceefc-bdb0-4e01-8723-b842ab76aaab</item>
                         <item name="Name" type_name="gh_string" type_code="10">Top bars</item>
                         <item name="NickName" type_name="gh_string" type_code="10">nt</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -669,14 +669,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>552</X>
-                              <Y>320</Y>
+                              <X>222</X>
+                              <Y>382</Y>
                               <W>13</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>560</X>
-                              <Y>330</Y>
+                              <X>230</X>
+                              <Y>392</Y>
                             </item>
                           </items>
                         </chunk>
@@ -705,7 +705,7 @@
                     <chunk name="param_input" index="8">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Barre fila inferiore.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">2ec119ef-c1c1-4f37-80e2-207a3f41b024</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">d8f05919-3aba-4e25-bcd9-49d157117ea3</item>
                         <item name="Name" type_name="gh_string" type_code="10">Bottom bars</item>
                         <item name="NickName" type_name="gh_string" type_code="10">nb</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -715,14 +715,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>552</X>
-                              <Y>340</Y>
+                              <X>222</X>
+                              <Y>402</Y>
                               <W>13</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>560</X>
-                              <Y>350</Y>
+                              <X>230</X>
+                              <Y>412</Y>
                             </item>
                           </items>
                         </chunk>
@@ -751,7 +751,7 @@
                     <chunk name="param_input" index="9">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Barre su ciascun lato, escluse le barre delle file superiore/inferiore.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">c43666ec-6504-4c0b-8d60-eb0ae8468068</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">91fb2229-5a4d-4a9f-9f6a-e373b09abb95</item>
                         <item name="Name" type_name="gh_string" type_code="10">Side bars per face</item>
                         <item name="NickName" type_name="gh_string" type_code="10">ns</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -761,14 +761,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>552</X>
-                              <Y>360</Y>
+                              <X>222</X>
+                              <Y>422</Y>
                               <W>13</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>560</X>
-                              <Y>370</Y>
+                              <X>230</X>
+                              <Y>432</Y>
                             </item>
                           </items>
                         </chunk>
@@ -797,7 +797,7 @@
                     <chunk name="param_output" index="0">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Sezione GPC compatibile con Concrete Checker.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">759ac537-3fe3-4af4-b453-52aa9df51245</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">8afd5e88-7b55-42e2-b268-c444d302d724</item>
                         <item name="Name" type_name="gh_string" type_code="10">RC section</item>
                         <item name="NickName" type_name="gh_string" type_code="10">S</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -807,14 +807,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>595</X>
-                              <Y>180</Y>
+                              <X>265</X>
+                              <Y>242</Y>
                               <W>19</W>
                               <H>33</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>604.5</X>
-                              <Y>196.66667</Y>
+                              <X>274.5</X>
+                              <Y>258.66666</Y>
                             </item>
                           </items>
                         </chunk>
@@ -823,7 +823,7 @@
                     <chunk name="param_output" index="1">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Brep XY, mm.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">b5e889d9-9467-4156-bc85-8a1dda9e4d38</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">7fc051b7-835c-4b92-90c0-0cf23e7db335</item>
                         <item name="Name" type_name="gh_string" type_code="10">Concrete preview</item>
                         <item name="NickName" type_name="gh_string" type_code="10">C</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -833,14 +833,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>595</X>
-                              <Y>213</Y>
+                              <X>265</X>
+                              <Y>275</Y>
                               <W>19</W>
                               <H>33</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>604.5</X>
-                              <Y>230</Y>
+                              <X>274.5</X>
+                              <Y>292</Y>
                             </item>
                           </items>
                         </chunk>
@@ -850,7 +850,7 @@
                       <items count="7">
                         <item name="Access" type_name="gh_int32" type_code="3">1</item>
                         <item name="Description" type_name="gh_string" type_code="10">Barre GPC con preview.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">74ee0a1e-2406-4cf3-b45a-54e3a1911f16</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">36d0f11f-c78a-4f82-bc99-f4ed7c0b7dcd</item>
                         <item name="Name" type_name="gh_string" type_code="10">Rebars</item>
                         <item name="NickName" type_name="gh_string" type_code="10">R</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -860,14 +860,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>595</X>
-                              <Y>246</Y>
+                              <X>265</X>
+                              <Y>308</Y>
                               <W>19</W>
                               <H>34</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>604.5</X>
-                              <Y>263.3333</Y>
+                              <X>274.5</X>
+                              <Y>325.3333</Y>
                             </item>
                           </items>
                         </chunk>
@@ -876,7 +876,7 @@
                     <chunk name="param_output" index="3">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Area lorda al netto dei fori, mm².</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">57d2c5f3-c08a-4cca-88ca-74083cdafbef</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">80d11719-9a5e-4245-9fbf-7185131d8ffc</item>
                         <item name="Name" type_name="gh_string" type_code="10">Concrete area</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Ac</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -886,14 +886,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>595</X>
-                              <Y>280</Y>
+                              <X>265</X>
+                              <Y>342</Y>
                               <W>19</W>
                               <H>33</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>604.5</X>
-                              <Y>296.66666</Y>
+                              <X>274.5</X>
+                              <Y>358.66666</Y>
                             </item>
                           </items>
                         </chunk>
@@ -902,7 +902,7 @@
                     <chunk name="param_output" index="4">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Area delle barre, mm².</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">872e0fab-5677-4390-ad8d-2fb955d3a3ac</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">486a6dbf-4574-4437-a871-9a5f8115e211</item>
                         <item name="Name" type_name="gh_string" type_code="10">Steel area</item>
                         <item name="NickName" type_name="gh_string" type_code="10">As</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -912,14 +912,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>595</X>
-                              <Y>313</Y>
+                              <X>265</X>
+                              <Y>375</Y>
                               <W>19</W>
                               <H>33</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>604.5</X>
-                              <Y>329.99997</Y>
+                              <X>274.5</X>
+                              <Y>391.99997</Y>
                             </item>
                           </items>
                         </chunk>
@@ -928,7 +928,7 @@
                     <chunk name="param_output" index="5">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Distanza effettiva del calcestruzzo dalla superficie delle barre, mm.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">029c04ae-0e0f-4ba7-a2f5-7b6b59a9b075</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">02c9cf11-d582-450e-81f0-c8dca8bf5be8</item>
                         <item name="Name" type_name="gh_string" type_code="10">Minimum bar cover</item>
                         <item name="NickName" type_name="gh_string" type_code="10">cbar</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -938,14 +938,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>595</X>
-                              <Y>346</Y>
+                              <X>265</X>
+                              <Y>408</Y>
                               <W>19</W>
                               <H>34</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>604.5</X>
-                              <Y>363.3333</Y>
+                              <X>274.5</X>
+                              <Y>425.3333</Y>
                             </item>
                           </items>
                         </chunk>
@@ -965,7 +965,7 @@
                 <chunk name="Container">
                   <items count="4">
                     <item name="Description" type_name="gh_string" type_code="10">Profilo normativo GPC: 0 NTC2018, 1 EN 1992-1-1, 2 UNI EN 1992-1-1.</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">be207560-5935-4043-9485-c58f71a7ea72</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">3937ae94-cb28-48ca-a34f-13adefd729fe</item>
                     <item name="Name" type_name="gh_string" type_code="10">Standard</item>
                     <item name="NickName" type_name="gh_string" type_code="10">S</item>
                   </items>
@@ -973,21 +973,21 @@
                     <chunk name="Attributes">
                       <items count="2">
                         <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                          <X>174</X>
-                          <Y>1226</Y>
+                          <X>40</X>
+                          <Y>522</Y>
                           <W>55</W>
                           <H>28</H>
                         </item>
                         <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                          <X>200</X>
-                          <Y>1240</Y>
+                          <X>66</X>
+                          <Y>536</Y>
                         </item>
                       </items>
                     </chunk>
                     <chunk name="param_input" index="0">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Norma: 0 NTC2018, 1 EN 1992-1-1, 2 UNI EN 1992-1-1.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">b83fbd8e-0273-4fc4-b2d3-bbf196d97a9f</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">19e5841a-d5af-4131-8c19-0a0de2246bf8</item>
                         <item name="Name" type_name="gh_string" type_code="10">Type</item>
                         <item name="NickName" type_name="gh_string" type_code="10">T</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -997,14 +997,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>176</X>
-                              <Y>1228</Y>
+                              <X>42</X>
+                              <Y>524</Y>
                               <W>9</W>
                               <H>24</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>182</X>
-                              <Y>1240</Y>
+                              <X>48</X>
+                              <Y>536</Y>
                             </item>
                           </items>
                         </chunk>
@@ -1033,7 +1033,7 @@
                     <chunk name="param_output" index="0">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Norma GPC.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">d4de1241-44a2-4c32-b653-9c6304b00b00</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">ae81be1d-743b-4d9f-9f1b-39f0e0849d3f</item>
                         <item name="Name" type_name="gh_string" type_code="10">Standard</item>
                         <item name="NickName" type_name="gh_string" type_code="10">S</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -1043,14 +1043,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>215</X>
-                              <Y>1228</Y>
+                              <X>81</X>
+                              <Y>524</Y>
                               <W>12</W>
                               <H>24</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>221</X>
-                              <Y>1240</Y>
+                              <X>87</X>
+                              <Y>536</Y>
                             </item>
                           </items>
                         </chunk>
@@ -1070,7 +1070,7 @@
                 <chunk name="Container">
                   <items count="4">
                     <item name="Description" type_name="gh_string" type_code="10">Opzioni del checker GPC. Default: dominio plastico, strategia Iterative, analisi lineare, 64 direzioni del dominio.</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">2a61e346-b4c8-462b-a4ba-5615cbd6c91d</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">713bc607-91ba-4faa-b834-03b438d3acb3</item>
                     <item name="Name" type_name="gh_string" type_code="10">Concrete Checker Options</item>
                     <item name="NickName" type_name="gh_string" type_code="10">CCO</item>
                   </items>
@@ -1078,39 +1078,39 @@
                     <chunk name="Attributes">
                       <items count="2">
                         <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                          <X>545</X>
-                          <Y>668</Y>
+                          <X>220</X>
+                          <Y>512</Y>
                           <W>68</W>
                           <H>184</H>
                         </item>
                         <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                          <X>580</X>
-                          <Y>760</Y>
+                          <X>255</X>
+                          <Y>604</Y>
                         </item>
                       </items>
                     </chunk>
                     <chunk name="param_input" index="0">
                       <items count="7">
                         <item name="Description" type_name="gh_string" type_code="10">Riferimento delle azioni del checker.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">70701757-3e1e-4f6f-b63a-5d424b07a04a</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">d123ec6a-2c96-4049-a2d4-f3d32e812e79</item>
                         <item name="Name" type_name="gh_string" type_code="10">Coordinate System</item>
                         <item name="NickName" type_name="gh_string" type_code="10">CS</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
-                        <item name="Source" index="0" type_name="gh_guid" type_code="9">6bb8fa53-38a7-476a-aa73-91e6ae3f72f1</item>
+                        <item name="Source" index="0" type_name="gh_guid" type_code="9">9bb82fc6-8773-4fd7-adab-e9ea59875c4b</item>
                         <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                       </items>
                       <chunks count="1">
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>547</X>
-                              <Y>670</Y>
+                              <X>222</X>
+                              <Y>514</Y>
                               <W>18</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>557.5</X>
-                              <Y>680</Y>
+                              <X>232.5</X>
+                              <Y>524</Y>
                             </item>
                           </items>
                         </chunk>
@@ -1119,7 +1119,7 @@
                     <chunk name="param_input" index="1">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">0 elastico, 1 plastico.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">c0cbbdfb-6d8f-4d7a-a6c2-708004308a7d</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">787cfb68-e334-4bbc-aea7-6a7cd2a9f2b1</item>
                         <item name="Name" type_name="gh_string" type_code="10">Failure Domain Types</item>
                         <item name="NickName" type_name="gh_string" type_code="10">FDT</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -1129,14 +1129,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>547</X>
-                              <Y>690</Y>
+                              <X>222</X>
+                              <Y>534</Y>
                               <W>18</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>557.5</X>
-                              <Y>700</Y>
+                              <X>232.5</X>
+                              <Y>544</Y>
                             </item>
                           </items>
                         </chunk>
@@ -1165,7 +1165,7 @@
                     <chunk name="param_input" index="2">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Criterio di ricerca del punto resistente.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">817bf357-fa49-4fc0-92a1-939d1c37836a</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">2e056012-57c4-48c7-83ff-fdaf2678a5f8</item>
                         <item name="Name" type_name="gh_string" type_code="10">Failure Analysis Types</item>
                         <item name="NickName" type_name="gh_string" type_code="10">FAT</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -1175,14 +1175,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>547</X>
-                              <Y>710</Y>
+                              <X>222</X>
+                              <Y>554</Y>
                               <W>18</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>557.5</X>
-                              <Y>720</Y>
+                              <X>232.5</X>
+                              <Y>564</Y>
                             </item>
                           </items>
                         </chunk>
@@ -1211,7 +1211,7 @@
                     <chunk name="param_input" index="3">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">0 Iterative (default, 2–4 ms per checker); 1 Intersection (dominio discretizzato precalcolato, 0.4–0.6 s per checker).</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">d39d0955-2eda-426b-9b7f-738ff6b3aeef</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">48fc0776-fd2e-4e5c-9ee0-a9bac87b0e71</item>
                         <item name="Name" type_name="gh_string" type_code="10">Domain Point Strategy Types</item>
                         <item name="NickName" type_name="gh_string" type_code="10">DPST</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -1221,14 +1221,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>547</X>
-                              <Y>730</Y>
+                              <X>222</X>
+                              <Y>574</Y>
                               <W>18</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>557.5</X>
-                              <Y>740</Y>
+                              <X>232.5</X>
+                              <Y>584</Y>
                             </item>
                           </items>
                         </chunk>
@@ -1257,7 +1257,7 @@
                     <chunk name="param_input" index="4">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">0 non lineare, 1 lineare.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">b3162533-dc9a-448d-ac24-de8af9028e6e</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">7705266d-695c-4dfc-80d2-8af332b65ebe</item>
                         <item name="Name" type_name="gh_string" type_code="10">Stress Analysis Types</item>
                         <item name="NickName" type_name="gh_string" type_code="10">SAT</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -1267,14 +1267,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>547</X>
-                              <Y>750</Y>
+                              <X>222</X>
+                              <Y>594</Y>
                               <W>18</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>557.5</X>
-                              <Y>760</Y>
+                              <X>232.5</X>
+                              <Y>604</Y>
                             </item>
                           </items>
                         </chunk>
@@ -1303,7 +1303,7 @@
                     <chunk name="param_input" index="5">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Coefficiente ψ delle barre per l'analisi lineare.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">3eb2c849-74f6-4b0f-82ee-f06d956506e9</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">0be9ad83-9d8e-41f9-a2c3-bc6138aa26ff</item>
                         <item name="Name" type_name="gh_string" type_code="10">ψ rebar</item>
                         <item name="NickName" type_name="gh_string" type_code="10">ψ r</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -1313,14 +1313,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>547</X>
-                              <Y>770</Y>
+                              <X>222</X>
+                              <Y>614</Y>
                               <W>18</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>557.5</X>
-                              <Y>780</Y>
+                              <X>232.5</X>
+                              <Y>624</Y>
                             </item>
                           </items>
                         </chunk>
@@ -1349,7 +1349,7 @@
                     <chunk name="param_input" index="6">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Coefficiente ψ dei trefoli.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">d27258ed-80a9-4158-8fc9-19b5cfae335e</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">7dfcd488-80d1-494e-abdd-46e21abd590a</item>
                         <item name="Name" type_name="gh_string" type_code="10">ψ tendon</item>
                         <item name="NickName" type_name="gh_string" type_code="10">ψ t</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -1359,14 +1359,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>547</X>
-                              <Y>790</Y>
+                              <X>222</X>
+                              <Y>634</Y>
                               <W>18</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>557.5</X>
-                              <Y>800</Y>
+                              <X>232.5</X>
+                              <Y>644</Y>
                             </item>
                           </items>
                         </chunk>
@@ -1395,7 +1395,7 @@
                     <chunk name="param_input" index="7">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Considera il calcestruzzo teso.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">f0616e3a-fd6f-4a39-87c3-b6865f3c917c</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">f7b97c56-59ff-4a36-bfb4-9b315a149af7</item>
                         <item name="Name" type_name="gh_string" type_code="10">Consider tensile concrete</item>
                         <item name="NickName" type_name="gh_string" type_code="10">TC</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -1405,14 +1405,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>547</X>
-                              <Y>810</Y>
+                              <X>222</X>
+                              <Y>654</Y>
                               <W>18</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>557.5</X>
-                              <Y>820</Y>
+                              <X>232.5</X>
+                              <Y>664</Y>
                             </item>
                           </items>
                         </chunk>
@@ -1441,7 +1441,7 @@
                     <chunk name="param_input" index="8">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Direzioni del dominio 3D (8–360); usata dalla strategia Intersection e dal dominio 3D.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">cb67900d-3c69-40a1-9b11-a3fe0c3860d3</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">627a5729-95f2-49b6-9ee1-6a366cb94828</item>
                         <item name="Name" type_name="gh_string" type_code="10">Theta discretization</item>
                         <item name="NickName" type_name="gh_string" type_code="10">θn</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -1451,14 +1451,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>547</X>
-                              <Y>830</Y>
+                              <X>222</X>
+                              <Y>674</Y>
                               <W>18</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>557.5</X>
-                              <Y>840</Y>
+                              <X>232.5</X>
+                              <Y>684</Y>
                             </item>
                           </items>
                         </chunk>
@@ -1487,7 +1487,7 @@
                     <chunk name="param_output" index="0">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Opzioni GPC.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">bbb1c120-dd67-4402-bd97-5c774c4be3a5</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">35d99e4f-3226-4463-b198-ff83f306db93</item>
                         <item name="Name" type_name="gh_string" type_code="10">Checker Options</item>
                         <item name="NickName" type_name="gh_string" type_code="10">CO</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -1497,14 +1497,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>595</X>
-                              <Y>670</Y>
+                              <X>270</X>
+                              <Y>514</Y>
                               <W>16</W>
                               <H>180</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>603</X>
-                              <Y>760</Y>
+                              <X>278</X>
+                              <Y>604</Y>
                             </item>
                           </items>
                         </chunk>
@@ -1524,7 +1524,7 @@
                 <chunk name="Container">
                   <items count="4">
                     <item name="Description" type_name="gh_string" type_code="10">Riferimento delle azioni da origine e due punti sugli assi X e Y, mm.</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">425be74f-963a-4325-ab7b-b3bd15f39c3b</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">d12dadcd-4428-4b48-ae90-e6f19f1314fe</item>
                     <item name="Name" type_name="gh_string" type_code="10">Coordinate System</item>
                     <item name="NickName" type_name="gh_string" type_code="10">CS</item>
                   </items>
@@ -1532,21 +1532,21 @@
                     <chunk name="Attributes">
                       <items count="2">
                         <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                          <X>172</X>
-                          <Y>1678</Y>
+                          <X>40</X>
+                          <Y>590</Y>
                           <W>60</W>
                           <H>84</H>
                         </item>
                         <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                          <X>200</X>
-                          <Y>1720</Y>
+                          <X>68</X>
+                          <Y>632</Y>
                         </item>
                       </items>
                     </chunk>
                     <chunk name="param_input" index="0">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Nome del riferimento.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">ccd92a08-8c2a-41d0-8845-b10809420d5b</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">02a2c889-f947-4231-b06a-b5d4de9b2714</item>
                         <item name="Name" type_name="gh_string" type_code="10">Name</item>
                         <item name="NickName" type_name="gh_string" type_code="10">N</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -1556,14 +1556,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>174</X>
-                              <Y>1680</Y>
+                              <X>42</X>
+                              <Y>592</Y>
                               <W>11</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>181</X>
-                              <Y>1690</Y>
+                              <X>49</X>
+                              <Y>602</Y>
                             </item>
                           </items>
                         </chunk>
@@ -1593,7 +1593,7 @@
                     <chunk name="param_input" index="1">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Origine, mm.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">0324bcf9-7fcb-47cc-a42a-1506ae75bad7</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">f97a5991-7386-46d4-82aa-861f5b646659</item>
                         <item name="Name" type_name="gh_string" type_code="10">Origin</item>
                         <item name="NickName" type_name="gh_string" type_code="10">O</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -1603,14 +1603,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>174</X>
-                              <Y>1700</Y>
+                              <X>42</X>
+                              <Y>612</Y>
                               <W>11</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>181</X>
-                              <Y>1710</Y>
+                              <X>49</X>
+                              <Y>622</Y>
                             </item>
                           </items>
                         </chunk>
@@ -1644,7 +1644,7 @@
                     <chunk name="param_input" index="2">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Punto sull'asse X.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">538234fe-4c82-4823-9a41-2a32e3b0d7a2</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">3259e7ce-cf92-46a5-ab49-6bd4e93c36bb</item>
                         <item name="Name" type_name="gh_string" type_code="10">P1</item>
                         <item name="NickName" type_name="gh_string" type_code="10">P1</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -1654,14 +1654,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>174</X>
-                              <Y>1720</Y>
+                              <X>42</X>
+                              <Y>632</Y>
                               <W>11</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>181</X>
-                              <Y>1730</Y>
+                              <X>49</X>
+                              <Y>642</Y>
                             </item>
                           </items>
                         </chunk>
@@ -1695,7 +1695,7 @@
                     <chunk name="param_input" index="3">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Punto nel piano XY dalla parte delle Y positive.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">dc2a21b2-9f2b-4b5a-a08b-9da8fbff9ce4</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">9ebe243d-ad5d-4e01-8db2-91cb8bb939ea</item>
                         <item name="Name" type_name="gh_string" type_code="10">P2</item>
                         <item name="NickName" type_name="gh_string" type_code="10">P2</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -1705,14 +1705,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>174</X>
-                              <Y>1740</Y>
+                              <X>42</X>
+                              <Y>652</Y>
                               <W>11</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>181</X>
-                              <Y>1750</Y>
+                              <X>49</X>
+                              <Y>662</Y>
                             </item>
                           </items>
                         </chunk>
@@ -1746,7 +1746,7 @@
                     <chunk name="param_output" index="0">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Riferimento GPC.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">6bb8fa53-38a7-476a-aa73-91e6ae3f72f1</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">9bb82fc6-8773-4fd7-adab-e9ea59875c4b</item>
                         <item name="Name" type_name="gh_string" type_code="10">Coordinate System</item>
                         <item name="NickName" type_name="gh_string" type_code="10">CS</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -1756,14 +1756,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>215</X>
-                              <Y>1680</Y>
+                              <X>83</X>
+                              <Y>592</Y>
                               <W>15</W>
                               <H>80</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>222.5</X>
-                              <Y>1720</Y>
+                              <X>90.5</X>
+                              <Y>632</Y>
                             </item>
                           </items>
                         </chunk>
@@ -1783,7 +1783,7 @@
                 <chunk name="Container">
                   <items count="4">
                     <item name="Description" type_name="gh_string" type_code="10">Checker GPC di una sezione con norma e opzioni (copia privata delle opzioni).</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">e18aa5a7-70e6-48e0-87a6-9d195702c608</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">05dffd70-d814-438c-9f44-4cb9a92e7150</item>
                     <item name="Name" type_name="gh_string" type_code="10">Concrete Checker</item>
                     <item name="NickName" type_name="gh_string" type_code="10">CC</item>
                   </items>
@@ -1791,39 +1791,39 @@
                     <chunk name="Attributes">
                       <items count="2">
                         <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                          <X>928</X>
-                          <Y>248</Y>
+                          <X>412</X>
+                          <Y>462</Y>
                           <W>64</W>
                           <H>64</H>
                         </item>
                         <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                          <X>960</X>
-                          <Y>280</Y>
+                          <X>444</X>
+                          <Y>494</Y>
                         </item>
                       </items>
                     </chunk>
                     <chunk name="param_input" index="0">
                       <items count="7">
                         <item name="Description" type_name="gh_string" type_code="10">Sezione GPC.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">db230085-a87f-4a5d-8572-a62a9bfdd543</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">f8e786e5-3aa3-46bb-b6f5-c26931d45761</item>
                         <item name="Name" type_name="gh_string" type_code="10">Reinforced Concrete Section</item>
                         <item name="NickName" type_name="gh_string" type_code="10">RCS</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
-                        <item name="Source" index="0" type_name="gh_guid" type_code="9">759ac537-3fe3-4af4-b453-52aa9df51245</item>
+                        <item name="Source" index="0" type_name="gh_guid" type_code="9">8afd5e88-7b55-42e2-b268-c444d302d724</item>
                         <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                       </items>
                       <chunks count="1">
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>930</X>
-                              <Y>250</Y>
+                              <X>414</X>
+                              <Y>464</Y>
                               <W>15</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>939</X>
-                              <Y>260</Y>
+                              <X>423</X>
+                              <Y>474</Y>
                             </item>
                           </items>
                         </chunk>
@@ -1832,25 +1832,25 @@
                     <chunk name="param_input" index="1">
                       <items count="7">
                         <item name="Description" type_name="gh_string" type_code="10">Norma GPC.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">6c6d5fe5-37d9-4cb2-8741-a64d4d286480</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">d08bc568-8f25-4881-adbe-f2aa39545364</item>
                         <item name="Name" type_name="gh_string" type_code="10">Standard</item>
                         <item name="NickName" type_name="gh_string" type_code="10">S</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
-                        <item name="Source" index="0" type_name="gh_guid" type_code="9">d4de1241-44a2-4c32-b653-9c6304b00b00</item>
+                        <item name="Source" index="0" type_name="gh_guid" type_code="9">ae81be1d-743b-4d9f-9f1b-39f0e0849d3f</item>
                         <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                       </items>
                       <chunks count="1">
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>930</X>
-                              <Y>270</Y>
+                              <X>414</X>
+                              <Y>484</Y>
                               <W>15</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>939</X>
-                              <Y>280</Y>
+                              <X>423</X>
+                              <Y>494</Y>
                             </item>
                           </items>
                         </chunk>
@@ -1859,25 +1859,25 @@
                     <chunk name="param_input" index="2">
                       <items count="7">
                         <item name="Description" type_name="gh_string" type_code="10">Da Concrete Checker Options.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">638bcbb2-8250-4a58-a494-e439adcaf8c4</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">c39d3880-109a-4345-b035-d8c1f14274ae</item>
                         <item name="Name" type_name="gh_string" type_code="10">Options</item>
                         <item name="NickName" type_name="gh_string" type_code="10">O</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
-                        <item name="Source" index="0" type_name="gh_guid" type_code="9">bbb1c120-dd67-4402-bd97-5c774c4be3a5</item>
+                        <item name="Source" index="0" type_name="gh_guid" type_code="9">35d99e4f-3226-4463-b198-ff83f306db93</item>
                         <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                       </items>
                       <chunks count="1">
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>930</X>
-                              <Y>290</Y>
+                              <X>414</X>
+                              <Y>504</Y>
                               <W>15</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>939</X>
-                              <Y>300</Y>
+                              <X>423</X>
+                              <Y>514</Y>
                             </item>
                           </items>
                         </chunk>
@@ -1886,7 +1886,7 @@
                     <chunk name="param_output" index="0">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Checker GPC.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">0af07e15-422c-4e56-a5bf-f2ca7b970c19</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">7c93f69f-d18c-4c95-acac-c59b611bdec7</item>
                         <item name="Name" type_name="gh_string" type_code="10">Concrete Checker</item>
                         <item name="NickName" type_name="gh_string" type_code="10">CC</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -1896,14 +1896,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>975</X>
-                              <Y>250</Y>
+                              <X>459</X>
+                              <Y>464</Y>
                               <W>15</W>
                               <H>60</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>982.5</X>
-                              <Y>280</Y>
+                              <X>466.5</X>
+                              <Y>494</Y>
                             </item>
                           </items>
                         </chunk>
@@ -1923,7 +1923,7 @@
                 <chunk name="Container">
                   <items count="4">
                     <item name="Description" type_name="gh_string" type_code="10">Ipotesi per le regole di dettaglio GPC. Acciaio unico delle armature; geometria riferita a XY.</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">197e64fe-9046-47be-9c57-b4fe98aa7def</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">9bee5809-ad37-4384-8071-f15b0fd8345d</item>
                     <item name="Name" type_name="gh_string" type_code="10">Detailing Options</item>
                     <item name="NickName" type_name="gh_string" type_code="10">DetOpt</item>
                   </items>
@@ -1931,21 +1931,21 @@
                     <chunk name="Attributes">
                       <items count="2">
                         <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                          <X>537</X>
-                          <Y>1088</Y>
+                          <X>220</X>
+                          <Y>736</Y>
                           <W>72</W>
                           <H>304</H>
                         </item>
                         <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                          <X>580</X>
-                          <Y>1240</Y>
+                          <X>263</X>
+                          <Y>888</Y>
                         </item>
                       </items>
                     </chunk>
                     <chunk name="param_input" index="0">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">0 trave, 1 pilastro, 2 soletta, 3 parete.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">ff47d74c-a10f-43af-9c95-8d2f170692be</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">4b148c2e-80f1-4a64-9c3e-d3bd522705c5</item>
                         <item name="Name" type_name="gh_string" type_code="10">Member kind</item>
                         <item name="NickName" type_name="gh_string" type_code="10">K</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -1955,14 +1955,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>539</X>
-                              <Y>1090</Y>
+                              <X>222</X>
+                              <Y>738</Y>
                               <W>26</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>553.5</X>
-                              <Y>1100</Y>
+                              <X>236.5</X>
+                              <Y>748</Y>
                             </item>
                           </items>
                         </chunk>
@@ -1991,7 +1991,7 @@
                     <chunk name="param_input" index="1">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Larghezza zona tesa superiore, mm.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">53e7d548-2b0c-499b-9b27-6cceb76bc82f</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">87368b33-b0ed-4ec2-a1b5-99403b8b4613</item>
                         <item name="Name" type_name="gh_string" type_code="10">Top tension width</item>
                         <item name="NickName" type_name="gh_string" type_code="10">bt+</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -2001,14 +2001,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>539</X>
-                              <Y>1110</Y>
+                              <X>222</X>
+                              <Y>758</Y>
                               <W>26</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>553.5</X>
-                              <Y>1120</Y>
+                              <X>236.5</X>
+                              <Y>768</Y>
                             </item>
                           </items>
                         </chunk>
@@ -2037,7 +2037,7 @@
                     <chunk name="param_input" index="2">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Larghezza zona tesa inferiore, mm.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">2d1a3714-640e-4fb8-a842-300e9c03b0da</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">ed7339a0-d7a4-47e1-8263-3646b5f38fe8</item>
                         <item name="Name" type_name="gh_string" type_code="10">Bottom tension width</item>
                         <item name="NickName" type_name="gh_string" type_code="10">bt−</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -2047,14 +2047,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>539</X>
-                              <Y>1130</Y>
+                              <X>222</X>
+                              <Y>778</Y>
                               <W>26</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>553.5</X>
-                              <Y>1140</Y>
+                              <X>236.5</X>
+                              <Y>788</Y>
                             </item>
                           </items>
                         </chunk>
@@ -2083,7 +2083,7 @@
                     <chunk name="param_input" index="3">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Larghezza anima mm.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">da756a35-c022-46cf-91e0-8ff30cc1f93a</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">84ce9675-c654-429c-8f02-0af31bff6479</item>
                         <item name="Name" type_name="gh_string" type_code="10">Web width</item>
                         <item name="NickName" type_name="gh_string" type_code="10">bw</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -2093,14 +2093,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>539</X>
-                              <Y>1150</Y>
+                              <X>222</X>
+                              <Y>798</Y>
                               <W>26</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>553.5</X>
-                              <Y>1160</Y>
+                              <X>236.5</X>
+                              <Y>808</Y>
                             </item>
                           </items>
                         </chunk>
@@ -2129,7 +2129,7 @@
                     <chunk name="param_input" index="4">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Diametro staffa mm, 0 senza staffe.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">f54f7029-c21c-41de-86d0-231b70037484</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">402c857e-1580-470b-915d-6be50c8ba017</item>
                         <item name="Name" type_name="gh_string" type_code="10">Link diameter</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Øw</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -2139,14 +2139,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>539</X>
-                              <Y>1170</Y>
+                              <X>222</X>
+                              <Y>818</Y>
                               <W>26</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>553.5</X>
-                              <Y>1180</Y>
+                              <X>236.5</X>
+                              <Y>828</Y>
                             </item>
                           </items>
                         </chunk>
@@ -2175,7 +2175,7 @@
                     <chunk name="param_input" index="5">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Passo staffe mm.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">1b155537-ae82-4cff-85a0-3c1523547322</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">62cc2a1c-37c7-4d5a-932e-f93820385930</item>
                         <item name="Name" type_name="gh_string" type_code="10">Link spacing</item>
                         <item name="NickName" type_name="gh_string" type_code="10">sw</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -2185,14 +2185,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>539</X>
-                              <Y>1190</Y>
+                              <X>222</X>
+                              <Y>838</Y>
                               <W>26</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>553.5</X>
-                              <Y>1200</Y>
+                              <X>236.5</X>
+                              <Y>848</Y>
                             </item>
                           </items>
                         </chunk>
@@ -2221,7 +2221,7 @@
                     <chunk name="param_input" index="6">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Numero bracci.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">6939cc9b-a5f4-44a2-b47c-07b3ece7bd49</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">60fdeb7e-05d8-41d6-87bf-aabf8318bf43</item>
                         <item name="Name" type_name="gh_string" type_code="10">Link legs</item>
                         <item name="NickName" type_name="gh_string" type_code="10">nw</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -2231,14 +2231,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>539</X>
-                              <Y>1210</Y>
+                              <X>222</X>
+                              <Y>858</Y>
                               <W>26</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>553.5</X>
-                              <Y>1220</Y>
+                              <X>236.5</X>
+                              <Y>868</Y>
                             </item>
                           </items>
                         </chunk>
@@ -2267,7 +2267,7 @@
                     <chunk name="param_input" index="7">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Copriferro alle staffe; alle barre se senza staffe, mm.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">eeb3512f-2c7e-4540-8fc7-80fdd7e253ba</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">7913b8e9-f0c3-4599-89c6-ee29d8b3c55e</item>
                         <item name="Name" type_name="gh_string" type_code="10">Nominal cover</item>
                         <item name="NickName" type_name="gh_string" type_code="10">c</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -2277,14 +2277,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>539</X>
-                              <Y>1230</Y>
+                              <X>222</X>
+                              <Y>878</Y>
                               <W>26</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>553.5</X>
-                              <Y>1240</Y>
+                              <X>236.5</X>
+                              <Y>888</Y>
                             </item>
                           </items>
                         </chunk>
@@ -2313,7 +2313,7 @@
                     <chunk name="param_input" index="8">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Aggregato massimo mm.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">49ef4e73-ba3f-4141-bedd-63f2bed51a4d</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">d7f82cc8-e257-495a-9a0a-23090fb3674d</item>
                         <item name="Name" type_name="gh_string" type_code="10">Aggregate</item>
                         <item name="NickName" type_name="gh_string" type_code="10">dg</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -2323,14 +2323,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>539</X>
-                              <Y>1250</Y>
+                              <X>222</X>
+                              <Y>898</Y>
                               <W>26</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>553.5</X>
-                              <Y>1260</Y>
+                              <X>236.5</X>
+                              <Y>908</Y>
                             </item>
                           </items>
                         </chunk>
@@ -2359,7 +2359,7 @@
                     <chunk name="param_input" index="9">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Tolleranza copriferro mm.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">6f3b9adc-3fc6-4800-bed6-52805bc33b49</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">c0c49f25-0bca-4e28-a867-dfc6e96c226c</item>
                         <item name="Name" type_name="gh_string" type_code="10">Cover deviation</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Δc</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -2369,14 +2369,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>539</X>
-                              <Y>1270</Y>
+                              <X>222</X>
+                              <Y>918</Y>
                               <W>26</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>553.5</X>
-                              <Y>1280</Y>
+                              <X>236.5</X>
+                              <Y>928</Y>
                             </item>
                           </items>
                         </chunk>
@@ -2405,7 +2405,7 @@
                     <chunk name="param_input" index="10">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Da Concrete Cover; scollegato = controllo da completare.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">926cd98c-c063-40e6-9187-47bf1170627a</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">d6053992-e131-4cc1-a28e-09ceaaf5754c</item>
                         <item name="Name" type_name="gh_string" type_code="10">Durability minimum</item>
                         <item name="NickName" type_name="gh_string" type_code="10">cmin,dur</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">true</item>
@@ -2415,14 +2415,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>539</X>
-                              <Y>1290</Y>
+                              <X>222</X>
+                              <Y>938</Y>
                               <W>26</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>553.5</X>
-                              <Y>1300</Y>
+                              <X>236.5</X>
+                              <Y>948</Y>
                             </item>
                           </items>
                         </chunk>
@@ -2451,7 +2451,7 @@
                     <chunk name="param_input" index="11">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Zona di sovrapposizione.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">ab055ea5-1626-4e7e-b12e-3998afe829f7</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">c25d646f-41f8-4383-8829-b20ab4652b35</item>
                         <item name="Name" type_name="gh_string" type_code="10">Lap zone</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Lap</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -2461,14 +2461,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>539</X>
-                              <Y>1310</Y>
+                              <X>222</X>
+                              <Y>958</Y>
                               <W>26</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>553.5</X>
-                              <Y>1320</Y>
+                              <X>236.5</X>
+                              <Y>968</Y>
                             </item>
                           </items>
                         </chunk>
@@ -2497,7 +2497,7 @@
                     <chunk name="param_input" index="12">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Confermare il trattenimento delle barre compresse.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">7da9b849-8454-4fae-bf13-8b8c94bad054</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">7813b227-a555-4c62-83c2-3b346b468c96</item>
                         <item name="Name" type_name="gh_string" type_code="10">Compression bars restrained</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Restr</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -2507,14 +2507,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>539</X>
-                              <Y>1330</Y>
+                              <X>222</X>
+                              <Y>978</Y>
                               <W>26</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>553.5</X>
-                              <Y>1340</Y>
+                              <X>236.5</X>
+                              <Y>988</Y>
                             </item>
                           </items>
                         </chunk>
@@ -2543,7 +2543,7 @@
                     <chunk name="param_input" index="13">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Confermare dettagli delle zone di estremità richiesti da GPC.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">9f8a294d-bd85-4e49-9fcd-264be3a81499</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">15be1bdd-d3a5-498a-8d57-03dcb2425c83</item>
                         <item name="Name" type_name="gh_string" type_code="10">End zones confirmed</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Ends</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -2553,14 +2553,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>539</X>
-                              <Y>1350</Y>
+                              <X>222</X>
+                              <Y>998</Y>
                               <W>26</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>553.5</X>
-                              <Y>1360</Y>
+                              <X>236.5</X>
+                              <Y>1008</Y>
                             </item>
                           </items>
                         </chunk>
@@ -2589,25 +2589,25 @@
                     <chunk name="param_input" index="14">
                       <items count="7">
                         <item name="Description" type_name="gh_string" type_code="10">Richiesto per soletta/parete.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">1f2eb43c-6294-4b49-a2da-a2d2f5871e55</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">27635a1f-1ff4-4ba5-908c-57cf767d825c</item>
                         <item name="Name" type_name="gh_string" type_code="10">Plate data</item>
                         <item name="NickName" type_name="gh_string" type_code="10">P</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">true</item>
-                        <item name="Source" index="0" type_name="gh_guid" type_code="9">3e194897-e5a4-45b2-a914-aebbf431838b</item>
+                        <item name="Source" index="0" type_name="gh_guid" type_code="9">c59a8efc-d5ef-44f3-bcbf-166fe3ef7640</item>
                         <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                       </items>
                       <chunks count="1">
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>539</X>
-                              <Y>1370</Y>
+                              <X>222</X>
+                              <Y>1018</Y>
                               <W>26</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>553.5</X>
-                              <Y>1380</Y>
+                              <X>236.5</X>
+                              <Y>1028</Y>
                             </item>
                           </items>
                         </chunk>
@@ -2616,7 +2616,7 @@
                     <chunk name="param_output" index="0">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Opzioni dettagli.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">02468be9-bf4c-495d-8f17-4a05df8cba22</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">8dde9b3b-f7fa-4085-8a5e-5bcc3a6bf6fc</item>
                         <item name="Name" type_name="gh_string" type_code="10">Options</item>
                         <item name="NickName" type_name="gh_string" type_code="10">O</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -2626,14 +2626,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>595</X>
-                              <Y>1090</Y>
+                              <X>278</X>
+                              <Y>738</Y>
                               <W>12</W>
                               <H>300</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>601</X>
-                              <Y>1240</Y>
+                              <X>284</X>
+                              <Y>888</Y>
                             </item>
                           </items>
                         </chunk>
@@ -2653,7 +2653,7 @@
                 <chunk name="Container">
                   <items count="4">
                     <item name="Description" type_name="gh_string" type_code="10">Dati delle armature secondarie/orizzontali non ricavabili dalla sezione 2D.</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">8cd387a4-6b48-4856-896c-2be857dcaab8</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">a45ab91d-c76a-445a-adb6-34801766ad77</item>
                     <item name="Name" type_name="gh_string" type_code="10">Plate Detailing Options</item>
                     <item name="NickName" type_name="gh_string" type_code="10">PlateOpt</item>
                   </items>
@@ -2661,21 +2661,21 @@
                     <chunk name="Attributes">
                       <items count="2">
                         <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                          <X>169</X>
-                          <Y>2168</Y>
+                          <X>40</X>
+                          <Y>828</Y>
                           <W>60</W>
                           <H>64</H>
                         </item>
                         <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                          <X>200</X>
-                          <Y>2200</Y>
+                          <X>71</X>
+                          <Y>860</Y>
                         </item>
                       </items>
                     </chunk>
                     <chunk name="param_input" index="0">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Somma delle due facce, mm²/m.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">16edb0a8-c3c2-4c18-aa4a-2c5c0897a733</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">e32fa265-1707-41a9-9a59-e86f35e655e8</item>
                         <item name="Name" type_name="gh_string" type_code="10">Secondary steel</item>
                         <item name="NickName" type_name="gh_string" type_code="10">As2</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -2685,14 +2685,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>171</X>
-                              <Y>2170</Y>
+                              <X>42</X>
+                              <Y>830</Y>
                               <W>14</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>179.5</X>
-                              <Y>2180</Y>
+                              <X>50.5</X>
+                              <Y>840</Y>
                             </item>
                           </items>
                         </chunk>
@@ -2721,7 +2721,7 @@
                     <chunk name="param_input" index="1">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Passo mm; 0 dato mancante, esito da completare.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">ad344b35-03dc-4dec-bf45-94613e100078</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">87023fea-12bf-449b-b9c1-e5f9baa1bb6a</item>
                         <item name="Name" type_name="gh_string" type_code="10">Secondary spacing</item>
                         <item name="NickName" type_name="gh_string" type_code="10">s2</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -2731,14 +2731,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>171</X>
-                              <Y>2190</Y>
+                              <X>42</X>
+                              <Y>850</Y>
                               <W>14</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>179.5</X>
-                              <Y>2200</Y>
+                              <X>50.5</X>
+                              <Y>860</Y>
                             </item>
                           </items>
                         </chunk>
@@ -2767,7 +2767,7 @@
                     <chunk name="param_input" index="2">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Zona critica della soletta.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">e805aaf4-941a-4756-a519-512b2f0ba316</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">ede5d299-642a-4840-a4eb-a2800d240d69</item>
                         <item name="Name" type_name="gh_string" type_code="10">Critical region</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Crit</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -2777,14 +2777,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>171</X>
-                              <Y>2210</Y>
+                              <X>42</X>
+                              <Y>870</Y>
                               <W>14</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>179.5</X>
-                              <Y>2220</Y>
+                              <X>50.5</X>
+                              <Y>880</Y>
                             </item>
                           </items>
                         </chunk>
@@ -2813,7 +2813,7 @@
                     <chunk name="param_output" index="0">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Opzioni piastra/parete.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">3e194897-e5a4-45b2-a914-aebbf431838b</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">c59a8efc-d5ef-44f3-bcbf-166fe3ef7640</item>
                         <item name="Name" type_name="gh_string" type_code="10">Plate data</item>
                         <item name="NickName" type_name="gh_string" type_code="10">P</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -2823,14 +2823,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>215</X>
-                              <Y>2170</Y>
+                              <X>86</X>
+                              <Y>830</Y>
                               <W>12</W>
                               <H>60</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>221</X>
-                              <Y>2200</Y>
+                              <X>92</X>
+                              <Y>860</Y>
                             </item>
                           </items>
                         </chunk>
@@ -2850,7 +2850,7 @@
                 <chunk name="Container">
                   <items count="4">
                     <item name="Description" type_name="gh_string" type_code="10">Minimi/massimi, interferro, staffe e copriferro secondo il profilo GPC; rende visibili le regole in sospeso.</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">6fff3384-9f7e-4875-8f4e-cd6d24f3cd5f</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">31f9c33c-753f-4a62-945a-685fbb2d09d2</item>
                     <item name="Name" type_name="gh_string" type_code="10">Reinforcement Detailing</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Detail</item>
                   </items>
@@ -2858,39 +2858,39 @@
                     <chunk name="Attributes">
                       <items count="2">
                         <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                          <X>1304</X>
-                          <Y>238</Y>
+                          <X>596</X>
+                          <Y>649</Y>
                           <W>71</W>
                           <H>84</H>
                         </item>
                         <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                          <X>1340</X>
-                          <Y>280</Y>
+                          <X>632</X>
+                          <Y>691</Y>
                         </item>
                       </items>
                     </chunk>
                     <chunk name="param_input" index="0">
                       <items count="7">
                         <item name="Description" type_name="gh_string" type_code="10">Sezione e norma.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">4b87dd45-f226-4e99-ac40-bb0875c77373</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">f6e6df89-f154-4627-be0f-8ce5ec05e8ca</item>
                         <item name="Name" type_name="gh_string" type_code="10">Checker</item>
                         <item name="NickName" type_name="gh_string" type_code="10">C</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
-                        <item name="Source" index="0" type_name="gh_guid" type_code="9">0af07e15-422c-4e56-a5bf-f2ca7b970c19</item>
+                        <item name="Source" index="0" type_name="gh_guid" type_code="9">7c93f69f-d18c-4c95-acac-c59b611bdec7</item>
                         <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                       </items>
                       <chunks count="1">
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1306</X>
-                              <Y>240</Y>
+                              <X>598</X>
+                              <Y>651</Y>
                               <W>19</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1317</X>
-                              <Y>250</Y>
+                              <X>609</X>
+                              <Y>661</Y>
                             </item>
                           </items>
                         </chunk>
@@ -2899,25 +2899,25 @@
                     <chunk name="param_input" index="1">
                       <items count="7">
                         <item name="Description" type_name="gh_string" type_code="10">Da Detailing Options.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">a6e0de8d-9751-4976-a123-500564a6bf6f</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">7cd52060-17ec-4db5-bb54-8ddb7ea0258a</item>
                         <item name="Name" type_name="gh_string" type_code="10">Options</item>
                         <item name="NickName" type_name="gh_string" type_code="10">O</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
-                        <item name="Source" index="0" type_name="gh_guid" type_code="9">02468be9-bf4c-495d-8f17-4a05df8cba22</item>
+                        <item name="Source" index="0" type_name="gh_guid" type_code="9">8dde9b3b-f7fa-4085-8a5e-5bcc3a6bf6fc</item>
                         <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                       </items>
                       <chunks count="1">
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1306</X>
-                              <Y>260</Y>
+                              <X>598</X>
+                              <Y>671</Y>
                               <W>19</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1317</X>
-                              <Y>270</Y>
+                              <X>609</X>
+                              <Y>681</Y>
                             </item>
                           </items>
                         </chunk>
@@ -2926,7 +2926,7 @@
                     <chunk name="param_input" index="2">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Massima compressione fra le combinazioni, kN negativa.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">19914abf-3cd5-4815-92bc-2f723244a35e</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">ea965662-7e86-4b33-958d-89a704b6a656</item>
                         <item name="Name" type_name="gh_string" type_code="10">Minimum axial force</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Nmin</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -2936,14 +2936,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1306</X>
-                              <Y>280</Y>
+                              <X>598</X>
+                              <Y>691</Y>
                               <W>19</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1317</X>
-                              <Y>290</Y>
+                              <X>609</X>
+                              <Y>701</Y>
                             </item>
                           </items>
                         </chunk>
@@ -2972,7 +2972,7 @@
                     <chunk name="param_input" index="3">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Identificativo.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">1470e9e6-f5ae-4b18-a874-0496a37d68eb</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">3d5c4e8f-3ff2-4060-b1cd-c5713eced782</item>
                         <item name="Name" type_name="gh_string" type_code="10">Section ID</item>
                         <item name="NickName" type_name="gh_string" type_code="10">ID</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -2982,14 +2982,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1306</X>
-                              <Y>300</Y>
+                              <X>598</X>
+                              <Y>711</Y>
                               <W>19</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1317</X>
-                              <Y>310</Y>
+                              <X>609</X>
+                              <Y>721</Y>
                             </item>
                           </items>
                         </chunk>
@@ -3020,7 +3020,7 @@
                       <items count="7">
                         <item name="Access" type_name="gh_int32" type_code="3">1</item>
                         <item name="Description" type_name="gh_string" type_code="10">Un risultato per regola.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">2f65291c-df97-41f2-8906-c8521b675689</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">6b2ed522-c481-497a-a1ee-aa84346c13c1</item>
                         <item name="Name" type_name="gh_string" type_code="10">Results</item>
                         <item name="NickName" type_name="gh_string" type_code="10">R</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -3030,14 +3030,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1355</X>
-                              <Y>240</Y>
+                              <X>647</X>
+                              <Y>651</Y>
                               <W>18</W>
                               <H>40</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1364</X>
-                              <Y>260</Y>
+                              <X>656</X>
+                              <Y>671</Y>
                             </item>
                           </items>
                         </chunk>
@@ -3046,7 +3046,7 @@
                     <chunk name="param_output" index="1">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Dettagli e confronti GPC (stesso formato di Check Report).</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">84093777-dd92-441e-bc16-149256d89bc4</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">b859e47b-a2f3-4e0a-91c2-43b60f150cdf</item>
                         <item name="Name" type_name="gh_string" type_code="10">CSV</item>
                         <item name="NickName" type_name="gh_string" type_code="10">CSV</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -3056,14 +3056,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1355</X>
-                              <Y>280</Y>
+                              <X>647</X>
+                              <Y>691</Y>
                               <W>18</W>
                               <H>40</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1364</X>
-                              <Y>300</Y>
+                              <X>656</X>
+                              <Y>711</Y>
                             </item>
                           </items>
                         </chunk>
@@ -3083,7 +3083,7 @@
                 <chunk name="Container">
                   <items count="4">
                     <item name="Description" type_name="gh_string" type_code="10">Unico report di ReBear: tabella CSV e JSON versionato di esiti (Check Result) oppure di riepiloghi tensionali (Stress Analysis Summary); nessuna scrittura su disco.</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">bc75c0e0-4cc6-4087-8a63-d3c0a3358cc9</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">ca2e3c15-bb74-4f97-8ece-0349835cd1a7</item>
                     <item name="Name" type_name="gh_string" type_code="10">Check Report</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Report</item>
                   </items>
@@ -3091,14 +3091,14 @@
                     <chunk name="Attributes">
                       <items count="2">
                         <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                          <X>1694</X>
-                          <Y>248</Y>
+                          <X>787</X>
+                          <Y>567</Y>
                           <W>64</W>
                           <H>64</H>
                         </item>
                         <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                          <X>1720</X>
-                          <Y>280</Y>
+                          <X>813</X>
+                          <Y>599</Y>
                         </item>
                       </items>
                     </chunk>
@@ -3106,25 +3106,25 @@
                       <items count="8">
                         <item name="Access" type_name="gh_int32" type_code="3">1</item>
                         <item name="Description" type_name="gh_string" type_code="10">Esiti oppure riepiloghi tensionali dello stesso ramo (un solo tipo per report).</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">cb46d582-1900-4ab3-a579-49a798994dd4</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">967cb4df-1b12-436d-9c08-14ab0e80aba9</item>
                         <item name="Name" type_name="gh_string" type_code="10">Results</item>
                         <item name="NickName" type_name="gh_string" type_code="10">R</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
-                        <item name="Source" index="0" type_name="gh_guid" type_code="9">2f65291c-df97-41f2-8906-c8521b675689</item>
+                        <item name="Source" index="0" type_name="gh_guid" type_code="9">6b2ed522-c481-497a-a1ee-aa84346c13c1</item>
                         <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                       </items>
                       <chunks count="1">
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1696</X>
-                              <Y>250</Y>
+                              <X>789</X>
+                              <Y>569</Y>
                               <W>9</W>
                               <H>60</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1702</X>
-                              <Y>280</Y>
+                              <X>795</X>
+                              <Y>599</Y>
                             </item>
                           </items>
                         </chunk>
@@ -3133,7 +3133,7 @@
                     <chunk name="param_output" index="0">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Separatore ;, numeri invariant, campi con escaping, valore mancante = campo vuoto.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">ad4c7da4-de87-4b3d-82c9-2fe94bd0353e</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">fee2458f-d0bf-4e5c-93e4-fd506fff85e3</item>
                         <item name="Name" type_name="gh_string" type_code="10">CSV</item>
                         <item name="NickName" type_name="gh_string" type_code="10">CSV</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -3143,14 +3143,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1735</X>
-                              <Y>250</Y>
+                              <X>828</X>
+                              <Y>569</Y>
                               <W>21</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1745.5</X>
-                              <Y>260</Y>
+                              <X>838.5</X>
+                              <Y>579</Y>
                             </item>
                           </items>
                         </chunk>
@@ -3159,7 +3159,7 @@
                     <chunk name="param_output" index="1">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Schema ReBear.CheckReport o ReBear.StressReport v1 e versione motore.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">b404d6c7-4423-4825-bba5-cadacea764f3</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">00d5b37d-b111-4ac9-a2b6-4471dde17378</item>
                         <item name="Name" type_name="gh_string" type_code="10">JSON</item>
                         <item name="NickName" type_name="gh_string" type_code="10">JSON</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -3169,14 +3169,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1735</X>
-                              <Y>270</Y>
+                              <X>828</X>
+                              <Y>589</Y>
                               <W>21</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1745.5</X>
-                              <Y>280</Y>
+                              <X>838.5</X>
+                              <Y>599</Y>
                             </item>
                           </items>
                         </chunk>
@@ -3186,7 +3186,7 @@
                       <items count="7">
                         <item name="Access" type_name="gh_int32" type_code="3">1</item>
                         <item name="Description" type_name="gh_string" type_code="10">Sintesi degli inviluppi o degli estremi.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">1bf19bf3-6f12-4460-9946-d0e05ecaf211</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">283b49e5-5f06-43e9-b6b2-56cb233671f3</item>
                         <item name="Name" type_name="gh_string" type_code="10">Summary</item>
                         <item name="NickName" type_name="gh_string" type_code="10">S</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -3196,14 +3196,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1735</X>
-                              <Y>290</Y>
+                              <X>828</X>
+                              <Y>609</Y>
                               <W>21</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1745.5</X>
-                              <Y>300</Y>
+                              <X>838.5</X>
+                              <Y>619</Y>
                             </item>
                           </items>
                         </chunk>
@@ -3223,7 +3223,7 @@
                 <chunk name="Container">
                   <items count="4">
                     <item name="Description" type_name="gh_string" type_code="10">Legge un risultato strutturato senza sostituire i dati mancanti con zero.</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">9fa231ce-d14f-41c6-9f52-a3058eb8b256</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">03aece4a-f0d9-45e0-8fb2-6a7ca243abde</item>
                     <item name="Name" type_name="gh_string" type_code="10">Check Result</item>
                     <item name="NickName" type_name="gh_string" type_code="10">Result</item>
                   </items>
@@ -3231,39 +3231,39 @@
                     <chunk name="Attributes">
                       <items count="2">
                         <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                          <X>1694</X>
-                          <Y>648</Y>
+                          <X>787</X>
+                          <Y>671</Y>
                           <W>59</W>
                           <H>224</H>
                         </item>
                         <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                          <X>1720</X>
-                          <Y>760</Y>
+                          <X>813</X>
+                          <Y>783</Y>
                         </item>
                       </items>
                     </chunk>
                     <chunk name="param_input" index="0">
                       <items count="7">
                         <item name="Description" type_name="gh_string" type_code="10">Risultato ReBear.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">6f42a8e4-577a-4bcc-81eb-482c1121807a</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">3baff46a-c083-4e34-9368-db414d188f7a</item>
                         <item name="Name" type_name="gh_string" type_code="10">Result</item>
                         <item name="NickName" type_name="gh_string" type_code="10">R</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
-                        <item name="Source" index="0" type_name="gh_guid" type_code="9">2f65291c-df97-41f2-8906-c8521b675689</item>
+                        <item name="Source" index="0" type_name="gh_guid" type_code="9">6b2ed522-c481-497a-a1ee-aa84346c13c1</item>
                         <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                       </items>
                       <chunks count="1">
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1696</X>
-                              <Y>650</Y>
+                              <X>789</X>
+                              <Y>673</Y>
                               <W>9</W>
                               <H>220</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1702</X>
-                              <Y>760</Y>
+                              <X>795</X>
+                              <Y>783</Y>
                             </item>
                           </items>
                         </chunk>
@@ -3272,7 +3272,7 @@
                     <chunk name="param_output" index="0">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Identificativo sezione.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">02519d09-e67b-4bd2-9432-807b177c9604</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">5ea41d4a-c1c9-4ae9-8fca-49465a83471e</item>
                         <item name="Name" type_name="gh_string" type_code="10">Section</item>
                         <item name="NickName" type_name="gh_string" type_code="10">S</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -3282,14 +3282,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1735</X>
-                              <Y>650</Y>
+                              <X>828</X>
+                              <Y>673</Y>
                               <W>16</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1743</X>
-                              <Y>660</Y>
+                              <X>836</X>
+                              <Y>683</Y>
                             </item>
                           </items>
                         </chunk>
@@ -3298,7 +3298,7 @@
                     <chunk name="param_output" index="1">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Combinazione.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">c403d5c1-38fd-4bea-add2-5697e23d35d8</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">9dd61217-e179-4fa7-9245-56478b3fcff2</item>
                         <item name="Name" type_name="gh_string" type_code="10">Case</item>
                         <item name="NickName" type_name="gh_string" type_code="10">C</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -3308,14 +3308,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1735</X>
-                              <Y>670</Y>
+                              <X>828</X>
+                              <Y>693</Y>
                               <W>16</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1743</X>
-                              <Y>680</Y>
+                              <X>836</X>
+                              <Y>703</Y>
                             </item>
                           </items>
                         </chunk>
@@ -3324,7 +3324,7 @@
                     <chunk name="param_output" index="2">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Verifica.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">7ffe1bcb-7e99-45ed-a4bf-72e521ea6e52</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">ef5c3c1f-e6f3-4011-92af-44097e8f4d8f</item>
                         <item name="Name" type_name="gh_string" type_code="10">Check</item>
                         <item name="NickName" type_name="gh_string" type_code="10">K</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -3334,14 +3334,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1735</X>
-                              <Y>690</Y>
+                              <X>828</X>
+                              <Y>713</Y>
                               <W>16</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1743</X>
-                              <Y>700</Y>
+                              <X>836</X>
+                              <Y>723</Y>
                             </item>
                           </items>
                         </chunk>
@@ -3350,7 +3350,7 @@
                     <chunk name="param_output" index="3">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Satisfied, NotSatisfied, NotEvaluated, NotRequired.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">8aaa3c81-2bfa-42be-b3e0-b6d7eeebb4fd</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">cfe8d7aa-9908-464f-897d-c92f360cfcba</item>
                         <item name="Name" type_name="gh_string" type_code="10">Status</item>
                         <item name="NickName" type_name="gh_string" type_code="10">St</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -3360,14 +3360,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1735</X>
-                              <Y>710</Y>
+                              <X>828</X>
+                              <Y>733</Y>
                               <W>16</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1743</X>
-                              <Y>720</Y>
+                              <X>836</X>
+                              <Y>743</Y>
                             </item>
                           </items>
                         </chunk>
@@ -3376,7 +3376,7 @@
                     <chunk name="param_output" index="4">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">NaN se non definito.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">89cedf0d-17c1-4fc7-b1d1-cedf71401d6a</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">44d95026-f454-4ba4-979d-440fd0bc28d1</item>
                         <item name="Name" type_name="gh_string" type_code="10">Utilization</item>
                         <item name="NickName" type_name="gh_string" type_code="10">η</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -3386,14 +3386,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1735</X>
-                              <Y>730</Y>
+                              <X>828</X>
+                              <Y>753</Y>
                               <W>16</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1743</X>
-                              <Y>740</Y>
+                              <X>836</X>
+                              <Y>763</Y>
                             </item>
                           </items>
                         </chunk>
@@ -3402,7 +3402,7 @@
                     <chunk name="param_output" index="5">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Domanda; NaN se non applicabile.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">ca46b485-f236-4808-be21-48319e607c5f</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">867c830e-a32d-4024-b153-717e1f1f7716</item>
                         <item name="Name" type_name="gh_string" type_code="10">Demand</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Ed</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -3412,14 +3412,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1735</X>
-                              <Y>750</Y>
+                              <X>828</X>
+                              <Y>773</Y>
                               <W>16</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1743</X>
-                              <Y>760</Y>
+                              <X>836</X>
+                              <Y>783</Y>
                             </item>
                           </items>
                         </chunk>
@@ -3428,7 +3428,7 @@
                     <chunk name="param_output" index="6">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Capacità/limite; NaN se non applicabile.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">fc09f9b3-d1c0-4c8b-bf80-4868e2533a32</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">37f21f95-e7d6-4863-a226-64c0aab96563</item>
                         <item name="Name" type_name="gh_string" type_code="10">Capacity</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Rd</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -3438,14 +3438,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1735</X>
-                              <Y>770</Y>
+                              <X>828</X>
+                              <Y>793</Y>
                               <W>16</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1743</X>
-                              <Y>780</Y>
+                              <X>836</X>
+                              <Y>803</Y>
                             </item>
                           </items>
                         </chunk>
@@ -3454,7 +3454,7 @@
                     <chunk name="param_output" index="7">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Unità di domanda e capacità.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">da815d28-ff64-4893-ae3e-3c394f394f3d</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">aa07fe4e-e4ee-4c1a-bbe0-8272ed3c971d</item>
                         <item name="Name" type_name="gh_string" type_code="10">Unit</item>
                         <item name="NickName" type_name="gh_string" type_code="10">U</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -3464,14 +3464,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1735</X>
-                              <Y>790</Y>
+                              <X>828</X>
+                              <Y>813</Y>
                               <W>16</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1743</X>
-                              <Y>800</Y>
+                              <X>836</X>
+                              <Y>823</Y>
                             </item>
                           </items>
                         </chunk>
@@ -3480,7 +3480,7 @@
                     <chunk name="param_output" index="8">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Stato e limitazioni.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">3274c221-bae8-4095-98e8-424c6c64f349</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">7fdb4f09-ca6f-4e2c-9d4b-424a8b1dc8ba</item>
                         <item name="Name" type_name="gh_string" type_code="10">Message</item>
                         <item name="NickName" type_name="gh_string" type_code="10">M</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -3490,14 +3490,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1735</X>
-                              <Y>810</Y>
+                              <X>828</X>
+                              <Y>833</Y>
                               <W>16</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1743</X>
-                              <Y>820</Y>
+                              <X>836</X>
+                              <Y>843</Y>
                             </item>
                           </items>
                         </chunk>
@@ -3506,7 +3506,7 @@
                     <chunk name="param_output" index="9">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Riferimento restituito da GPC.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">058e40b6-f771-4a6d-a654-42c293cf3c22</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">ffe1ce7e-95ab-40e5-a13b-623b8856012a</item>
                         <item name="Name" type_name="gh_string" type_code="10">Reference</item>
                         <item name="NickName" type_name="gh_string" type_code="10">Ref</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -3516,14 +3516,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1735</X>
-                              <Y>830</Y>
+                              <X>828</X>
+                              <Y>853</Y>
                               <W>16</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1743</X>
-                              <Y>840</Y>
+                              <X>836</X>
+                              <Y>863</Y>
                             </item>
                           </items>
                         </chunk>
@@ -3532,7 +3532,7 @@
                     <chunk name="param_output" index="10">
                       <items count="6">
                         <item name="Description" type_name="gh_string" type_code="10">Dettagli GPC.</item>
-                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">41c20e4d-51dc-4fa3-a7cb-a662bba7033c</item>
+                        <item name="InstanceGuid" type_name="gh_guid" type_code="9">f45f5d8a-06b0-4f7f-a9b6-b8a81eb1837f</item>
                         <item name="Name" type_name="gh_string" type_code="10">Details</item>
                         <item name="NickName" type_name="gh_string" type_code="10">D</item>
                         <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -3542,14 +3542,14 @@
                         <chunk name="Attributes">
                           <items count="2">
                             <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                              <X>1735</X>
-                              <Y>850</Y>
+                              <X>828</X>
+                              <Y>873</Y>
                               <W>16</W>
                               <H>20</H>
                             </item>
                             <item name="Pivot" type_name="gh_drawing_pointf" type_code="31">
-                              <X>1743</X>
-                              <Y>860</Y>
+                              <X>836</X>
+                              <Y>883</Y>
                             </item>
                           </items>
                         </chunk>
@@ -3568,12 +3568,12 @@
                 <chunk name="Container">
                   <items count="9">
                     <item name="Description" type_name="gh_string" type_code="10">A panel for custom notes and text values</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">93fb716d-4019-48a1-a27b-62b0a36b5200</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">fb300e05-93e6-41ca-a57b-fc8ba04463e7</item>
                     <item name="Name" type_name="gh_string" type_code="10">Panel</item>
                     <item name="NickName" type_name="gh_string" type_code="10">CSV / risultati</item>
                     <item name="Optional" type_name="gh_bool" type_code="1">false</item>
                     <item name="ScrollRatio" type_name="gh_double" type_code="6">0</item>
-                    <item name="Source" index="0" type_name="gh_guid" type_code="9">ad4c7da4-de87-4b3d-82c9-2fe94bd0353e</item>
+                    <item name="Source" index="0" type_name="gh_guid" type_code="9">fee2458f-d0bf-4e5c-93e4-fd506fff85e3</item>
                     <item name="SourceCount" type_name="gh_int32" type_code="3">1</item>
                     <item name="UserText" type_name="gh_string" type_code="10">Double click to edit panel content…</item>
                   </items>
@@ -3581,8 +3581,8 @@
                     <chunk name="Attributes">
                       <items count="4">
                         <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                          <X>2100</X>
-                          <Y>280</Y>
+                          <X>971</X>
+                          <Y>424.16666</Y>
                           <W>650</W>
                           <H>350</H>
                         </item>
@@ -3617,7 +3617,7 @@
                 <chunk name="Container">
                   <items count="8">
                     <item name="Description" type_name="gh_string" type_code="10">A panel for custom notes and text values</item>
-                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">bcc6ebdd-0f35-4532-8d0f-7570da8d0364</item>
+                    <item name="InstanceGuid" type_name="gh_guid" type_code="9">b34ede58-987a-42d0-9f0e-7d722dbb5696</item>
                     <item name="Name" type_name="gh_string" type_code="10">Panel</item>
                     <item name="NickName" type_name="gh_string" type_code="10">ReBear — esempio svolto</item>
                     <item name="Optional" type_name="gh_bool" type_code="1">false</item>
@@ -3625,6 +3625,7 @@
                     <item name="SourceCount" type_name="gh_int32" type_code="3">0</item>
                     <item name="UserText" type_name="gh_string" type_code="10">Soletta: armatura principale e secondaria
 Geometria: mm; forze: kN; momenti: kNm; compressione negativa.
+Dati a sinistra, verifiche e risultati verso destra.
 Dati persistenti nelle porte: tasto destro &gt; Set...
 Consultare README.md e results.json nella stessa cartella.
 Run=True nei componenti di analisi predisposti.</item>
@@ -3633,10 +3634,10 @@ Run=True nei componenti di analisi predisposti.</item>
                     <chunk name="Attributes">
                       <items count="4">
                         <item name="Bounds" type_name="gh_drawing_rectanglef" type_code="35">
-                          <X>20</X>
+                          <X>40</X>
                           <Y>20</Y>
                           <W>700</W>
-                          <H>160</H>
+                          <H>180</H>
                         </item>
                         <item name="MarginLeft" type_name="gh_int32" type_code="3">0</item>
                         <item name="MarginRight" type_name="gh_int32" type_code="3">0</item>

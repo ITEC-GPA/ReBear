@@ -2,7 +2,7 @@
   "schema": "ReBear.WorkedExample",
   "version": 1,
   "example": "14-ancoraggio-sovrapposizione",
-  "engine": "GPCChecker.Concrete, Version=0.32.0.1, Culture=neutral, PublicKeyToken=null",
+  "engine": "GPCChecker.Concrete, Version=0.32.0.2, Culture=neutral, PublicKeyToken=null",
   "verification": "Calcolo adapter GPC eseguito; archivio GH riletto; soluzione dentro Rhino non eseguita.",
   "values": {
     "fbd [MPa]": 3.0412915615077334,

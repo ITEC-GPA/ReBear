@@ -14,6 +14,8 @@ namespace ConcreteSectionChecker.Grasshopper
             global::Grasshopper.Instances.ComponentServer.AddCategoryShortName(ComponentPalette.Category, "ReBear");
             global::Grasshopper.Instances.ComponentServer.AddCategorySymbolName(ComponentPalette.Category, 'R');
             GpcReleaseGuard.Start();
+            // The GPC libraries are checked against the release set by GpcReleaseGuard.
+            Gpc.PluginChecks.PluginBuildCheck.Start(typeof(ReBearAssemblyPriority).Assembly, "ReBear", sharedLibraries: false);
             return GH_LoadingInstruction.Proceed;
         }
     }

@@ -1,5 +1,9 @@
 # Migrazione Rhino2FEM → ReBear
 
+## Aggiornamento 0.3.2 — 1° novembre 2026
+
+Nessun cambiamento di componenti, porte, risultati o set GPC. Al caricamento ReBear verifica anche che il `bin` sia compilato dal commit su cui si trova il suo checkout, con il controllo comune ai plugin gPC. Un `bin` rimasto a un commit precedente compare nella riga di comando di Rhino e come avviso su ogni componente.
+
 ## Aggiornamento 0.3.1 — 1° novembre 2026
 
 Nessun cambiamento di componenti, porte, risultati o set GPC: le definizioni e la palette 0.3 restano valide. Il controllo al caricamento segnala anche un `bin` non ricompilato dopo un aggiornamento di `lib/GPC`. Il 1° novembre BridGHe ha calcolato con le librerie del 26 ottobre senza alcun avviso per questo motivo. Se ReBear gira dal `bin` di un checkout, le DLL GPC accanto a `ReBear.gha` sono confrontate con `lib/GPC/release-set.json`. Ogni differenza compare nella riga di comando di Rhino e come avviso su ogni componente, insieme alla richiesta di chiudere Rhino e ricompilare.

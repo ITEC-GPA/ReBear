@@ -86,16 +86,16 @@ Nelle opzioni di taglio la direzione X usa V1/M2 e la direzione Y V2/M1; le quan
 | `tools/ExampleGenerator` | Generatore e controlli numerici dei 20 esempi `.gh`/`.ghx`, con confronto rispetto a 0.2.2 |
 | `tools/RhinoExampleProbe.py` | Prova dei 20 esempi dentro Rhino 8 |
 
-ReBear **0.3.0** usa il **set GPC ufficiale del 30 ottobre 2026 (pomeriggio)**, con Model `8fb97ef8` e Checker `f253ee4e`, comune con BridGHe. Il manifest contiene `candidate=false`. Rispetto al set del 27 ottobre, con cui 0.3.0 è stato pubblicato, cambiano solo le librerie: i 20 esempi danno gli stessi numeri; nei risultati cambiano la versione del motore e alcuni riferimenti normativi dei dettagli, corretti in GPC (per esempio `§4.1.6.1.3` al posto di `§4.1.6.1 .3` ed EC2 §9.2.1.1 al posto di §9.3.1.1). Il set del pomeriggio somma i contributi dell'integrazione di Gauss senza memorizzarli (GPCModel 5.31.0.0): stessi risultati, meno memoria allocata.
+ReBear **0.3.0** usa il **set GPC ufficiale del 1° novembre 2026**, con Model `a6f664c9` e Checker `a9ba5887`, comune con BridGHe. Il manifest contiene `candidate=false`. Rispetto al set del 27 ottobre, con cui 0.3.0 è stato pubblicato, cambiano solo le librerie: i 20 esempi danno gli stessi numeri; nei risultati cambiano la versione del motore e alcuni riferimenti normativi dei dettagli, corretti in GPC (per esempio `§4.1.6.1.3` al posto di `§4.1.6.1 .3` ed EC2 §9.2.1.1 al posto di §9.3.1.1). Il set del 30 ottobre (pomeriggio) somma i contributi dell'integrazione di Gauss senza memorizzarli (GPCModel 5.31.0.0): stessi risultati, meno memoria allocata. Quello del 1° novembre porta GPCModel 5.32 (contratti delle azioni non sismiche) e il ricalcolo dei dettagli di CompositeBridge usato da BridGHe; Concrete è solo ricompilato.
 
 | Assembly | Versione |
 |---|---|
 | GPCUtilities | 3.0.0.0 |
 | GPCGeometry | 2.3.0.0 |
 | DelaunayMesh | 2.0.0.14 |
-| GPCModel | 5.31.0.0 |
-| GPCModelData | 0.3.0.16 |
-| GPCChecker.Concrete | 0.32.0.2 |
+| GPCModel | 5.32.0.0 |
+| GPCModelData | 0.3.0.17 |
+| GPCChecker.Concrete | 0.32.0.5 |
 | MathNet.Numerics, via NuGet | 5.0.0 |
 
 `lib/GPC/release-set.json` è il manifest completo del rilascio di origine: il plugin ne usa sei DLL e lo distribuisce per il controllo al caricamento. I progetti non dipendono dai percorsi dei repository fratelli. Per aggiornare GPC, sostituire il set coerente e il relativo manifest, quindi rieseguire le prove; non aggiornare una DLL isolata.

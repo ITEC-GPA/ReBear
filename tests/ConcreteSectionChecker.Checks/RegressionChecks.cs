@@ -1,6 +1,10 @@
 using System;
+using System.Diagnostics;
 using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Runtime.Loader;
+using System.Text.Json.Nodes;
 using System.Threading;
 using ConcreteSectionChecker.Adapters;
 using GPC.Checkers.Concrete.Checkers;
@@ -34,6 +38,7 @@ internal static class RegressionChecks
         run("Prestazioni: checker Iterative, analisi ausiliaria non fessurata condivisa nel batch", Caching);
         run("Ricerca in parallelo uguale alla seriale; annullamento", ParallelSearch);
         run("Verifica del set GPC caricato rispetto a release-set.json", ReleaseSet);
+        run("Bin non ricompilato dopo un cambio di lib/GPC: avviso al caricamento, nessuno per il bin pubblicato", StaleBin);
     }
 
     private static void AbsentExtremes()
@@ -294,5 +299,84 @@ internal static class RegressionChecks
         // The real process: the test runner loads the GPC set of lib/GPC.
         var real = ReleaseSetCheck.CompareLoaded(System.IO.Path.Combine(RepositoryRoot, "lib/GPC/release-set.json"));
         Check(real.Count == 0, "Loaded GPC assemblies match the release set: " + string.Join("; ", real));
+    }
+
+    private static void StaleBin()
+    {
+        string lib = Path.Combine(RepositoryRoot, "lib", "GPC", "release-set.json");
+        var set = ReleaseSetCheck.Manifest(File.ReadAllText(lib));
+        string Version(string file) => set.Single(e => e.File == file).Version;
+        Check(ReleaseSetCheck.RepositoryManifest(AppContext.BaseDirectory) == lib, "Checkout found above the private outputs");
+        string root = Path.Combine(Path.GetTempPath(), "rebear-gpc-set-" + Guid.NewGuid().ToString("N"));
+        try
+        {
+            // A checkout copy: the published bin, the solution file and lib/GPC.
+            string bin = Path.Combine(root, "bin"), manifest = Path.Combine(root, "lib", "GPC", "release-set.json");
+            CopyFolder(Path.Combine(RepositoryRoot, "bin"), bin);
+            Directory.CreateDirectory(Path.GetDirectoryName(manifest));
+            File.WriteAllText(Path.Combine(root, "ConcreteSectionChecker.sln"), "");
+            File.Copy(lib, manifest);
+            Check(ReleaseSetCheck.RepositoryManifest(bin) == manifest && ReleaseSetCheck.RepositoryManifest(Path.GetTempPath()) == null,
+                "Checkout found above bin and nowhere else");
+            // The set lists more DLLs than the six ReBear ships: the others are absent from the bin and ignored.
+            Check(set.Count > 6 && ReleaseSetCheck.StaleBin(bin, set) == null, "A bin built from lib/GPC is current");
+            Rewrite(lib, manifest, "GPCModel.dll");
+            string message = ReleaseSetCheck.StaleBin(bin, ReleaseSetCheck.Manifest(File.ReadAllText(manifest)));
+            Check(message != null && message.Contains($"GPCModel {Version("GPCModel.dll")} invece di 9.9.9.9") && message.Contains(bin)
+                && message.Contains("dotnet build ConcreteSectionChecker.sln -c Release"), "lib/GPC newer than the bin: library, folder and rebuild named");
+            message = ReleaseSetCheck.StaleBin(bin, set.Select(e => e.File == "GPCModel.dll" ? e with { Sha256 = "00" } : e));
+            Check(message?.Contains($"GPCModel {Version("GPCModel.dll")} con contenuto diverso") == true, "A library rebuilt with the same version is still stale");
+
+            // The real guard of the copied plugin in a new process, as in Rhino (a copy cannot load next to bin/ReBear.gha): lib/GPC
+            // newer than the bin for GPCModel, and a release-set.json next to the copy that does not match the GPCChecker.Concrete
+            // the process loads after the start.
+            Rewrite(lib, Path.Combine(bin, "release-set.json"), "GPCChecker.Concrete.dll");
+            var start = new ProcessStartInfo("dotnet") { UseShellExecute = false, RedirectStandardOutput = true, RedirectStandardError = true };
+            start.ArgumentList.Add(typeof(RegressionChecks).Assembly.Location); start.ArgumentList.Add("--gpc-guard"); start.ArgumentList.Add(bin);
+            using var process = Process.Start(start);
+            var output = process.StandardOutput.ReadToEndAsync(); var error = process.StandardError.ReadToEndAsync();
+            if (!process.WaitForExit(120000)) { process.Kill(true); throw new TimeoutException("GPC guard process"); }
+            string text = output.Result;
+            string warning = text.Split('\n').Select(l => l.Trim()).FirstOrDefault(l => l.StartsWith("GPC GUARD WARNING: "));
+            Check(process.ExitCode == 0 && warning != null, "Guard process: " + text + error.Result);
+            Check(warning.Contains("Bin non aggiornato: le librerie GPC in " + bin) && warning.Contains($"GPCModel {Version("GPCModel.dll")} invece di 9.9.9.9"),
+                "Bin older than lib/GPC reported at load: " + warning);
+            Check(warning.Contains("GPCChecker.Concrete: versione diversa dal set di rilascio (atteso 9.9.9.9"), "Loaded set still checked: " + warning);
+            Check(text.Contains("GPC GUARD CONCRETE LOADED AFTER START"), "GPCChecker.Concrete loaded after the start: " + text);
+        }
+        finally { try { Directory.Delete(root, true); } catch (Exception e) when (e is IOException or UnauthorizedAccessException) { } }
+
+        // The published bin: built from lib/GPC and running with the same libraries.
+        var guard = GrasshopperSmoke.Plugin.GetType("ConcreteSectionChecker.Grasshopper.GpcReleaseGuard", true);
+        guard.GetMethod("Start").Invoke(null, null);
+        Check(guard.GetProperty("Warning").GetValue(null) == null, "No warning for the published bin: " + guard.GetProperty("Warning").GetValue(null));
+    }
+
+    /// <summary>--gpc-guard: starts the guard of the plugin in the folder, as Grasshopper does, and prints its warning.</summary>
+    internal static int Guard(string folder)
+    {
+        var guard = AssemblyLoadContext.Default.LoadFromAssemblyPath(Path.Combine(folder, "ReBear.gha")).GetType("ConcreteSectionChecker.Grasshopper.GpcReleaseGuard", true);
+        bool early = AppDomain.CurrentDomain.GetAssemblies().Any(a => a.GetName().Name == "GPCChecker.Concrete");
+        guard.GetMethod("Start").Invoke(null, null);
+        System.Reflection.Assembly.Load("GPCChecker.Concrete");
+        if (!early) Console.WriteLine("GPC GUARD CONCRETE LOADED AFTER START");
+        Console.WriteLine("GPC GUARD WARNING: " + (guard.GetProperty("Warning").GetValue(null) ?? "none"));
+        return 0;
+    }
+
+    /// <summary>Copies a release-set.json with one library at 9.9.9.9 and another hash.</summary>
+    private static void Rewrite(string source, string target, string file)
+    {
+        var json = JsonNode.Parse(File.ReadAllText(source));
+        var entry = json["files"].AsArray().Single(e => (string)e["file"] == file);
+        entry["assemblyVersion"] = "9.9.9.9"; entry["sha256"] = "00";
+        File.WriteAllText(target, json.ToJsonString());
+    }
+
+    private static void CopyFolder(string source, string target)
+    {
+        Directory.CreateDirectory(target);
+        foreach (string file in Directory.GetFiles(source)) File.Copy(file, Path.Combine(target, Path.GetFileName(file)));
+        foreach (string folder in Directory.GetDirectories(source)) CopyFolder(folder, Path.Combine(target, Path.GetFileName(folder)));
     }
 }

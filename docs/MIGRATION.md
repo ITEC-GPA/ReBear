@@ -1,5 +1,9 @@
 # Migrazione Rhino2FEM → ReBear
 
+## Aggiornamento 0.3.1 — 1° novembre 2026
+
+Nessun cambiamento di componenti, porte, risultati o set GPC: le definizioni e la palette 0.3 restano valide. Il controllo al caricamento segnala anche un `bin` non ricompilato dopo un aggiornamento di `lib/GPC`. Il 1° novembre BridGHe ha calcolato con le librerie del 26 ottobre senza alcun avviso per questo motivo. Se ReBear gira dal `bin` di un checkout, le DLL GPC accanto a `ReBear.gha` sono confrontate con `lib/GPC/release-set.json`. Ogni differenza compare nella riga di comando di Rhino e come avviso su ogni componente, insieme alla richiesta di chiudere Rhino e ricompilare.
+
 ## Aggiornamento 0.3.0 — 29 ottobre 2026
 
 ReBear 0.3 unifica **tutti i componenti** sul modello `ReBearComponent`: porte dichiarate una sola volta con unità e descrizione, risultati strutturati (`CheckResult`), `NaN` — mai zero — per i valori mancanti, numeri come numeri (nessuna uscita testuale con valori, nessun arrotondamento). La palette passa da 61 a **58 componenti**. Il set GPC in `lib/GPC` non cambia (set ufficiale del 27 ottobre, comune con BridGHe).
@@ -145,10 +149,11 @@ Le porte `To Excel Header` e `To Excel` restano nelle posizioni originali. Per t
 
 ## Verifiche automatiche (0.3)
 
-Il comando `build/Verify.ps1` (40 gruppi) comprende:
+Il comando `build/Verify.ps1` (41 gruppi) comprende:
 
 - palette identica alla fotografia `palette-0.3.json` (identità, pannelli, porte) e regola dei GUID rispetto a `palette-0.2.2.json`;
 - integrità SHA-256 del set GPC e confronto degli assembly caricati con `release-set.json`;
+- `bin` non ricompilato: una copia del checkout con `lib/GPC` diverso dal `bin`, segnalata dal controllo del plugin in un processo separato; nessun avviso per il `bin` pubblicato;
 - taglio: controllo scalare indipendente senza staffe, mappatura X/Y delle opzioni rettangolari sui tre profili, trazione non valutata, modello circolare con risultante, dati non validi;
 - tensioni da compressione uniforme confrontate con la sezione omogeneizzata; durata, esposizione, fessurazione, decompressione;
 - resistenza SLU convergente, domanda nulla e N fuori dominio;

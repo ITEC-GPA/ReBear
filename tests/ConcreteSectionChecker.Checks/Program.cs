@@ -29,6 +29,8 @@ internal static class Program
     private static int Main(string[] args)
     {
         allowCandidate = args.Contains("--allow-candidate");
+        int guard = Array.IndexOf(args, "--gpc-guard");
+        if (guard >= 0) return RegressionChecks.Guard(args[guard + 1]);
         if (args.Contains("--write-palette")) { GrasshopperSmoke.WritePalette(); return 0; }
         int contract = Array.IndexOf(args, "--write-contract");
         if (contract >= 0) { GrasshopperSmoke.WriteContract(Path.GetFullPath(args[contract + 1]), args[contract + 2]); return 0; }

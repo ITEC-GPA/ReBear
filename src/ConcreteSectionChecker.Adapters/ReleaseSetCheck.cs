@@ -17,17 +17,56 @@ namespace ConcreteSectionChecker.Adapters
     /// <summary>
     /// Compares the GPC assemblies loaded in the process with lib/GPC/release-set.json (shipped next to ReBear.gha).
     /// Plugins sharing a Rhino process share the first loaded copy of each assembly: a different set loaded by another
-    /// plugin changes the engine of ReBear without any visible sign.
+    /// plugin changes the engine of ReBear without any visible sign. So does a bin not rebuilt after lib/GPC changed in the
+    /// checkout Rhino loads ReBear from: its GPC DLLs and its release-set.json are both the old ones.
     /// </summary>
     public static class ReleaseSetCheck
     {
         public sealed record Entry(string File, string Version, string Sha256);
+
+        public static bool IsGpc(string assemblyName) =>
+            assemblyName != null && (assemblyName.StartsWith("GPC", StringComparison.Ordinal) || assemblyName == "DelaunayMesh");
 
         public static IReadOnlyList<Entry> Manifest(string json)
         {
             using var document = JsonDocument.Parse(json);
             return document.RootElement.GetProperty("files").EnumerateArray().Select(e => new Entry(e.GetProperty("file").GetString(),
                 e.GetProperty("assemblyVersion").GetString(), e.GetProperty("sha256").GetString())).ToArray();
+        }
+
+        /// <summary>lib/GPC/release-set.json of the ReBear checkout that contains the plugin folder, or null for an installed plugin.</summary>
+        public static string RepositoryManifest(string pluginFolder)
+        {
+            // The published bin is one level below the root, the private outputs obj\bin\<project>\<configuration>\<framework> five.
+            var folder = string.IsNullOrEmpty(pluginFolder) ? null : new DirectoryInfo(pluginFolder);
+            for (int level = 0; folder != null && level <= 6; level++, folder = folder.Parent)
+            {
+                string manifest = Path.Combine(folder.FullName, "lib", "GPC", "release-set.json");
+                if (File.Exists(Path.Combine(folder.FullName, "ConcreteSectionChecker.sln")) && File.Exists(manifest)) return manifest;
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// The message for GPC DLLs next to the plugin that are not those of lib/GPC (bin not rebuilt), or null. DLLs of the set
+        /// that ReBear does not use are absent from the bin and ignored.
+        /// </summary>
+        public static string StaleBin(string pluginFolder, IEnumerable<Entry> repository, Func<string, string> hash = null)
+        {
+            hash ??= Sha256;
+            var differences = new List<string>();
+            foreach (var entry in repository.Where(e => e.File.EndsWith(".dll", StringComparison.OrdinalIgnoreCase)))
+            {
+                string path = Path.Combine(pluginFolder, entry.File);
+                if (!File.Exists(path) || string.Equals(hash(path), entry.Sha256, StringComparison.OrdinalIgnoreCase)) continue;
+                string version = null;
+                try { version = AssemblyName.GetAssemblyName(path).Version?.ToString(); }
+                catch (Exception e) when (e is BadImageFormatException or IOException) { }
+                string name = Path.GetFileNameWithoutExtension(entry.File);
+                differences.Add(version == entry.Version ? $"{name} {version} con contenuto diverso" : $"{name} {version ?? "?"} invece di {entry.Version}");
+            }
+            return differences.Count == 0 ? null : $"Bin non aggiornato: le librerie GPC in {pluginFolder} non sono quelle di lib/GPC ({string.Join("; ", differences)}). " +
+                "Chiudere Rhino e ricompilare ReBear (dotnet build ConcreteSectionChecker.sln -c Release): fino ad allora risultati e tempi sono quelli delle librerie nel bin.";
         }
 
         /// <summary>Mismatches of the loaded assemblies listed in the manifest (assemblies not loaded yet are ignored).</summary>

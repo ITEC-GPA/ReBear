@@ -2,7 +2,7 @@
 
 **Reinforced Concrete Sections for Grasshopper**
 
-Plugin autonomo per la modellazione e la verifica di sezioni in calcestruzzo armato con le librerie **GPC**. La versione **0.3.0** riunisce in un solo modello (`ReBearComponent`) i 32 componenti recuperati da `Rhino2FEM` (commit `66555b6c43d10c8929c9871c172f5d78069655a8` del 1 aprile 2026) e quelli aggiunti in 0.2: **58 componenti** con porte dichiarate, unità esplicite, risultati strutturati e `NaN` — mai zero — per i valori mancanti. I componenti sono organizzati nella scheda **ReBear** secondo il flusso **Materials → Sections → Input → Setup → Analysis → Checks → Detailing → Results → Display** ([mappa della palette](docs/PALETTE.md)).
+Plugin autonomo per la modellazione e la verifica di sezioni in calcestruzzo armato con le librerie **GPC**. La versione **0.3.1** riunisce in un solo modello (`ReBearComponent`) i 32 componenti recuperati da `Rhino2FEM` (commit `66555b6c43d10c8929c9871c172f5d78069655a8` del 1 aprile 2026) e quelli aggiunti in 0.2: **58 componenti** con porte dichiarate, unità esplicite, risultati strutturati e `NaN` — mai zero — per i valori mancanti. I componenti sono organizzati nella scheda **ReBear** secondo il flusso **Materials → Sections → Input → Setup → Analysis → Checks → Detailing → Results → Display** ([mappa della palette](docs/PALETTE.md)).
 
 ![Simbolo ReBear](assets/branding/symbol.png)
 
@@ -29,12 +29,12 @@ bin/*.dll
 bin/ReBear.deps.json
 bin/ReBear.runtimeconfig.json
 bin/release-set.json
-artifacts/packages/ReBear-0.3.0-<timestamp>.zip
+artifacts/packages/ReBear-0.3.1-<timestamp>.zip
 ```
 
 Ogni compilazione Release, da Visual Studio o `dotnet build`, aggiorna la cartella `bin` alla radice con il plugin e tutte le sue dipendenze: è la cartella pronta da caricare in Grasshopper. Le compilazioni Debug non sovrascrivono la Release pubblicata. I file intermedi e gli output di test e strumenti sono in `obj` alla radice, separati per progetto e configurazione. Dopo la sincronizzazione della Release vengono eliminate soltanto le vecchie cartelle `bin`/`obj` dei sottoprogetti; i pacchetti in `artifacts/packages` sono gestiti da `Package.ps1`, che elimina i precedenti solo dopo aver creato il nuovo ZIP (`-KeepPrevious` per conservarli). La pulizia non segue link o junction e segnala eventuali file in uso, senza chiudere Rhino.
 
-`Verify.ps1` compila la Release ed esegue 40 gruppi di controlli: numerici, regressioni dei difetti corretti in 0.3, fotografia della palette (`tests/Compatibility/palette-0.3.json`) e regola dei GUID rispetto a 0.2.2, hash delle sei DLL GPC, caricamento dei 58 componenti con le librerie Grasshopper, persistenza dei dati e porte dei componenti attraverso `IGH_DataAccess`. `Examples.ps1` rigenera e controlla i 20 esempi. Il flusso di GitHub Actions `.github/workflows/verify.yml` esegue entrambi su Windows. I test sono un eseguibile console: usare gli script oppure `dotnet obj/bin/ConcreteSectionChecker.Checks/Release/net8.0-windows/ConcreteSectionChecker.Checks.dll --grasshopper`, non `dotnet test`. L'opzione `--benchmark` misura i tempi delle operazioni lunghe.
+`Verify.ps1` compila la Release ed esegue 41 gruppi di controlli: numerici, regressioni dei difetti corretti in 0.3, fotografia della palette (`tests/Compatibility/palette-0.3.json`) e regola dei GUID rispetto a 0.2.2, hash delle sei DLL GPC, controllo al caricamento del set GPC e del `bin`, caricamento dei 58 componenti con le librerie Grasshopper, persistenza dei dati e porte dei componenti attraverso `IGH_DataAccess`. `Examples.ps1` rigenera e controlla i 20 esempi. Il flusso di GitHub Actions `.github/workflows/verify.yml` esegue entrambi su Windows. I test sono un eseguibile console: usare gli script oppure `dotnet obj/bin/ConcreteSectionChecker.Checks/Release/net8.0-windows/ConcreteSectionChecker.Checks.dll --grasshopper`, non `dotnet test`. L'opzione `--benchmark` misura i tempi delle operazioni lunghe.
 
 Il caricamento in processo di test non sostituisce l'apertura delle definizioni dentro Rhino: `tools/RhinoExampleProbe.py` apre i 20 esempi in Rhino 8 e registra i messaggi di ogni componente ([procedura](docs/MIGRATION.md#accettazione-da-eseguire-in-rhino)).
 
@@ -47,6 +47,8 @@ Il caricamento in processo di test non sostituisce l'apertura delle definizioni 
 5. Riavviare Rhino/Grasshopper e verificare la scheda **ReBear**.
 
 Se altri plugin caricano GPC nello stesso processo, devono usare lo stesso set di rilascio: il primo assembly caricato vale per tutti. Al caricamento ReBear confronta versione e SHA-256 delle DLL GPC presenti con `release-set.json` e, se differiscono, lo segnala nella riga di comando di Rhino e con un avviso su ogni componente.
+
+Se Rhino carica ReBear dalla cartella `bin` di un checkout, ReBear confronta anche le DLL GPC accanto a `ReBear.gha` con `lib/GPC/release-set.json` del checkout. Un `bin` non ricompilato dopo un aggiornamento di `lib/GPC` contiene sia le DLL sia il `release-set.json` vecchi, quindi il primo confronto non lo rileva. Viene segnalato allo stesso modo, con le versioni trovate e quelle attese, finché non si chiude Rhino e si ricompila la soluzione in Release. Un plugin installato fuori da un checkout fa solo il primo confronto. Il controllo è provato dalla regressione «Bin non ricompilato dopo un cambio di lib/GPC» di `Verify.ps1`.
 
 ## Flusso di lavoro
 
@@ -86,7 +88,7 @@ Nelle opzioni di taglio la direzione X usa V1/M2 e la direzione Y V2/M1; le quan
 | `tools/ExampleGenerator` | Generatore e controlli numerici dei 20 esempi `.gh`/`.ghx`, con confronto rispetto a 0.2.2 |
 | `tools/RhinoExampleProbe.py` | Prova dei 20 esempi dentro Rhino 8 |
 
-ReBear **0.3.0** usa il **set GPC ufficiale del 1° novembre 2026 (sera)**, con Model `fe353243` e Checker `50979c27`, comune con BridGHe. Il manifest contiene `candidate=false`. Rispetto al set del 27 ottobre, con cui 0.3.0 è stato pubblicato, cambiano solo le librerie: i 20 esempi danno gli stessi numeri; nei risultati cambiano la versione del motore e alcuni riferimenti normativi dei dettagli, corretti in GPC (per esempio `§4.1.6.1.3` al posto di `§4.1.6.1 .3` ed EC2 §9.2.1.1 al posto di §9.3.1.1). Il set del 30 ottobre (pomeriggio) somma i contributi dell'integrazione di Gauss senza memorizzarli (GPCModel 5.31.0.0): stessi risultati, meno memoria allocata. Quello del 1° novembre (mattina) porta GPCModel 5.32 (contratti delle azioni non sismiche) e il ricalcolo dei dettagli di CompositeBridge usato da BridGHe. Quello della sera porta Concrete 0.34 e GPCModel 5.33, che allocano meno memoria con gli stessi risultati bit per bit, e la duttilità di curvatura di Concrete 0.33.
+ReBear **0.3.1** usa il **set GPC ufficiale del 1° novembre 2026 (sera)**, con Model `fe353243` e Checker `50979c27`, comune con BridGHe. Il manifest contiene `candidate=false`. Rispetto al set del 27 ottobre, con cui 0.3.0 è stato pubblicato, cambiano solo le librerie: i 20 esempi danno gli stessi numeri; nei risultati cambiano la versione del motore e alcuni riferimenti normativi dei dettagli, corretti in GPC (per esempio `§4.1.6.1.3` al posto di `§4.1.6.1 .3` ed EC2 §9.2.1.1 al posto di §9.3.1.1). Il set del 30 ottobre (pomeriggio) somma i contributi dell'integrazione di Gauss senza memorizzarli (GPCModel 5.31.0.0): stessi risultati, meno memoria allocata. Quello del 1° novembre (mattina) porta GPCModel 5.32 (contratti delle azioni non sismiche) e il ricalcolo dei dettagli di CompositeBridge usato da BridGHe. Quello della sera porta Concrete 0.34 e GPCModel 5.33, che allocano meno memoria con gli stessi risultati bit per bit, e la duttilità di curvatura di Concrete 0.33.
 
 | Assembly | Versione |
 |---|---|

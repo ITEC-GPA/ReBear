@@ -89,9 +89,16 @@ namespace ConcreteSectionChecker.Grasshopper
             Write(message);
         }
 
+        /// <summary>
+        /// Writes on Rhino's thread: at once when called there, otherwise queued to it without waiting. The check of a library
+        /// loaded later runs in AppDomain.AssemblyLoad on the thread that loads it, while the runtime holds that load: the other
+        /// threads that need the library wait, and RhinoApp.WriteLine from a thread other than Rhino's waits for Rhino's thread.
+        /// When Rhino's thread is one of those waiting, neither returns (the background calculations of ReBear, and BridGHe Super
+        /// Element Check on 4/11/2026: a library not of the set loaded first by a worker).
+        /// </summary>
         private static void Write(string message)
         {
-            try { Rhino.RhinoApp.WriteLine("ReBear: " + message); } catch (Exception) { }
+            try { Rhino.RhinoApp.InvokeOnUiThread((Action<string>)Rhino.RhinoApp.WriteLine, "ReBear: " + message); } catch (Exception) { }
         }
     }
 }

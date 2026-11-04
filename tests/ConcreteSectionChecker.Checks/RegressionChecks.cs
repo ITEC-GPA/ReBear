@@ -38,7 +38,7 @@ internal static class RegressionChecks
         run("Prestazioni: checker Iterative, analisi ausiliaria non fessurata condivisa nel batch", Caching);
         run("Ricerca in parallelo uguale alla seriale; annullamento", ParallelSearch);
         run("Verifica del set GPC caricato rispetto a release-set.json", ReleaseSet);
-        run("Bin non ricompilato dopo un cambio di lib/GPC: avviso al caricamento, nessuno per il bin pubblicato", StaleBin);
+        run("Bin non ricompilato dopo un cambio di lib/GPC: avviso al caricamento, anche da un worker in Rhino senza blocco; nessuno per il bin pubblicato", StaleBin);
     }
 
     private static void AbsentExtremes()
@@ -343,6 +343,7 @@ internal static class RegressionChecks
                 "Bin older than lib/GPC reported at load: " + warning);
             Check(warning.Contains("GPCChecker.Concrete: versione diversa dal set di rilascio (atteso 9.9.9.9"), "Loaded set still checked: " + warning);
             Check(text.Contains("GPC GUARD CONCRETE LOADED AFTER START"), "GPCChecker.Concrete loaded after the start: " + text);
+            RhinoGuard(bin);
         }
         finally { try { Directory.Delete(root, true); } catch (Exception e) when (e is IOException or UnauthorizedAccessException) { } }
 
@@ -362,6 +363,29 @@ internal static class RegressionChecks
         if (!early) Console.WriteLine("GPC GUARD CONCRETE LOADED AFTER START");
         Console.WriteLine("GPC GUARD WARNING: " + (guard.GetProperty("Warning").GetValue(null) ?? "none"));
         return 0;
+    }
+
+    /// <summary>
+    /// The same guard inside a real Rhino (tests/ConcreteSectionChecker.RhinoGuard), with GPCChecker.Concrete loaded first by a worker
+    /// while Rhino's thread waits for it: reported without a hang (4/11/2026). Skipped where Rhino 8 is not installed (GitHub Actions).
+    /// </summary>
+    private static void RhinoGuard(string bin)
+    {
+        if (!File.Exists(@"C:\Program Files\Rhino 8\System\RhinoCommon.dll")) { Console.WriteLine("SKIP GPC guard inside Rhino: Rhino 8 not installed"); return; }
+        // obj/bin/<project>/<configuration>/<framework>: the child is built with the solution next to this project.
+        var framework = new DirectoryInfo(AppContext.BaseDirectory.TrimEnd(Path.DirectorySeparatorChar));
+        string child = Path.Combine(framework.Parent.Parent.Parent.FullName, "ConcreteSectionChecker.RhinoGuard", framework.Parent.Name, framework.Name, "ConcreteSectionChecker.RhinoGuard.dll");
+        Check(File.Exists(child), "GPC guard inside Rhino built with ConcreteSectionChecker.sln: " + child);
+        var start = new ProcessStartInfo("dotnet") { UseShellExecute = false, RedirectStandardOutput = true, RedirectStandardError = true };
+        start.ArgumentList.Add(child); start.ArgumentList.Add(bin);
+        using var process = Process.Start(start);
+        var output = process.StandardOutput.ReadToEndAsync(); var error = process.StandardError.ReadToEndAsync();
+        if (!process.WaitForExit(300000)) { process.Kill(true); throw new TimeoutException("GPC guard process inside Rhino"); }
+        string text = output.Result;
+        Check(text.Contains("REBEAR GUARD LATE LOAD worker"), "GPC library loaded first by a worker while Rhino's thread waits, checked without a hang: " + text + error.Result);
+        string warning = text.Split('\n').Select(l => l.Trim()).FirstOrDefault(l => l.StartsWith("REBEAR GUARD WARNING: "));
+        Check(process.ExitCode == 0 && warning != null && warning.Contains("GPCChecker.Concrete: versione diversa dal set di rilascio (atteso 9.9.9.9"),
+            "GPC library loaded by the worker reported: " + text + error.Result);
     }
 
     /// <summary>Copies a release-set.json with one library at 9.9.9.9 and another hash.</summary>

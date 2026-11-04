@@ -1,5 +1,9 @@
 # Migrazione Rhino2FEM → ReBear
 
+## Aggiornamento 0.3.3 — 4 novembre 2026
+
+Nessun cambiamento di componenti, porte, risultati o set GPC. I controlli al caricamento non possono più bloccare Rhino. Una libreria GPC diversa dal set di rilascio, caricata per la prima volta da un calcolo in background mentre Rhino aspetta la stessa libreria, ora viene segnalata. Prima Rhino si bloccava senza consumare CPU. La riga sulla command line arriva quando il thread di Rhino è libero; l'avviso sui componenti non cambia.
+
 ## Aggiornamento 0.3.2 — 1° novembre 2026
 
 Nessun cambiamento di componenti, porte, risultati o set GPC. Al caricamento ReBear verifica anche che il `bin` sia compilato dal commit su cui si trova il suo checkout, con il controllo comune ai plugin gPC. Un `bin` rimasto a un commit precedente compare nella riga di comando di Rhino e come avviso su ogni componente.
